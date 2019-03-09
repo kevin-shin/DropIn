@@ -2,9 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>JuDaSaKe</title>
 </head>
 <body>
-$END$
+<h2>This is the super cool JuDaSaKe Major Planning Software</h2>
+<p>Select Your Major From The Dropdown Menu<br> Click the right arrow when you're ready</p>
+<select>
+    <option value="Computer Science">Computer Science</option>
+</select>
+<button type="button", onclick="nextPage()">--></button>
+
+
+
+<svg width="960" height="500"></svg>
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script>
+// var svgContainer = d3.select("body").append("svg").attr("width",200).attr("height",200);
+// var circle = svgContainer.append("circle").attr("cx",30).attr("cy",30).attr("r",20);
+var svg = d3.select("svg"),
+    height = +svgContainer.attr("width"),
+    width  = +svgContainer.attr("height"),
+    radius = 30;
+var circles = d3.range(20).map(function(d) {
+    return {
+        x: Math.round(Math.random() * (width - radius * 2) + radius),
+        y: Math.round(Math.random() * (height - radius * 2) + radius)
+    };
+});
+var color = d3.scaleOrdinal().range(d3.schemeCategory20);
+svg.selectAll("circle")
+    .data(circles)
+    .enter().append("circle")
+    .attr("cx", function(d) { return d.x; })
+    .attr("cy", function(d) { return d.y; })
+    .attr("r", radius)
+    .style("fill", function(d, i) { return color(i); })
+    .call(d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended));
+
+function dragstarted(d) {
+    d3.select(this).raise().classed("active", true);
+}
+
+function dragged(d) {
+    d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+}
+
+function dragended(d) {
+    d3.select(this).classed("active", false);
+}
+</script>
 </body>
 </html>
