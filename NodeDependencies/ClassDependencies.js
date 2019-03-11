@@ -4,7 +4,6 @@ var svg = d3.select("body").append("svg")
     .attr("width",1500);
 
 draw();
-drawEdges()''
 
 
     //circle constructor
@@ -53,9 +52,11 @@ function draw() {
         .enter()
         .append('circle')
         .attr("cx", function (d, i) {
-            return i * 70;
+            return 50+(i * 150);
         })
-        .attr("cy", '300')
+        .attr("cy", function(){
+            return 200+(Math.random()*200)
+        })
         .attr("stroke", function (i) {
             switch (i) {
                 case 1:
@@ -74,20 +75,9 @@ function draw() {
         })
         .attr("fill", "white")
         .attr("r", function (d, i) {
-            return 10 * d;
-        })
-        .style("Prereqs", ["123","240","200"]);
+            return  d*10;
+        });
 }
-
-//MAYBE THROW AWAY
-function drawEdges(){
-    d3.select("svg").selectAll("circle").append("line")//might need .enter() to make multiple for each circle
-        .attr("x1",function(d){return d.get("cx")})
-        .attr("y1",function(d){return d.get("yx")})
-        .attr("x1",function(d){return d.get("cx")})
-        .attr("x1",function(d){return d.get("yx")})
-}
-
 
 
 
