@@ -160,7 +160,6 @@
     "course_num": "437",
     "name": "topics in applied math",
     "prereq": [["M236", "CS120"], ["M236", "CS123"],["M236", "CS124"]]
-    }
   },
   {
     "dept": "CS",
