@@ -21,7 +21,7 @@
     "dept": "CS",
     "course_num": "124",
     "name": "object-oriented programming and data structures",
-    "prereq": []
+    "prereq": ["CS123"]
   },
   {
     "dept": "M",
