@@ -1,6 +1,6 @@
 let prereq_dict ={};
 
-for each (course in courses){
-    prereq_dict["dept" + "course_num"] = "prereq";
-};
-
+for(var i = 0; i < courses.length; i++) {
+    var obj = courses[i];
+    prereq_dict[obj.dept + obj.course_num] = [obj.prereq];
+}
