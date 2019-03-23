@@ -1,11 +1,9 @@
 var w = $('#tags').width(), h = $('#tags').height();
 var fill = d3.scale.category10();
-
 var vis = d3.select('#tags').append("svg:g");
 
 d3.json("tags.json", function(json) {
-
-
+    
     var force = d3.layout.force()
         .charge(-3000)
         .distance(200)
@@ -53,8 +51,6 @@ d3.json("tags.json", function(json) {
 
     node.append('title')
         .text(function(d) { return d.name; });
-
-
 
 
     force.on("tick", function(e) {
