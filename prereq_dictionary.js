@@ -1,6 +1,7 @@
-let prereq_dict ={};
+var prereq_dict ={};
 
-for each (course in courses){
-    prereq_dict["dept" + "course_num"] = "prereq";
-};
+for(var course of courses) {
+    prereq_dict[course.dept + course.course_num] = [course.prereq];
+}
 
+console.log(prereq_dict);
