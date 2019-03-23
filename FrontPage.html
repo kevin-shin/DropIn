@@ -19,6 +19,7 @@
 <script>
 // var svgContainer = d3.select("body").append("svg").attr("width",200).attr("height",200);
 // var circle = svgContainer.append("circle").attr("cx",30).attr("cy",30).attr("r",20);
+
 var svg = d3.select("svg"),
     height = +svgContainer.attr("width"),
     width  = +svgContainer.attr("height"),
@@ -29,6 +30,7 @@ var circles = d3.range(20).map(function(d) {
         y: Math.round(Math.random() * (height - radius * 2) + radius)
     };
 });
+
 var color = d3.scaleOrdinal().range(d3.schemeCategory20);
 svg.selectAll("circle")
     .data(circles)
