@@ -1,0 +1,19 @@
+{"Classes": [
+  {
+    "dept": "COMP",
+    "course": 123
+  },
+  {
+    "dept": "COMP",
+    "course": 124
+  }
+],
+  "Connections": [
+    {"input": {
+      "dept": "COMP",
+      "course": 123 }},
+    {"output": {
+      "dept": "COMP",
+      "course": 124 }}
+  ]
+}
