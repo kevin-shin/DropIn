@@ -11,7 +11,11 @@ let arbData = [
     "color": "darkred"}
 ];
 
-d3.select("body").append("svg").attr("height",window.innerHeight).attr("width",window.innerWidth);
+d3.select("body")
+    .append("svg")
+    .attr("height",window.innerHeight)
+    .attr("width",window.innerWidth);
+
 var svg = d3.select("svg");
 
 svg.selectAll("circle").data(arbData).enter()
@@ -23,18 +27,18 @@ svg.selectAll("circle").data(arbData).enter()
     .attr("fill",   function (d) {return d.color});
 
 
-
-
-
 /////////////////////////////////////////////////Toggle Status//////////////////////////////////////////////////////////////////////
 /**
  * Fixes Needed  -----  ~5 rows down mouseup not mouseout
  *
  */
 
-//select the circles and on mouseout, have them be focused on   FUNTION: setFocus
+//select the circles and on mouseout, have them be focused on
+// FUNTION: setFocus
 var circleInFocus = arbData[0];
-d3.selectAll("circle").on("mouseout", function (d,i){/**NEEDS TO BE FIXED*/
+
+d3.selectAll("circle")
+    .on("mouseout", function (d,i){/**NEEDS TO BE FIXED*/
     circleInFocus = this;
     console.log(circleInFocus);//TEST
     ;});

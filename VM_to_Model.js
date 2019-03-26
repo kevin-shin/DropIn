@@ -2,6 +2,7 @@
 //https://bl.ocks.org/mbostock/22994cc97fefaeede0d861e6815a847e
 
 let ViewModel =
+
     {Classes: [
         {
             "dept": "COMP",
@@ -12,13 +13,14 @@ let ViewModel =
                 "course": 124
             }
     ],
-    Connections: [{
-        "dept": "COMP",
-        "course": 123
-    }, {
-        "dept": "COMP",
-        "course": 124
-    }]
+    Connections: [
+        {input: {
+            "dept": "COMP",
+            "course": 123 }},
+        {output: {
+            "dept": "COMP",
+            "course": 124 }}
+            ]
     };
 
 const radius = 35;
@@ -31,16 +33,19 @@ let svgContainer = d3.select("body")
                      .attr("width", 500)
                      .attr("height", 500);
 
-let circles = d3.range(Classes.length).map(function() {
-    return {
-        x: Math.round(Math.random() * 10 + 40),
-        y: Math.round(Math.random() * 10 + 40),
-        dept: Classes.dept,
-        course: Classes.course
-    };
-});
+let circles = [];
 
-console.log("circles");
+for (let object in ViewModel.Classes) {
+    circles.append(
+        {
+            x: Math.round(Math.random() * 10 + 40),
+            y: Math.round(Math.random() * 10 + 40),
+            dept: object.dept,
+            course: object.course
+        }
+    )}
+
+
 
 svgContainer.selectAll("circle")
     .data(circles)
@@ -49,6 +54,8 @@ svgContainer.selectAll("circle")
     .attr("cy", function(d) { return d.y; })
     .attr("r", radius)
     .style("fill", "green")
+    .on("click", function(d) {console.log(String(d.course) + String(d.dept))});
+/*
     .call(d3.drag()
         .on("start", dragstarted)
         .on("drag", dragged)
@@ -65,3 +72,5 @@ function dragged(d) {
 function dragended(d) {
     d3.select(this).classed("active", false);
 }
+
+*/
