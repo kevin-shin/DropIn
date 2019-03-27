@@ -37,7 +37,7 @@ function draw(ViewModel) {
     let container = svgContainer.selectAll("g")
         .data(circles)
         .enter().append("g")
-        .attr("id", "draggable")
+        .attr("id", function(d) {return String(d.dept) + String(d.course)})
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
@@ -67,8 +67,39 @@ function draw(ViewModel) {
             return d.dept + d.course;
         });
 
+    let defs = svgContainer.append('defs');
+    defs.append('marker')
+        .attr('id', 'input')
+        .attr('viewBox', '0 -5 10 10')
+        .attr('refX', "32")
+        .attr('markerWidth', 3.5)
+        .attr('markerHeight', 3.5)
+        .attr('orient', 'auto')
+        .append('svg:path')
+        .attr('d', 'M0,-5L10,0L0,5');
 
+    // define arrow markers for leading arrow
+    defs.append('marker')
+        .attr('id', 'output')
+        .attr('viewBox', '0 -5 10 10')
+        .attr('refX', 7)
+        .attr('markerWidth', 3.5)
+        .attr('markerHeight', 3.5)
+        .attr('orient', 'auto')
+        .append('svg:path')
+        .attr('d', 'M0,-5L10,0L0,5');
 
+    let paths = svgContainer.append("g").selectAll("g");
+
+    function updateGraph(){
+        paths.enter().append('path')
+            .attr('class', 'link dragline hidden')
+            .attr('d', function(d) {
+                return "M" + d.source.x + "," + d.source.y + "L" + d.target.x + "," + d.target.y;})
+            .style('marker-start', 'url(#input)')
+            .style('marker-end', 'url(#output)');
+
+    }
 
     function dragstarted(d) {
         d3.select(this).raise().classed("active", true);
@@ -81,6 +112,7 @@ function draw(ViewModel) {
         d3.select(this).select("circle")
             .attr("cx", d.x = d3.event.x)
             .attr("cy", d.y = d3.event.y);
+        updateGraph();
     }
 
     function dragended(d) {
