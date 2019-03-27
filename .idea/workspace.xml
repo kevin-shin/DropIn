@@ -4,20 +4,6 @@
     <list default="true" id="b7125132-c570-48fa-9cbb-8f6dbab62b63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VM_to_Model.js" beforeDir="false" afterPath="$PROJECT_DIR$/VM_to_Model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ViewModel_Test.json" beforeDir="false" afterPath="$PROJECT_DIR$/ViewModel_Test.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Screen Shot 2019-03-04 at 2.31.25 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/Screen Shot 2019-03-04 at 2.31.25 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Screen Shot 2019-03-04 at 2.32.42 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/Screen Shot 2019-03-04 at 2.32.42 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Screen Shot 2019-03-04 at 5.51.49 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/Screen Shot 2019-03-04 at 5.51.49 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Screen Shot 2019-03-04 at 5.52.47 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/Screen Shot 2019-03-04 at 5.52.47 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Screen Shot 2019-03-04 at 5.52.58 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/Screen Shot 2019-03-04 at 5.52.58 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Screen Shot 2019-03-04 at 5.55.32 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/Screen Shot 2019-03-04 at 5.55.32 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Screen Shot 2019-03-04 at 5.58.45 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/Screen Shot 2019-03-04 at 5.58.45 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Screen Shot 2019-03-04 at 5.59.19 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/Screen Shot 2019-03-04 at 5.59.19 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Screen Shot 2019-03-04 at 6.01.44 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/Screen Shot 2019-03-04 at 6.01.44 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Screen Shot 2019-03-04 at 6.08.08 PM.png" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/Screen Shot 2019-03-04 at 6.08.08 PM.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/judasake.ai" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/judasake.ai" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/kisspng-waste-container-recycling-bin-clip-art-garbage-can-cliparts-5a760b610d2c61.254007551517685601054.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/kisspng-waste-container-recycling-bin-clip-art-garbage-can-cliparts-5a760b610d2c61.254007551517685601054.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_slides/media/readme.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,15 +20,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kevin_test.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
@@ -51,68 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/VM_to_Model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="74" column="9" lean-forward="true" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NodeDependencies/ClassDependencies.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prereq_dictionary.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="150">
-                <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DraggableNodesTest.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+            <state relative-caret-position="480">
+              <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -120,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ViewModel_Test.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="3" lean-forward="true" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+            <state relative-caret-position="105">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -135,6 +55,11 @@
         <option value="HTML File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>draggable</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -157,9 +82,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="420" />
+    <option name="x" value="293" />
     <option name="y" value="23" />
-    <option name="width" value="860" />
+    <option name="width" value="987" />
     <option name="height" value="715" />
   </component>
   <component name="ProjectView">
@@ -254,7 +179,7 @@
       <workItem from="1552596126430" duration="949000" />
       <workItem from="1553295319479" duration="6112000" />
       <workItem from="1553378765814" duration="98000" />
-      <workItem from="1553616134363" duration="8928000" />
+      <workItem from="1553616134363" duration="14432000" />
     </task>
     <task id="LOCAL-00001" summary="Kevin's work, pt. 1. Successfully outputs two green circles, parsing through JSON object (?).">
       <created>1553302653961</created>
@@ -284,22 +209,35 @@
       <option name="project" value="LOCAL" />
       <updated>1553626544193</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Starting the arrow phase, let's see how this goes.">
+      <created>1553644848471</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1553644848471</updated>
+    </task>
+    <task id="LOCAL-00006" summary="In progress, kind of stuck.">
+      <created>1553658945992</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1553658945992</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28689000" />
+    <option name="totallyTimeSpent" value="34193000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="420" y="23" width="860" height="715" extended-state="0" />
-    <editor active="true" />
+    <frame x="293" y="23" width="987" height="715" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.072705604" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.26708075" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5013405" side_tool="true" weight="0.087243885" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26163724" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.17495987" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -321,7 +259,9 @@
     <MESSAGE value="Updated ViewModel structure. Connections is a JSON array, with objects, each of which have their own course objects. Instead of making an array, utilizes &quot;input&quot;/&quot;output&quot; properties of these objects. Any code that iterates through this array should be able to access the input-course by saying Connections[i].input, etc." />
     <MESSAGE value="Draggable grouped d3, displays class as text next to object." />
     <MESSAGE value="Some housekeeping, json file and js file now separate, and old way of doing the text is erased." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some housekeeping, json file and js file now separate, and old way of doing the text is erased." />
+    <MESSAGE value="Starting the arrow phase, let's see how this goes." />
+    <MESSAGE value="In progress, kind of stuck." />
+    <option name="LAST_COMMIT_MESSAGE" value="In progress, kind of stuck." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../machack-website/index.html" />
@@ -366,23 +306,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prereq_dictionary.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="150">
-            <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DraggableNodesTest.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
@@ -404,13 +327,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kevin_test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="421">
@@ -418,17 +334,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="150">
+            <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prereq_dictionary.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kevin_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ViewModel_Test.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="3" lean-forward="true" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+        <state relative-caret-position="105">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/VM_to_Model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="74" column="9" lean-forward="true" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
+        <state relative-caret-position="480">
+          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
         </state>
       </provider>
     </entry>

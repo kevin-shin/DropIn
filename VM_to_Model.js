@@ -27,10 +27,11 @@ function draw(ViewModel) {
                 x: Math.round(Math.random() * 100 + 40),
                 y: Math.round(Math.random() * 100 + 40),
                 dept: object.dept,
-                course: object.course,
+                course: object.course
             }
         )
     }
+
 
     //Make Group SVG objects, which have circles and texts. This is necessary to make
     //them respond to the same drag events.
