@@ -8,7 +8,7 @@ let arbData = [
     {"cx": 450,
     "cy": 300,
     "r": 30,
-    "color": "darkred"}
+    "color": "red"}
 ];
 
 d3.select("body")
@@ -27,41 +27,30 @@ svg.selectAll("circle").data(arbData).enter()
     .attr("fill",   function (d) {return d.color});
 
 
+
+
+
 /////////////////////////////////////////////////Toggle Status//////////////////////////////////////////////////////////////////////
-/**
- * Fixes Needed  -----  ~5 rows down mouseup not mouseout
- *
- */
+
+
 
 //select the circles and on mouseout, have them be focused on
-// FUNTION: setFocus
 var circleInFocus = arbData[0];
-
 d3.selectAll("circle")
-    .on("mouseout", function (d,i){/**NEEDS TO BE FIXED*/
+    .on("click", function (d,i){/**NEEDS TO BE FIXED - double click*/
     circleInFocus = this;
-    console.log(circleInFocus);//TEST
-    ;});
+    });
 
-
-//When the button to toggle is clicked, change the color        FUNCTION: toggleTaken
-// of the focus circle (above)
-d3.select("#toggleColorButton").on("click", function (d,i){
-    console.log("toggleTakenTest complete");
+var button = d3.select("body").append("button")
+    .text("Button");
+button.on("click", function(){
+    if(circleInFocus.getAttribute("fill") === "red"){
+        circleInFocus.setAttribute("fill","blue")
+    }
+    else{
+        circleInFocus.setAttribute("fill", "red")
+    }
 });
-
-function toggleTaken(d){
-    // if (d != null) {
-    //     if (d.getAttribute("fill") === "red" ||
-    //          d.getAttribute("fill") === "darkred") {
-    //         d3.select(d.id).setAttribute("fill", "blue"); /** NEED AN ID FOR EACH CLASS */
-    //     } else {
-    //         d3.select(d.id).setAttribute("fill", "red");
-    //     }
-    //     console.log(d.id);
-    // }
-    console.log("I got it")
-}
 
 
 /////////////////////////////////////////////////Toggle Status//////////////////////////////////////////////////////////////////////
