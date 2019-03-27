@@ -99,7 +99,6 @@ function draw(ViewModel) {
                 return "M" + d.source.x + "," + d.source.y + "L" + d.target.x + "," + d.target.y;})
             .style('marker-start', 'url(#input)')
             .style('marker-end', 'url(#output)');
-
     }
 
     function dragstarted(d) {
