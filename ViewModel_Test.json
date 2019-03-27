@@ -9,11 +9,13 @@
   }
 ],
   "Connections": [
-    {"input": {
-      "dept": "COMP",
-      "course": 123 }},
-    {"output": {
-      "dept": "COMP",
-      "course": 124 }}
+    {
+      "input": {
+        "dept": "COMP",
+        "course": 123 },
+      "output": {
+        "dept": "COMP",
+        "course": 124 }
+    }
   ]
 }

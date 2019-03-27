@@ -9,13 +9,18 @@ function draw(ViewModel) {
     const radius = 35;
 
     let Classes = ViewModel.Classes;
-    //let Connections = ViewModel.Connections;
+    let Connections = ViewModel.Connections;
     let svgContainer = d3.select("body")
         .append("svg")
         .attr("width", 1000)
         .attr("height", 1000);
 
+    //Circles is an array that will hold objects which represent how we want our circles
+    //to be positioned. Notice that dept and course properties are directly taken from
+    //the objects representing the classes.
     let circles = [];
+    let arrows = [];
+
     for (let object of Classes) {
         circles.push(
             {
@@ -27,7 +32,8 @@ function draw(ViewModel) {
         )
     }
 
-
+    //Make Group SVG objects, which have circles and texts. This is necessary to make
+    //them respond to the same drag events.
     let container = svgContainer.selectAll("g")
         .data(circles)
         .enter().append("g")
@@ -60,6 +66,9 @@ function draw(ViewModel) {
         .text(function (d) {
             return d.dept + d.course;
         });
+
+
+
 
     function dragstarted(d) {
         d3.select(this).raise().classed("active", true);
