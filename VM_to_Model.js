@@ -90,15 +90,24 @@ function draw(ViewModel) {
         .append('svg:path')
         .attr('d', 'M0,-5L10,0L0,5');
 
-    let paths = svgContainer.append("g").selectAll("g");
+    let paths = svgContainer.selectAll("edge")
+        .data(Connections)
+        .enter().append('path')
+        .attr('class', 'edgePath')
+        .attr('d', function(d) {
+            let sourceID = d.source;
+            let targetID = d.target;
+            let sourceNode = d3.select("#" + sourceID);
+            let targetNode = d3.select("#" + targetID);
+            return "M" + sourceNode.cx + "," + sourceNode.cy + " L" +
+                targetNode.cx + "," + targetNode.cy;})
+        .attr("stroke", "black")
+        .attr("stroke-width", 4)
+        .style('marker-end', 'url(#output)');
 
     function updateGraph(){
-        paths.enter().append('path')
-            .attr('class', 'link dragline hidden')
-            .attr('d', function(d) {
-                return "M" + d.source.x + "," + d.source.y + "L" + d.target.x + "," + d.target.y;})
-            .style('marker-start', 'url(#input)')
-            .style('marker-end', 'url(#output)');
+        paths.attr('d', function(d) {
+            return "M" + d.input.x + "," + d.input.y + "L" + d.output.x + "," + d.output.y;})
     }
 
     function dragstarted(d) {
@@ -106,12 +115,12 @@ function draw(ViewModel) {
     }
 
     function dragged(d) {
-        d3.select(this).select("text")
-            .attr("x", d.x = d3.event.x)
-            .attr("y", d.y = d3.event.y);
         d3.select(this).select("circle")
             .attr("cx", d.x = d3.event.x)
             .attr("cy", d.y = d3.event.y);
+        d3.select(this).select("text")
+            .attr("x", d.x = d3.event.x)
+            .attr("y", d.y = d3.event.y);
         updateGraph();
     }
 
