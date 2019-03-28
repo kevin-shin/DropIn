@@ -1,21 +1,19 @@
 {"Classes": [
   {
     "dept": "COMP",
-    "course": 123
+    "course": 123,
+    "id": "COMP123"
   },
   {
     "dept": "COMP",
-    "course": 124
+    "course": 124,
+    "id": "COMP124"
   }
 ],
   "Connections": [
     {
-      "input": {
-        "dept": "COMP",
-        "course": 123 },
-      "output": {
-        "dept": "COMP",
-        "course": 124 }
+      "source": "COMP123",
+      "target": "COMP124"
     }
   ]
 }

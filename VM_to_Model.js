@@ -95,19 +95,32 @@ function draw(ViewModel) {
         .enter().append('path')
         .attr('class', 'edgePath')
         .attr('d', function(d) {
-            let sourceID = d.source;
-            let targetID = d.target;
-            let sourceNode = d3.select("#" + sourceID);
-            let targetNode = d3.select("#" + targetID);
-            return "M" + sourceNode.cx + "," + sourceNode.cy + " L" +
-                targetNode.cx + "," + targetNode.cy;})
+            let sourceID = "#" + d.source;
+            let targetID = "#" + d.target;
+            let sourceNode = d3.selectAll(sourceID)
+                               .select("circle")
+                               .datum()
+            let targetNode = d3.selectAll(targetID)
+                               .select("circle")
+                               .datum()
+            return "M" + sourceNode.x + "," + sourceNode.y + " L" +
+                targetNode.x + "," + targetNode.y;})
         .attr("stroke", "black")
         .attr("stroke-width", 4)
         .style('marker-end', 'url(#output)');
 
     function updateGraph(){
         paths.attr('d', function(d) {
-            return "M" + d.input.x + "," + d.input.y + "L" + d.output.x + "," + d.output.y;})
+            let sourceID = "#" + d.source;
+            let targetID = "#" + d.target;
+            let sourceNode = d3.selectAll(sourceID)
+                .select("circle")
+                .datum()
+            let targetNode = d3.selectAll(targetID)
+                .select("circle")
+                .datum()
+            return "M" + sourceNode.x + "," + sourceNode.y + " L" +
+                targetNode.x + "," + targetNode.y;})
     }
 
     function dragstarted(d) {

@@ -4,6 +4,7 @@
     <list default="true" id="b7125132-c570-48fa-9cbb-8f6dbab62b63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VM_to_Model.js" beforeDir="false" afterPath="$PROJECT_DIR$/VM_to_Model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModel_Test.json" beforeDir="false" afterPath="$PROJECT_DIR$/ViewModel_Test.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/VM_to_Model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="92" column="31" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
+            <state relative-caret-position="260">
+              <caret line="92" column="23" lean-forward="true" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -40,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ViewModel_Test.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+            <state relative-caret-position="90">
+              <caret line="6" column="3" lean-forward="true" selection-end-line="18" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -82,10 +83,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="579" />
+    <option name="x" value="594" />
     <option name="y" value="23" />
-    <option name="width" value="701" />
-    <option name="height" value="715" />
+    <option name="width" value="686" />
+    <option name="height" value="727" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -180,7 +181,7 @@
       <workItem from="1553295319479" duration="6112000" />
       <workItem from="1553378765814" duration="98000" />
       <workItem from="1553616134363" duration="14535000" />
-      <workItem from="1553710574581" duration="2609000" />
+      <workItem from="1553710574581" duration="6352000" />
     </task>
     <task id="LOCAL-00001" summary="Kevin's work, pt. 1. Successfully outputs two green circles, parsing through JSON object (?).">
       <created>1553302653961</created>
@@ -231,21 +232,36 @@
       <option name="project" value="LOCAL" />
       <updated>1553659688706</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="temp">
+      <created>1553728780040</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1553728780040</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Getting there, maybe. Focus on the svg elements - paths only need to know about their connections. This problem is simpler than you think it is.">
+      <created>1553732099075</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1553732099075</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36905000" />
+    <option name="totallyTimeSpent" value="40648000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="579" y="23" width="701" height="715" extended-state="0" />
+    <frame x="594" y="23" width="686" height="727" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.21911764" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49865952" weight="0.25201073" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5013405" side_tool="true" weight="0.087243885" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.17495987" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17165354" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -270,7 +286,9 @@
     <MESSAGE value="Starting the arrow phase, let's see how this goes." />
     <MESSAGE value="In progress, kind of stuck." />
     <MESSAGE value="Need to game-plan the whole connections thing a little bit more carefully." />
-    <option name="LAST_COMMIT_MESSAGE" value="Need to game-plan the whole connections thing a little bit more carefully." />
+    <MESSAGE value="temp" />
+    <MESSAGE value="Getting there, maybe. Focus on the svg elements - paths only need to know about their connections. This problem is simpler than you think it is." />
+    <option name="LAST_COMMIT_MESSAGE" value="Getting there, maybe. Focus on the svg elements - paths only need to know about their connections. This problem is simpler than you think it is." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../machack-website/index.html" />
@@ -364,8 +382,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ViewModel_Test.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="90">
+          <caret line="6" column="3" lean-forward="true" selection-end-line="18" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -378,8 +396,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/VM_to_Model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="92" column="31" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
+        <state relative-caret-position="260">
+          <caret line="92" column="23" lean-forward="true" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
         </state>
       </provider>
     </entry>
