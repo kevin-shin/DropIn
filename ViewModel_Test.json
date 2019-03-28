@@ -74,7 +74,7 @@
     "required": false
   },
   {
-    "dept": "CS",
+    "dept": "COMP",
     "course": 394,
     "taken": false,
     "required": false

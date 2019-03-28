@@ -7,7 +7,7 @@ d3.json("./ViewModel_Test.json").then(function(data){
 function draw(ViewModel) {
 
     const radius = 35;
-    const scale = 1-(1/35);
+    //const scale = 1-(1/35);
 
     let Classes = ViewModel.Classes;
     let Connections = ViewModel.Connections;
@@ -36,24 +36,20 @@ function draw(ViewModel) {
             .on("end", dragended));
 
     container.append("circle")
-        .attr("cx", function (d) {return d.x;})
-        .attr("cy", function (d) {return d.y;})
+        .data(taken)
+        .attr("cx", function (d) {return placeNode(d).cx;})
+        .attr("cy", function (d) {return placeNode(d).cy;})
         .attr("r", radius)
         .style("fill", "green");
 
     container.append("text")
-        .attr("x", function (d) {
-            return d.x + 9
-        })
-        .attr("y", function (d) {
-            return d.y + 9
-        })
+        .data(taken)
+        .attr("x", function (d) {return placeNode(d).cx + 9})
+        .attr("y", function (d) {return placeNode(d).cy + 9})
         .attr("font-family", "sans-serif")
         .attr("font-size", "18px")
         .attr("fill", "black")
-        .text(function (d) {
-            return d.dept + d.course;
-        });
+        .text(function (d) {return d.dept + d.course;});
 
     let containerNotTaken = svgContainer.selectAll("requiredNotTaken")
         .data(requiredNotTaken)
@@ -65,14 +61,16 @@ function draw(ViewModel) {
             .on("end", dragended));
 
     containerNotTaken.append("circle")
-        .attr("cx", function (d) {return d.x;})
-        .attr("cy", function (d) {return d.y;})
+        .data(requiredNotTaken)
+        .attr("cx", function (d) {return placeNode(d).cx;})
+        .attr("cy", function (d) {return placeNode(d).cy;})
         .attr("r", radius)
         .style("fill", "gray");
 
     containerNotTaken.append("text")
-        .attr("x", function (d) {return d.x + 9})
-        .attr("y", function (d) {return d.y + 9})
+        .data(requiredNotTaken)
+        .attr("x", function (d) {return placeNode(d).cx + 9})
+        .attr("y", function (d) {return placeNode(d).cy - 9})
         .attr("font-family", "sans-serif")
         .attr("font-size", "18px")
         .attr("fill", "black")
@@ -88,14 +86,16 @@ function draw(ViewModel) {
             .on("end", dragended));
 
     containerAvailable.append("circle")
-        .attr("cx", function (d) {return d.x;})
-        .attr("cy", function (d) {return d.y;})
+        .data(available)
+        .attr("cx", function (d) {return placeNode(d).cx;})
+        .attr("cy", function (d) {return placeNode(d).cy;})
         .attr("r", radius)
         .style("fill", "red");
 
     containerAvailable.append("text")
-        .attr("x", function (d) {return d.x + 9})
-        .attr("y", function (d) {return d.y + 9})
+        .data(available)
+        .attr("x", function (d) {return placeNode(d).cx + 9})
+        .attr("y", function (d) {return placeNode(d).cy + 9})
         .attr("font-family", "sans-serif")
         .attr("font-size", "18px")
         .attr("fill", "black")
@@ -146,6 +146,26 @@ function draw(ViewModel) {
 
     updateGraph();
 
+    function placeNode(object){
+        if (object.taken === false && object.required === false){
+            return {cx: 100, cy:100}
+        }
+        else {
+            if (100<object.course && object.course < 200) {
+                return {cx:200, cy:200}
+            }
+            else if (100<object.course && object.course < 200) {
+                return {cx:200, cy:200}
+            }
+            else if (200<object.course && object.course < 300) {
+                return {cx:300, cy:300}
+            }
+            else if (300<object.course && object.course < 500) {
+                return {cx:500, cy:500}
+            }
+        }
+
+    }
 
     function updateGraph(){
         paths.attr('d', function(d) {
@@ -153,10 +173,10 @@ function draw(ViewModel) {
             let targetID = "#" + d.target;
             let sourceNode = d3.selectAll(sourceID)
                 .select("circle")
-                .datum()
+                .datum();
             let targetNode = d3.selectAll(targetID)
                 .select("circle")
-                .datum()
+                .datum();
             return "M" + sourceNode.x + "," + sourceNode.y + " L" +
                 targetNode.x + "," + targetNode.y;})
     }
