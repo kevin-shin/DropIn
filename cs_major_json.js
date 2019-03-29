@@ -1,4 +1,4 @@
-[
+let courses = [
   {
     "dept": "CS",
     "course_num": "112",
