@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7125132-c570-48fa-9cbb-8f6dbab62b63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VM_to_Model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kevin_test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/judasake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/judasake.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VM_to_Model.js" beforeDir="false" afterPath="$PROJECT_DIR$/VM_to_Model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModel_Test.json" beforeDir="false" afterPath="$PROJECT_DIR$/ViewModel_Test.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,29 +21,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Node.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="7" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="33" column="43" lean-forward="true" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kevin_test.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
@@ -58,11 +32,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/VM_to_Model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state relative-caret-position="260">
+              <caret line="92" column="23" lean-forward="true" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ViewModel_Test.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="3" lean-forward="true" selection-end-line="18" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -77,6 +57,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>draggable</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -90,16 +75,18 @@
         <option value="$PROJECT_DIR$/NodeDependencies/ClassDependencies.js" />
         <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/Node.js" />
+        <option value="$PROJECT_DIR$/DavidBarretteNodeManipulation/NodeManipulation.js" />
         <option value="$PROJECT_DIR$/kevin_test.html" />
+        <option value="$PROJECT_DIR$/ViewModel_Test.json" />
         <option value="$PROJECT_DIR$/VM_to_Model.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="403" />
+    <option name="x" value="594" />
     <option name="y" value="23" />
-    <option name="width" value="877" />
-    <option name="height" value="715" />
+    <option name="width" value="686" />
+    <option name="height" value="727" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -113,6 +100,11 @@
             <path>
               <item name="judasake" type="b2602c69:ProjectViewProjectNode" />
               <item name="judasake" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="judasake" type="b2602c69:ProjectViewProjectNode" />
+              <item name="judasake" type="462c0819:PsiDirectoryNode" />
+              <item name="DavidBarretteNodeManipulation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="judasake" type="b2602c69:ProjectViewProjectNode" />
@@ -131,6 +123,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../machack-website/index.html" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/presentation_slides" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -181,29 +178,96 @@
       <workItem from="1552269277489" duration="669000" />
       <workItem from="1552328646100" duration="713000" />
       <workItem from="1552596126430" duration="949000" />
-      <workItem from="1553295319479" duration="4108000" />
+      <workItem from="1553295319479" duration="6112000" />
+      <workItem from="1553378765814" duration="98000" />
+      <workItem from="1553616134363" duration="14535000" />
+      <workItem from="1553710574581" duration="6352000" />
     </task>
+    <task id="LOCAL-00001" summary="Kevin's work, pt. 1. Successfully outputs two green circles, parsing through JSON object (?).">
+      <created>1553302653961</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1553302653961</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Updated ViewModel structure. Connections is a JSON array, with objects, each of which have their own course objects. Instead of making an array, utilizes &quot;input&quot;/&quot;output&quot; properties of these objects. Any code that iterates through this array should be able to access the input-course by saying Connections[i].input, etc.">
+      <created>1553618347055</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1553618347056</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Draggable grouped d3, displays class as text next to object.">
+      <created>1553623259505</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1553623259505</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Some housekeeping, json file and js file now separate, and old way of doing the text is erased.">
+      <created>1553626544193</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1553626544193</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Starting the arrow phase, let's see how this goes.">
+      <created>1553644848471</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1553644848471</updated>
+    </task>
+    <task id="LOCAL-00006" summary="In progress, kind of stuck.">
+      <created>1553658945992</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1553658945992</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Need to game-plan the whole connections thing a little bit more carefully.">
+      <created>1553659688706</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1553659688706</updated>
+    </task>
+    <task id="LOCAL-00008" summary="temp">
+      <created>1553728780040</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1553728780040</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Getting there, maybe. Focus on the svg elements - paths only need to know about their connections. This problem is simpler than you think it is.">
+      <created>1553732099075</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1553732099075</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17659000" />
+    <option name="totallyTimeSpent" value="40648000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="403" y="23" width="877" height="715" extended-state="0" />
+    <frame x="594" y="23" width="686" height="727" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.16238318" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49865952" weight="0.25201073" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5013405" side_tool="true" weight="0.087243885" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32905295" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17165354" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32744783" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -214,7 +278,63 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Kevin's work, pt. 1. Successfully outputs two green circles, parsing through JSON object (?)." />
+    <MESSAGE value="Updated ViewModel structure. Connections is a JSON array, with objects, each of which have their own course objects. Instead of making an array, utilizes &quot;input&quot;/&quot;output&quot; properties of these objects. Any code that iterates through this array should be able to access the input-course by saying Connections[i].input, etc." />
+    <MESSAGE value="Draggable grouped d3, displays class as text next to object." />
+    <MESSAGE value="Some housekeeping, json file and js file now separate, and old way of doing the text is erased." />
+    <MESSAGE value="Starting the arrow phase, let's see how this goes." />
+    <MESSAGE value="In progress, kind of stuck." />
+    <MESSAGE value="Need to game-plan the whole connections thing a little bit more carefully." />
+    <MESSAGE value="temp" />
+    <MESSAGE value="Getting there, maybe. Focus on the svg elements - paths only need to know about their connections. This problem is simpler than you think it is." />
+    <option name="LAST_COMMIT_MESSAGE" value="Getting there, maybe. Focus on the svg elements - paths only need to know about their connections. This problem is simpler than you think it is." />
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../machack-website/index.html" />
+    <entry file="file://$PROJECT_DIR$/Node.js" />
+    <entry file="file://$PROJECT_DIR$/FrontPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs_major_json.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DraggableNodesTest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -225,11 +345,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machack-website/index.html" />
-    <entry file="file://$PROJECT_DIR$/NodeDependencies/ClassDependencies.js">
+    <entry file="file://$PROJECT_DIR$/prereq_dictionary.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
@@ -240,41 +359,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FrontPage.html">
+    <entry file="file://$PROJECT_DIR$/NodeDependencies/ClassDependencies.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DraggableNodesTest.html">
+    <entry file="file://$PROJECT_DIR$/DavidBarretteNodeManipulation/NodeManipulation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="20" />
+        <state relative-caret-position="243">
+          <caret line="86" column="35" lean-forward="true" selection-start-line="86" selection-start-column="35" selection-end-line="86" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
+    <entry file="file://$PROJECT_DIR$/DavidBarretteNodeManipulation/NodeManipulation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+        <state relative-caret-position="210">
+          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Node.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/ViewModel_Test.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="7" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="33" column="43" lean-forward="true" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+        <state relative-caret-position="90">
+          <caret line="6" column="3" lean-forward="true" selection-end-line="18" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -287,11 +396,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/VM_to_Model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="260">
+          <caret line="92" column="23" lean-forward="true" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
         </state>
       </provider>
     </entry>
