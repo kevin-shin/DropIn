@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b7125132-c570-48fa-9cbb-8f6dbab62b63" name="Default Changelist" comment="">
+    <list default="true" id="b7125132-c570-48fa-9cbb-8f6dbab62b63" name="Default Changelist" comment="Something is wrong with the color-changing behavior">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VM_to_Model.js" beforeDir="false" afterPath="$PROJECT_DIR$/VM_to_Model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ViewModel_Test.json" beforeDir="false" afterPath="$PROJECT_DIR$/ViewModel_Test.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DavidBarretteNodeManipulation/NodeManipulation.js" beforeDir="false" afterPath="$PROJECT_DIR$/DavidBarretteNodeManipulation/NodeManipulation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VM_to_Model.js" beforeDir="false" afterPath="$PROJECT_DIR$/VM_to_View.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kevin_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/kevin_test.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,20 +30,38 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/VM_to_Model.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VM_to_View.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="92" column="23" lean-forward="true" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
+            <state relative-caret-position="60">
+              <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DavidBarretteNodeManipulation/NodeManipulation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DavidBarretteNodeManipulation/NodeManipulation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ViewModel_Test.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="3" lean-forward="true" selection-end-line="18" selection-end-column="1" />
+            <state relative-caret-position="233">
+              <caret line="120" column="18" lean-forward="true" selection-start-line="120" selection-start-column="18" selection-end-line="120" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -60,6 +79,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>draggable</find>
+      <find>394</find>
+      <find>click</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -75,25 +96,25 @@
         <option value="$PROJECT_DIR$/NodeDependencies/ClassDependencies.js" />
         <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/Node.js" />
+        <option value="$PROJECT_DIR$/VM_to_Model.js" />
+        <option value="$PROJECT_DIR$/ViewModel_Test.json" />
         <option value="$PROJECT_DIR$/DavidBarretteNodeManipulation/NodeManipulation.js" />
         <option value="$PROJECT_DIR$/kevin_test.html" />
-        <option value="$PROJECT_DIR$/ViewModel_Test.json" />
-        <option value="$PROJECT_DIR$/VM_to_Model.js" />
+        <option value="$PROJECT_DIR$/VM_to_View.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="594" />
+    <option name="x" value="51" />
     <option name="y" value="23" />
-    <option name="width" value="686" />
-    <option name="height" value="727" />
+    <option name="width" value="1229" />
+    <option name="height" value="726" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -115,6 +136,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -141,19 +163,19 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.VM_to_Model.js">
+  <component name="RunManager" selected="Node.js.VM_to_View.js">
     <configuration name="ClassDependencies.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/judasake/NodeDependencies/ClassDependencies.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="ClassDependencies.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/NodeDependencies/ClassDependencies.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
-    <configuration name="VM_to_Model.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/VM_to_Model.js" working-dir="$PROJECT_DIR$">
+    <configuration name="VM_to_View.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/VM_to_View.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.VM_to_Model.js" />
+        <item itemvalue="Node.js.VM_to_View.js" />
         <item itemvalue="JavaScript Debug.ClassDependencies.html" />
         <item itemvalue="Node.js.ClassDependencies.js" />
       </list>
@@ -182,6 +204,7 @@
       <workItem from="1553378765814" duration="98000" />
       <workItem from="1553616134363" duration="14535000" />
       <workItem from="1553710574581" duration="6352000" />
+      <workItem from="1553832885548" duration="5172000" />
     </task>
     <task id="LOCAL-00001" summary="Kevin's work, pt. 1. Successfully outputs two green circles, parsing through JSON object (?).">
       <created>1553302653961</created>
@@ -246,30 +269,37 @@
       <option name="project" value="LOCAL" />
       <updated>1553732099075</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="PROGRESS: Code draws green circles for courses taken, red circles for those not taken and not required, gray circles for those not taken and required. Note that the ViewModel_Test.json being imported is AN EXAMPLE CONFIGURATION. However, VM_to_Model.js is written to accommodate tagged booleans, so this should be easily scalable. &#10;&#10;Initial Noticed Bugs: &#10;1. Dragging the node is necessary to position the text and make connections appear. No idea why this is happening, might be something to do with when drag is executed. &#10;2. Having hard time figuring out how to scale arrows down–right now, the arrowhead is hidden behind the node, making it just look like an undirected graph. &#10;3. Spacing problem. How do we get this to look nice? Also, consider implementing the &quot;drag and don't touch&quot; example in the D3 wiki. &#10;4. In general, we're going to run out of space in placing all the nodes. &#10;5. How do we get dragging behavior from one panel (not taken not required courses) to the main interface?">
+      <created>1553750753439</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1553750753439</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40648000" />
+    <option name="totallyTimeSpent" value="46820000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="594" y="23" width="686" height="727" extended-state="0" />
-    <editor active="true" />
+    <frame x="51" y="23" width="1229" height="726" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49865952" weight="0.25201073" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.23923841" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5013405" side_tool="true" weight="0.087243885" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17165354" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.17165354" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32744783" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32649842" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.329653" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -288,7 +318,9 @@
     <MESSAGE value="Need to game-plan the whole connections thing a little bit more carefully." />
     <MESSAGE value="temp" />
     <MESSAGE value="Getting there, maybe. Focus on the svg elements - paths only need to know about their connections. This problem is simpler than you think it is." />
-    <option name="LAST_COMMIT_MESSAGE" value="Getting there, maybe. Focus on the svg elements - paths only need to know about their connections. This problem is simpler than you think it is." />
+    <MESSAGE value="PROGRESS: Code draws green circles for courses taken, red circles for those not taken and not required, gray circles for those not taken and required. Note that the ViewModel_Test.json being imported is AN EXAMPLE CONFIGURATION. However, VM_to_Model.js is written to accommodate tagged booleans, so this should be easily scalable. &#10;&#10;Initial Noticed Bugs: &#10;1. Dragging the node is necessary to position the text and make connections appear. No idea why this is happening, might be something to do with when drag is executed. &#10;2. Having hard time figuring out how to scale arrows down–right now, the arrowhead is hidden behind the node, making it just look like an undirected graph. &#10;3. Spacing problem. How do we get this to look nice? Also, consider implementing the &quot;drag and don't touch&quot; example in the D3 wiki. &#10;4. In general, we're going to run out of space in placing all the nodes. &#10;5. How do we get dragging behavior from one panel (not taken not required courses) to the main interface?" />
+    <MESSAGE value="Something is wrong with the color-changing behavior" />
+    <option name="LAST_COMMIT_MESSAGE" value="Something is wrong with the color-changing behavior" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../machack-website/index.html" />
@@ -297,20 +329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs_major_json.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -345,6 +363,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cs_major_json.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="210" column="3" lean-forward="true" selection-start-line="43" selection-start-column="2" selection-end-line="210" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/prereq_dictionary.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -352,38 +377,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/NodeDependencies/ClassDependencies.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="195">
+          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NodeDependencies/ClassDependencies.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="195">
+          <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DavidBarretteNodeManipulation/NodeManipulation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="86" column="35" lean-forward="true" selection-start-line="86" selection-start-column="35" selection-end-line="86" selection-end-column="35" />
+        <state relative-caret-position="190">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DavidBarretteNodeManipulation/NodeManipulation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+        <state relative-caret-position="180">
+          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ViewModel_Test.json">
+    <entry file="file://$PROJECT_DIR$/VM_to_View.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="3" lean-forward="true" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="60">
+          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -394,10 +426,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VM_to_Model.js">
+    <entry file="file://$PROJECT_DIR$/ViewModel_Test.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="92" column="23" lean-forward="true" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
+        <state relative-caret-position="233">
+          <caret line="120" column="18" lean-forward="true" selection-start-line="120" selection-start-column="18" selection-end-line="120" selection-end-column="18" />
         </state>
       </provider>
     </entry>
