@@ -16,3 +16,18 @@ let dfs = function (dragged_course){
         }
     }
 }
+
+var adj_list = [];
+
+//connections to adjacency list
+returned_to_adj_list = function (returned) {
+    for (var course of returned) {
+        var prereqs = prereq_dict.get(course);
+        for (var prereq of prereqs) {
+            adj_list.push({
+                "source": prereq,
+                "target": course
+            });
+        }
+    }
+}
