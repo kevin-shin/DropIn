@@ -8,13 +8,14 @@ function draw(ViewModel) {
 
     const radius = 35;
     //const scale = 1-(1/35);
+    let groupInFocus;
 
     let Classes = ViewModel.Classes;
     let Connections = ViewModel.Connections;
     let svgContainer = d3.select("body")
                          .append("svg")
                          .attr("width", 1000)
-                         .attr("height", 1000);
+                         .attr("height", 500);
 
     //Circles is an array that will hold objects which represent how we want our circles
     //to be positioned. Notice that dept and course properties are directly taken from
@@ -24,12 +25,22 @@ function draw(ViewModel) {
     let available = Classes.filter(course => (course.taken === false && course.required === false));
 
 
+    svgContainer.select("test")
+        .enter().append("circle")
+        .attr("cx", 600)
+        .attr("cy", 10)
+        .attr("r", radius)
+        .attr("fill", "green")
+        .on("click", () => groupInFocus = this);
+
+
     //Make Group SVG objects, which have circles and texts. This is necessary to make
     //them respond to the same drag events.
     let container = svgContainer.selectAll("taken")
         .data(taken)
         .enter().append("g")
         .attr("id", function(d) {return String(d.dept) + String(d.course)})
+        .on("click", () => groupInFocus = this)
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
@@ -40,7 +51,7 @@ function draw(ViewModel) {
         .attr("cx", function (d) {return placeNode(d).cx;})
         .attr("cy", function (d) {return placeNode(d).cy;})
         .attr("r", radius)
-        .style("fill", "green");
+        .attr("fill", "green");
 
     container.append("text")
         .data(taken)
@@ -65,7 +76,7 @@ function draw(ViewModel) {
         .attr("cx", function (d) {return placeNode(d).cx;})
         .attr("cy", function (d) {return placeNode(d).cy;})
         .attr("r", radius)
-        .style("fill", "gray");
+        .attr("fill","gray");
 
     containerNotTaken.append("text")
         .data(requiredNotTaken)
@@ -90,7 +101,7 @@ function draw(ViewModel) {
         .attr("cx", function (d) {return placeNode(d).cx;})
         .attr("cy", function (d) {return placeNode(d).cy;})
         .attr("r", radius)
-        .style("fill", "red");
+        .attr("fill", "red");
 
     containerAvailable.append("text")
         .data(available)
@@ -144,7 +155,33 @@ function draw(ViewModel) {
         .attr("stroke-width", 4)
         .style('marker-end', 'url(#output)');
 
+    let button_taken = d3.select("body")
+        .append("button")
+        .text("Mark as taken");
+
+
+
     updateGraph();
+
+    /*Eventually, the proper way to do this would be all data-manipulation,
+    and letting CSS draw the colors for you. Right now, it's fine to manipulate
+    the attribute color, but later you should just change classes, so that CSS
+    says "All classes that have class = "taken" are green" as a rule.
+    */
+
+
+    button_taken.on("click", () => {
+        if (groupInFocus.getAttribute("fill") === "red"){
+            groupInFocus.setAttribute("fill","green");
+        }
+        else if (groupInFocus.getAttribute("fill") === "gray"){
+            groupInFocus.setAttribute("fill","green");
+        }
+        else if (groupInFocus.getAttribute("fill") === "green"){
+            groupInFocus.setAttribute("fill","black");
+        }
+
+    });
 
     function placeNode(object){
         if (object.taken === false && object.required === false){

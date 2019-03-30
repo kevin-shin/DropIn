@@ -43,6 +43,7 @@ d3.selectAll("circle")
 
 var button = d3.select("body").append("button")
     .text("Button");
+
 button.on("click", function(){
     if(circleInFocus.getAttribute("fill") === "red"){
         circleInFocus.setAttribute("fill","blue")
