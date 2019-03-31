@@ -1,211 +1,211 @@
 let courses = [
   {
     "dept": "CS",
-    "course_num": "112",
+    "courseNum": "112",
     "name": "introduction to data science",
     "prereq": []
   },
   {
     "dept": "CS",
-    "course_num": "120",
+    "courseNum": "120",
     "name": "computing and society",
     "prereq": []
   },
   {
     "dept": "CS",
-    "course_num": "123",
+    "courseNum": "123",
     "name": "core concepts in computer science",
     "prereq": []
   },
   {
     "dept": "CS",
-    "course_num": "124",
+    "courseNum": "124",
     "name": "object-oriented programming and data structures",
     "prereq": ["CS123"]
   },
   {
     "dept": "M",
-    "course_num": "135",
+    "courseNum": "135",
     "name": "applied multivariable calculus I",
     "prereq": []
   },
   {
     "dept": "M",
-    "course_num": "137",
+    "courseNum": "137",
     "name": "applied multivariable calculus II",
     "prereq": ["M135"]
   },
   {
     "dept": "M",
-    "course_num": "155",
+    "courseNum": "155",
     "name": "intro to statistical modeling",
     "prereq": []
   },
   {
     "dept": "CS",
-    "course_num": "221",
+    "courseNum": "221",
     "name": "algorithm design and analysis",
     "prereq": ["CS124", "M279"]
   },
   {
     "dept": "CS",
-    "course_num": "225",
+    "courseNum": "225",
     "name": "software design and development",
     "prereq": ["CS124"]
   },
   {
     "dept": "M",
-    "course_num": "236",
+    "courseNum": "236",
     "name": "linear algebra",
     "prereq": [["M279"], ["M137", "M135"]]
   },
   {
     "dept": "M",
-    "course_num": "237",
+    "courseNum": "237",
     "name": "applied multivariable calculus III",
     "prereq": ["M137"]
   },
   {
     "dept": "CS",
-    "course_num": "240",
+    "courseNum": "240",
     "name": "computer systems organization",
     "prereq": ["CS124"]
   },
   {
     "dept": "M",
-    "course_num": "253",
+    "courseNum": "253",
     "name": "statistical computing and machine learning",
     "prereq": ["M155"]
   },
   {
     "dept": "CS",
-    "course_num": "261",
+    "courseNum": "261",
     "name": "theory of computation",
     "prereq": ["CS124", "M279"]
   },
   {
     "dept": "M",
-    "course_num": "279",
+    "courseNum": "279",
     "name": "discrete mathematics",
     "prereq": []
   },
   {
     "dept": "CS",
-    "course_num": "302",
+    "courseNum": "302",
     "name": "introduction to database management systems",
     "prereq": []
   },
   {
     "dept": "M",
-    "course_num": "312",
+    "courseNum": "312",
     "name": "differential equations",
     "prereq": ["M236", "M237"]
   },
   {
     "dept": "CS",
-    "course_num": "320",
+    "courseNum": "320",
     "name": "computational biology",
     "prereq": ["CS123"]
   },
   {
     "dept": "CS",
-    "course_num": "346",
+    "courseNum": "346",
     "name": "internet computing",
     "prereq": ["CS225"]
   },
   {
     "dept": "M",
-    "course_num": "354",
+    "courseNum": "354",
     "name": "probability",
     "prereq": [["M237"], ["M137", "M236"]]
   },
   {
     "dept": "M",
-    "course_num": "361",
+    "courseNum": "361",
     "name": "theory of computation",
     "prereq": ["CS124", "M279"]
   },
   {
     "dept": "M",
-    "course_num": "365",
+    "courseNum": "365",
     "name": "computational linear algebra",
     "prereq": [["CS120"], ["CS123", "M236"]]
   },
   {
     "dept": "CS",
-    "course_num": "365",
+    "courseNum": "365",
     "name": "computational linear algebra",
     "prereq": [["CS120"], ["CS123", "M236"]]
   },
   {
     "dept": "M",
-    "course_num": "377",
+    "courseNum": "377",
     "name": "real analysis",
     "prereq": ["M237"]
   },
   {
     "dept": "M",
-    "course_num": "379",
+    "courseNum": "379",
     "name": "combinatorics",
     "prereq": []
   },
   {
     "dept": "CS",
-    "course_num": "394",
+    "courseNum": "394",
     "name": "software testing",
     "prereq": ["CS124"]
   },
   {
     "dept": "M",
-    "course_num": "437",
+    "courseNum": "437",
     "name": "topics in applied math",
     "prereq": [["M236", "CS120"], ["M236", "CS123"],["M236", "CS124"]]
   },
   {
     "dept": "CS",
-    "course_num": "440",
+    "courseNum": "440",
     "name": "collective intelligence",
     "prereq": ["CS124", "CS221"]
   },
   {
     "dept": "CS",
-    "course_num": "445",
+    "courseNum": "445",
     "name": "parallel and distributed processing",
     "prereq": ["CS240", "CS221"]
   },
   {
     "dept": "M",
-    "course_num": "453",
+    "courseNum": "453",
     "name": "survival analysis",
     "prereq": ["M155", "M354"]
   },
   {
     "dept": "CS",
-    "course_num": "465",
+    "courseNum": "465",
     "name": "interactive computer graphics",
     "prereq": ["CS240"]
   },
   {
     "dept": "M",
-    "course_num": "479",
+    "courseNum": "479",
     "name": "network science",
     "prereq": ["M236", "CSM379", "CS123"]
   },
   {
     "dept": "CS",
-    "course_num": "479",
+    "courseNum": "479",
     "name": "network science",
     "prereq": ["M236", "M379", "CS123"]
   },
   {
     "dept": "CS",
-    "course_num": "484",
+    "courseNum": "484",
     "name": "introduction to artificial intelligence",
     "prereq": ["CS221"]
   },
   {
     "dept": "CS",
-    "course_num": "494",
+    "courseNum": "494",
     "name": "software in production",
     "prereq": []
   }

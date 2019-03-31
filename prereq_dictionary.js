@@ -1,8 +1,8 @@
-var prereq_dict = new Map();
+var prereqDict = new Map();
 
 for (var course of courses) {
-    let courseDescription = course.dept + course.course_num;
-    prereq_dict.set(courseDescription, course.prereq);
+    let courseDescription = course.dept + course.courseNum;
+    prereqDict.set(courseDescription, course.prereq);
 }
 
-console.log(prereq_dict);
+console.log(prereqDict);
