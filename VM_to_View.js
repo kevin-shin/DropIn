@@ -99,7 +99,7 @@ function draw(ViewModel) {
         .attr("fill", "black")
         .text(function (d) {return d.dept + d.course;});
 
-    let containerNotTaken = svgTaken
+    let containerNotTaken = svgTaken.selectAll("Required")
         .data(requiredNotTaken)
         .enter().append("g")
         .attr("id", function(d) {return String(d.dept) + String(d.course)})
