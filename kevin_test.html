@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .drag-area {
+        width: 800px;
+        height: 400px;
+        background: #fff;
+            border: 1px solid #ddd;}
+
+        .drag-area-2 {
+            width: 800px;
+            height: 100px;
+            background: #fff;
+            border: 1px solid #ddd;}
+    </style>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="VM_to_View.js"></script>
+    <div class="drag-area-2" id = "notTakenContainer"></div>
+    <div class = "drag-area" id="takenContainer"></div>
 </body>
 </html>

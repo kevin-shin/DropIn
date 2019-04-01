@@ -6,16 +6,12 @@ d3.json("./ViewModel_Test.json").then(function(data){
 
 function draw(ViewModel) {
 
-    const radius = 35;
+    const radius = 20;
     //const scale = 1-(1/35);
     let groupInFocus;
 
     let Classes = ViewModel.Classes;
     let Connections = ViewModel.Connections;
-    let svgContainer = d3.select("body")
-                         .append("svg")
-                         .attr("width", 1000)
-                         .attr("height", 500);
 
     //Circles is an array that will hold objects which represent how we want our circles
     //to be positioned. Notice that dept and course properties are directly taken from
@@ -25,6 +21,7 @@ function draw(ViewModel) {
     let available = Classes.filter(course => (course.taken === false && course.required === false));
 
 
+    /*
     svgContainer.select("test")
         .enter().append("circle")
         .attr("cx", 600)
@@ -33,10 +30,50 @@ function draw(ViewModel) {
         .attr("fill", "green")
         .on("click", () => groupInFocus = this);
 
+    */
 
     //Make Group SVG objects, which have circles and texts. This is necessary to make
     //them respond to the same drag events.
-    let container = svgContainer.selectAll("taken")
+    //Not taken courses
+
+    let svgNotTaken = d3.select("body").select("#notTakenContainer")
+                                        .append("svg")
+                                        .attr("width", 800)
+                                        .attr("height", 400)
+                                        .classed("svgNotTaken", true);
+
+    let containerAvailable = svgNotTaken.selectAll("notAvailable")
+        .data(available)
+        .enter().append("g")
+        .attr("id", function(d) {return String(d.dept) + String(d.course)})
+        .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended));
+
+    containerAvailable.append("circle")
+        .data(available)
+        .attr("cx", function (d) {return placeNode(d).cx;})
+        .attr("cy", function (d) {return placeNode(d).cy;})
+        .attr("r", radius)
+        .attr("fill", "red");
+
+    containerAvailable.append("text")
+        .data(available)
+        .attr("x", function (d) {return placeNode(d).cx + 9})
+        .attr("y", function (d) {return placeNode(d).cy + 9})
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "18px")
+        .attr("fill", "black")
+        .text(function (d) {return d.dept + d.course;});
+
+    let svgTaken = d3.select("body").select("#takenContainer")
+                                    .append("svg")
+                                    .attr("width", 800)
+                                    .attr("height", 400)
+                                    .classed("svgTaken", true);
+
+    let container = svgTaken.selectAll("Available")
         .data(taken)
         .enter().append("g")
         .attr("id", function(d) {return String(d.dept) + String(d.course)})
@@ -62,7 +99,7 @@ function draw(ViewModel) {
         .attr("fill", "black")
         .text(function (d) {return d.dept + d.course;});
 
-    let containerNotTaken = svgContainer.selectAll("requiredNotTaken")
+    let containerNotTaken = svgTaken
         .data(requiredNotTaken)
         .enter().append("g")
         .attr("id", function(d) {return String(d.dept) + String(d.course)})
@@ -87,33 +124,7 @@ function draw(ViewModel) {
         .attr("fill", "black")
         .text(function (d) {return d.dept + d.course;});
 
-    let containerAvailable = svgContainer.selectAll("available")
-        .data(available)
-        .enter().append("g")
-        .attr("id", function(d) {return String(d.dept) + String(d.course)})
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));
-
-    containerAvailable.append("circle")
-        .data(available)
-        .attr("cx", function (d) {return placeNode(d).cx;})
-        .attr("cy", function (d) {return placeNode(d).cy;})
-        .attr("r", radius)
-        .attr("fill", "red");
-
-    containerAvailable.append("text")
-        .data(available)
-        .attr("x", function (d) {return placeNode(d).cx + 9})
-        .attr("y", function (d) {return placeNode(d).cy + 9})
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "18px")
-        .attr("fill", "black")
-        .text(function (d) {return d.dept + d.course;});
-
-
-    let defs = svgContainer.append('defs');
+    let defs = svgTaken.append('defs');
     defs.append('marker')
         .attr('id', 'input')
         .attr('viewBox', '0 -5 10 10')
@@ -136,7 +147,7 @@ function draw(ViewModel) {
         .attr('d', 'M0,-5L10,0L0,5');
 
     //Edges
-    let paths = svgContainer.selectAll("edge")
+    let paths = svgTaken.selectAll("edge")
         .data(Connections)
         .enter().append('path')
         .attr('class', 'edgePath')
@@ -144,22 +155,16 @@ function draw(ViewModel) {
             let sourceID = "#" + d.source;
             let targetID = "#" + d.target;
             let sourceNode = d3.selectAll(sourceID)
-                               .select("circle")
-                               .datum();
+                .select("circle")
+                .datum();
             let targetNode = d3.selectAll(targetID)
-                               .select("circle")
-                               .datum();
+                .select("circle")
+                .datum();
             return "M" + sourceNode.x + "," + sourceNode.y + " L" +
                 targetNode.x + "," + targetNode.y;})
         .attr("stroke", "black")
         .attr("stroke-width", 4)
         .style('marker-end', 'url(#output)');
-
-    let button_taken = d3.select("body")
-        .append("button")
-        .text("Mark as taken");
-
-
 
     updateGraph();
 
@@ -168,6 +173,12 @@ function draw(ViewModel) {
     the attribute color, but later you should just change classes, so that CSS
     says "All classes that have class = "taken" are green" as a rule.
     */
+
+
+
+    let button_taken = d3.select("body")
+        .append("button")
+        .text("Mark as taken");
 
 
     button_taken.on("click", () => {
@@ -185,20 +196,20 @@ function draw(ViewModel) {
 
     function placeNode(object){
         if (object.taken === false && object.required === false){
-            return {cx: 100, cy:100}
+            return {cx: 50, cy:50}
         }
         else {
             if (100<object.course && object.course < 200) {
-                return {cx:200, cy:200}
+                return {cx:100, cy:100}
             }
             else if (100<object.course && object.course < 200) {
-                return {cx:200, cy:200}
+                return {cx:100, cy:100}
             }
             else if (200<object.course && object.course < 300) {
-                return {cx:300, cy:300}
+                return {cx:200, cy:200}
             }
             else if (300<object.course && object.course < 500) {
-                return {cx:500, cy:500}
+                return {cx:300, cy:300}
             }
         }
 
