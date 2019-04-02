@@ -36,13 +36,13 @@ function draw(ViewModel) {
     //them respond to the same drag events.
     //Not taken courses
 
-    let svgNotTaken = d3.select("body").select("#notTakenContainer")
+    let svgNotTaken = d3.select("body").select("#availableCourses")
                                         .append("svg")
                                         .attr("width", 800)
                                         .attr("height", 400)
                                         .classed("svgNotTaken", true);
 
-    let containerAvailable = svgNotTaken.selectAll("notAvailable")
+    let containerAvailable = svgNotTaken.selectAll("notTaken")
         .data(available)
         .enter().append("g")
         .attr("id", function(d) {return String(d.dept) + String(d.course)})
@@ -67,7 +67,7 @@ function draw(ViewModel) {
         .attr("fill", "black")
         .text(function (d) {return d.dept + d.course;});
 
-    let svgTaken = d3.select("body").select("#takenContainer")
+    let svgTaken = d3.select("body").select("#graph")
                                     .append("svg")
                                     .attr("width", 800)
                                     .attr("height", 400)
@@ -173,26 +173,6 @@ function draw(ViewModel) {
     the attribute color, but later you should just change classes, so that CSS
     says "All classes that have class = "taken" are green" as a rule.
     */
-
-
-
-    let button_taken = d3.select("body")
-        .append("button")
-        .text("Mark as taken");
-
-
-    button_taken.on("click", () => {
-        if (groupInFocus.getAttribute("fill") === "red"){
-            groupInFocus.setAttribute("fill","green");
-        }
-        else if (groupInFocus.getAttribute("fill") === "gray"){
-            groupInFocus.setAttribute("fill","green");
-        }
-        else if (groupInFocus.getAttribute("fill") === "green"){
-            groupInFocus.setAttribute("fill","black");
-        }
-
-    });
 
     function placeNode(object){
         if (object.taken === false && object.required === false){
