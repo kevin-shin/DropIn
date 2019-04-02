@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Node</title>
+    <script src="https://d3js.org/d3.v4.min.js"charset="utf-8"></script>
+    <div class="horizontal-scroll-wrapper squares">
+        <div>item 1</div>
+        <div>item 2</div>
+        <div>item 3</div>
+        <div>item 4</div>
+        <div>item 5</div>
+        <div>item 6</div>
+        <div>item 7</div>
+        <div>item 8</div>
+    </div>
+
+    <div class = "container">
+
+    </div>
+
+
+    <style>
+        ::-webkit-scrollbar{width:2px;height:2px;}
+        ::-webkit-scrollbar-button{width:2px;height:2px;}
+
+        div{
+            box-sizing:border-box;
+        }
+
+        body {
+            background: #ffffff;
+        }
+
+        .container {
+            width: 500px;
+            height: 500px;
+            background-color: antiquewhite;
+        }
+
+
+
+        .horizontal-scroll-wrapper{
+            position:absolute;
+            display:block;
+            top:0;
+            left:0;
+            width:130px;
+            max-height:500px;
+            margin:0;
+            background:#abc;
+            overflow-y:auto;
+            overflow-x:hidden;
+            transform:rotate(-90deg) translateY(-80px);
+            transform-origin:right top;
+        }
+        .horizontal-scroll-wrapper > div{
+            display:block;
+            padding:5px;
+            background:#cab;
+            transform:rotate(90deg);
+            transform-origin: right top;
+        }
+
+        .squares{
+            padding:60px 0 0 0;
+        }
+
+        .squares > div {
+            width:60px;
+            height:60px;
+            margin:20px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<script src="myJS.js"></script>
+
+</body>
+</html>
