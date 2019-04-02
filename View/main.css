@@ -12,6 +12,12 @@ html, body {
     white-space: nowrap;
 }
 
+.svgNotTaken {
+    display: flex;
+    justify-content: space-around; /* Can be changed in the live sample */
+}
+
+
 .instructions {
     padding: 10px;
     height: 60%;
@@ -54,3 +60,5 @@ html, body {
     overflow-x: auto;
     z-index: -10;
 }
+
+
