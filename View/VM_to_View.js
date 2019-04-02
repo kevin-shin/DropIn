@@ -60,8 +60,8 @@ function draw(ViewModel) {
 
     containerAvailable.append("text")
         .data(available)
-        .attr("x", function (d) {return placeNode(d).cx + 9})
-        .attr("y", function (d) {return placeNode(d).cy + 9})
+        .attr("x", function (d) {return placeNode(d).cx - 1})
+        .attr("y", function (d) {return placeNode(d).cy + 20})
         .attr("font-family", "sans-serif")
         .attr("font-size", "18px")
         .attr("fill", "black")
@@ -92,8 +92,8 @@ function draw(ViewModel) {
 
     container.append("text")
         .data(taken)
-        .attr("x", function (d) {return placeNode(d).cx + 9})
-        .attr("y", function (d) {return placeNode(d).cy + 9})
+        .attr("x", function (d) {return placeNode(d).cx - 1})
+        .attr("y", function (d) {return placeNode(d).cy + 20})
         .attr("font-family", "sans-serif")
         .attr("font-size", "18px")
         .attr("fill", "black")
@@ -117,8 +117,8 @@ function draw(ViewModel) {
 
     containerNotTaken.append("text")
         .data(requiredNotTaken)
-        .attr("x", function (d) {return placeNode(d).cx + 9})
-        .attr("y", function (d) {return placeNode(d).cy - 9})
+        .attr("x", function (d) {return placeNode(d).cx -1})
+        .attr("y", function (d) {return placeNode(d).cy +20})
         .attr("font-family", "sans-serif")
         .attr("font-size", "18px")
         .attr("fill", "black")
