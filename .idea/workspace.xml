@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7125132-c570-48fa-9cbb-8f6dbab62b63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/View/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/testScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/judasake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/judasake.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/VM_to_View.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/VM_to_View.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/kevin_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/kevin_test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/main.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/View/kevin_test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+            <state relative-caret-position="240">
+              <caret line="16" column="58" lean-forward="true" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -56,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/VM_to_View.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="35">
-              <caret line="100" column="24" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
+            <state relative-caret-position="231">
+              <caret line="96" column="33" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -126,9 +118,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="475" />
+    <option name="x" value="419" />
     <option name="y" value="23" />
-    <option name="width" value="805" />
+    <option name="width" value="861" />
     <option name="height" value="715" />
   </component>
   <component name="ProjectView">
@@ -229,7 +221,7 @@
       <workItem from="1553616134363" duration="14535000" />
       <workItem from="1553710574581" duration="6352000" />
       <workItem from="1553832885548" duration="7637000" />
-      <workItem from="1554243209024" duration="16308000" />
+      <workItem from="1554243209024" duration="16650000" />
     </task>
     <task id="LOCAL-00001" summary="Kevin's work, pt. 1. Successfully outputs two green circles, parsing through JSON object (?).">
       <created>1553302653961</created>
@@ -350,17 +342,24 @@
       <option name="project" value="LOCAL" />
       <updated>1554247820822</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Got jQuery to make draggable divs that had svg objects with the courses. Spacing is really weird, and I'm not sure what's causing it. Need to implement drag from one to the other behavior, and look for jQuery library which allows me to space them without doing too much work.">
+      <created>1554267264279</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1554267264279</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72442000" />
+    <option name="totallyTimeSpent" value="72784000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="475" y="23" width="805" height="715" extended-state="0" />
+    <frame x="660" y="23" width="620" height="715" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.042091835" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.16193657" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5013405" side_tool="true" weight="0.087243885" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -462,7 +461,8 @@
     <MESSAGE value="Incorporated Kevin and Saloni's solution to the div boxes! Minor problem with resizing" />
     <MESSAGE value="Some changes with flex CSS, now going to try a fundamentally different approach." />
     <MESSAGE value="New Approach 1 didn't work, here's what the directory should look like" />
-    <option name="LAST_COMMIT_MESSAGE" value="New Approach 1 didn't work, here's what the directory should look like" />
+    <MESSAGE value="Got jQuery to make draggable divs that had svg objects with the courses. Spacing is really weird, and I'm not sure what's causing it. Need to implement drag from one to the other behavior, and look for jQuery library which allows me to space them without doing too much work." />
+    <option name="LAST_COMMIT_MESSAGE" value="Got jQuery to make draggable divs that had svg objects with the courses. Spacing is really weird, and I'm not sure what's causing it. Need to implement drag from one to the other behavior, and look for jQuery library which allows me to space them without doing too much work." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../machack-website/index.html" />
@@ -608,10 +608,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/script.js">
+    <entry file="file://$PROJECT_DIR$/View/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="35" lean-forward="true" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+        <state relative-caret-position="134">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -622,24 +622,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/main.css">
+    <entry file="file://$PROJECT_DIR$/View/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        <state relative-caret-position="315">
+          <caret line="21" column="35" lean-forward="true" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/VM_to_View.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="100" column="24" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
+        <state relative-caret-position="231">
+          <caret line="96" column="33" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/kevin_test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        <state relative-caret-position="240">
+          <caret line="16" column="58" lean-forward="true" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
         </state>
       </provider>
     </entry>
