@@ -80,7 +80,7 @@ let courses = [
   },
   {
     dept: "MATH",
-    courseNum: "philosophy of mathematics",
+    courseNum: "212",
     name: "philosophy of mathematics",
     prereq: ["MATH279"],
     courseInfo: "Why does 2 + 2 equal four? Can a diagram prove a mathematical truth? Is mathematics a social construction or do mathematical facts exist independently of our knowing them? Philosophy of mathematics considers these sorts of questions in an effort to understand the logical and philosophical foundations of mathematics. Topics include mathematical truth, mathematical reality, and mathematical justifications (knowledge). Typically we focus on the history of mathematics of the past 200 years, highlighting the way philosophical debates arise in mathematics itself and shape its future."
@@ -144,7 +144,7 @@ let courses = [
   {
     dept: "MATH",
     courseNum: "279",
-    name: "discrete mathematiCOMP",
+    name: "discrete mathematics",
     prereq: [],
     courseInfo:
       "Discrete mathematics studies collections of distinct, separate objects and is complementary to calculus (which studies continuous phenomena). This course introduces techniques for analyzing arrangements of objects and the relationships between them. The material emphasizes problem solving and logical argumentation, rather than computation. Topics include basic counting principles, induction, logic, recurrence relations, number theory, and graph theory."
