@@ -20,45 +20,31 @@ function draw(ViewModel) {
     let requiredNotTaken = Classes.filter(course => (course.taken === false && course.required === true));
     let available = Classes.filter(course => (course.taken === false && course.required === false));
 
-
-    /*
-    svgContainer.select("test")
-        .enter().append("circle")
-        .attr("cx", 600)
-        .attr("cy", 10)
-        .attr("r", radius)
-        .attr("fill", "green")
-        .on("click", () => groupInFocus = this);
-
-    */
-
     //Make Group SVG objects, which have circles and texts. This is necessary to make
     //them respond to the same drag events.
     //Not taken courses
 
-    let svgNotTaken = d3.select("body").select("#availableCourses")
-                                        .append("svg")
-                                        .attr("width", 800)
-                                        .attr("height", 400)
-                                        .classed("svgNotTaken", true);
+    let svgDivs = d3.select("body").select("#availableCourses").selectAll("notTaken")
+                                        .data(available)
+                                        .enter().append("div")
+                                        .classed("draggable",true);
 
-    let containerAvailable = svgNotTaken.selectAll("notTaken")
+    let svg = svgDivs
+        .append("svg")
         .data(available)
-        .enter().append("g")
         .attr("id", function(d) {return String(d.dept) + String(d.course)})
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));
+        .classed("svgNotTaken", true);
 
-    containerAvailable.append("circle")
+    let svgGroups = svg.append("g").data(available);
+
+    svgGroups.append("circle")
         .data(available)
         .attr("cx", function (d) {return placeNode(d).cx;})
         .attr("cy", function (d) {return placeNode(d).cy;})
         .attr("r", radius)
         .attr("fill", "red");
 
-    containerAvailable.append("text")
+    svgGroups.append("text")
         .data(available)
         .attr("x", function (d) {return placeNode(d).cx - 1})
         .attr("y", function (d) {return placeNode(d).cy + 20})
@@ -67,30 +53,27 @@ function draw(ViewModel) {
         .attr("fill", "black")
         .text(function (d) {return d.dept + d.course;});
 
-    let svgTaken = d3.select("body").select("#graph")
-                                    .append("svg")
-                                    .attr("width", 800)
-                                    .attr("height", 400)
-                                    .classed("svgTaken", true);
-
-    let container = svgTaken.selectAll("Available")
+    let svgNotTakenDivs = d3.select("#graph").selectAll("notTaken")
         .data(taken)
-        .enter().append("g")
-        .attr("id", function(d) {return String(d.dept) + String(d.course)})
-        .on("click", () => groupInFocus = this)
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));
+        .enter().append("div")
+        .classed("draggable",true);
 
-    container.append("circle")
+    let svgAvailable = svgNotTakenDivs
+        .append("svg")
+        .data(taken)
+        .attr("id", function(d) {return String(d.dept) + String(d.course)})
+        .classed("svgNotTaken", true);
+
+    let svgContainer = svgAvailable.append("g").data(taken);
+
+    svgContainer.append("circle")
         .data(taken)
         .attr("cx", function (d) {return placeNode(d).cx;})
         .attr("cy", function (d) {return placeNode(d).cy;})
         .attr("r", radius)
         .attr("fill", "green");
 
-    container.append("text")
+    svgContainer.append("text")
         .data(taken)
         .attr("x", function (d) {return placeNode(d).cx - 1})
         .attr("y", function (d) {return placeNode(d).cy + 20})
@@ -99,16 +82,21 @@ function draw(ViewModel) {
         .attr("fill", "black")
         .text(function (d) {return d.dept + d.course;});
 
-    let containerNotTaken = svgTaken.selectAll("Required")
+    let svgRequiredDivs = d3.select("body")
+        .select("#graph")
+        .selectAll("notTaken")
         .data(requiredNotTaken)
-        .enter().append("g")
-        .attr("id", function(d) {return String(d.dept) + String(d.course)})
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));
+        .enter().append("div")
+        .classed("draggable",true);
 
-    containerNotTaken.append("circle")
+    let svgRequired = svgRequiredDivs
+        .data(requiredNotTaken)
+        .append("svg")
+        .attr("id", function(d) {return String(d.dept) + String(d.course)});
+
+    let svgRequiredContainer = svgRequired.append("g").data(requiredNotTaken);
+
+    svgRequiredContainer.append("circle")
         .data(requiredNotTaken)
         .attr("cx", function (d) {return placeNode(d).cx;})
         .attr("cy", function (d) {return placeNode(d).cy;})
@@ -124,7 +112,7 @@ function draw(ViewModel) {
         .attr("fill", "black")
         .text(function (d) {return d.dept + d.course;});
 
-    let defs = svgTaken.append('defs');
+    let defs = svgNotTakenDivs.append('defs');
     defs.append('marker')
         .attr('id', 'input')
         .attr('viewBox', '0 -5 10 10')
@@ -147,7 +135,7 @@ function draw(ViewModel) {
         .attr('d', 'M0,-5L10,0L0,5');
 
     //Edges
-    let paths = svgTaken.selectAll("edge")
+    let paths = svgNotTakenDivs.selectAll("edge")
         .data(Connections)
         .enter().append('path')
         .attr('class', 'edgePath')
@@ -209,7 +197,7 @@ function draw(ViewModel) {
                 targetNode.x + "," + targetNode.y;})
     }
 
-
+    /*
     function dragstarted(d) {
         d3.select(this).raise().classed("active", true);
     }
@@ -227,5 +215,5 @@ function draw(ViewModel) {
     function dragended(d) {
         d3.select(this).classed("active", false);
     }
-
+    */
 }

@@ -8,15 +8,9 @@ html, body {
     height:120px;
     border: 1px solid #bed5cd;
     overflow-x: scroll;
-    overflow-y: hidden;
+    overflow-y: scroll;
     white-space: nowrap;
 }
-
-.svgNotTaken {
-    display: flex;
-    justify-content: space-around; /* Can be changed in the live sample */
-}
-
 
 .instructions {
     padding: 10px;
@@ -61,4 +55,36 @@ html, body {
     z-index: -10;
 }
 
+.drag-area {
+    width: 200px;
+    height: 200px;
+    background: #fff;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin-left: 30px;
+    border: 1px solid #ddd;
+    box-shadow: 3px 3px 6px 3px rgba(0,0,0,0.06)
+}
+.area {
+    position:absolute;
+    margin: 0 auto;
+    color: #ccc;
+    font-size: 20px;
+    bottom: 10px;
+    left: 20px;
+}
+.box {
+    width: 50px;
+    height: 50px;
+    background: #673AB7;
+    color: #fff;
+    text-align: center;
+    z-index: 2;
+    border:2px solid #512DA8;
 
+}
+.result {
+    display: inline-block;
+    margin-left: 30px;
+}
