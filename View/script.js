@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
         $(".draggable").draggable({
             scope: 'demoBox',
@@ -8,18 +8,34 @@ $(document).ready(function() {
             start: startedDrag,
             stop: stoppedDrag,
         });
+
         $(".drag").droppable({
             scope: 'demoBox',
+            tolerance: "fit",
             drop: function (event, ui) {
                 $(".draggable").draggable("option", "revert", false);
                 $('.result').html("[Action] <b>" + box + "</b>" +
                     " dropped on " +
                     "<b>" + area + "</b>")
+                $(ui.draggable).detach().css({top: 0, left: 0}).appendTo(this);
             }
         });
 
+
+        $(".drag-area").droppable({
+            scope: 'demoBox',
+            tolerance: "fit",
+            drop: function (event, ui) {
+                $(".draggable").draggable("option", "revert", false);
+                $('.result').html("[Action] <b>" + box + "</b>" +
+                    " dropped on " +
+                    "<b>" + area + "</b>")
+                $(ui.draggable).detach().css({top: 0, left: 0}).appendTo(this);
+            }
+        });
+
+
         function startedDrag() {
-            $(".draggable").draggable("option", "revert", true);
             $('#availableCourses').css({
                 overflow: 'visible',
             });
@@ -29,7 +45,6 @@ $(document).ready(function() {
             $('#availableCourses').css({
                 overflow: 'scroll',
             });
-            $(".draggable").draggable("option", "revert", false);
         }
     }
 );

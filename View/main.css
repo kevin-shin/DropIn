@@ -70,16 +70,7 @@ html, body {
     bottom: 10px;
     left: 20px;
 }
-.box {
-    width: 50px;
-    height: 50px;
-    background: #673AB7;
-    color: #fff;
-    text-align: center;
-    z-index: 2;
-    border:2px solid #512DA8;
 
-}
 .result {
     display: inline-block;
     margin-left: 30px;
