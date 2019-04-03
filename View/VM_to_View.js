@@ -7,6 +7,7 @@ d3.json("./ViewModel_Test.json").then(function(data){
 function draw(ViewModel) {
 
     const radius = 20;
+    const displacement = radius + 20;
     //const scale = 1-(1/35);
     let groupInFocus;
 
@@ -42,7 +43,9 @@ function draw(ViewModel) {
         .attr("id", function(d) {return String(d.dept) + String(d.course)})
         .classed("draggable",true);
 
-    let svgGroups = svg.append("g").data(available);
+    let svgGroups = svg.append("g")
+                       .data(available)
+                       .attr("transform", "translate(-10.5,-28)");
 
     svgGroups.append("circle")
         .data(available)
@@ -53,8 +56,8 @@ function draw(ViewModel) {
 
     svgGroups.append("text")
         .data(available)
-        .attr("x", function (d) {return placeNode(d).cx - 1})
-        .attr("y", function (d) {return placeNode(d).cy + 20})
+        .attr("x", function (d) {return placeNode(d).cx - displacement})
+        .attr("y", function (d) {return placeNode(d).cy + 25})
         .attr("font-family", "sans-serif")
         .attr("font-size", "18px")
         .attr("fill", "black")
@@ -62,16 +65,15 @@ function draw(ViewModel) {
 
     let svgNotTakenDivs = d3.select("#graph").selectAll("notTaken")
         .data(taken)
-        .enter().append("div")
-        .classed("draggable",true);
+        .enter().append("svg")
+        .classed("draggable",true)
+        .attr("id", function(d) {return String(d.dept) + String(d.course)});
 
-    let svgAvailable = svgNotTakenDivs
-        .append("svg")
-        .data(taken)
-        .attr("id", function(d) {return String(d.dept) + String(d.course)})
-        .classed("svgNotTaken", true);
+    let svgContainer = svgNotTakenDivs.append("g")
+                                      .data(taken)
+                                      .attr("transform", "translate(-60,-75)");
 
-    let svgContainer = svgAvailable.append("g").data(taken);
+
 
     svgContainer.append("circle")
         .data(taken)
@@ -82,8 +84,8 @@ function draw(ViewModel) {
 
     svgContainer.append("text")
         .data(taken)
-        .attr("x", function (d) {return placeNode(d).cx - 1})
-        .attr("y", function (d) {return placeNode(d).cy + 20})
+        .attr("x", function (d) {return placeNode(d).cx - displacement})
+        .attr("y", function (d) {return placeNode(d).cy + 25})
         .attr("font-family", "sans-serif")
         .attr("font-size", "18px")
         .attr("fill", "black")
@@ -110,7 +112,7 @@ function draw(ViewModel) {
         .attr("r", radius)
         .attr("fill","gray");
 
-    containerNotTaken.append("text")
+    svgRequiredContainer.append("text")
         .data(requiredNotTaken)
         .attr("x", function (d) {return placeNode(d).cx -1})
         .attr("y", function (d) {return placeNode(d).cy +20})
@@ -119,6 +121,7 @@ function draw(ViewModel) {
         .attr("fill", "black")
         .text(function (d) {return d.dept + d.course;});
 
+    /*
     let defs = svgNotTakenDivs.append('defs');
     defs.append('marker')
         .attr('id', 'input')
@@ -161,7 +164,6 @@ function draw(ViewModel) {
         .attr("stroke-width", 4)
         .style('marker-end', 'url(#output)');
 
-    updateGraph();
 
     /*Eventually, the proper way to do this would be all data-manipulation,
     and letting CSS draw the colors for you. Right now, it's fine to manipulate
@@ -189,7 +191,7 @@ function draw(ViewModel) {
         }
 
     }
-
+    /*
     function updateGraph(){
         paths.attr('d', function(d) {
             let sourceID = "#" + d.source;
