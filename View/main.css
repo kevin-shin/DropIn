@@ -7,7 +7,6 @@ html, body {
     width:75%;
     height:120px;
     border: 1px solid #bed5cd;
-    overflow-x: scroll;
     white-space: nowrap;
 }
 
@@ -74,9 +73,4 @@ html, body {
 .result {
     display: inline-block;
     margin-left: 30px;
-}
-
-.draggable {
-    width: 85px;
-    height: 58px;
 }

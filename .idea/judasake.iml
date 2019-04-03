@@ -12,5 +12,6 @@
     <orderEntry type="library" name="d3.v5" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="jquery-ui" level="application" />
+    <orderEntry type="library" name="TweenMax" level="application" />
   </component>
 </module>

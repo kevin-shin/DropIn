@@ -9,10 +9,8 @@ function draw(ViewModel) {
     const radius = 20;
     const displacement = radius + 20;
     //const scale = 1-(1/35);
-    let groupInFocus;
 
     let Classes = ViewModel.Classes;
-    let Connections = ViewModel.Connections;
 
     //Circles is an array that will hold objects which represent how we want our circles
     //to be positioned. Notice that dept and course properties are directly taken from
@@ -38,10 +36,10 @@ function draw(ViewModel) {
     */
 
     let svg = d3.select("body").select("#availableCourses").selectAll("notTaken")
-        .data(available)
-        .enter().append("svg")
-        .attr("id", function(d) {return String(d.dept) + String(d.course)})
-        .classed("draggable",true);
+                                                        .data(available)
+                                                        .enter().append("svg")
+                                                        .attr("id", function(d) {return String(d.dept) + String(d.course)})
+                                                        .classed("draggable",true);
 
     let svgGroups = svg.append("g")
                        .data(available)
