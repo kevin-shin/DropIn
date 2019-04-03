@@ -24,16 +24,23 @@ function draw(ViewModel) {
     //them respond to the same drag events.
     //Not taken courses
 
+    /*
     let svgDivs = d3.select("body").select("#availableCourses").selectAll("notTaken")
                                         .data(available)
                                         .enter().append("div")
                                         .classed("draggable",true);
-
     let svg = svgDivs
         .append("svg")
         .data(available)
         .attr("id", function(d) {return String(d.dept) + String(d.course)})
         .classed("svgNotTaken", true);
+    */
+
+    let svg = d3.select("body").select("#availableCourses").selectAll("notTaken")
+        .data(available)
+        .enter().append("svg")
+        .attr("id", function(d) {return String(d.dept) + String(d.course)})
+        .classed("draggable",true);
 
     let svgGroups = svg.append("g").data(available);
 
