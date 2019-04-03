@@ -3,12 +3,11 @@ html, body {
     margin: 0;
 }
 
-#availableCourses{
+#availableCourses {
     width:75%;
     height:120px;
     border: 1px solid #bed5cd;
     overflow-x: scroll;
-    overflow-y: scroll;
     white-space: nowrap;
 }
 
@@ -87,4 +86,9 @@ html, body {
 .result {
     display: inline-block;
     margin-left: 30px;
+}
+
+.draggable {
+    width: 50px;
+    height: 50px;
 }
