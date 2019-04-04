@@ -74,3 +74,15 @@ html, body {
     display: inline-block;
     margin-left: 30px;
 }
+
+svg {
+    width: 85px;
+    height: 58px;
+}
+
+#smallBox {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
