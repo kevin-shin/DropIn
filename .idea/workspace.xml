@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7125132-c570-48fa-9cbb-8f6dbab62b63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/View/test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/judasake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/judasake.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/kevin_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/kevin_test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/ViewModel_Test.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/ViewModel_Test.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,7 +18,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/kevin_test.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
@@ -36,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="84" column="17" lean-forward="true" selection-start-line="84" selection-start-column="17" selection-end-line="84" selection-end-column="17" />
+            <state relative-caret-position="375">
+              <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -45,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/VM_to_View.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="185" column="64" lean-forward="true" selection-start-line="185" selection-start-column="64" selection-end-line="185" selection-end-column="64" />
+            <state relative-caret-position="327">
+              <caret line="47" column="30" lean-forward="true" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -54,7 +48,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
+            <state relative-caret-position="3510">
               <caret line="234" column="70" lean-forward="true" selection-start-line="234" selection-start-column="70" selection-end-line="234" selection-end-column="70" />
             </state>
           </provider>
@@ -63,17 +57,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="150">
+              <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/View/ViewModel_Test.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="3" lean-forward="true" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+            <state relative-caret-position="546">
+              <caret line="142" column="1" selection-start-line="142" selection-start-column="1" selection-end-line="142" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -126,19 +120,19 @@
         <option value="$PROJECT_DIR$/Panel&amp;Nodes/htmlnew.html" />
         <option value="$PROJECT_DIR$/View/testScript.js" />
         <option value="$PROJECT_DIR$/View/test.html" />
-        <option value="$PROJECT_DIR$/View/ViewModel_Test.json" />
         <option value="$PROJECT_DIR$/View/VM_to_View.js" />
         <option value="$PROJECT_DIR$/View/main.css" />
         <option value="$PROJECT_DIR$/View/kevin_test.html" />
         <option value="$PROJECT_DIR$/View/test.js" />
         <option value="$PROJECT_DIR$/View/script.js" />
+        <option value="$PROJECT_DIR$/View/ViewModel_Test.json" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="541" />
+    <option name="x" value="497" />
     <option name="y" value="23" />
-    <option name="width" value="739" />
+    <option name="width" value="783" />
     <option name="height" value="715" />
   </component>
   <component name="ProjectView">
@@ -401,10 +395,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90532000" />
+    <option name="totallyTimeSpent" value="90547000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="541" y="23" width="739" height="715" extended-state="0" />
+    <frame x="314" y="23" width="966" height="715" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49865952" weight="0.03726708" />
@@ -615,38 +609,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/ViewModel_Test.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="3" lean-forward="true" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="84" column="17" lean-forward="true" selection-start-line="84" selection-start-column="17" selection-end-line="84" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/VM_to_View.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="185" column="64" lean-forward="true" selection-start-line="185" selection-start-column="64" selection-end-line="185" selection-end-column="64" />
+        <state relative-caret-position="375">
+          <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
+        <state relative-caret-position="3510">
           <caret line="234" column="70" lean-forward="true" selection-start-line="234" selection-start-column="70" selection-end-line="234" selection-end-column="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="150">
+          <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -654,6 +634,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/VM_to_View.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="47" column="30" lean-forward="true" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/ViewModel_Test.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="142" column="1" selection-start-line="142" selection-start-column="1" selection-end-line="142" selection-end-column="1" />
         </state>
       </provider>
     </entry>
