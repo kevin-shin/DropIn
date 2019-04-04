@@ -59,5 +59,85 @@
     "course": 320,
     "taken": false,
     "required": false
-  }]
+  },
+  {
+    "dept": "COMP",
+    "course": 346,
+    "taken": false,
+    "required": false
+  },
+  {
+    "dept": "COMP",
+    "dept2": "MATH",
+    "course": 365,
+    "taken": false,
+    "required": false
+  },
+  {
+    "dept": "COMP",
+    "course": 394,
+    "taken": false,
+    "required": false
+  },
+  {
+    "dept": "COMP",
+    "course": 440,
+    "taken": false,
+    "required": false
+  },
+  {
+    "dept": "COMP",
+    "course": 445,
+    "taken": false,
+    "required": false
+  },
+  {
+    "dept": "COMP",
+    "course": 465,
+    "taken": false,
+    "required": false
+  },
+  {
+    "dept": "COMP",
+    "course": 479,
+    "taken": false,
+    "required": false
+  },
+  {
+    "dept": "COMP",
+    "course": 484,
+    "taken": false,
+    "required": false
+  },
+  {
+    "dept": "COMP",
+    "course": 494,
+    "taken": false,
+    "required": false
+  }
+
+],
+
+  "Connections": [
+    {
+      "source": "COMP123",
+      "target": "COMP127"
+    },
+    {
+      "source": "COMP127",
+      "target": "COMP128"
+    },
+    {
+      "source": "COMP128",
+      "target": "COMP221"
+    },
+    {
+      "source": "MATH279",
+      "target": "COMP221"
+    },
+    {
+      "source": "COMP128",
+      "target": "COMP240"
+    }
+  ]
 }
