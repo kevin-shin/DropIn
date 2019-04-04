@@ -68,7 +68,7 @@ html {
     width: 75%;
     height: 25%;
     position: relative;
-    background-color: red;
+    background-color: #bed5cd;
 }
 
 #svgTaken {
@@ -82,9 +82,6 @@ html {
     position: absolute;
 }
 
-g {
-    position: relative;
-}
 #smallBox {
     position: absolute;
     width: 100px;
