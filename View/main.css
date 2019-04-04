@@ -4,12 +4,6 @@ html, body {
     height:100%;
 }
 
-#availableCourses {
-    width:75%;
-    height:120px;
-    border: 1px solid #bed5cd;
-    white-space: nowrap;
-}
 
 .instructions {
     padding: 10px;
@@ -45,11 +39,17 @@ html, body {
 #graph{
     height: 100%;
     width: 75%;
-    position: relative;
     left: 0;
     background-color: #ccaabb;
-    z-index: -10000;
 }
+
+#availableCourses {
+    width:75%;
+    height:120px;
+    border: 1px solid #bed5cd;
+    white-space: nowrap;
+}
+
 
 .drag-area {
     width: 200px;

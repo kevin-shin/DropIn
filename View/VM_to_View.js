@@ -66,11 +66,13 @@ function draw(ViewModel) {
         .text(function (d) {return d.dept + d.course;});
 
 
-    let svgNotTakenDivs = d3.select("#graph").selectAll("taken")
+    let svgNotTakenDivs = d3.select("body")
+        .select("#graph")
+        .selectAll("taken")
         .data(taken)
         .enter().append("svg")
-        .classed("draggable",true)
-        .attr("id", function(d) {return String(d.dept) + String(d.course)});
+        .attr("id", function(d) {return String(d.dept) + String(d.course)})
+        .classed("draggable",true);
 
     let svgContainer = svgNotTakenDivs.append("g")
                                       .data(taken)

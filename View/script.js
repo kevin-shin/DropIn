@@ -10,6 +10,7 @@ $(document).ready(function(){
                 console.log(graph);
                 graph.append(this.target);
             }
+            console.log(this);
         }
     });
 
