@@ -20,7 +20,7 @@ function draw(ViewModel) {
     Color: Red
      */
     let svg = d3.select("body")
-        .select("#availableCourses")
+        .select("#GUI")
         .append("svg")
         .attr("id","svgNotTaken");
 
@@ -68,7 +68,7 @@ function draw(ViewModel) {
     Color: Green
      */
     let svgNotTakenDivs = d3.select("body")
-        .select("#graph")
+        .select("#GUI")
         .append("svg")
         .attr("id","svgTaken");
 
