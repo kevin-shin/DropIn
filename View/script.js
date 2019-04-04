@@ -11,7 +11,7 @@ $(document).ready(function() {
         onRelease: function() {
             if (this.hitTest(graph, threshold)) {
                 console.log(graph);
-                graph.append(this.target);
+                //graph.append(this.target);
                 //updateGraph();
             }
         },

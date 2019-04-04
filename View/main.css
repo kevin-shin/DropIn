@@ -82,6 +82,12 @@ svg {
     height: 58px;
 }
 
+#svgNotTaken, #svgTaken {
+    width: 100%;
+    height: 100%;
+}
+
+
 #smallBox {
     position: absolute;
     width: 100px;

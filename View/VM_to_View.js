@@ -21,21 +21,21 @@ function draw(ViewModel) {
      */
     let svg = d3.select("body")
         .select("#availableCourses")
-        .selectAll("notTaken")
+        .append("svg")
+        .attr("id","svgNotTaken");
+
+    let svgGroups = svg.selectAll("notTaken")
         .data(available)
-        .enter().append("svg")
+        .enter().append("g")
+        .attr("transform", "translate(-10.5,-28)")
         .attr("id", function (d) {
             return String(d.dept) + String(d.course)
         })
         .classed("draggable", true)
         .call(d3.drag()
-                .on("start", dragstarted)
-                .on("drag", dragged)
-                .on("end", dragended));
-
-    let svgGroups = svg.append("g")
-        .data(available)
-        .attr("transform", "translate(-10.5,-28)");
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended));
 
     svgGroups.append("circle")
         .data(available)
@@ -69,21 +69,21 @@ function draw(ViewModel) {
      */
     let svgNotTakenDivs = d3.select("body")
         .select("#graph")
-        .selectAll("taken")
+        .append("svg")
+        .attr("id","svgTaken");
+
+    let svgContainer = svgNotTakenDivs.selectAll("taken")
         .data(taken)
-        .enter().append("svg")
+        .enter().append("g")
+        .attr("transform", "translate(-60,-75)")
         .attr("id", function (d) {
             return String(d.dept) + String(d.course)
         })
         .classed("draggable", true)
         .call(d3.drag()
-                .on("start", dragstarted)
-                .on("drag", dragged)
-                .on("end", dragended));
-
-    let svgContainer = svgNotTakenDivs.append("g")
-        .data(taken)
-        .attr("transform", "translate(-60,-75)");
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended));
 
     svgContainer.append("circle")
         .data(taken)
@@ -115,21 +115,19 @@ function draw(ViewModel) {
     REQUIRED, NOT TAKEN COURSES
     Color: Gray
      */
-    let svgRequired = d3.select("#graph").selectAll("taken")
+    let svgRequiredGroups = svgNotTakenDivs.selectAll("taken")
         .data(requiredNotTaken)
-        .enter().append("svg")
-        .classed("draggable", true)
+        .enter().append("g")
+        .attr("transform", "translate(-60,-75)")
         .attr("id", function (d) {
             return String(d.dept) + String(d.course)
         })
+        .classed("draggable", true)
         .call(d3.drag()
-                .on("start", dragstarted)
-                .on("drag", dragged)
-                .on("end", dragended));
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended));
 
-    let svgRequiredGroups = svgRequired.append("g")
-        .data(requiredNotTaken)
-        .attr("transform", "translate(-60,-75)");
 
     svgRequiredGroups.append("circle")
         .data(requiredNotTaken)
