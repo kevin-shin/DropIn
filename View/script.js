@@ -1,12 +1,10 @@
-$(document).ready(function(){
+$(document).ready(function() {
     var courseCatalog;
-
     d3.json("../Model/CS_major.json").then(function(data){
         courseCatalog = data;
     });
 
     var graph = $("#graph");
-    var instructions = $(".instructions");
     var threshold = "50%";
 
     Draggable.create(".draggable",{
@@ -14,6 +12,7 @@ $(document).ready(function(){
             if (this.hitTest(graph, threshold)) {
                 console.log(graph);
                 graph.append(this.target);
+                //updateGraph();
             }
         },
         onPress: function() {
