@@ -1,6 +1,7 @@
 html, body {
     padding: 0;
     margin: 0;
+    height:100%;
 }
 
 #availableCourses {
@@ -41,13 +42,13 @@ html, body {
     display: block;
 }
 
-.graph{
-    height: 490px;
+#graph{
+    height: 100%;
     width: 75%;
     position: relative;
     left: 0;
     background-color: #ccaabb;
-    z-index: -10;
+    z-index: -10000;
 }
 
 .drag-area {

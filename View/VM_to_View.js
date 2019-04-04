@@ -1,7 +1,9 @@
 //Approach to taking view model and outputting model
 
+let ViewModel;
 d3.json("./ViewModel_Test.json").then(function(data){
     draw(data);
+    ViewModel = data;
 });
 
 function draw(ViewModel) {
@@ -35,11 +37,13 @@ function draw(ViewModel) {
         .classed("svgNotTaken", true);
     */
 
-    let svg = d3.select("body").select("#availableCourses").selectAll("notTaken")
-                                                        .data(available)
-                                                        .enter().append("svg")
-                                                        .attr("id", function(d) {return String(d.dept) + String(d.course)})
-                                                        .classed("draggable",true);
+    let svg = d3.select("body")
+        .select("#availableCourses")
+        .selectAll("notTaken")
+        .data(available)
+        .enter().append("svg")
+        .attr("id", function (d) {return String(d.dept) + String(d.course)})
+        .classed("draggable", true);
 
     let svgGroups = svg.append("g")
                        .data(available)
@@ -61,7 +65,8 @@ function draw(ViewModel) {
         .attr("fill", "black")
         .text(function (d) {return d.dept + d.course;});
 
-    let svgNotTakenDivs = d3.select("#graph").selectAll("notTaken")
+
+    let svgNotTakenDivs = d3.select("#graph").selectAll("taken")
         .data(taken)
         .enter().append("svg")
         .classed("draggable",true)
@@ -70,8 +75,6 @@ function draw(ViewModel) {
     let svgContainer = svgNotTakenDivs.append("g")
                                       .data(taken)
                                       .attr("transform", "translate(-60,-75)");
-
-
 
     svgContainer.append("circle")
         .data(taken)
@@ -89,31 +92,27 @@ function draw(ViewModel) {
         .attr("fill", "black")
         .text(function (d) {return d.dept + d.course;});
 
-    let svgRequiredDivs = d3.select("body")
-        .select("#graph")
-        .selectAll("notTaken")
+    let svgRequired = d3.select("#graph").selectAll("taken")
         .data(requiredNotTaken)
-        .enter().append("div")
-        .classed("draggable",true);
-
-    let svgRequired = svgRequiredDivs
-        .data(requiredNotTaken)
-        .append("svg")
+        .enter().append("svg")
+        .classed("draggable",true)
         .attr("id", function(d) {return String(d.dept) + String(d.course)});
 
-    let svgRequiredContainer = svgRequired.append("g").data(requiredNotTaken);
+    let svgRequiredGroups = svgRequired.append("g")
+        .data(requiredNotTaken)
+        .attr("transform", "translate(-60,-75)");
 
-    svgRequiredContainer.append("circle")
+    svgRequiredGroups.append("circle")
         .data(requiredNotTaken)
         .attr("cx", function (d) {return placeNode(d).cx;})
         .attr("cy", function (d) {return placeNode(d).cy;})
         .attr("r", radius)
-        .attr("fill","gray");
+        .attr("fill", "gray");
 
-    svgRequiredContainer.append("text")
+    svgRequiredGroups.append("text")
         .data(requiredNotTaken)
-        .attr("x", function (d) {return placeNode(d).cx -1})
-        .attr("y", function (d) {return placeNode(d).cy +20})
+        .attr("x", function (d) {return placeNode(d).cx - displacement})
+        .attr("y", function (d) {return placeNode(d).cy + 25})
         .attr("font-family", "sans-serif")
         .attr("font-size", "18px")
         .attr("fill", "black")
@@ -174,14 +173,8 @@ function draw(ViewModel) {
             return {cx: 50, cy:50}
         }
         else {
-            if (100<object.course && object.course < 200) {
-                return {cx:100, cy:100}
-            }
-            else if (100<object.course && object.course < 200) {
-                return {cx:100, cy:100}
-            }
-            else if (200<object.course && object.course < 300) {
-                return {cx:200, cy:200}
+            if (object.course < 300) {
+                return {cx: 100, cy: 100}
             }
             else if (300<object.course && object.course < 500) {
                 return {cx:300, cy:300}
