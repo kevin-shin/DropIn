@@ -27,7 +27,11 @@ function draw(ViewModel) {
         .attr("id", function (d) {
             return String(d.dept) + String(d.course)
         })
-        .classed("draggable", true);
+        .classed("draggable", true)
+        .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
 
     let svgGroups = svg.append("g")
         .data(available)
@@ -71,7 +75,11 @@ function draw(ViewModel) {
         .attr("id", function (d) {
             return String(d.dept) + String(d.course)
         })
-        .classed("draggable", true);
+        .classed("draggable", true)
+        .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
 
     let svgContainer = svgNotTakenDivs.append("g")
         .data(taken)
@@ -113,7 +121,11 @@ function draw(ViewModel) {
         .classed("draggable", true)
         .attr("id", function (d) {
             return String(d.dept) + String(d.course)
-        });
+        })
+        .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
 
     let svgRequiredGroups = svgRequired.append("g")
         .data(requiredNotTaken)
@@ -229,15 +241,11 @@ function dragstarted(d) {
 }
 
 function dragged(d) {
-    d3.select(this).select("circle")
-        .attr("cx", d.x = d3.event.x)
-        .attr("cy", d.y = d3.event.y);
-    d3.select(this).select("text")
-        .attr("x", d.x = d3.event.x)
-        .attr("y", d.y = d3.event.y);
 }
 
 function dragended(d) {
+    console.log("I'm dragging " + d3.select(this));
+    updateGraph();
     d3.select(this).classed("active", false);
 }
 
