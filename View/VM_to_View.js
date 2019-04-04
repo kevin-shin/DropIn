@@ -7,10 +7,12 @@ d3.json("./ViewModel_Test.json").then(function(data){
 function draw(ViewModel) {
 
     const radius = 20;
-    const displacement = radius + 20;
-    //const scale = 1-(1/35);
+    const displacement = radius + 5;
+    let groupInFocus;
+
 
     let Classes = ViewModel.Classes;
+    let Connections = ViewModel.Connections;
 
     //Circles is an array that will hold objects which represent how we want our circles
     //to be positioned. Notice that dept and course properties are directly taken from
@@ -19,108 +21,98 @@ function draw(ViewModel) {
     let requiredNotTaken = Classes.filter(course => (course.taken === false && course.required === true));
     let available = Classes.filter(course => (course.taken === false && course.required === false));
 
+
+    /*
+    svgContainer.select("test")
+        .enter().append("circle")
+        .attr("cx", 600)
+        .attr("cy", 10)
+        .attr("r", radius)
+        .attr("fill", "green")
+        .on("click", () => groupInFocus = this);
+    */
+
     //Make Group SVG objects, which have circles and texts. This is necessary to make
     //them respond to the same drag events.
     //Not taken courses
 
-    /*
-    let svgDivs = d3.select("body").select("#availableCourses").selectAll("notTaken")
-                                        .data(available)
-                                        .enter().append("div")
-                                        .classed("draggable",true);
-    let svg = svgDivs
+    let svgNotTaken = d3.select("body").select("#availableCourses")
         .append("svg")
-        .data(available)
-        .attr("id", function(d) {return String(d.dept) + String(d.course)})
         .classed("svgNotTaken", true);
-    */
 
-    let svg = d3.select("body").select("#availableCourses").selectAll("notTaken")
-                                                        .data(available)
-                                                        .enter().append("svg")
-                                                        .attr("id", function(d) {return String(d.dept) + String(d.course)})
-                                                        .classed("draggable",true);
+    let containerAvailable = svgNotTaken.selectAll("notTaken")
+        .data(available)
+        .enter().append("g")
+        .attr("id", function (d) {return String(d.dept) + String(d.course)})
+        .attr("class","draggable notTaken");
 
-    let svgGroups = svg.append("g")
-                       .data(available)
-                       .attr("transform", "translate(-10.5,-28)");
-
-    svgGroups.append("circle")
+    containerAvailable.append("circle")
         .data(available)
         .attr("cx", function (d) {return placeNode(d).cx;})
         .attr("cy", function (d) {return placeNode(d).cy;})
         .attr("r", radius)
         .attr("fill", "red");
 
-    svgGroups.append("text")
+    containerAvailable.append("text")
         .data(available)
         .attr("x", function (d) {return placeNode(d).cx - displacement})
-        .attr("y", function (d) {return placeNode(d).cy + 25})
+        .attr("y", function (d) {return placeNode(d).cy + 20})
         .attr("font-family", "sans-serif")
         .attr("font-size", "18px")
         .attr("fill", "black")
-        .text(function (d) {return d.dept + d.course;});
+        .text(function (d) {
+            return d.dept + d.course;
+        });
 
-    let svgNotTakenDivs = d3.select("#graph").selectAll("notTaken")
+    let svgTaken = d3.select("body").select("#graph")
+        .append("svg")
+        .classed("svgTaken", true);
+
+    let container = svgTaken.selectAll("Available")
         .data(taken)
-        .enter().append("svg")
-        .classed("draggable",true)
-        .attr("id", function(d) {return String(d.dept) + String(d.course)});
+        .enter().append("g")
+        .attr("id", function (d) {return String(d.dept) + String(d.course)})
+        .attr("class","draggable");
 
-    let svgContainer = svgNotTakenDivs.append("g")
-                                      .data(taken)
-                                      .attr("transform", "translate(-60,-75)");
-
-
-
-    svgContainer.append("circle")
+    container.append("circle")
         .data(taken)
         .attr("cx", function (d) {return placeNode(d).cx;})
         .attr("cy", function (d) {return placeNode(d).cy;})
         .attr("r", radius)
         .attr("fill", "green");
 
-    svgContainer.append("text")
+    container.append("text")
         .data(taken)
         .attr("x", function (d) {return placeNode(d).cx - displacement})
-        .attr("y", function (d) {return placeNode(d).cy + 25})
+        .attr("y", function (d) {return placeNode(d).cy + 20})
         .attr("font-family", "sans-serif")
         .attr("font-size", "18px")
         .attr("fill", "black")
         .text(function (d) {return d.dept + d.course;});
 
-    let svgRequiredDivs = d3.select("body")
-        .select("#graph")
-        .selectAll("notTaken")
+    let containerNotTaken = svgTaken.selectAll("Required")
         .data(requiredNotTaken)
-        .enter().append("div")
-        .classed("draggable",true);
+        .enter().append("g")
+        .attr("id", function (d) {return String(d.dept) + String(d.course)})
+        .attr("class","draggable");
 
-    let svgRequired = svgRequiredDivs
-        .data(requiredNotTaken)
-        .append("svg")
-        .attr("id", function(d) {return String(d.dept) + String(d.course)});
-
-    let svgRequiredContainer = svgRequired.append("g").data(requiredNotTaken);
-
-    svgRequiredContainer.append("circle")
+    containerNotTaken.append("circle")
         .data(requiredNotTaken)
         .attr("cx", function (d) {return placeNode(d).cx;})
         .attr("cy", function (d) {return placeNode(d).cy;})
         .attr("r", radius)
-        .attr("fill","gray");
+        .attr("fill", "gray");
 
-    svgRequiredContainer.append("text")
+    containerNotTaken.append("text")
         .data(requiredNotTaken)
-        .attr("x", function (d) {return placeNode(d).cx -1})
-        .attr("y", function (d) {return placeNode(d).cy +20})
+        .attr("x", function (d) {return placeNode(d).cx - displacement})
+        .attr("y", function (d) {return placeNode(d).cy + 20})
         .attr("font-family", "sans-serif")
         .attr("font-size", "18px")
         .attr("fill", "black")
         .text(function (d) {return d.dept + d.course;});
 
-    /*
-    let defs = svgNotTakenDivs.append('defs');
+    let defs = svgTaken.append('defs');
     defs.append('marker')
         .attr('id', 'input')
         .attr('viewBox', '0 -5 10 10')
@@ -143,11 +135,11 @@ function draw(ViewModel) {
         .attr('d', 'M0,-5L10,0L0,5');
 
     //Edges
-    let paths = svgNotTakenDivs.selectAll("edge")
+    let paths = svgTaken.selectAll("edge")
         .data(Connections)
         .enter().append('path')
         .attr('class', 'edgePath')
-        .attr('d', function(d) {
+        .attr('d', function (d) {
             let sourceID = "#" + d.source;
             let targetID = "#" + d.target;
             let sourceNode = d3.selectAll(sourceID)
@@ -157,11 +149,13 @@ function draw(ViewModel) {
                 .select("circle")
                 .datum();
             return "M" + sourceNode.x + "," + sourceNode.y + " L" +
-                targetNode.x + "," + targetNode.y;})
+                targetNode.x + "," + targetNode.y;
+        })
         .attr("stroke", "black")
         .attr("stroke-width", 4)
         .style('marker-end', 'url(#output)');
 
+    updateGraph();
 
     /*Eventually, the proper way to do this would be all data-manipulation,
     and letting CSS draw the colors for you. Right now, it's fine to manipulate
@@ -169,29 +163,25 @@ function draw(ViewModel) {
     says "All classes that have class = "taken" are green" as a rule.
     */
 
-    function placeNode(object){
-        if (object.taken === false && object.required === false){
-            return {cx: 50, cy:50}
-        }
-        else {
-            if (100<object.course && object.course < 200) {
-                return {cx:100, cy:100}
-            }
-            else if (100<object.course && object.course < 200) {
-                return {cx:100, cy:100}
-            }
-            else if (200<object.course && object.course < 300) {
-                return {cx:200, cy:200}
-            }
-            else if (300<object.course && object.course < 500) {
-                return {cx:300, cy:300}
+    function placeNode(object) {
+        if (object.taken === false && object.required === false) {
+            return {cx: 50, cy: 50}
+        } else {
+            if (100 < object.course && object.course < 200) {
+                return {cx: 100, cy: 100}
+            } else if (100 < object.course && object.course < 200) {
+                return {cx: 100, cy: 100}
+            } else if (200 < object.course && object.course < 300) {
+                return {cx: 200, cy: 200}
+            } else if (300 < object.course && object.course < 500) {
+                return {cx: 300, cy: 300}
             }
         }
 
     }
-    /*
-    function updateGraph(){
-        paths.attr('d', function(d) {
+
+    function updateGraph() {
+        paths.attr('d', function (d) {
             let sourceID = "#" + d.source;
             let targetID = "#" + d.target;
             let sourceNode = d3.selectAll(sourceID)
@@ -201,26 +191,8 @@ function draw(ViewModel) {
                 .select("circle")
                 .datum();
             return "M" + sourceNode.x + "," + sourceNode.y + " L" +
-                targetNode.x + "," + targetNode.y;})
+                targetNode.x + "," + targetNode.y;
+        })
     }
 
-    /*
-    function dragstarted(d) {
-        d3.select(this).raise().classed("active", true);
-    }
-
-    function dragged(d) {
-        d3.select(this).select("circle")
-            .attr("cx", d.x = d3.event.x)
-            .attr("cy", d.y = d3.event.y);
-        d3.select(this).select("text")
-            .attr("x", d.x = d3.event.x)
-            .attr("y", d.y = d3.event.y);
-        updateGraph();
-    }
-
-    function dragended(d) {
-        d3.select(this).classed("active", false);
-    }
-    */
 }

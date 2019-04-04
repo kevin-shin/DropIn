@@ -4,10 +4,10 @@ $(document).ready(function(){
     var availlableCourses = $("#availableCourses");
     var threshold = "50%";
 
-    Draggable.create(".draggable",{
+    Draggable.create(".draggable.notTaken",{
         onRelease: function() {
             if (this.hitTest(graph, threshold)) {
-                console.log(graph);
+                console.log("Hit here!");
                 graph.append(this.target);
             }
         }
