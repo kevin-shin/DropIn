@@ -393,14 +393,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90533000" />
+    <option name="totallyTimeSpent" value="90744000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="314" y="23" width="966" height="715" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49865952" weight="0.03726708" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4975923" weight="0.037037037" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.5024077" side_tool="true" visible="true" weight="0.037037037" />
       <window_info id="Favorites" order="2" sideWeight="0.5013405" side_tool="true" weight="0.087243885" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
