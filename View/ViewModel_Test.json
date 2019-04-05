@@ -2,122 +2,110 @@
   {
     "dept": "COMP",
     "course": 123,
-    "taken": true,
-    "required": true
-
+    "status": true
   },
   {
     "dept": "COMP",
     "course": 127,
-    "taken": true,
-    "required": true
+    "status": true
+
   },
   {
     "dept": "COMP",
     "course": 128,
-    "taken": true,
-    "required": true
+    "status": true
+
   },
   {
     "dept": "COMP",
     "course": 221,
-    "taken": true,
-    "required": true
+    "status": true
+
   },
   {
     "dept": "COMP",
     "course": 225,
-    "taken": false,
-    "required": true
+    "status": false
+
   },
   {
     "dept": "COMP",
     "course": 240,
-    "taken": true,
-    "required": true
+    "status": true
+
   },
   {
     "dept": "COMP",
     "course": 261,
-    "taken": false,
-    "required": true
+    "status": false
+
   },
   {
     "dept": "MATH",
     "course": 279,
-    "taken": true,
-    "required": true
+    "status": true
+
   },
   {
     "dept": "COMP",
     "course": 302,
-    "taken": false,
-    "required": false
+    "status": true
+
   },
   {
     "dept": "COMP",
     "course": 320,
-    "taken": false,
-    "required": false
+    "status": false
+
   },
   {
     "dept": "COMP",
     "course": 346,
-    "taken": false,
-    "required": false
+    "status": false
   },
   {
     "dept": "COMP",
     "dept2": "MATH",
     "course": 365,
-    "taken": false,
-    "required": false
+    "status": false
   },
   {
     "dept": "COMP",
     "course": 394,
-    "taken": false,
-    "required": false
+    "status": false
   },
   {
     "dept": "COMP",
     "course": 440,
-    "taken": false,
-    "required": false
+    "status": false
   },
   {
     "dept": "COMP",
     "course": 445,
-    "taken": false,
-    "required": false
+    "status": false
   },
   {
     "dept": "COMP",
     "course": 465,
-    "taken": false,
-    "required": false
+    "status": false
   },
   {
     "dept": "COMP",
     "course": 479,
-    "taken": false,
-    "required": false
+    "status": false
   },
   {
     "dept": "COMP",
     "course": 484,
-    "taken": false,
-    "required": false
+    "status": false
   },
   {
     "dept": "COMP",
     "course": 494,
-    "taken": false,
-    "required": false
+    "status": false
   }
-
 ],
-
+  
   "Connections": [
     {
       "source": "COMP123",
