@@ -15,9 +15,9 @@ $(document).ready(function() {
             }
         },
         onPress: function() {
-            //var course = findCourse(courseCatalog,this);
-            //var description = course.courseInfo;
-            //$("#courseDescription").replaceWith( "<p id='courseDescription'>" + description + "</p>" );
+            var course = findCourse(courseCatalog,this);
+            var description = course.courseInfo;
+            $("#courseDescription").replaceWith( "<p id='courseDescription'>" + description + "</p>" );
         },
         zIndexBoost:true
     });
