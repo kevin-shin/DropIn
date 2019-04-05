@@ -55,7 +55,7 @@ function draw(ViewModel) {
         .html(function(d) {
                 return String(d.course)
             })
-        .classed("draggable taken", true);
+        .attr("class","draggable taken");
 
     /*
     REQUIRED, NOT TAKEN COURSES
@@ -70,7 +70,7 @@ function draw(ViewModel) {
         .html(function(d) {
             return String(d.course)
         })
-        .classed("draggable required", true);
+        .attr("class","draggable required");
 
 
     let defs = svgNotTakenDivs.append('defs');
@@ -97,7 +97,7 @@ function draw(ViewModel) {
 
     //Edges
     let paths = svgNotTakenDivs.selectAll("edge")
-        //.data(Connections)
+        .data(Connections)
         .enter().append('path')
         .attr('class', 'edgePath')
         .attr('d', function (d) {
@@ -159,8 +159,6 @@ function dragged(d) {
 }
 
 function dragended(d) {
-    //console.log("I'm dragging !" + d3.select(this).id);
-    //updateGraph();
-    //d3.select(this).classed("active", false);
+
 }
 

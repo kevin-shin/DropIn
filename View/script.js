@@ -9,9 +9,12 @@ $(document).ready(function() {
 
     Draggable.create(".draggable",{
         onRelease: function() {
-            if (this.hitTest(graph, threshold)) {
-                console.log(graph);
-                console.log("hit here")
+            console.log(this.target);
+            console.log(this.target.id);
+            console.log(this.target.tagName);
+            console.log(this.target.class);
+            if (this.target === " draggable available" && this.hitTest(graph, threshold)) {
+                console.log("hit here");
             }
         },
         onPress: function() {

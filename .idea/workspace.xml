@@ -4,8 +4,13 @@
     <list default="true" id="b7125132-c570-48fa-9cbb-8f6dbab62b63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/VM_to_View.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/VM_to_View.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/dragBehavior.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/kevin_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/kevin_test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/testScript.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,35 +29,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/kevin_test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+            <state relative-caret-position="255">
+              <caret line="17" column="65" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/test.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="234" column="70" selection-start-line="234" selection-start-column="70" selection-end-line="234" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/test.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/View/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="84" column="18" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="18" />
+            <state relative-caret-position="115">
+              <caret line="72" column="22" lean-forward="true" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -67,37 +54,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/testScript.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="141">
+              <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/dragBehavior.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-972">
-              <caret line="20" column="63" lean-forward="true" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/View/VM_to_View.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="72" column="36" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
+            <state relative-caret-position="283">
+              <caret line="100" column="31" lean-forward="true" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -164,17 +133,17 @@
         <option value="$PROJECT_DIR$/DraggableExample/example.html" />
         <option value="$PROJECT_DIR$/DraggableExample/example.js" />
         <option value="$PROJECT_DIR$/View/dragBehavior.js" />
+        <option value="$PROJECT_DIR$/View/main.css" />
         <option value="$PROJECT_DIR$/View/kevin_test.html" />
         <option value="$PROJECT_DIR$/View/script.js" />
         <option value="$PROJECT_DIR$/View/VM_to_View.js" />
-        <option value="$PROJECT_DIR$/View/main.css" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="457" />
+    <option name="x" value="497" />
     <option name="y" value="28" />
-    <option name="width" value="808" />
+    <option name="width" value="768" />
     <option name="height" value="715" />
   </component>
   <component name="ProjectView">
@@ -508,21 +477,27 @@
       <option name="project" value="LOCAL" />
       <updated>1554498048069</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Approach with completely HTML elements, already seems better.">
+      <created>1554499838777</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1554499838777</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111815000" />
+    <option name="totallyTimeSpent" value="113659000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="457" y="28" width="808" height="715" extended-state="0" />
-    <editor active="true" />
+    <frame x="497" y="28" width="768" height="715" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7980583" visible="true" weight="0.2884371" />
-      <window_info id="Structure" order="1" sideWeight="0.20194174" side_tool="true" weight="0.2884371" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7977528" visible="true" weight="0.35609102" />
+      <window_info id="Structure" order="1" sideWeight="0.20224719" side_tool="true" weight="0.35609102" />
       <window_info id="Favorites" order="2" sideWeight="0.5013405" side_tool="true" weight="0.087243885" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32905295" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32744783" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.17335473" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39967898" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -582,7 +557,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Getting there, maybe. Focus on the svg elements - paths only need to know about their connections. This problem is simpler than you think it is." />
     <MESSAGE value="PROGRESS: Code draws green circles for courses taken, red circles for those not taken and not required, gray circles for those not taken and required. Note that the ViewModel_Test.json being imported is AN EXAMPLE CONFIGURATION. However, VM_to_Model.js is written to accommodate tagged booleans, so this should be easily scalable. &#10;&#10;Initial Noticed Bugs: &#10;1. Dragging the node is necessary to position the text and make connections appear. No idea why this is happening, might be something to do with when drag is executed. &#10;2. Having hard time figuring out how to scale arrows down–right now, the arrowhead is hidden behind the node, making it just look like an undirected graph. &#10;3. Spacing problem. How do we get this to look nice? Also, consider implementing the &quot;drag and don't touch&quot; example in the D3 wiki. &#10;4. In general, we're going to run out of space in placing all the nodes. &#10;5. How do we get dragging behavior from one panel (not taken not required courses) to the main interface?" />
     <MESSAGE value="Something is wrong with the color-changing behavior" />
     <MESSAGE value="Updated changes from last meeting, forgot to push" />
@@ -607,7 +581,8 @@
     <MESSAGE value="Some aesthetic changes to make things easier." />
     <MESSAGE value="starting the drag behavior, stay tuned." />
     <MESSAGE value="GROUND 0" />
-    <option name="LAST_COMMIT_MESSAGE" value="GROUND 0" />
+    <MESSAGE value="Approach with completely HTML elements, already seems better." />
+    <option name="LAST_COMMIT_MESSAGE" value="Approach with completely HTML elements, already seems better." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../machack-website/index.html" />
@@ -731,31 +706,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/dragBehavior.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-972">
-          <caret line="20" column="63" lean-forward="true" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/kevin_test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/testScript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
+        <state relative-caret-position="120">
           <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/ViewModel_Test.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="118" column="2" lean-forward="true" selection-start-line="118" selection-start-column="2" selection-end-line="118" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -766,24 +720,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/script.js">
+    <entry file="file://$PROJECT_DIR$/View/dragBehavior.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="300">
+          <caret line="20" column="63" lean-forward="true" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/VM_to_View.js">
+    <entry file="file://$PROJECT_DIR$/View/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="72" column="36" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
+        <state relative-caret-position="141">
+          <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="84" column="18" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="18" />
+        <state relative-caret-position="115">
+          <caret line="72" column="22" lean-forward="true" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/kevin_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="65" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/ViewModel_Test.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="118" column="2" lean-forward="true" selection-start-line="118" selection-start-column="2" selection-end-line="118" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/VM_to_View.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="100" column="31" lean-forward="true" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="31" />
         </state>
       </provider>
     </entry>

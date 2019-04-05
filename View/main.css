@@ -14,7 +14,7 @@ body {
 
 .instructions {
     padding: 10px;
-    height: 60%;
+    height: 50%;
     width: 25%;
     position: absolute;
     right: 0;
@@ -31,7 +31,7 @@ body {
 
 .requirements {
     padding: 10px;
-    height: 40%;
+    height: 45%;
     width: 25%;
     position: absolute;
     right: 0;
