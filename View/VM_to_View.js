@@ -21,90 +21,41 @@ function draw(ViewModel) {
      */
     let svg = d3.select("body")
         .select("#GUI")
-        .append("svg")
+        .append("div")
         .attr("id","svgNotTaken");
 
     let svgGroups = svg.selectAll("notTaken")
         .data(available)
-        .enter().append("g")
-        .attr("transform", "translate(-10.5,-28)")
+        .enter().append("div")
         .attr("id", function (d) {
             return String(d.dept) + String(d.course)
         })
-        .classed("draggable", true)
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));
-
-    svgGroups.append("circle")
-        .data(available)
-        .attr("cx", function (d) {
-            return placeNode(d).cx;
+        .html(function(d) {
+            return String(d.course)
         })
-        .attr("cy", function (d) {
-            return placeNode(d).cy;
-        })
-        .attr("r", radius)
-        .attr("fill", "red");
-
-    svgGroups.append("text")
-        .data(available)
-        .attr("x", function (d) {
-            return placeNode(d).cx - displacement
-        })
-        .attr("y", function (d) {
-            return placeNode(d).cy + 25
-        })
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "18px")
-        .attr("fill", "black")
-        .text(function (d) {
-            return d.dept + d.course;
-        });
+        .classed("draggable available", true);
 
     /*
-    NOT TAKEN COURSES
+    TAKEN COURSES
     Color: Green
      */
+
+
     let svgNotTakenDivs = d3.select("body")
         .select("#GUI")
-        .append("svg")
+        .append("div")
         .attr("id","graph");
 
     let svgContainer = svgNotTakenDivs.selectAll("taken")
         .data(taken)
-        .enter().append("g")
-        .attr("transform", "translate(-60,-75)")
+        .enter().append("div")
         .attr("id", function (d) {
             return String(d.dept) + String(d.course)
         })
-
-    svgContainer.append("circle")
-        .data(taken)
-        .attr("cx", function (d) {
-            return placeNode(d).cx;
-        })
-        .attr("cy", function (d) {
-            return placeNode(d).cy;
-        })
-        .attr("r", radius)
-        .attr("fill", "green");
-
-    svgContainer.append("text")
-        .data(taken)
-        .attr("x", function (d) {
-            return placeNode(d).cx - displacement
-        })
-        .attr("y", function (d) {
-            return placeNode(d).cy + 25
-        })
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "18px")
-        .attr("fill", "black")
-        .text(function (d) {
-            return d.dept + d.course;
-        });
+        .html(function(d) {
+                return String(d.course)
+            })
+        .classed("draggable taken", true);
 
     /*
     REQUIRED, NOT TAKEN COURSES
@@ -112,39 +63,14 @@ function draw(ViewModel) {
      */
     let svgRequiredGroups = svgNotTakenDivs.selectAll("taken")
         .data(requiredNotTaken)
-        .enter().append("g")
-        .attr("transform", "translate(-60,-75)")
+        .enter().append("div")
         .attr("id", function (d) {
             return String(d.dept) + String(d.course)
         })
-        .classed("draggable", true)
-
-
-    svgRequiredGroups.append("circle")
-        .data(requiredNotTaken)
-        .attr("cx", function (d) {
-            return placeNode(d).cx;
+        .html(function(d) {
+            return String(d.course)
         })
-        .attr("cy", function (d) {
-            return placeNode(d).cy;
-        })
-        .attr("r", radius)
-        .attr("fill", "gray");
-
-    svgRequiredGroups.append("text")
-        .data(requiredNotTaken)
-        .attr("x", function (d) {
-            return placeNode(d).cx - displacement
-        })
-        .attr("y", function (d) {
-            return placeNode(d).cy + 25
-        })
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "18px")
-        .attr("fill", "black")
-        .text(function (d) {
-            return d.dept + d.course;
-        });
+        .classed("draggable required", true);
 
 
     let defs = svgNotTakenDivs.append('defs');

@@ -7,7 +7,7 @@ $(document).ready(function() {
     var graph = $("#graph");
     var threshold = "50%";
 
-    Draggable.create("g",{
+    Draggable.create(".draggable",{
         onRelease: function() {
             if (this.hitTest(graph, threshold)) {
                 console.log(graph);
@@ -19,7 +19,6 @@ $(document).ready(function() {
             var description = course.courseInfo;
             $("#courseDescription").replaceWith( "<p id='courseDescription'>" + description + "</p>" );
         },
-        zIndexBoost:true
     });
 
     function findCourse(data,course) {
