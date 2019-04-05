@@ -1,4 +1,4 @@
-modelToVM = function (profile, majorRules, draggedCourse) {
+let modelToVM = function (profile, majorRules, draggedCourse) {
     makeConnections(draggedCourse);
     for (var course of adjList) {
         if (!(course.source in profile.profile)) {
@@ -16,7 +16,7 @@ modelToVM = function (profile, majorRules, draggedCourse) {
 
 }
 
-fullMajorCheck = function (profile, majorRules) {
+let fullMajorCheck = function (profile, majorRules) {
     for (course in profile.profile) {
         if (course in majorRules.intro) {
             profile.requirements.intro--;
