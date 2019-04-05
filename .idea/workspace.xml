@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b7125132-c570-48fa-9cbb-8f6dbab62b63" name="Default Changelist" comment="Some aesthetic changes to make things easier.">
-      <change afterPath="$PROJECT_DIR$/DraggableExample/example.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DraggableExample/example.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DraggableExample/example.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/dragBehavior.js" afterDir="false" />
+    <list default="true" id="b7125132-c570-48fa-9cbb-8f6dbab62b63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DraggableExample/example.html" beforeDir="false" afterPath="$PROJECT_DIR$/DraggableExample/example.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DraggableExample/example.js" beforeDir="false" afterPath="$PROJECT_DIR$/DraggableExample/example.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/VM_to_View.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/VM_to_View.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/dragBehavior.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/dragBehavior.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/kevin_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/kevin_test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/script.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,8 +28,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/kevin_test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="94" lean-forward="true" selection-start-line="7" selection-start-column="94" selection-end-line="7" selection-end-column="94" />
+            <state relative-caret-position="360">
+              <caret line="24" column="58" lean-forward="true" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/FrontPage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -35,17 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/VM_to_View.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="164" column="34" lean-forward="true" selection-start-line="164" selection-start-column="34" selection-end-line="164" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DraggableExample/example.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="102" selection-start-line="9" selection-start-column="102" selection-end-line="9" selection-end-column="102" />
+            <state relative-caret-position="249">
+              <caret line="80" column="10" lean-forward="true" selection-start-line="80" selection-start-column="10" selection-end-line="80" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -53,26 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DraggableExample/example.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DraggableExample/example.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="49" column="32" lean-forward="true" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/View/dragBehavior.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="-9">
+              <caret line="59" column="16" lean-forward="true" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -80,17 +64,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
+            <state relative-caret-position="-9">
+              <caret line="76" column="15" lean-forward="true" selection-start-line="76" selection-start-column="15" selection-end-line="76" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DraggableExample/example.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DraggableExample/example.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="443">
+              <caret line="70" column="36" lean-forward="true" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/dragBehavior.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="20" column="63" lean-forward="true" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/View/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+            <state relative-caret-position="225">
+              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -152,21 +163,21 @@
         <option value="$PROJECT_DIR$/View/ViewModel_Test.json" />
         <option value="$PROJECT_DIR$/Model/CS_major.json" />
         <option value="$PROJECT_DIR$/View/app.js" />
-        <option value="$PROJECT_DIR$/View/VM_to_View.js" />
-        <option value="$PROJECT_DIR$/View/script.js" />
-        <option value="$PROJECT_DIR$/View/main.css" />
-        <option value="$PROJECT_DIR$/DraggableExample/example.js" />
         <option value="$PROJECT_DIR$/DraggableExample/example.css" />
         <option value="$PROJECT_DIR$/DraggableExample/example.html" />
-        <option value="$PROJECT_DIR$/View/kevin_test.html" />
+        <option value="$PROJECT_DIR$/DraggableExample/example.js" />
+        <option value="$PROJECT_DIR$/View/main.css" />
         <option value="$PROJECT_DIR$/View/dragBehavior.js" />
+        <option value="$PROJECT_DIR$/View/VM_to_View.js" />
+        <option value="$PROJECT_DIR$/View/kevin_test.html" />
+        <option value="$PROJECT_DIR$/View/script.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="476" />
+    <option name="x" value="174" />
     <option name="y" value="23" />
-    <option name="width" value="800" />
+    <option name="width" value="1102" />
     <option name="height" value="715" />
   </component>
   <component name="ProjectView">
@@ -491,17 +502,24 @@
       <option name="project" value="LOCAL" />
       <updated>1554407458275</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="starting the drag behavior, stay tuned.">
+      <created>1554410060313</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1554410060313</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104711000" />
+    <option name="totallyTimeSpent" value="110065000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="23" y="23" width="1253" height="715" extended-state="0" />
+    <frame x="483" y="23" width="793" height="715" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49598715" visible="true" weight="0.23295455" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49598715" visible="true" weight="0.17357513" />
       <window_info id="Structure" order="1" sideWeight="0.5040128" side_tool="true" weight="0.39016393" />
       <window_info id="Favorites" order="2" sideWeight="0.5013405" side_tool="true" weight="0.087243885" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -521,19 +539,19 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.085553996" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49598715" visible="true" weight="0.1619171" />
+      <window_info id="Structure" order="1" sideWeight="0.5040128" side_tool="true" weight="0.39016393" />
       <window_info id="Favorites" order="2" sideWeight="0.5013405" side_tool="true" weight="0.087243885" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32905295" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.17335473" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39967898" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3253205" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32852563" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32744783" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.329653" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -585,7 +603,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Need to game-plan the whole connections thing a little bit more carefully." />
     <MESSAGE value="temp" />
     <MESSAGE value="Getting there, maybe. Focus on the svg elements - paths only need to know about their connections. This problem is simpler than you think it is." />
     <MESSAGE value="PROGRESS: Code draws green circles for courses taken, red circles for those not taken and not required, gray circles for those not taken and required. Note that the ViewModel_Test.json being imported is AN EXAMPLE CONFIGURATION. However, VM_to_Model.js is written to accommodate tagged booleans, so this should be easily scalable. &#10;&#10;Initial Noticed Bugs: &#10;1. Dragging the node is necessary to position the text and make connections appear. No idea why this is happening, might be something to do with when drag is executed. &#10;2. Having hard time figuring out how to scale arrows down–right now, the arrowhead is hidden behind the node, making it just look like an undirected graph. &#10;3. Spacing problem. How do we get this to look nice? Also, consider implementing the &quot;drag and don't touch&quot; example in the D3 wiki. &#10;4. In general, we're going to run out of space in placing all the nodes. &#10;5. How do we get dragging behavior from one panel (not taken not required courses) to the main interface?" />
@@ -610,7 +627,8 @@
     <MESSAGE value="This commit is the approach where all the elements are &lt;g&gt; inside one big &lt;svg&gt;. The graph algorithm should be easiest inside this, but there' a bug where dragging it onto the graph makes it go behind the graph. console.log reveals that the draggable is still hitting the graph element. So what is going on? z-index didn't fix it. Answer may be in cloning, but that needs some research." />
     <MESSAGE value="Draggable objects, partitioned by svg, works now. Now you have to implement the drag across svg behavior." />
     <MESSAGE value="Some aesthetic changes to make things easier." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some aesthetic changes to make things easier." />
+    <MESSAGE value="starting the drag behavior, stay tuned." />
+    <option name="LAST_COMMIT_MESSAGE" value="starting the drag behavior, stay tuned." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../machack-website/index.html" />
@@ -652,13 +670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/FrontPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -727,27 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/VM_to_View.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="164" column="34" lean-forward="true" selection-start-line="164" selection-start-column="34" selection-end-line="164" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/ViewModel_Test.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -757,36 +747,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DraggableExample/example.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="102" selection-start-line="9" selection-start-column="102" selection-end-line="9" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/kevin_test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="94" lean-forward="true" selection-start-line="7" selection-start-column="94" selection-end-line="7" selection-end-column="94" />
+        <state relative-caret-position="270">
+          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DraggableExample/example.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="49" column="32" lean-forward="true" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
+        <state relative-caret-position="443">
+          <caret line="70" column="36" lean-forward="true" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DraggableExample/example.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+        <state relative-caret-position="-9">
+          <caret line="59" column="16" lean-forward="true" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/VM_to_View.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="80" column="10" lean-forward="true" selection-start-line="80" selection-start-column="10" selection-end-line="80" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/dragBehavior.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="274">
+          <caret line="20" column="63" lean-forward="true" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/kevin_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="58" lean-forward="true" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/FrontPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="76" column="15" lean-forward="true" selection-start-line="76" selection-start-column="15" selection-end-line="76" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
         </state>
       </provider>
     </entry>

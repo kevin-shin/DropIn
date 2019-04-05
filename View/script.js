@@ -4,10 +4,6 @@ $(document).ready(function() {
         courseCatalog = data;
     });
 
-    $(this).click(function(){
-        console.log(this);
-    });
-
     var graph = $("#graph");
     var threshold = "50%";
 
@@ -15,16 +11,15 @@ $(document).ready(function() {
         onRelease: function() {
             if (this.hitTest(graph, threshold)) {
                 console.log(graph);
-                //graph.append(this.target);
-                //updateGraph();
+                console.log("hit here")
             }
         },
         onPress: function() {
-            console.log(this);
             //var course = findCourse(courseCatalog,this);
             //var description = course.courseInfo;
             //$("#courseDescription").replaceWith( "<p id='courseDescription'>" + description + "</p>" );
-        }
+        },
+        zIndexBoost:true
     });
 
     function findCourse(data,course) {

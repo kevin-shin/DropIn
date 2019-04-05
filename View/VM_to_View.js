@@ -70,7 +70,7 @@ function draw(ViewModel) {
     let svgNotTakenDivs = d3.select("body")
         .select("#GUI")
         .append("svg")
-        .attr("id","svgTaken");
+        .attr("id","graph");
 
     let svgContainer = svgNotTakenDivs.selectAll("taken")
         .data(taken)
@@ -79,11 +79,6 @@ function draw(ViewModel) {
         .attr("id", function (d) {
             return String(d.dept) + String(d.course)
         })
-        .classed("draggable", true)
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));
 
     svgContainer.append("circle")
         .data(taken)
@@ -123,10 +118,6 @@ function draw(ViewModel) {
             return String(d.dept) + String(d.course)
         })
         .classed("draggable", true)
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));
 
 
     svgRequiredGroups.append("circle")
@@ -180,7 +171,7 @@ function draw(ViewModel) {
 
     //Edges
     let paths = svgNotTakenDivs.selectAll("edge")
-        .data(Connections)
+        //.data(Connections)
         .enter().append('path')
         .attr('class', 'edgePath')
         .attr('d', function (d) {
@@ -235,15 +226,15 @@ function updateGraph() {
 
 
 function dragstarted(d) {
-    d3.select(this).raise().classed("active", true);
+    //d3.select(this).raise().classed("active", true);
 }
 
 function dragged(d) {
 }
 
 function dragended(d) {
-    console.log("I'm dragging " + d3.select(this));
-    updateGraph();
-    d3.select(this).classed("active", false);
+    //console.log("I'm dragging !" + d3.select(this).id);
+    //updateGraph();
+    //d3.select(this).classed("active", false);
 }
 

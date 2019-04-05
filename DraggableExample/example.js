@@ -1,4 +1,4 @@
-$(document.ready(function(){
+$(document).ready(function(){
 
 
     /*
@@ -61,16 +61,9 @@ $(document.ready(function(){
         var scope = {
             clone   : element.clone().addClass("clone").prependTo(container),
             element : element,
-            wrapper : wrapper,
-            width   : wrapper.outerWidth(),
-            dropped : false,
-            moved   : false,
-            get x() { return getPosition(wrapper, offset).x; },
-            get y() { return getPosition(wrapper, offset).y; }
         };
 
         scope.draggable = createDraggable(scope);
-
         element.on("mousedown touchstart", scope, startDraggable);
     });
 
@@ -158,14 +151,5 @@ $(document.ready(function(){
         };
     }
 
-
-
-
-
-
-
-
-
-
-}));
+});
 
