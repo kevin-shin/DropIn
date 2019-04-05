@@ -6,5 +6,5 @@ let prereqDictFunc = function (courses) {
         prereqDict.set(courseDescription, course.prereq);
     }
 }
-
+prereqDictFunc(courses);
 console.log(prereqDict);

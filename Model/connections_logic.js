@@ -2,6 +2,7 @@ var courseStack = [];
 var visited = [];
 var returned = [];
 
+
 let dfs = function (draggedCourse){
     courseStack.push(draggedCourse);
     visited.push(draggedCourse);
@@ -17,17 +18,33 @@ let dfs = function (draggedCourse){
     }
 }
 
+courseStack = [];
+visited = [];
 var adjList = [];
 
 //connections to adjacency list
-returnedToAdjList = function (returned) {
+let returnedToAdjList = function (returned) {
     for (var course of returned) {
         var prereqs = prereqDict.get(course);
         for (var prereq of prereqs) {
-            adjList.push({
-                "source": prereq,
-                "target": course
-            });
+            if (!(prereq in adjList)){
+                adjList.push({
+                    "source": prereq,
+                    "target": course
+                });
+            }
         }
     }
+    returned = [];
+}
+
+makeConnections = function (draggedCourse) {
+    var courseStack = [];
+    var visited = [];
+    var returned = [];
+
+    dfs(draggedCourse);
+    courseStack = [];
+    visited = [];
+    returnedToAdjList(returned);
 }
