@@ -1,0 +1,45 @@
+{
+    "profile": [{
+        "dept": "COMP",
+        "course": "123",
+        "status": "reqNotTaken"
+    },
+    {
+        "dept": "MATH",
+        "course": "279",
+        "status": "taken"
+    },
+    {
+        "dept": "COMP",
+        "course": "127",
+        "status": "reqNotTaken"
+    },
+    {
+        "dept": "COMP",
+        "course": "128",
+        "status": "reqNotTaken"
+    },
+    {
+        "dept": "COMP",
+        "course": "221",
+        "status": "reqNotTaken"
+    },
+    {
+        "dept": "COMP",
+        "course": "225",
+        "status": "reqNotTaken"
+    },
+    {
+        "dept": "COMP",
+        "course": "240",
+        "status": "reqNotTaken"
+    }],
+    "requirements" : {
+        "intro": 0,
+        "core": 0,
+        "math": 2,
+        "elective": 3
+    }
+}
+
+
