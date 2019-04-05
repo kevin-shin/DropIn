@@ -1,5 +1,6 @@
 //Approach to taking view model and outputting model
 let ViewModel;
+
 d3.json("./ViewModel_Test.json").then(function (data) {
     draw(data);
     ViewModel = data;
@@ -19,6 +20,7 @@ function draw(ViewModel) {
     NOT TAKEN COURSES
     Color: Red
      */
+
     let svg = d3.select("body")
         .select("#GUI")
         .append("div")
@@ -39,8 +41,6 @@ function draw(ViewModel) {
     TAKEN COURSES
     Color: Green
      */
-
-
     let svgNotTakenDivs = d3.select("body")
         .select("#GUI")
         .append("div")
