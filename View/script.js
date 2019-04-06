@@ -7,11 +7,14 @@ $(document).ready(function() {
     var graph = $("#graph");
     var threshold = "50%";
 
-    Draggable.create("g",{
+    Draggable.create(".draggable",{
         onRelease: function() {
-            if (this.hitTest(graph, threshold)) {
-                console.log(graph);
-                console.log("hit here")
+            console.log(this.target);
+            console.log(this.target.id);
+            console.log(this.target.tagName);
+            console.log(this.target.class);
+            if (this.target === " draggable available" && this.hitTest(graph, threshold)) {
+                console.log("hit here");
             }
         },
         onPress: function() {
@@ -19,7 +22,6 @@ $(document).ready(function() {
             var description = course.courseInfo;
             $("#courseDescription").replaceWith( "<p id='courseDescription'>" + description + "</p>" );
         },
-        zIndexBoost:true
     });
 
     function findCourse(data,course) {

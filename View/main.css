@@ -14,12 +14,13 @@ body {
 
 .instructions {
     padding: 10px;
-    height: 60%;
+    height: 50%;
     width: 25%;
     position: absolute;
     right: 0;
     overflow-y: scroll;
     background-color: #999999;
+    z-index: 10;
 }
 
 .instructions a {
@@ -30,7 +31,7 @@ body {
 
 .requirements {
     padding: 10px;
-    height: 40%;
+    height: 45%;
     width: 25%;
     position: absolute;
     right: 0;
@@ -49,7 +50,6 @@ body {
     width: 75%;
     left: 0;
     background-color: #ccaabb;
-    z-index: -1;
 }
 
 #availableCourses {
@@ -75,21 +75,16 @@ body {
 
 #svgNotTaken {
     width: 75%;
-    height: 25%;
+    height: 150px;
     position: relative;
     background-color: #bed5cd;
 }
 
 #svgTaken {
     width: 75%;
-    height: 75%;
+    height: 500px;
     position: relative;
     background-color: aqua;
-}
-
-.draggable {
-    position: relative;
-    overflow: hidden;
 }
 
 #smallBox {
@@ -104,8 +99,32 @@ body {
 
 }
 
-.clone {
-    position: absolute;
-    opacity: 0;
-    visibility: hidden;
+.taken {
+    height: 60px;
+    width: 60px;
+    background-color: green;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
+}
+
+.available {
+    height: 60px;
+    width: 60px;
+    background-color: red;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
+}
+
+.required {
+    height: 60px;
+    width: 60px;
+    background-color: gray;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
 }
