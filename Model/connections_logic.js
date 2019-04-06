@@ -23,28 +23,25 @@ visited = [];
 var adjList = [];
 
 //connections to adjacency list
-let returnedToAdjList = function (returned) {
+let returnedToAdjList = function () {
     for (var course of returned) {
         var prereqs = prereqDict.get(course);
         for (var prereq of prereqs) {
-            if (!(prereq in adjList)){
-                adjList.push({
-                    "source": prereq,
-                    "target": course
-                });
-            }
+            adjList.push({
+                "source": prereq,
+                "target": course
+            });
         }
     }
     returned = [];
 }
 
-let makeConnections = function (draggedCourse) {
-    var courseStack = [];
-    var visited = [];
-    var returned = [];
 
-    dfs(draggedCourse);
-    courseStack = [];
-    visited = [];
-    returnedToAdjList(returned);
-}
+    let makeConnections = function (draggedCourse) {
+        var courseStack = [];
+        var visited = [];
+        var returned = [];
+
+        dfs(draggedCourse);
+        returnedToAdjList();
+    }
