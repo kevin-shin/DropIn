@@ -20,7 +20,9 @@ $(document).ready(function() {
         onPress: function() {
             var course = findCourse(courseCatalog,this);
             var description = course.courseInfo;
+            var name = course.name;
             $("#courseDescription").replaceWith( "<p id='courseDescription'>" + description + "</p>" );
+            $("#name").replaceWith( "<p id='name'>" + name + "</p>" );
         },
     });
 
