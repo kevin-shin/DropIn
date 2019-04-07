@@ -4,7 +4,7 @@ $(document).ready(function() {
         courseCatalog = data;
     });
 
-    $(".draggable").bind( "click",function() {
+    $(".draggable").bind( "mousedown",function() {
         console.log($(this).id);
         var course = findCourse(courseCatalog,this);
         var description = course.courseInfo;
