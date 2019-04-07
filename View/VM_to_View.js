@@ -150,15 +150,3 @@ function updateGraph() {
     })
 }
 
-
-function dragstarted(d) {
-    //d3.select(this).raise().classed("active", true);
-}
-
-function dragged(d) {
-}
-
-function dragended(d) {
-
-}
-

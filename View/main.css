@@ -96,7 +96,11 @@ body {
 
 #GUI {
     height: 100vh;
+}
 
+.draggable {
+    position: absolute;
+    z-index: 999;
 }
 
 .taken {
@@ -107,6 +111,17 @@ body {
     text-align: center;
     display: inline-block;
     line-height: 60px;
+}
+
+#testhtml {
+    height: 60px;
+    width: 60px;
+    background-color: green;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
+    position: absolute;
 }
 
 .available {
