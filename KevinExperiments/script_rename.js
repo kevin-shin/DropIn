@@ -6,25 +6,19 @@ $(document).ready(function() {
     });
 
     $(function () {
-        //Make element draggable
+        // //Make element draggable
         $(".draggable").draggable({
             helper: 'clone',
             cursor: 'move',
             tolerance: 'fit',
-            revert: true
+            revert: "invalid"
         });
         $("#graph").droppable({
             accept: '.draggable',
             drop: function (e, ui) {
                 var x = ui.helper.clone();
                 ui.helper.remove();
-                $(x).removeAttr("class");
-
-                $(x).addClass("dropItem");
-                x.addClass('jsPlumbItem');
-                x.appendTo('#DropArea');
-
-                AddLine();
+                $("#graph").append(ui.draggable);
             }
         });
 
