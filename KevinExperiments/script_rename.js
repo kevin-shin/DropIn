@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    const radius = 20;
+
     var courseCatalog, viewModel, connections;
     d3.json("../Model/CS_major.json").then(function (data) {
         courseCatalog = data;
@@ -45,7 +47,7 @@ $(document).ready(function () {
             drop: function (e, ui) {
                 var x = ui.helper.clone();
                 ui.helper.remove();
-                x.css({top: 200, left: 200, position:'absolute'});
+                x.css({top: e.clientY - radius, left: e.clientX - radius, position:'absolute'});
                 $("#graph").append(x);
                 $(".draggable").draggable();
 
