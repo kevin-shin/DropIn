@@ -62,7 +62,14 @@ $(document).ready(function () {
         jsPlumb.fire("jsPlumbDemoLoaded", instance);
 
 
-
+        function findCourse(data,course) {
+            let ID = course.id;
+            for (let object of data) {
+                if ((object.dept + object.courseNum) === ID){
+                    return object;
+                }
+            }
+        }
     });
 
     function AddLine() {
