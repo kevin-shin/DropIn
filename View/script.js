@@ -4,21 +4,70 @@ $(document).ready(function() {
         courseCatalog = data;
     });
 
-    const graph = $("#graph");
+    $(function () {
 
-    $(".draggable").bind( "mousedown",function() {
-        var course = findCourse(courseCatalog,this);
-        var description = course.courseInfo;
-        var name = course.name;
-        $("#courseDescription").replaceWith( "<p id='courseDescription'>" + description + "</p>" );
-        $("#name").replaceWith( "<p id='name'>" + name + "</p>" );
-    })
+        //Make element draggable
+        $(".draggable").draggable({
+            helper: 'clone',
+            cursor: 'move',
+            tolerance: 'fit',
+            revert: true
+        });
+        $("#graph").droppable({
+            accept: '.draggable',
+            drop: function (e, ui) {
+                var x = ui.helper.clone();
+                ui.helper.remove();
+                $(x).removeAttr("class");
 
-    $(".draggable").bind( "mouseup",function() {
-            if (hitTest(this,graph)){
-                alert("hittest!")
+                $(x).addClass("dropItem");
+                x.addClass('jsPlumbItem');
+                x.appendTo('#DropArea');
+
+                AddLine();
             }
+        });
     });
+    //
+    // function AddLine()
+    // {
+    //     jsPlumb.removeAllEndpoints();
+    //     var j = 1;
+    //     var previous;
+    //
+    //     $("#DropArea").find(".jsPlumbItem").each(function () {
+    //
+    //         if (j > 1)
+    //         {
+    //             var e0 = jsPlumb.addEndpoint(previous);
+    //             var e1 = jsPlumb.addEndpoint($(this));
+    //             //add line
+    //             jsPlumb.connect({ source: e0, target: e1 });
+    //         }
+    //         else
+    //         {
+    //             j++;
+    //         }
+    //         previous = $(this);
+    //     });
+    //     jsPlumb.draggable($(".jsPlumbItem"));
+    //
+    // }
+
+    //
+    // $(".draggable").bind( "mousedown",function() {
+    //     var course = findCourse(courseCatalog,this);
+    //     var description = course.courseInfo;
+    //     var name = course.name;
+    //     $("#courseDescription").replaceWith( "<p id='courseDescription'>" + description + "</p>" );
+    //     $("#name").replaceWith( "<p id='name'>" + name + "</p>" );
+    // })
+    //
+    // $(".draggable").bind( "mouseup",function() {
+    //         if (hitTest(this,graph)){
+    //             alert("hittest!")
+    //         }
+    // });
 
     function hitTest(object,bounds){
         var course = object.getBoundingClientRect();
