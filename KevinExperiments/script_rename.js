@@ -1,31 +1,64 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-    var courseCatalog;
-    d3.json("../Model/CS_major.json").then(function(data){
+    var courseCatalog, viewModel, connections;
+    d3.json("../Model/CS_major.json").then(function (data) {
         courseCatalog = data;
+        viewModel = data;
+        connections = data.Connections;
     });
 
     $(function () {
+        var availableCourses = $(".draggable");
+
+
         // //Make element draggable
-        $(".draggable").draggable({
-            helper: 'clone',
-            cursor: 'move',
-            tolerance: 'fit',
-            revert: "invalid"
+        // var instance = jsPlumb.getInstance({
+        //     Connector: ["Straight"],
+        //     DragOptions: {cursor: "pointer", zIndex: 5},
+        //     PaintStyle: {stroke: "black", strokeWidth: 2},
+        // });
+        //
+        // instance.draggable(availableCourses);
+        //
+        // function initializeConnections() {
+        //     for (let connection of connections) {
+        //         instance.connect({
+        //             source: connection.source,
+        //             target: connection.target,
+        //             endpoint: "Blank",
+        //             anchors: [
+        //                 ["Perimeter", {shape: "Diamond", anchorCount: 150}],
+        //                 ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+        //             ]
+        //         })
+        //     }
+        // }
+
+        availableCourses.draggable({
         });
-        $("#graph").droppable({
+
+        $("#svgNotTaken").droppable({
             accept: '.draggable',
+        });
+
+        $("#graph").droppable({
             drop: function (e, ui) {
                 var x = ui.helper.clone();
                 ui.helper.remove();
-                $("#graph").append(ui.draggable);
+                x.css({top: 200, left: 200, position:'absolute'});
+                $("#graph").append(x);
+                $(".draggable").draggable();
+
             }
         });
 
+        // initializeConnections();
+        // jsPlumb.fire("jsPlumbDemoLoaded", instance);
+
+
     });
 
-    function AddLine()
-    {
+    function AddLine() {
 
         // jsPlumb.removeAllEndpoints();
         // var j = 1;
