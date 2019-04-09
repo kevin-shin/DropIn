@@ -27,14 +27,17 @@ let returnedToAdjList = function () {
     for (var course of returned) {
         var prereqs = prereqDict.get(course);
         for (var prereq of prereqs) {
-            adjList.push({
-                "source": prereq,
-                "target": course
-            });
+            if (!adjList.some((adj) => adj.source === prereq && adj.target === course)) {
+                adjList.push({
+                    "source": prereq,
+                    "target": course
+                });
+            }
         }
     }
     returned = [];
-};
+}
+
 
 
 let makeConnections = function(draggedCourse) {
