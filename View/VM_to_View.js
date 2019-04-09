@@ -1,4 +1,3 @@
-
 //IMPORT DATA
 let ViewModel;
 d3.json("./ViewModel_Test.json").then(function (data) {
@@ -26,12 +25,8 @@ function draw(ViewModel) {
     let svgGroups = svg.selectAll("notTaken")
         .data(available)
         .enter().append("div")
-        .attr("id", function (d) {
-            return String(d.dept) + String(d.course)
-        })
-        .html(function (d) {
-            return String(d.course)
-        })
+        .attr("id", function (d) {return String(d.dept) + String(d.course)})
+        .html(function (d) {return String(d.course)})
         .classed("draggable available", true);
 
     //TAKEN COURSES. Color: Green

@@ -3,8 +3,8 @@ $(document).ready(function () {
     //GLOBAL VARIABLES
     const radius = 20;
     const displacement = radius + 10;
-    var courses, arrows, catalog;
 
+    var courses, arrows, catalog;
     //IMPORT DATA
     d3.json("./ViewModel_Test.json").then(function (data) {
         courses = data.Classes;
@@ -46,6 +46,20 @@ $(document).ready(function () {
             $("#graph").append(x);
 
             //JULIET'S ALGORITHM HERE
+            /*
+            Pseudocode
+
+            let prereqs = array of courses returned by prereq algorithm
+            for prereq in prereqs:
+                if prereq on graph already:
+                    draw line from that prereq to dropped node (x)
+                else:
+                    add node, in transparent red. Think about how you want to place it.
+                    draw connection between that node and this node.
+                    something about updating profiles.
+
+            */
+
             availableCourses = $(".draggable.available");
             graphCourses = $(".inGraph");
 
@@ -86,15 +100,15 @@ $(document).ready(function () {
         }
     ];
 
-    initializeConnections();
+    initializeConnections(sourceTarget);
     jsPlumb.fire("jsPlumbDemoLoaded", instance);
 
 
     //-----------     HELPER FUNCTIONS     -----------
 
     //Draw the connections between imported courses.
-    function initializeConnections() {
-        sourceTarget.forEach((function (entry) {
+    function initializeConnections(connections) {
+        connections.forEach((function (entry) {
             instance.connect({
                 source: entry.source,
                 target: entry.target,
