@@ -3,21 +3,21 @@ $(document).ready(function () {
     const radius = 20;
     const displacement = radius + 10;
 
-    var courses, connections, catalog;
+    var courses, arrows, catalog;
 
     d3.json("./ViewModel_Test.json").then(function (data) {
         courses = data.Classes;
-        connections = data.Connections;
+        arrows = data.Connections;
     });
-
 
     d3.json("../Model/CS_major.json").then(function (data) {
         catalog = data;
     });
 
+    var availableCourses = $(".draggable.available");
+    var takenCourses = $(".draggable.taken");
+    var requiredCourses = $(".draggable.required");
 
-    var availableCourses = $(".draggable");
-    availableCourses.draggable({});
 
     $("#svgNotTaken").droppable({
         accept: '.draggable',
@@ -34,26 +34,80 @@ $(document).ready(function () {
         }
     });
 
-    //Make element draggable
     var instance = jsPlumb.getInstance({
         Connector: ["Straight"],
         DragOptions: {cursor: "pointer", zIndex: 5},
         PaintStyle: {stroke: "black", strokeWidth: 2},
     });
 
+    availableCourses.draggable({});
+    instance.draggable(takenCourses);
+    instance.draggable(requiredCourses);
+
+    instance.connect({
+        source: "COMP123",
+        target: "COMP127",
+        endpoint: "Blank",
+        anchors: [
+            ["Perimeter", {shape: "Diamond", anchorCount: 150}],
+            ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+        ]
+    });
+
+    let sourceTarget = [
+        {
+            source: "COMP123",
+            target: "COMP127"
+        },
+        {
+            source: "COMP127",
+            target: "COMP128"
+        },
+        {
+            source: "COMP128",
+            target: "COMP221"
+        },
+        {
+            source: "MATH279",
+            target: "COMP221"
+        },
+        {
+            source: "COMP128",
+            target: "COMP240"
+        }
+    ];
+
     function initializeConnections() {
-        for (let connect in connections) {
+
+        sourceTarget.forEach((function(entry){
             instance.connect({
-                source: connect.source,
-                target: connect.target,
+                source: entry.source,
+                target: entry.target,
                 endpoint: "Blank",
                 anchors: [
                     ["Perimeter", {shape: "Diamond", anchorCount: 150}],
                     ["Perimeter", {shape: "Diamond", anchorCount: 150}]
                 ]
             })
-        }
+        }));
+
+        // for (var node in sourceTarget) {
+        //     instance.connect({
+        //         source: node.source,
+        //         target: node.target,
+        //         endpoint: "Blank",
+        //         anchors: [
+        //             ["Perimeter", {shape: "Diamond", anchorCount: 150}],
+        //             ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+        //         ]
+        //     })
+        // }
     }
+
+
+    initializeConnections();
+    jsPlumb.fire("jsPlumbDemoLoaded", instance);
+
 
     $(".draggable").bind("mousedown", function () {
         var course = findCourse(catalog, this);
@@ -62,9 +116,6 @@ $(document).ready(function () {
         $("#courseDescription").replaceWith("<p id='courseDescription'>" + description + "</p>");
         $("#name").replaceWith("<p id='name'>" + name + "</p>");
     });
-
-    initializeConnections();
-    jsPlumb.fire("jsPlumbDemoLoaded", instance);
 
     function findCourse(data, course) {
         let ID = course.id;
