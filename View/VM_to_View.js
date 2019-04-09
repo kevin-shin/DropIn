@@ -1,4 +1,5 @@
-//Approach to taking view model and outputting model
+
+//IMPORT DATA
 let ViewModel;
 d3.json("./ViewModel_Test.json").then(function (data) {
     draw(data);
@@ -15,10 +16,8 @@ function draw(ViewModel) {
     let requiredNotTaken = Classes.filter(course => (course.taken === false && course.required === true));
     let available = Classes.filter(course => (course.taken === false && course.required === false));
 
-    /*
-    NOT TAKEN COURSES
-    Color: Red
-     */
+
+    //NOT TAKEN COURSES. Color: Red
     let svg = d3.select("body")
         .select("#GUI")
         .append("div")
@@ -35,10 +34,8 @@ function draw(ViewModel) {
         })
         .classed("draggable available", true);
 
-    /*
-    TAKEN COURSES
-    Color: Green
-     */
+    //TAKEN COURSES. Color: Green
+
     let svgNotTakenDivs = d3.select("body")
         .select("#GUI")
         .append("div")
@@ -55,10 +52,8 @@ function draw(ViewModel) {
         })
         .attr("class", "draggable taken inGraph");
 
-    /*
-    REQUIRED, NOT TAKEN COURSES
-    Color: Gray
-     */
+
+    //REQUIRED, NOT TAKEN COURSES Color: Gray
     let svgRequiredGroups = svgNotTakenDivs.selectAll("taken")
         .data(requiredNotTaken)
         .enter().append("div")
@@ -70,45 +65,28 @@ function draw(ViewModel) {
         })
         .attr("class", "draggable required inGraph");
 
-
-    /*Eventually, the proper way to do this would be all data-manipulation,
-    and letting CSS draw the colors for you. Right now, it's fine to manipulate
-    the attribute color, but later you should just change classes, so that CSS
-    says "All classes that have class = "taken" are green" as a rule.
-    */
-
     positionPreReqs();
     positionTopBar();
 
-    function placeNode(object) {
-        //let numRed, num
-        if (object.taken === false && object.required === false) {
 
-        } else {
-            if (object.course < 300) {
-                return {cx: 100, cy: 100}
-            } else if (300 < object.course && object.course < 500) {
-                return {cx: 300, cy: 300}
-            }
-        }
-    }
+    //-----------     HELPER FUNCTIONS     -----------
 
-    function positionTopBar(){
+    function positionTopBar() {
         let topCourses = $(".draggable.available");
         const length = topCourses.length;
-        const width = $("#svgNotTaken").width()-75;
-        const placement = width/length;
+        const width = $("#svgNotTaken").width() - 75;
+        const placement = width / length;
         let i = 1;
-        for (let course of topCourses){
+        for (let course of topCourses) {
             $(course).css({
                 top: 50,
-                left: i*placement - 40
+                left: i * placement - 40
             });
             i++;
         }
     }
 
-    function positionPreReqs(){
+    function positionPreReqs() {
         $("#COMP123").css({
             top: 300,
             left: 50
