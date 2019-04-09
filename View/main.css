@@ -13,15 +13,21 @@ body {
 
 
 .instructions {
-    padding: 10px;
     height: 50%;
     width: 25%;
     position: absolute;
     right: 0;
     overflow-y: scroll;
-    background-color: #999999;
+    background-color: darkseagreen;
     z-index: 10;
+    border-radius: 25px;
+    padding: 5px;
 }
+
+.instructions > p {
+    padding: 10px;
+}
+
 
 .instructions a {
     font-size: 25px;
@@ -36,7 +42,9 @@ body {
     position: absolute;
     right: 0;
     bottom: 0;
-    background-color: #bed5cd;
+    background-color: darkseagreen;
+    border-radius: 25px;
+    padding: 5px;
 }
 
 .requirements a {
@@ -46,16 +54,20 @@ body {
 }
 
 #graph{
-    height: 100%;
-    width: 75%;
+    height: 80%;
+    width: 72%;
     left: 0;
-    background-color: #ccaabb;
+    background-color: white;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    margin: 5px;
 }
 
 #availableCourses {
     width:75%;
     height:120px;
-    border: 1px solid #bed5cd;
+    border-radius: 25px;
+    border: 2px solid white;
     white-space: nowrap;
 }
 
@@ -74,10 +86,13 @@ body {
 }
 
 #svgNotTaken {
-    width: 75%;
-    height: 150px;
+    width: 72%;
+    height: 100px;
     position: relative;
-    background-color: #bed5cd;
+    background-color: white;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    margin: 5px;
 }
 
 #svgTaken {
@@ -96,7 +111,11 @@ body {
 
 #GUI {
     height: 100vh;
+}
 
+.draggable {
+    position: absolute;
+    z-index: 999;
 }
 
 .taken {
