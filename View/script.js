@@ -1,5 +1,3 @@
-import * as ConnectionsLogic from '../Model/connections_logic';
-
 $(document).ready(function () {
 
     const radius = 20;
@@ -26,7 +24,9 @@ $(document).ready(function () {
     var availableCourses = $(".draggable.available");
     var graphCourses = $(".inGraph");
 
-    availableCourses.draggable({});
+    availableCourses.draggable({
+        revert: true
+    });
     instance.draggable(graphCourses);
 
 
@@ -47,7 +47,9 @@ $(document).ready(function () {
             availableCourses = $(".draggable.available");
             graphCourses = $(".inGraph");
 
-            availableCourses.draggable({});
+            availableCourses.draggable({
+                revert: true
+            });
             instance.draggable(graphCourses);
 
 
