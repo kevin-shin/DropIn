@@ -37,7 +37,7 @@ let returnedToAdjList = function () {
 };
 
 
-let makeConnections = function (draggedCourse) {
+let makeConnections = function(draggedCourse) {
     var courseStack = [];
     var visited = [];
     var returned = [];

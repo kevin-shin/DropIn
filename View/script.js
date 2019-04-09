@@ -1,3 +1,5 @@
+import * as ConnectionsLogic from '../Model/connections_logic';
+
 $(document).ready(function () {
 
     const radius = 20;
@@ -36,9 +38,12 @@ $(document).ready(function () {
         drop: function (e, ui) {
             var x = ui.helper.clone();
             ui.helper.remove();
+
             x.css({top: e.clientY - displacement, left: e.clientX - displacement, position: 'absolute'});
             x.addClass("inGraph");
             $("#graph").append(x);
+            //JULIET'S ALGORITHM HERE
+
             availableCourses = $(".draggable.available");
             graphCourses = $(".inGraph");
 
