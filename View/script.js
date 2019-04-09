@@ -44,8 +44,8 @@ $(document).ready(function () {
             });
             x.addClass("inGraph");
             $("#graph").append(x);
-            //JULIET'S ALGORITHM HERE
 
+            //JULIET'S ALGORITHM HERE
             availableCourses = $(".draggable.available");
             graphCourses = $(".inGraph");
 
@@ -59,7 +59,7 @@ $(document).ready(function () {
         var description = course.courseInfo;
         var name = course.name;
         var title = course.dept + course.courseNum;
-        $("#name").replaceWith("<p id='name'>" + title + " " + name + "</p>");
+        $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
         $("#courseDescription").replaceWith("<p id='courseDescription'>" + description + "</p>");
     });
 

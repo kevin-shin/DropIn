@@ -79,7 +79,7 @@ function draw(ViewModel) {
         let i = 1;
         for (let course of topCourses) {
             $(course).css({
-                top: 50,
+                top: $("#svgNotTaken").height()/2 - (radius+10) ,
                 left: i * placement - 40
             });
             i++;
