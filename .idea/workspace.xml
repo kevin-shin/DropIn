@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b7125132-c570-48fa-9cbb-8f6dbab62b63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/FrontPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/frontPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/VM_to_View.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/VM_to_View.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/kevin_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/script.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/View/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+            <state relative-caret-position="572">
+              <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
             </state>
           </provider>
         </entry>
@@ -198,9 +194,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="415" />
+    <option name="x" value="329" />
     <option name="y" value="23" />
-    <option name="width" value="863" />
+    <option name="width" value="951" />
     <option name="height" value="715" />
   </component>
   <component name="ProjectView">
@@ -320,13 +316,6 @@
       <workItem from="1554527907226" duration="1473000" />
       <workItem from="1554529748492" duration="11625000" />
       <workItem from="1554701732896" duration="10925000" />
-    </task>
-    <task id="LOCAL-00001" summary="Kevin's work, pt. 1. Successfully outputs two green circles, parsing through JSON object (?).">
-      <created>1553302653961</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1553302653961</updated>
     </task>
     <task id="LOCAL-00002" summary="Updated ViewModel structure. Connections is a JSON array, with objects, each of which have their own course objects. Instead of making an array, utilizes &quot;input&quot;/&quot;output&quot; properties of these objects. Any code that iterates through this array should be able to access the input-course by saying Connections[i].input, etc.">
       <created>1553618347055</created>
@@ -664,11 +653,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554789520719</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Some styling things to see initial interactions between styling and dragging. Everything seems pretty legit, but you have to worry about allowing dragging behavior only to do a few things.">
+      <created>1554829331192</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1554829331194</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152640000" />
+    <option name="totallyTimeSpent" value="153192000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -680,10 +676,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="415" y="23" width="863" height="715" extended-state="0" />
+    <frame x="329" y="23" width="949" height="715" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7977707" visible="true" weight="0.260095" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7977707" visible="true" weight="0.032327585" />
       <window_info id="Structure" order="1" sideWeight="0.2022293" side_tool="true" weight="0.22057143" />
       <window_info id="Favorites" order="2" sideWeight="0.5013405" side_tool="true" weight="0.087243885" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -767,7 +763,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Potentially good SVG fix, but drag behavior from not taken panel to graph is funky" />
     <MESSAGE value="This commit is the approach where all the elements are &lt;g&gt; inside one big &lt;svg&gt;. The graph algorithm should be easiest inside this, but there' a bug where dragging it onto the graph makes it go behind the graph. console.log reveals that the draggable is still hitting the graph element. So what is going on? z-index didn't fix it. Answer may be in cloning, but that needs some research." />
     <MESSAGE value="Draggable objects, partitioned by svg, works now. Now you have to implement the drag across svg behavior." />
     <MESSAGE value="Some aesthetic changes to make things easier." />
@@ -792,7 +787,8 @@
     <MESSAGE value="Cleaned up, part 2. TO DO: Ask Paul about importing things, and link Juliet's algorithm (commented in the droppable portion)" />
     <MESSAGE value="Position algorithm complete, although there are definitely ways to make that smoother and cleaner." />
     <MESSAGE value="Done, and did some code clean up too." />
-    <option name="LAST_COMMIT_MESSAGE" value="Done, and did some code clean up too." />
+    <MESSAGE value="Some styling things to see initial interactions between styling and dragging. Everything seems pretty legit, but you have to worry about allowing dragging behavior only to do a few things." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some styling things to see initial interactions between styling and dragging. Everything seems pretty legit, but you have to worry about allowing dragging behavior only to do a few things." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/musclesoft-jquery-connections-7f76e46/demo/minimal.html" />
@@ -1000,8 +996,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/View/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+        <state relative-caret-position="572">
+          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
         </state>
       </provider>
     </entry>

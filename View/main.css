@@ -11,7 +11,7 @@ body {
     overflow: hidden;
 }
 
-
+/*           INSTRUCTIONS PANEL           */
 .instructions {
     height: 50%;
     width: 25%;
@@ -35,6 +35,8 @@ body {
     display: block;
 }
 
+
+/*           REQUIREMENTS PANEL           */
 .requirements {
     padding: 10px;
     height: 45%;
@@ -52,6 +54,9 @@ body {
     color: #818181;
     display: block;
 }
+
+
+/*           GUI           */
 
 #graph{
     height: 80%;
@@ -71,20 +76,6 @@ body {
     white-space: nowrap;
 }
 
-.area {
-    position:absolute;
-    margin: 0 auto;
-    color: #ccc;
-    font-size: 20px;
-    bottom: 10px;
-    left: 20px;
-}
-
-.result {
-    display: inline-block;
-    margin-left: 30px;
-}
-
 #svgNotTaken {
     width: 72%;
     height: 100px;
@@ -93,26 +84,21 @@ body {
     border-radius: 25px;
     border: 2px solid #73AD21;
     margin: 5px;
-}
-
-#svgTaken {
-    width: 75%;
-    height: 500px;
-    position: relative;
-    background-color: aqua;
-}
-
-#smallBox {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: red;
+    /*overflow: auto;*/
 }
 
 #GUI {
     height: 100vh;
 }
 
+.result {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+
+
+/*           NODE BEHAVIOR           */
 .draggable {
     position: absolute;
     z-index: 999;
