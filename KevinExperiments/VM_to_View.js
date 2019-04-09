@@ -55,7 +55,7 @@ function draw(ViewModel) {
         .html(function(d) {
                 return String(d.course)
             })
-        .attr("class","draggable taken");
+        .attr("class","draggable taken inGraph");
 
     /*
     REQUIRED, NOT TAKEN COURSES
@@ -70,7 +70,7 @@ function draw(ViewModel) {
         .html(function(d) {
             return String(d.course)
         })
-        .attr("class","draggable required");
+        .attr("class","draggable required inGraph");
 
 
     let defs = svgNotTakenDivs.append('defs');

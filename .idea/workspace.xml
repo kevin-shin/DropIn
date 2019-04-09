@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b7125132-c570-48fa-9cbb-8f6dbab62b63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KevinExperiments/VM_to_View.js" beforeDir="false" afterPath="$PROJECT_DIR$/KevinExperiments/VM_to_View.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KevinExperiments/script_rename.js" beforeDir="false" afterPath="$PROJECT_DIR$/KevinExperiments/script_rename.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -22,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/KevinExperiments/VM_to_View.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-851">
-              <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="22" />
+            <state relative-caret-position="335">
+              <caret line="72" column="49" selection-start-line="72" selection-start-column="49" selection-end-line="72" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -91,11 +92,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/KevinExperiments/script_rename.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
-              <folding>
-                <marker date="1554771439045" expanded="true" signature="1335:1491" ph="..." />
-              </folding>
+            <state relative-caret-position="485">
+              <caret line="50" column="24" lean-forward="true" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -181,19 +179,19 @@
         <option value="$PROJECT_DIR$/View/test2.html" />
         <option value="$PROJECT_DIR$/View/script.js" />
         <option value="$PROJECT_DIR$/KevinExperiments/script.js" />
-        <option value="$PROJECT_DIR$/KevinExperiments/VM_to_View.js" />
         <option value="$PROJECT_DIR$/View/kevinScript2.js" />
         <option value="$PROJECT_DIR$/KevinExperiments/kevin_test.html" />
         <option value="$PROJECT_DIR$/View/kevin_test.html" />
         <option value="$PROJECT_DIR$/View/kevinScript.js" />
+        <option value="$PROJECT_DIR$/KevinExperiments/VM_to_View.js" />
         <option value="$PROJECT_DIR$/KevinExperiments/script_rename.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="420" />
+    <option name="x" value="301" />
     <option name="y" value="23" />
-    <option name="width" value="860" />
+    <option name="width" value="981" />
     <option name="height" value="715" />
   </component>
   <component name="ProjectView">
@@ -629,17 +627,24 @@
       <option name="project" value="LOCAL" />
       <updated>1554768416974</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Issues with iterating through an object, but things are at least working now. Starting the div -&gt; div logic, need to link with Juliet's algorithm.">
+      <created>1554774026341</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1554774026342</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143740000" />
+    <option name="totallyTimeSpent" value="146318000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="420" y="23" width="860" height="715" extended-state="0" />
+    <frame x="301" y="23" width="981" height="715" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7977707" visible="true" weight="0.057210967" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7977707" visible="true" weight="0.3" />
       <window_info id="Structure" order="1" sideWeight="0.2022293" side_tool="true" weight="0.22057143" />
       <window_info id="Favorites" order="2" sideWeight="0.5013405" side_tool="true" weight="0.087243885" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -723,7 +728,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made SVGs the draggable." />
     <MESSAGE value="All the nodes show in the right color, no weird svg spacing problems, and drag behavior for red nodes work." />
     <MESSAGE value="DRAGGING ALGORITHMS ALL WORK" />
     <MESSAGE value="-Dragging works.&#10;-coursedescription updates with click." />
@@ -748,7 +752,8 @@
     <MESSAGE value="mouseevent works great" />
     <MESSAGE value="Big moves pt 2. Committing before dealing with some git issues to be safe." />
     <MESSAGE value="Big moves pt. 3. Clicking feature and dragging feature works in sync. Now, what is wrong with the connections?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Big moves pt. 3. Clicking feature and dragging feature works in sync. Now, what is wrong with the connections?" />
+    <MESSAGE value="Issues with iterating through an object, but things are at least working now. Starting the div -&gt; div logic, need to link with Juliet's algorithm." />
+    <option name="LAST_COMMIT_MESSAGE" value="Issues with iterating through an object, but things are at least working now. Starting the div -&gt; div logic, need to link with Juliet's algorithm." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/DraggableExample/example.css">
@@ -915,13 +920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/KevinExperiments/VM_to_View.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-851">
-          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model/CS_major.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3870">
@@ -936,13 +934,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/KevinExperiments/VM_to_View.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="72" column="49" selection-start-line="72" selection-start-column="49" selection-end-line="72" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/KevinExperiments/script_rename.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
-          <folding>
-            <marker date="1554771439045" expanded="true" signature="1335:1491" ph="..." />
-          </folding>
+        <state relative-caret-position="485">
+          <caret line="50" column="24" lean-forward="true" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
         </state>
       </provider>
     </entry>

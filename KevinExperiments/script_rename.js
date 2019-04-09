@@ -14,9 +14,18 @@ $(document).ready(function () {
         catalog = data;
     });
 
+    var instance = jsPlumb.getInstance({
+        Connector: ["Straight"],
+        DragOptions: {cursor: "pointer", zIndex: 5},
+        PaintStyle: {stroke: "black", strokeWidth: 2},
+    });
+
+
     var availableCourses = $(".draggable.available");
-    var takenCourses = $(".draggable.taken");
-    var requiredCourses = $(".draggable.required");
+    var graphCourses = $(".inGraph");
+
+    availableCourses.draggable({});
+    instance.draggable(graphCourses);
 
 
     $("#svgNotTaken").droppable({
@@ -28,32 +37,17 @@ $(document).ready(function () {
             var x = ui.helper.clone();
             ui.helper.remove();
             x.css({top: e.clientY - displacement, left: e.clientX - displacement, position: 'absolute'});
+            x.addClass("inGraph");
             $("#graph").append(x);
-            $(".draggable").draggable();
+            availableCourses = $(".draggable.available");
+            graphCourses = $(".inGraph");
+
+            availableCourses.draggable({});
+            instance.draggable(graphCourses);
+
 
         }
     });
-
-    var instance = jsPlumb.getInstance({
-        Connector: ["Straight"],
-        DragOptions: {cursor: "pointer", zIndex: 5},
-        PaintStyle: {stroke: "black", strokeWidth: 2},
-    });
-
-    availableCourses.draggable({});
-    instance.draggable(takenCourses);
-    instance.draggable(requiredCourses);
-
-    instance.connect({
-        source: "COMP123",
-        target: "COMP127",
-        endpoint: "Blank",
-        anchors: [
-            ["Perimeter", {shape: "Diamond", anchorCount: 150}],
-            ["Perimeter", {shape: "Diamond", anchorCount: 150}]
-        ]
-    });
-
     let sourceTarget = [
         {
             source: "COMP123",
@@ -78,7 +72,6 @@ $(document).ready(function () {
     ];
 
     function initializeConnections() {
-
         sourceTarget.forEach((function(entry){
             instance.connect({
                 source: entry.source,
