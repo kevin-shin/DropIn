@@ -1,10 +1,10 @@
 var prereqDict = new Map();
 
-let prereqDictFunc = function (courses) {
+let makePrereqDict = function (courses) {
     for (var course of courses) {
         let courseDescription = course.dept + course.courseNum;
         prereqDict.set(courseDescription, course.prereq);
     }
 }
-prereqDictFunc(courses);
+makePrereqDict(courses);
 console.log(prereqDict);
