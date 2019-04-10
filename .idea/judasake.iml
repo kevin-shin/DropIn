@@ -12,8 +12,6 @@
     <orderEntry type="library" name="d3.v5" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="jquery-ui" level="application" />
-    <orderEntry type="library" name="TweenMax" level="application" />
-    <orderEntry type="library" name="jquery.gsap" level="application" />
     <orderEntry type="library" name="jsplumb" level="application" />
     <orderEntry type="library" name="jquery-1.12.4" level="application" />
   </component>
