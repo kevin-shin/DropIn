@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/example/script.js"],"names":["console"],"mappings":";;AAAA,IAAA,SAAA,GAAA,OAAA,CAAA,eAAA,CAAA;;AAEAA,OAAO,CAAPA,GAAAA,CAAY,CAAA,GAAA,SAAA,CAAA,GAAA,EAAA,CAAA,EAAZA,CAAY,CAAZA","sourcesContent":["import { sum } from './multiple.js'\n\nconsole.log(sum(1,2));"],"file":"script.js"}
