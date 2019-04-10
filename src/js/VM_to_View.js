@@ -1,6 +1,6 @@
 //IMPORT DATA
 let ViewModel;
-d3.json("./ViewModel_Test.json").then(function (data) {
+d3.json("../Model/ViewModel_Test.json").then(function (data) {
     draw(data);
     ViewModel = data;
 });
