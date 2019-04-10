@@ -130,8 +130,6 @@ let inputs = d3.select('#profileData').selectAll("courseOptions")
 
 
 
-
-
 $('#profileData').submit((event) => {
     event.preventDefault();
     let profileString = JSON.stringify($('#profileData').serializeArray());
