@@ -2,7 +2,6 @@ var courseStack = [];
 var visited = [];
 var returned = [];
 
-
 let dfs = function (draggedCourse) {
     courseStack.push(draggedCourse);
     visited.push(draggedCourse);
@@ -36,9 +35,7 @@ let returnedToAdjList = function () {
         }
     }
     returned = [];
-}
-
-
+};
 
 let makeConnections = function(draggedCourse) {
     var courseStack = [];
