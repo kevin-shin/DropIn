@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/example/multiple.js"],"names":["num1"],"mappings":";;;;;;;AAAO,SAAA,GAAA,CAAA,IAAA,EAAA,IAAA,EAAyB;AAC5B,SAAOA,IAAI,GAAX,IAAA;AACH","sourcesContent":["export function sum(num1, num2) {\n    return num1 + num2;\n}"],"file":"multiple.js"}
