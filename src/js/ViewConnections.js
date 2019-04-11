@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     var courses, arrows, catalog;
     //IMPORT DATA
-    d3.json("./ViewModel_Test.json").then(function (data) {
+    d3.json("../Model/ViewModel_Test.json").then(function (data) {
         courses = data.Classes;
         arrows = data.Connections;
     });
