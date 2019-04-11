@@ -2,7 +2,6 @@ import {courseCatalog} from "./prereq_dictionary.js";
 
 let makeConnections = function(draggedCourse) {
 
-
     let returned = dfs(draggedCourse);
     return returnedToAdjList(returned);
 };

@@ -1,3 +1,5 @@
+import {makeConnections} from "./connections_logic.js";
+
 let drawConnections = function() {
     //GLOBAL VARIABLES
     const radius = 20;
@@ -26,13 +28,15 @@ let drawConnections = function() {
      */
     var availableCourses = $(".draggable.available");
     var graphCourses = $(".inGraph");
+    var svgNotTaken = $("#svgNotTaken");
+    var graph = $("#graph");
 
     availableCourses.draggable({revert: true});
     instance.draggable(graphCourses);
 
     //DECLARE DRAGGABLE BEHAVIOR
-    $("#svgNotTaken").droppable({accept: '.draggable'});
-    $("#graph").droppable({
+    svgNotTaken.droppable({accept: '.draggable'});
+    graph.droppable({
         drop: function (e, ui) {
             var x = ui.helper.clone();
             ui.helper.remove();
@@ -42,53 +46,25 @@ let drawConnections = function() {
                 position: 'absolute'
             });
             x.addClass("inGraph");
-            $("#graph").append(x);
+            graph.append(x);
+            var item = x.attr('id');
 
-            var courseStack = [];
-            var visited = [];
-            var returned = [];
+            //Run the prereq algorithms
+            let prereqs = makeConnections(item);
 
-            let dfs = function (draggedCourse) {
-                courseStack.push(draggedCourse);
-                visited.push(draggedCourse);
-
-                while (courseStack.length !== 0) {
-                    var v = courseStack.pop();
-                    returned.push(v);
-                    for (var child of prereqDict.get(v)) {
-                        if (!(child in visited)) {
-                            dfs(child);
-                        }
-                    }
-                }
-            };
-
-            var adjList = [];
-
-//connections to adjacency list
-            let returnedToAdjList = function () {
-                for (var course of returned) {
-                    var prereqs = prereqDict.get(course);
-                    for (var prereq of prereqs) {
-                        if (!adjList.some((adj) => adj.source === prereq && adj.target === course)) {
-                            adjList.push({
-                                "source": prereq,
-                                "target": course
-                            });
-                        }
-                    }
-                }
-                returned = [];
-            };
-
-            let makeConnections = function(draggedCourse) {
-                var courseStack = [];
-                var visited = [];
-                var returned = [];
-
-                dfs(draggedCourse);
-                returnedToAdjList();
-            };
+            prereqs.forEach(function(course){
+                console.log("I want to remove" );
+                var toRemove = "#" + course.source;
+                var nodeToRemove = $(toRemove);
+                var clone = nodeToRemove.clone();
+                clone.css({
+                    top: e.clientY - displacement - 50,
+                    left: e.clientX - displacement - 50,
+                    position: 'absolute'
+                });
+                nodeToRemove.remove();
+                $("#graph").append(clone);
+            });
 
 
             //JULIET'S ALGORITHM HERE
