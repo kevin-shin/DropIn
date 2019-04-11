@@ -1,3 +1,3 @@
-import { sum } from './multiple.js'
+import {makeConnections} from "../js/connections_logic.js";
 
-console.log(sum(1,2));
+console.log(makeConnections("COMP240"));

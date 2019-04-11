@@ -403,3 +403,5 @@ let courses = [
       "Varies by semester. Consult the department or class schedule for current listing."
   }
 ];
+
+export {courses}

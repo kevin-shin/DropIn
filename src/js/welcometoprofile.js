@@ -4,7 +4,6 @@ let classes = [
             "course": 123,
             "taken": true,
             "required": true
-
         },
         {
             "dept": "COMP",
