@@ -1,5 +1,6 @@
-import {VMtoView} from "./VM_to_View.js";
+import { VMtoView } from "./VM_to_View.js";
+import { drawConnections } from "./ViewConnections.js";
 
-$(document).ready(function () {
     VMtoView();
-});
+
+$(() => {drawConnections();});

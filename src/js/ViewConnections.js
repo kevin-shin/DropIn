@@ -1,5 +1,4 @@
-$(document).ready(function () {
-
+let drawConnections = function() {
     //GLOBAL VARIABLES
     const radius = 20;
     const displacement = radius + 10;
@@ -177,4 +176,6 @@ $(document).ready(function () {
             }
         }
     }
-});
+};
+
+export { drawConnections }
