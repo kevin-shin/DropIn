@@ -1,11 +1,10 @@
-$(document).ready(function () {
-
-    //GLOBAL VARIABLES
+let drawConnections = function () {
+//GLOBAL VARIABLES
     const radius = 20;
     const displacement = radius + 10;
 
     var courses, arrows, catalog;
-    //IMPORT DATA
+//IMPORT DATA
     d3.json("../Model/ViewModel_Test.json").then(function (data) {
         courses = data.Classes;
         arrows = data.Connections;
@@ -14,7 +13,7 @@ $(document).ready(function () {
         catalog = data;
     });
 
-    //SET UP JSPLUMB. instance will be the variable which controls jsPlumb draggable behavior.
+//SET UP JSPLUMB. instance will be the variable which controls jsPlumb draggable behavior.
     var instance = jsPlumb.getInstance({
         Connector: ["Straight"],
         DragOptions: {cursor: "pointer", zIndex: 5},
@@ -31,7 +30,7 @@ $(document).ready(function () {
     availableCourses.draggable({revert: true});
     instance.draggable(graphCourses);
 
-    //DECLARE DRAGGABLE BEHAVIOR
+//DECLARE DRAGGABLE BEHAVIOR
     $("#svgNotTaken").droppable({accept: '.draggable'});
     $("#graph").droppable({
         drop: function (e, ui) {
@@ -44,53 +43,6 @@ $(document).ready(function () {
             });
             x.addClass("inGraph");
             $("#graph").append(x);
-
-            var courseStack = [];
-            var visited = [];
-            var returned = [];
-
-            let dfs = function (draggedCourse) {
-                courseStack.push(draggedCourse);
-                visited.push(draggedCourse);
-
-                while (courseStack.length !== 0) {
-                    var v = courseStack.pop();
-                    returned.push(v);
-                    for (var child of prereqDict.get(v)) {
-                        if (!(child in visited)) {
-                            dfs(child);
-                        }
-                    }
-                }
-            };
-
-            var adjList = [];
-
-//connections to adjacency list
-            let returnedToAdjList = function () {
-                for (var course of returned) {
-                    var prereqs = prereqDict.get(course);
-                    for (var prereq of prereqs) {
-                        if (!adjList.some((adj) => adj.source === prereq && adj.target === course)) {
-                            adjList.push({
-                                "source": prereq,
-                                "target": course
-                            });
-                        }
-                    }
-                }
-                returned = [];
-            };
-
-            let makeConnections = function(draggedCourse) {
-                var courseStack = [];
-                var visited = [];
-                var returned = [];
-
-                dfs(draggedCourse);
-                returnedToAdjList();
-            };
-
 
             //JULIET'S ALGORITHM HERE
             /*
@@ -106,7 +58,6 @@ $(document).ready(function () {
                     something about updating profiles.
 
             */
-
             availableCourses = $(".draggable.available");
             graphCourses = $(".inGraph");
 
@@ -124,40 +75,50 @@ $(document).ready(function () {
         $("#courseDescription").replaceWith("<p id='courseDescription'>" + description + "</p>");
     });
 
-    let sourceTarget = [
-        {
-            source: "COMP123",
-            target: "COMP127"
-        },
-        {
-            source: "COMP127",
-            target: "COMP128"
-        },
-        {
-            source: "COMP128",
-            target: "COMP221"
-        },
-        {
-            source: "MATH279",
-            target: "COMP221"
-        },
-        {
-            source: "COMP128",
-            target: "COMP240"
-        }
-    ];
-
-    initializeConnections(sourceTarget);
-    jsPlumb.fire("jsPlumbDemoLoaded", instance);
+    sourceTarget();
 
 
+    function sourceTarget() {
+        let sourceTarget = [
+            {
+                source: "COMP123",
+                target: "COMP127"
+            },
+            {
+                source: "COMP127",
+                target: "COMP128"
+            },
+            {
+                source: "COMP128",
+                target: "COMP221"
+            },
+            {
+                source: "MATH279",
+                target: "COMP221"
+            },
+            {
+                source: "COMP128",
+                target: "COMP240"
+            }
+        ];
 
-    //-----------     HELPER FUNCTIONS     -----------
+        initializeConnections(sourceTarget);
+        jsPlumb.fire("jsPlumbDemoLoaded", instance);
 
-    //Draw the connections between imported courses.
+    }
+
+//-----------     HELPER FUNCTIONS     -----------
+
+//Draw the connections between imported courses.
     function initializeConnections(connections) {
+        var connector = jsPlumb.getInstance({
+            Connector: ["Straight"],
+            DragOptions: {cursor: "pointer", zIndex: 5},
+            PaintStyle: {stroke: "black", strokeWidth: 2},
+        });
+
         connections.forEach((function (entry) {
-            instance.connect({
+            connector.connect({
                 source: entry.source,
                 target: entry.target,
                 endpoint: "Blank",
@@ -177,4 +138,6 @@ $(document).ready(function () {
             }
         }
     }
-});
+};
+
+export {drawConnections}
