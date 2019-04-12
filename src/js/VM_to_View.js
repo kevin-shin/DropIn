@@ -1,7 +1,6 @@
-import {drawConnections} from "./ViewConnections.js";
+let VMtoView = function () {
 
-$(document).ready(function(){
-    //IMPORT DATA
+//IMPORT DATA
     let ViewModel;
     d3.json("../Model/ViewModel_Test.json").then(function (data) {
         draw(data);
@@ -28,8 +27,12 @@ $(document).ready(function(){
         let svgGroups = svg.selectAll("notTaken")
             .data(available)
             .enter().append("div")
-            .attr("id", function (d) {return String(d.dept) + String(d.course)})
-            .html(function (d) {return String(d.course)})
+            .attr("id", function (d) {
+                return String(d.dept) + String(d.course)
+            })
+            .html(function (d) {
+                return String(d.course)
+            })
             .classed("draggable available", true);
 
         //TAKEN COURSES. Color: Green
@@ -77,7 +80,7 @@ $(document).ready(function(){
             let i = 1;
             for (let course of topCourses) {
                 $(course).css({
-                    top: $("#svgNotTaken").height()/2 - (radius+10) ,
+                    top: $("#svgNotTaken").height() / 2 - (radius + 10),
                     left: i * placement - 40
                 });
                 i++;
@@ -119,9 +122,7 @@ $(document).ready(function(){
             });
         }
     }
+};
 
 
-    drawConnections();
-
-
-});
+export { VMtoView }
