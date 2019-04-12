@@ -5,6 +5,30 @@ let drawConnections = function () {
     const radius = 20;
     const displacement = radius + 10;
 
+    let sourceTarget = [
+        {
+            source: "COMP123",
+            target: "COMP127"
+        },
+        {
+            source: "COMP127",
+            target: "COMP128"
+        },
+        {
+            source: "COMP128",
+            target: "COMP221"
+        },
+        {
+            source: "MATH279",
+            target: "COMP221"
+        },
+        {
+            source: "COMP128",
+            target: "COMP240"
+        }
+    ];
+
+
     var courses, arrows, catalog;
     //IMPORT DATA
     d3.json("../Model/ViewModel_Test.json").then(function (data) {
@@ -21,6 +45,7 @@ let drawConnections = function () {
         DragOptions: {cursor: "pointer", zIndex: 5},
         PaintStyle: {stroke: "black", strokeWidth: 2},
     });
+    jsPlumb.Defaults.MaxConnections = 5;
 
     /*Make courses draggable. Notice that the courses inside the top bar and the ones
       in the graph have different programs controlling their drag behavior. This is
@@ -50,9 +75,9 @@ let drawConnections = function () {
                 left: e.clientX - displacement,
                 position: 'absolute'
             });
-            x.addClass("inGraph");
-            x.removeClass("outGraph");
+            x.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handle ui-draggable-dragging");
             graph.append(x);
+            instance.draggable(x);
             var item = x.attr('id');
 
             //Run the prereq algorithms
@@ -70,11 +95,10 @@ let drawConnections = function () {
                         left: e.clientX - displacement - 50,
                         position: 'absolute'
                     });
-                    console.log("Hit displacement");
-                    clone.addClass("inGraph");
-                    clone.removeClass("outGraph");
+                    clone.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handle");
                     nodeToRemove.remove();
                     $("#graph").append(clone);
+                    instance.draggable(clone);
                     instance.connect({
                         source: clone.attr('id'),
                         target: course.target,
@@ -103,7 +127,7 @@ let drawConnections = function () {
             graphCourses = $(".inGraph");
 
             outGraph.draggable({revert: true});
-            instance.draggable(graphCourses);
+            drawConnections();
 
         }
     });
@@ -117,38 +141,15 @@ let drawConnections = function () {
         $("#courseDescription").replaceWith("<p id='courseDescription'>" + description + "</p>");
     });
 
-    let sourceTarget = [
-        {
-            source: "COMP123",
-            target: "COMP127"
-        },
-        {
-            source: "COMP127",
-            target: "COMP128"
-        },
-        {
-            source: "COMP128",
-            target: "COMP221"
-        },
-        {
-            source: "MATH279",
-            target: "COMP221"
-        },
-        {
-            source: "COMP128",
-            target: "COMP240"
-        }
-    ];
-
-    initializeConnections(sourceTarget);
+    drawConnections();
     jsPlumb.fire("jsPlumbDemoLoaded", instance);
 
 
     //-----------     HELPER FUNCTIONS     -----------
 
     //Draw the connections between imported courses.
-    function initializeConnections(connections) {
-        connections.forEach((function (entry) {
+    function drawConnections() {
+        sourceTarget.forEach((function (entry) {
             instance.connect({
                 source: entry.source,
                 target: entry.target,
