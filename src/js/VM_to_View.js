@@ -33,7 +33,7 @@ let VMtoView = function () {
             .html(function (d) {
                 return String(d.course)
             })
-            .classed("draggable available", true);
+            .classed("draggable available outGraph", true);
 
         //TAKEN COURSES. Color: Green
 

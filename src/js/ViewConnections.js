@@ -26,17 +26,22 @@ let drawConnections = function () {
       in the graph have different programs controlling their drag behavior. This is
       necessary for drag-and-drop to work with line drawing.
      */
-    var availableCourses = $(".draggable.available");
-    var graphCourses = $(".inGraph");
+
     var svgNotTaken = $("#svgNotTaken");
     var graph = $("#graph");
+    var outGraph = $(".outGraph");
+    var graphCourses = $(".inGraph");
 
-    availableCourses.draggable({revert: true});
+    outGraph.draggable({revert: true});
     instance.draggable(graphCourses);
 
     //DECLARE DRAGGABLE BEHAVIOR
-    svgNotTaken.droppable({accept: '.draggable'});
+    svgNotTaken.droppable({
+            accept: '.draggable'
+        }
+    );
     graph.droppable({
+        accept: ".outGraph",
         drop: function (e, ui) {
             var x = ui.helper.clone();
             ui.helper.remove();
@@ -46,15 +51,15 @@ let drawConnections = function () {
                 position: 'absolute'
             });
             x.addClass("inGraph");
+            x.removeClass("outGraph");
             graph.append(x);
             var item = x.attr('id');
 
             //Run the prereq algorithms
             let prereqs = makeConnections(item);
-            console.log(prereqs);
             prereqs.forEach(function (course) {
                 var insideGraph = graphCourses.toArray().some((element) => element.id === course.source);
-                var insideBar = availableCourses.toArray().some((element) => element.id === course.source);
+                var insideBar = outGraph.toArray().some((element) => element.id === course.source);
 
                 if (insideBar) {
                     var toRemove = "#" + course.source;
@@ -65,12 +70,11 @@ let drawConnections = function () {
                         left: e.clientX - displacement - 50,
                         position: 'absolute'
                     });
+                    console.log("Hit displacement");
                     clone.addClass("inGraph");
+                    clone.removeClass("outGraph");
                     nodeToRemove.remove();
                     $("#graph").append(clone);
-                    console.log("PAY ATTENTION HERE");
-                    console.log(clone.id);
-                    console.log(course.target);
                     instance.connect({
                         source: clone.attr('id'),
                         target: course.target,
@@ -80,6 +84,7 @@ let drawConnections = function () {
                             ["Perimeter", {shape: "Diamond", anchorCount: 150}]
                         ]
                     });
+
                 }
                 if (insideGraph) {
                     instance.connect({
@@ -92,30 +97,14 @@ let drawConnections = function () {
                         ]
                     });
                 }
-                console.log("Finished executing prereq");
-
             });
-            //JULIET'S ALGORITHM HERE
-            /*
-            Pseudocode
 
-            let prereqs = array of courses returned by prereq algorithm
-            for prereq in prereqs:
-                if prereq on graph already:
-                    draw line from that prereq to dropped node (x)
-                else:
-                    add node, in transparent red. Think about how you want to place it.
-                    draw connection between that node and this node.
-                    something about updating profiles.
-
-            */
-
-            availableCourses = $(".draggable.available");
+            outGraph = $(".outGraph");
             graphCourses = $(".inGraph");
-            console.log(graphCourses);
-            availableCourses.draggable({revert: true});
 
+            outGraph.draggable({revert: true});
             instance.draggable(graphCourses);
+
         }
     });
 
