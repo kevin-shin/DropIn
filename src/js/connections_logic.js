@@ -1,14 +1,4 @@
-// import { courseCatalog } from "./prereq_dictionary.js";
-
-    let returned = dfs(draggedCourse);
-    return returnedToAdjList(returned);
-};
-
-let dfs = function (draggedCourse) {
-    var courseStack = [];
-    var visited = [];
-    var returned = [];
-const courseCatalog = require("./prereq_dictionary.js");
+// const courseCatalog = require("./prereq_dictionary.js");
 var courseStack = [];
 var visited = [];
 var returned = [];
@@ -52,7 +42,7 @@ let returnedToAdjList = function (returned) {
 
 let resetConnectionsArrays = () => {console.log(courseStack, visited, returned), courseStack = [], visited = [], returned = [], console.log(courseStack, visited, returned)};
 
-// export { makeConnections };
-module.exports = {}
-module.exports.makeConnections = makeConnections;
-module.exports.reset = resetConnectionsArrays;
+export { makeConnections };
+// module.exports = {};
+// module.exports.makeConnections = makeConnections;
+// module.exports.reset = resetConnectionsArrays;
