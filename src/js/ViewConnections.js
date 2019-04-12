@@ -53,7 +53,11 @@ let drawConnections = function() {
             let prereqs = makeConnections(item);
 
             prereqs.forEach(function(course){
-                console.log("I want to remove" );
+                var insideGraph = graph.toArray().some((element) => element.attr('id') === item);
+                var insideBar = svgNotTaken.toArray().some((element) => element.attr('id') === item);
+                console.log("Inside Graph: " + String(insideGraph));
+                console.log("Inside Bar: " + String(insideBar));
+
                 var toRemove = "#" + course.source;
                 var nodeToRemove = $(toRemove);
                 var clone = nodeToRemove.clone();
@@ -62,6 +66,7 @@ let drawConnections = function() {
                     left: e.clientX - displacement - 50,
                     position: 'absolute'
                 });
+                clone.addClass("inGraph");
                 nodeToRemove.remove();
                 $("#graph").append(clone);
             });
@@ -84,7 +89,7 @@ let drawConnections = function() {
 
             availableCourses = $(".draggable.available");
             graphCourses = $(".inGraph");
-
+            console.log(graphCourses);
             availableCourses.draggable({revert: true});
             instance.draggable(graphCourses);
         }
