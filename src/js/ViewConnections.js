@@ -71,7 +71,6 @@ let drawConnections = function() {
                 $("#graph").append(clone);
             });
 
-
             //JULIET'S ALGORITHM HERE
             /*
             Pseudocode
