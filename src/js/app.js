@@ -3,4 +3,6 @@ import { drawConnections } from "./ViewConnections.js";
 
 VMtoView();
 
-$(() => {drawConnections();});
+$(() => {
+    drawConnections();
+});

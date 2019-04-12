@@ -1,10 +1,14 @@
-// import { courses } from "../Model/cs_major.js";
+// --------- IMPORT
+
+import { courses } from "../Model/cs_major.js";
+// const courses = require("../Model/cs_major.js");
+
 
 /* makes a prerequisite dictionary based on a JSON object with dept, course number, and prerequisites
  * April 2019
  * Juliet Kelson and Kevin Shin
  */
-const courses = require("../Model/cs_major.js");
+
 
 var prereqDict = new Map();
 
@@ -21,6 +25,6 @@ let makePrereqDict = function (catalogue) {
 
 let courseCatalog = makePrereqDict(courses);
 
-// export { courseCatalog };
-module.exports = courseCatalog;
+export { courseCatalog };
+// module.exports = courseCatalog;
 

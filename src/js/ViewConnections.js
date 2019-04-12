@@ -1,6 +1,6 @@
 import {makeConnections} from "./connections_logic.js";
 
-let drawConnections = function() {
+let drawConnections = function () {
     //GLOBAL VARIABLES
     const radius = 20;
     const displacement = radius + 10;
@@ -51,26 +51,50 @@ let drawConnections = function() {
 
             //Run the prereq algorithms
             let prereqs = makeConnections(item);
+            console.log(prereqs);
+            prereqs.forEach(function (course) {
+                var insideGraph = graphCourses.toArray().some((element) => element.id === course.source);
+                var insideBar = availableCourses.toArray().some((element) => element.id === course.source);
 
-            prereqs.forEach(function(course){
-                var insideGraph = graph.toArray().some((element) => element.attr('id') === item);
-                var insideBar = svgNotTaken.toArray().some((element) => element.attr('id') === item);
-                console.log("Inside Graph: " + String(insideGraph));
-                console.log("Inside Bar: " + String(insideBar));
+                if (insideBar) {
+                    var toRemove = "#" + course.source;
+                    var nodeToRemove = $(toRemove);
+                    var clone = nodeToRemove.clone();
+                    clone.css({
+                        top: e.clientY - displacement - 50,
+                        left: e.clientX - displacement - 50,
+                        position: 'absolute'
+                    });
+                    clone.addClass("inGraph");
+                    nodeToRemove.remove();
+                    $("#graph").append(clone);
+                    console.log("PAY ATTENTION HERE");
+                    console.log(clone.id);
+                    console.log(course.target);
+                    instance.connect({
+                        source: clone.attr('id'),
+                        target: course.target,
+                        endpoint: "Blank",
+                        anchors: [
+                            ["Perimeter", {shape: "Diamond", anchorCount: 150}],
+                            ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                        ]
+                    });
+                }
+                if (insideGraph) {
+                    instance.connect({
+                        source: course.source,
+                        target: course.target,
+                        endpoint: "Blank",
+                        anchors: [
+                            ["Perimeter", {shape: "Diamond", anchorCount: 150}],
+                            ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                        ]
+                    });
+                }
+                console.log("Finished executing prereq");
 
-                var toRemove = "#" + course.source;
-                var nodeToRemove = $(toRemove);
-                var clone = nodeToRemove.clone();
-                clone.css({
-                    top: e.clientY - displacement - 50,
-                    left: e.clientX - displacement - 50,
-                    position: 'absolute'
-                });
-                clone.addClass("inGraph");
-                nodeToRemove.remove();
-                $("#graph").append(clone);
             });
-
             //JULIET'S ALGORITHM HERE
             /*
             Pseudocode
@@ -90,6 +114,7 @@ let drawConnections = function() {
             graphCourses = $(".inGraph");
             console.log(graphCourses);
             availableCourses.draggable({revert: true});
+
             instance.draggable(graphCourses);
         }
     });
@@ -130,7 +155,6 @@ let drawConnections = function() {
     jsPlumb.fire("jsPlumbDemoLoaded", instance);
 
 
-
     //-----------     HELPER FUNCTIONS     -----------
 
     //Draw the connections between imported courses.
@@ -158,4 +182,4 @@ let drawConnections = function() {
     }
 };
 
-export { drawConnections }
+export {drawConnections}

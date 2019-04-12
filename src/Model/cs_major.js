@@ -397,5 +397,5 @@ let courses = [
   }
 ];
 
-// export { courses };
-module.exports = courses;
+export { courses };
+// module.exports = courses;

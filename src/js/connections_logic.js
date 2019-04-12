@@ -1,4 +1,8 @@
-// import { courseCatalog } from "./prereq_dictionary.js";
+// --------- IMPORT  --------- //
+
+
+import { courseCatalog } from "./prereq_dictionary.js";
+// const courseCatalog = require("./prereq_dictionary.js");
 
 /*Logic to make connections between courses for the view model
  *inludes functions: dfs(draggedCourse), returnedToAdjList(returned), makeConnections(draggedCourse), resetConnectionsArrays()
@@ -7,7 +11,6 @@
  * Juliet Kelson and Kevin Shin
  */
 
-const courseCatalog = require("./prereq_dictionary.js");
 var courseStack = [];
 var visited = [];
 var returned = [];
@@ -60,8 +63,11 @@ let returnedToAdjList = function (returned) {
 //empties all arrays for testing purposes
 let resetConnectionsArrays = () => {console.log(courseStack, visited, returned), courseStack = [], visited = [], returned = [], console.log(courseStack, visited, returned)};
 
-// export { makeConnections };
 
-module.exports = {}
-module.exports.makeConnections = makeConnections;
-module.exports.reset = resetConnectionsArrays;
+// --------- EXPORT  --------- //
+
+export { makeConnections };
+//
+// module.exports = {};
+// module.exports.makeConnections = makeConnections;
+// module.exports.reset = resetConnectionsArrays;
