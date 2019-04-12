@@ -1,4 +1,13 @@
-// const courseCatalog = require("./prereq_dictionary.js");
+// import { courseCatalog } from "./prereq_dictionary.js";
+
+/*Logic to make connections between courses for the view model
+ *inludes functions: dfs(draggedCourse), returnedToAdjList(returned), makeConnections(draggedCourse), resetConnectionsArrays()
+ * make connections uses both functions to out put an object of source, target pairs
+ * example: [{source: COMP123, target: COMP124}, {source: COMP124, target: COMP225}]
+ * Juliet Kelson and Kevin Shin
+ */
+
+const courseCatalog = require("./prereq_dictionary.js");
 var courseStack = [];
 var visited = [];
 var returned = [];
@@ -7,6 +16,10 @@ let makeConnections = function (draggedCourse) {
     return returnedToAdjList(dfs(draggedCourse));
 };
 
+/*depth first search on prerequisites for class via the courseCatalog (from prereq_dictionary.js).
+*takes a course as a string ("COMP123", "MATH155", etc)
+* Outputs an array of courses
+*/
 let dfs = function (draggedCourse) {
     courseStack.push(draggedCourse);
     visited.push(draggedCourse);
@@ -23,7 +36,10 @@ let dfs = function (draggedCourse) {
     return returned;
 };
 
-//connections to adjacency list
+/*connections to adjacency list
+*takes array from dfs function and outputs an object of source, target pairs
+* example: [{ source: COMP123, target: COMP124 }, { source: COMP124, target: COMP225 }]
+*/
 let returnedToAdjList = function (returned) {
     var adjList = [];
     for (var course of returned) {
@@ -40,9 +56,12 @@ let returnedToAdjList = function (returned) {
     return adjList;
 };
 
+
+//empties all arrays for testing purposes
 let resetConnectionsArrays = () => {console.log(courseStack, visited, returned), courseStack = [], visited = [], returned = [], console.log(courseStack, visited, returned)};
 
-export { makeConnections };
-// module.exports = {};
-// module.exports.makeConnections = makeConnections;
-// module.exports.reset = resetConnectionsArrays;
+// export { makeConnections };
+
+module.exports = {}
+module.exports.makeConnections = makeConnections;
+module.exports.reset = resetConnectionsArrays;
