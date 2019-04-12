@@ -367,13 +367,6 @@ let courses = [
     dept: "MATH",
     courseNum: "479",
     name: "network science",
-    prereq: ["MATH236", "MATH379"],
-    courseInfo: "The modern Information Age has produced a wealth of data about the complex networks that tie us together. In response, the field of Network Science has arisen, bringing together mathematics, computer science, sociology, biology, economics and other fields. This course will explore the fundamental questions and the mathematical tools of Network Science. This includes: the structure of complex networks, including connectedness, centrality and \"long tails\"; community detection; random/strategic models for network formation; diffusion/contagion and \"tipping points\" on networks; and algorithms for analyzing complex networks."
-  },
-  {
-    dept: "MATH",
-    courseNum: "479",
-    name: "network science",
     prereq: ["MATH236", "COMPM379", "COMP123"],
     courseInfo:
       'The modern Information Age has produced a wealth of data about the complex networks that tie us together. In response, the field of Network Science has arisen, bringing together mathematics, computer science, sociology, biology, economics and other fields. This course will explore the fundamental questions and the mathematical tools of Network Science. This includes: the structure of complex networks, including connectedness, centrality and "long tails"; community detection; random/strategic models for network formation; diffusion/contagion and "tipping points" on networks; and algorithms for analyzing complex networks.'
@@ -404,4 +397,5 @@ let courses = [
   }
 ];
 
-export {courses}
+// export { courses };
+module.exports = courses;
