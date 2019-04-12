@@ -93,7 +93,8 @@ let drawConnections = function () {
                     clone.css({
                         top: e.clientY - displacement - 50,
                         left: e.clientX - displacement - 50,
-                        position: 'absolute'
+                        position: 'absolute',
+                        //opacity: 0.5
                     });
                     clone.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handle");
                     nodeToRemove.remove();
