@@ -102,16 +102,14 @@ let VMtoView = function () {
                 i++;
             }
         }
+        //TODO: THINK ABOUT THIS. Do you add and remove required? If so, how?
+        //Do you want your users to have this ability? Should they?
 
         function markTaken(){
-            console.log("Mark as TAKEN called");
-            console.log(scope);
             scope.addClass("taken").removeClass("available")
         }
 
-        function markUntaken(course){
-            console.log("Mark as UNTAKEN called");
-            console.log(scope);
+        function markUntaken(){
             scope.addClass("available").removeClass("taken")
         }
 

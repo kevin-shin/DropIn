@@ -71,7 +71,7 @@ let drawConnections = function () {
                         top: e.clientY - displacement - 50,
                         left: e.clientX - displacement - 50,
                         position: 'absolute',
-                        //opacity: 0.5
+                        opacity: 0.5
                     });
                     clone.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handle");
                     nodeToRemove.remove();
@@ -142,12 +142,16 @@ let drawConnections = function () {
         allCourses = $(".draggable");
         allCourses.bind("mousedown", function () {
             var course = findCourse(catalogue, this);
+            var prereq = course.prereq.toString();
             var description = course.courseInfo;
             var name = course.name;
             var title = course.dept + course.courseNum;
             $("#welcomeText").remove();
             $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
-            $("#courseDescription").replaceWith("<p id='courseDescription'>" + description + "</p>");
+            $("#courseDescription").replaceWith(
+                "<p id='courseDescription'>" + description + "</p>" +
+                "<p>" + prereq + "</p>"
+            );
         });
     }
 
