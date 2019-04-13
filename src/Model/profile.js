@@ -1,4 +1,4 @@
-let profile = [
+let Profile = [
     {
         dept: "COMP",
         course: "123",
@@ -35,6 +35,4 @@ let profile = [
         status: "planned"
     }];
 
-
-
-export {profile}
+export {Profile}

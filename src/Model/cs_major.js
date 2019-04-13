@@ -1,4 +1,4 @@
-let courses = [
+let catalogue = [
   {
     dept: "COMP",
     courseNum: "112",
@@ -397,5 +397,5 @@ let courses = [
   }
 ];
 
-export { courses };
+export { catalogue };
 // module.exports = courses;

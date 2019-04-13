@@ -1,42 +1,18 @@
 import {makeConnections} from "./connections_logic.js";
+import {Connections} from "../Model/connections.js";
+import {catalogue} from "../Model/cs_major.js";
 
 let drawConnections = function () {
 
     const radius = 20;
     const displacement = radius + 10;
 
-    let sourceTarget = [
-        {
-            source: "COMP123",
-            target: "COMP127"
-        },
-        {
-            source: "COMP127",
-            target: "COMP128"
-        },
-        {
-            source: "COMP128",
-            target: "COMP221"
-        },
-        {
-            source: "MATH279",
-            target: "COMP221"
-        },
-        {
-            source: "COMP128",
-            target: "COMP240"
-        }
-    ];
-
-
-    var courses, arrows, catalog;
+    //TODO Reformat with ES6 Imports and Exports
+    var courses, arrows;
     //IMPORT DATA
     d3.json("../Model/ViewModel_Test.json").then(function (data) {
         courses = data.Classes;
         arrows = data.Connections;
-    });
-    d3.json("../Model/CS_major.json").then(function (data) {
-        catalog = data;
     });
 
     //SET UP JSPLUMB. instance will be the variable which controls jsPlumb draggable behavior.
@@ -58,6 +34,7 @@ let drawConnections = function () {
     var graph = $("#graph");
     var outGraph = $(".outGraph");
     var graphCourses = $(".inGraph");
+    var allCourses = $(".draggable");
 
     outGraph.draggable({revert: true});
     instance.draggable(graphCourses);
@@ -74,7 +51,7 @@ let drawConnections = function () {
                 left: e.clientX - displacement,
                 position: 'absolute'
             });
-            x.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handle ui-draggable-dragging");
+            x.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handlea ui-draggable-dragging");
             graph.append(x);
             instance.draggable(x);
             var item = x.attr('id');
@@ -130,22 +107,14 @@ let drawConnections = function () {
 
             outGraph.draggable({revert: true});
             drawConnections();
+            courseUpdate();
         }
-    });
-
-    $(".draggable").bind("mousedown", function () {
-        var course = findCourse(catalog, this);
-        var description = course.courseInfo;
-        var name = course.name;
-        var title = course.dept + course.courseNum;
-        $("#welcomeText").remove();
-        $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
-        $("#courseDescription").replaceWith("<p id='courseDescription'>" + description + "</p>");
     });
 
 
     //Behavior to initialize nodes and connections.
     drawConnections();
+    courseUpdate();
     jsPlumb.fire("jsPlumbDemoLoaded", instance);
 
 
@@ -153,7 +122,7 @@ let drawConnections = function () {
 
     //Draw the connections between imported courses.
     function drawConnections() {
-        sourceTarget.forEach((function (entry) {
+        Connections.forEach((function (entry) {
             instance.connect({
                 source: entry.source,
                 target: entry.target,
@@ -164,6 +133,19 @@ let drawConnections = function () {
                 ]
             })
         }));
+    }
+
+    function courseUpdate() {
+        allCourses = $(".draggable");
+        allCourses.bind("mousedown", function () {
+            var course = findCourse(catalogue, this);
+            var description = course.courseInfo;
+            var name = course.name;
+            var title = course.dept + course.courseNum;
+            $("#welcomeText").remove();
+            $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
+            $("#courseDescription").replaceWith("<p id='courseDescription'>" + description + "</p>");
+        });
     }
 
     function findCourse(data, course) {

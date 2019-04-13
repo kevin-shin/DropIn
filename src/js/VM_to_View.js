@@ -1,5 +1,6 @@
-let VMtoView = function () {
+import {Profile} from "../Model/profile.js";
 
+let VMtoView = function () {
     //IMPORT DATA
     let ViewModel;
     d3.json("../Model/ViewModel_Test.json").then(function (data) {

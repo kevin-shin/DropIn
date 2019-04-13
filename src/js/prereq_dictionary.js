@@ -1,5 +1,5 @@
 // --------- IMPORT --------
-import { courses } from "../Model/cs_major.js";
+import { catalogue } from "../Model/cs_major.js";
 // const courses = require("../Model/cs_major.js");
 
 
@@ -21,7 +21,7 @@ let makePrereqDict = function (catalogue) {
 };
 
 
-let courseCatalog = makePrereqDict(courses);
+let courseCatalog = makePrereqDict(catalogue);
 
 export { courseCatalog };
 // module.exports = courseCatalog;
