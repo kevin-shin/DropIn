@@ -1,16 +1,15 @@
 let VMtoView = function () {
 
-//IMPORT DATA
+    //IMPORT DATA
     let ViewModel;
     d3.json("../Model/ViewModel_Test.json").then(function (data) {
-        draw(data);
         ViewModel = data;
+        draw(data);
     });
 
     function draw(ViewModel) {
 
         const radius = 20;
-        const displacement = radius + 20;
 
         let Classes = ViewModel.Classes;
         let taken = Classes.filter(course => course.taken === true);
@@ -36,7 +35,6 @@ let VMtoView = function () {
             .classed("draggable available outGraph", true);
 
         //TAKEN COURSES. Color: Green
-
         let svgNotTakenDivs = d3.select("body")
             .select("#GUI")
             .append("div")

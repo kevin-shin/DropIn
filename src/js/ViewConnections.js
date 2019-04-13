@@ -1,7 +1,7 @@
 import {makeConnections} from "./connections_logic.js";
 
 let drawConnections = function () {
-    //GLOBAL VARIABLES
+
     const radius = 20;
     const displacement = radius + 10;
 
@@ -45,9 +45,11 @@ let drawConnections = function () {
         DragOptions: {cursor: "pointer", zIndex: 5},
         PaintStyle: {stroke: "black", strokeWidth: 2},
     });
-    jsPlumb.Defaults.MaxConnections = 5;
 
-    /*Make courses draggable. Notice that the courses inside the top bar and the ones
+    jsPlumb.Defaults.MaxConnections = 10;
+
+    /*
+      Make courses draggable. Notice that the courses inside the top bar and the ones
       in the graph have different programs controlling their drag behavior. This is
       necessary for drag-and-drop to work with line drawing.
      */
@@ -60,11 +62,8 @@ let drawConnections = function () {
     outGraph.draggable({revert: true});
     instance.draggable(graphCourses);
 
-    //DECLARE DRAGGABLE BEHAVIOR
-    svgNotTaken.droppable({
-            accept: '.draggable'
-        }
-    );
+    /*            DRAGGABLE BEHAVIOR           */
+    svgNotTaken.droppable({ accept: '.draggable'});
     graph.droppable({
         accept: ".outGraph",
         drop: function (e, ui) {
@@ -86,6 +85,7 @@ let drawConnections = function () {
                 var insideGraph = graphCourses.toArray().some((element) => element.id === course.source);
                 var insideBar = outGraph.toArray().some((element) => element.id === course.source);
 
+                //Algorithm assumes that each course is either inside the graph or bar.
                 if (insideBar) {
                     var toRemove = "#" + course.source;
                     var nodeToRemove = $(toRemove);
@@ -124,12 +124,12 @@ let drawConnections = function () {
                 }
             });
 
+            //Having transferred courses, call the appropriate drag-enablers.
             outGraph = $(".outGraph");
             graphCourses = $(".inGraph");
 
             outGraph.draggable({revert: true});
             drawConnections();
-
         }
     });
 
@@ -138,10 +138,13 @@ let drawConnections = function () {
         var description = course.courseInfo;
         var name = course.name;
         var title = course.dept + course.courseNum;
+        $("#welcomeText").remove();
         $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
         $("#courseDescription").replaceWith("<p id='courseDescription'>" + description + "</p>");
     });
 
+
+    //Behavior to initialize nodes and connections.
     drawConnections();
     jsPlumb.fire("jsPlumbDemoLoaded", instance);
 
