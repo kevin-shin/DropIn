@@ -2,20 +2,21 @@ import {makeConnections} from "./connections_logic.js";
 import {Connections} from "../Model/connections.js";
 import {catalogue} from "../Model/cs_major.js";
 
+var scope;
+
 let drawConnections = function () {
+
 
     const radius = 20;
     const displacement = radius + 10;
 
     //TODO Reformat with ES6 Imports and Exports
-    var courses, arrows;
-    //IMPORT DATA
+    var courses;
     d3.json("../Model/ViewModel_Test.json").then(function (data) {
         courses = data.Classes;
-        arrows = data.Connections;
     });
 
-    //SET UP JSPLUMB. instance will be the variable which controls jsPlumb draggable behavior.
+    //Set up jsPlumb. instance will be the variable which controls jsPlumb draggable behavior.
     var instance = jsPlumb.getInstance({
         Connector: ["Straight"],
         DragOptions: {cursor: "pointer", zIndex: 5},
@@ -24,12 +25,7 @@ let drawConnections = function () {
 
     jsPlumb.Defaults.MaxConnections = 10;
 
-    /*
-      Make courses draggable. Notice that the courses inside the top bar and the ones
-      in the graph have different programs controlling their drag behavior. This is
-      necessary for drag-and-drop to work with line drawing.
-     */
-
+    //Make courses draggable
     var svgNotTaken = $("#svgNotTaken");
     var graph = $("#graph");
     var outGraph = $(".outGraph");
@@ -38,6 +34,10 @@ let drawConnections = function () {
 
     outGraph.draggable({revert: true});
     instance.draggable(graphCourses);
+
+    graphCourses.bind("click", function(){
+       scope = $(this);
+    });
 
     /*            DRAGGABLE BEHAVIOR           */
     svgNotTaken.droppable({ accept: '.draggable'});
@@ -108,15 +108,18 @@ let drawConnections = function () {
             outGraph.draggable({revert: true});
             drawConnections();
             courseUpdate();
+
+            graphCourses.bind("click", function(){
+                scope = $(this);
+            });
+
         }
     });
-
 
     //Behavior to initialize nodes and connections.
     drawConnections();
     courseUpdate();
     jsPlumb.fire("jsPlumbDemoLoaded", instance);
-
 
     //-----------     HELPER FUNCTIONS     -----------
 
@@ -158,4 +161,4 @@ let drawConnections = function () {
     }
 };
 
-export {drawConnections}
+export {drawConnections, scope}

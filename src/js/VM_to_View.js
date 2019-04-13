@@ -1,4 +1,6 @@
 import {Profile} from "../Model/profile.js";
+import {scope} from "./ViewConnections.js";
+
 
 let VMtoView = function () {
     //IMPORT DATA
@@ -65,6 +67,21 @@ let VMtoView = function () {
             })
             .attr("class", "draggable required inGraph");
 
+        let buttonBar = d3.select("body")
+            .select("#GUI")
+            .append("div")
+            .attr("id", "buttonBar");
+
+        buttonBar.append("button")
+                 .attr("id","markTaken")
+                 .html("Mark as Taken")
+                 .on("click", markTaken);
+
+        buttonBar.append("button")
+                 .attr("id","markUntaken")
+                 .html("Mark as Untaken")
+                 .on("click", markUntaken);
+
         positionPreReqs();
         positionTopBar();
 
@@ -86,37 +103,49 @@ let VMtoView = function () {
             }
         }
 
+        function markTaken(){
+            console.log("Mark as TAKEN called");
+            console.log(scope);
+            scope.addClass("taken").removeClass("available")
+        }
+
+        function markUntaken(course){
+            console.log("Mark as UNTAKEN called");
+            console.log(scope);
+            scope.addClass("available").removeClass("taken")
+        }
+
         function positionPreReqs() {
             $("#COMP123").css({
-                top: 300,
+                top: 250,
                 left: 50
             });
             $("#COMP127").css({
-                top: 250,
+                top: 200,
                 left: 150
             });
             $("#COMP128").css({
-                top: 280,
+                top: 230,
                 left: 250
             });
             $("#MATH279").css({
-                top: 380,
+                top: 330,
                 left: 250
             });
             $("#COMP240").css({
-                top: 180,
+                top: 130,
                 left: 400
             });
             $("#COMP221").css({
-                top: 280,
+                top: 230,
                 left: 400
             });
             $("#COMP225").css({
-                top: 380,
+                top: 330,
                 left: 400
             });
             $("#COMP261").css({
-                top: 480,
+                top: 430,
                 left: 400
             });
         }
