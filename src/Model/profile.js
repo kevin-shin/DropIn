@@ -1,38 +1,28 @@
 let Profile = [
     {
-        dept: "COMP",
-        course: "123",
-        status: "planned"
-    },
-    {
-        dept: "MATH",
-        course: "279",
+        course: "COMP123",
         status: "taken"
     },
     {
-        dept: "COMP",
-        course: "127",
-        status: "planned"
+        course: "COMP127",
+        status: "taken"
     },
     {
-        dept: "COMP",
-        course: "128",
-        status: "planned"
+        course: "COMP128",
+        status: "taken"
     },
     {
-        dept: "COMP",
-        course: "221",
-        status: "planned"
+        course: "COMP240",
+        status: "taken"
     },
     {
-        dept: "COMP",
-        course: "225",
-        status: "planned"
+        course: "MATH279",
+        status: "taken"
     },
     {
-        dept: "COMP",
-        course: "240",
-        status: "planned"
-    }];
+        course: "COMP221",
+        status: "taken"
+    }
+    ];
 
 export {Profile}
