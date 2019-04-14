@@ -1,4 +1,7 @@
-const makeConnectionsModule = require('../src/js/connections_logic.js');
+import makeConnections   from '../src/js/connections_logic.js';
+import resetConnectionsArrays from '../src/js/connections_logic.js';
+
+// const makeConnectionsModule = require('../src/js/connections_logic.js');
 
 /*
 Test suite for makeConnections function
@@ -62,6 +65,28 @@ test('comp484 alone', () => {
             { "source": "COMP124", "target": "COMP221" },
             { "source": "MATH279", "target": "COMP221" },
             { "source": "COMP123", "target": "COMP124" }
+        ]
+    );
+});
+
+test('math471 flattened array', () => {
+    makeConnectionsModule.reset();
+    expect(makeConnectionsModule.makeConnections("MATH471")).toMatchObject(
+        [
+            { source: "MATH365", target: "MATH471" },
+            { source: "MATH376", target: "MATH471" },
+            { source: "MATH377", target: "MATH471" },
+            { source: "COMP120", target: "MATH365" },
+            { source: "MATH236", target: "MATH365" },
+            { source: "COMP123", target: "MATH365" },
+            { source: "MATH279", target: "MATH236" },
+            { source: "MATH137", target: "MATH236" },
+            { source: "MATH135", target: "MATH236" },
+            { source: "MATH135", target: "MATH137" },
+            { source: "MATH279", target: "MATH376" },
+            { source: "MATH236", target: "MATH376" },
+            { source: "MATH237", target: "MATH377" },
+            { source: "MATH137", target: "MATH237" }
         ]
     );
 });

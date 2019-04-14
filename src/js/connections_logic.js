@@ -66,8 +66,8 @@ let resetConnectionsArrays = () => {console.log(courseStack, visited, returned),
 
 // --------- EXPORT  --------- //
 
-export { makeConnections };
-//
+export { makeConnections, resetConnectionsArrays };
+
 // module.exports = {};
 // module.exports.makeConnections = makeConnections;
 // module.exports.reset = resetConnectionsArrays;

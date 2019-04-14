@@ -398,4 +398,4 @@ let catalogue = [
 ];
 
 export { catalogue };
-// module.exports = courses;
+// module.exports = catalogue;
