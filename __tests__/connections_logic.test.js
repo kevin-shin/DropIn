@@ -18,8 +18,6 @@ test('comp225', () => {
     );
 });
 
-
-
 //making sure reset works so that courses from above test is not included
 test('124', () => {
     makeConnectionsModule.reset();
