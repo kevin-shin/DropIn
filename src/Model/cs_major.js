@@ -23,14 +23,14 @@ let catalogue = [
     courseInfo:
       "This course introduces the field of computer science, including central concepts such as the design and implementation of algorithms and programs, testing and analyzing programs, the representation of information within the computer, and the role of abstraction and metaphor in computer science. The exploration of these central ideas will draw examples from a range of application areas including multimedia processing, turtle graphics, and text processing. Course work will use the Python programming language."
   },
-  {
-    dept: "COMP",
-    courseNum: "124",
-    name: "Object-oriented Programming and Data Structures",
-    prereq: ["COMP123"],
-    courseInfo:
-      "This course introduces the principles of software design and development using the object-oriented paradigm (OOP) and the Java programming language. Students will learn to use data structures such as lists, trees and hash tables and they will compare the efficiency of these data structures for a particular application. Students will learn to decompose a project using OOP principles. They will work with integrated development environments (IDEs) and version control systems. Students will practice their skills by creating applications in areas such as graphics, games, simulations, and natural language processing. There is a required 1.5 hour laboratory section associated with this course. "
-  },
+  // {
+  //   dept: "COMP",
+  //   courseNum: "124",
+  //   name: "Object-oriented Programming and Data Structures",
+  //   prereq: ["COMP123"],
+  //   courseInfo:
+  //     "This course introduces the principles of software design and development using the object-oriented paradigm (OOP) and the Java programming language. Students will learn to use data structures such as lists, trees and hash tables and they will compare the efficiency of these data structures for a particular application. Students will learn to decompose a project using OOP principles. They will work with integrated development environments (IDEs) and version control systems. Students will practice their skills by creating applications in areas such as graphics, games, simulations, and natural language processing. There is a required 1.5 hour laboratory section associated with this course. "
+  // },
   {
     dept: "COMP",
     courseNum: "127",
@@ -89,7 +89,7 @@ let catalogue = [
     dept: "COMP",
     courseNum: "221",
     name: "Algorithm Design and Analysis",
-    prereq: ["COMP124", "MATH279"],
+    prereq: ["COMP128", "MATH279"],
     courseInfo:
       "An in-depth introduction to the design and analysis of algorithms. Topics may include algorithmic paradigms and structures, including recursion, divide and conquer, dynamic programming, greedy methods, branch and bound, randomized, probabilistic, and parallel algorithms, non-determinism and NP completeness. Applications to searching and sorting, graphs and optimization, geometric algorithms, and transforms. "
   },
@@ -97,7 +97,7 @@ let catalogue = [
     dept: "COMP",
     courseNum: "225",
     name: "Software Design and Development",
-    prereq: ["COMP124"],
+    prereq: ["COMP127"],
     courseInfo:
       "This course is an introduction to the problem of building software with humans and for humans. Students work in teams to design and implement a semester-long user-facing software project of their own invention. There are no limitations on topic or technology; on the contrary, students are responsible for imagining possibilities, articulating goals, and researching and selecting suitable technologies. The format resembles a studio art class, with in-class discussion guided by sharing and critiquing classmates' ongoing work. Topics include communication, division of labor, user-centered design, human-computer interaction, product management, project management, iterative development, engineering tradeoffs, separation of concerns, code readability and maintainability, refactoring, testing, and version control. Teams give a public demonstration of their working projects at the end of the semester."
   },
@@ -121,7 +121,7 @@ let catalogue = [
     dept: "COMP",
     courseNum: "240",
     name: "Computer Systems Organization",
-    prereq: ["COMP124"],
+    prereq: ["COMP128"],
     courseInfo:
       "This course familiarizes the student with the internal design and organization of computers. Topics include number systems, internal data representations, microarchitectures, the functional units of a computer system, memory, processor, and input/output structures, instruction sets and assembly language, addressing techniques, system software, and concurrency and parallelism."
   },
@@ -137,7 +137,7 @@ let catalogue = [
     dept: "COMP",
     courseNum: "261",
     name: "Theory of Computation",
-    prereq: ["COMP124", "MATH279"],
+    prereq: ["COMP128", "MATH279"],
     courseInfo:
       "This course examines the theoretical foundations of computation. It explores different mathematical models that try to formalize our informal notion of an algorithm. Models include finite automata, regular expressions, grammars, and Turing machines. The course also discusses ideas about what can and cannot be computed. In addition, the course explores the basics of complexity theory, examining broad categories of problems and their algorithms, and their efficiency. The focus is on the question of P versus NP, and the NP-complete set."
   },
@@ -214,7 +214,7 @@ let catalogue = [
     dept: "MATH",
     courseNum: "361",
     name: "Theory of Computation",
-    prereq: ["COMP124", "MATH279"],
+    prereq: ["COMP128", "MATH279"],
     courseInfo:
       "This course examines the theoretical foundations of computation. It explores different mathematical models that try to formalize our informal notion of an algorithm. Models include finite automata, regular expressions, grammars, and Turing machines. The course also discusses ideas about what can and cannot be computed. In addition, the course explores the basics of complexity theory, examining broad categories of problems and their algorithms, and their efficiency. The focus is on the question of P versus NP, and the NP-complete set."
   },
@@ -277,7 +277,7 @@ let catalogue = [
     dept: "COMP",
     courseNum: "394",
     name: "Software Testing",
-    prereq: ["COMP124"],
+    prereq: ["COMP128"],
     courseInfo:
       "This class intends to be a hands-on approach to software testing. Lectures may be minimal as we focus on applying the different types of software testing. The semester will start with exhaustive, unit, and functional testing, statement, branch, and condition coverage, and then move on to topics such as regression testing, penetration testing, agile testing, mutation testing, and others as it comes up. Bring a large-ish program that you have written for use in in the beginning of the course. Be prepared to interact with other students, discuss problems and solutions, and share code."
   },
@@ -293,7 +293,7 @@ let catalogue = [
     dept: "MATH",
     courseNum: "432",
     name: "Mathematical Modeling",
-    prereq: [["MATH312", "COMP120"], ["MATH312", "COMP123"], ["MATH312", "COMP124"]],
+    prereq: [["MATH312", "COMP120"], ["MATH312", "COMP123"], ["MATH312", "COMP128"]],
     courseInfo: "Draws on the student's general background in mathematics to construct models for problems arising from such diverse areas as the physical sciences, life sciences, political science, economics, and computing. Emphasis will be on the design, analysis, accuracy, and appropriateness of a model for a given problem. Case studies will be used extensively. Specific mathematical techniques will vary with the instructor and student interest. This course counts towards the capstone requirement."
   },
   {
@@ -303,7 +303,7 @@ let catalogue = [
     prereq: [
       ["MATH236", "COMP120"],
       ["MATH236", "COMP123"],
-      ["MATH236", "COMP124"]
+      ["MATH236", "COMP128"]
     ],
     courseInfo:
       "Topics in applied mathematics chosen from: Fourier analysis; partial differential equations; wavelets; signal processing; time-frequency analysis; stochastic processes; optimization; computational geometry; and more. Topics are examined in theoretical and applied contexts, and from analytical and computational viewpoints. This course counts toward the capstone requirement. May be repeated for credit with departmental approval."
@@ -312,7 +312,7 @@ let catalogue = [
     dept: "COMP",
     courseNum: "440",
     name: "Collective Intelligence",
-    prereq: ["COMP124", "COMP221"],
+    prereq: ["COMP221"],
     courseInfo:
       "This course introduces the theory and practice of data science applied to online communities such as Wikipedia, Facebook, and Twitter. Students will read and discuss recent academic research papers that analyze behavior on these websites and use computational simulation, machine learning, and data-mining techniques to analyze massive behavioral datasets in areas such as recommender systems, natural language processing, and tagging systems."
   },

@@ -8,13 +8,6 @@
   },
   {
     "dept": "COMP",
-    "course": 124,
-    "taken": false,
-    "required": false
-  },
-
-  {
-    "dept": "COMP",
     "course": 127,
     "taken": true,
     "required": true

@@ -132,27 +132,27 @@ let VMtoView = function () {
             });
             $("#COMP128").css({
                 top: 230,
-                left: 250
+                left: 280
             });
             $("#MATH279").css({
                 top: 330,
-                left: 250
+                left: 280
             });
             $("#COMP240").css({
                 top: 130,
-                left: 470
+                left: 510
             });
             $("#COMP221").css({
                 top: 230,
-                left: 470
+                left: 510
             });
             $("#COMP225").css({
                 top: 330,
-                left: 470
+                left: 510
             });
             $("#COMP261").css({
                 top: 430,
-                left: 470
+                left: 510
             });
         }
     }
