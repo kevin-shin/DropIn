@@ -7,5 +7,7 @@ import { drawConnections } from "./ViewConnections.js";
 VMtoView();
 //Draw the connections, and instantiate all draggable behaviors
 $(() => {
-    drawConnections();
+    $(() => {
+        drawConnections();
+    });
 });

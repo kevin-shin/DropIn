@@ -13,20 +13,35 @@
     <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-    <div class="instructions">
-        <p id="welcomeText">Welcome to Judasake! <br> Instructions are as follows: </p>
-        <p id="name"></p>
-        <p id="courseDescription"></p>
-    </div>
-    <div class="requirements"><br>
-        Requirements: <br> <br>
-        <input type="checkbox" id="r1" class="checkbox"/> COMP123<br>
-        <input type="checkbox" id="r2" class="checkbox"/> COMP127<br>
-        <input type="checkbox" id="r3" class="checkbox"/> COMP128<br>
-        <input type="checkbox" id="r4" class="checkbox"/> COMP221<br>
-    </div>
-    <div class="main" id="GUI">
-    </div>
+<div class="instructions">
+    <p id="welcomeText">Welcome to Judasake! <br> Instructions are as follows: </p>
+    <p id="name"></p>
+    <p id="courseDescription"></p>
+</div>
+<div class="requirements"><br>
+    Requirements:
+    <ul>
+        <li>
+            <input type="checkbox"><label> Intro Course</label>
+            <ul>
+                <li><label><input type="checkbox"> COMP123</label></li>
+                <li><label><input type="checkbox"> COMP127</label></li>
+                <li><label><input type="checkbox"> COMP128</label></li>
+            </ul>
+        </li>
+        <li>
+            <input type="checkbox"><label> Core Courses</label>
+            <ul>
+                <li><label><input type="checkbox"> COMP221</label></li>
+                <li><label><input type="checkbox"> COMP225</label></li>
+                <li><label><input type="checkbox"> COMP240</label></li>
+                <li><label><input type="checkbox"> COMP261</label></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="main" id="GUI">
+</div>
 
 
 </body>
