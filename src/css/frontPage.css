@@ -2,14 +2,22 @@
     margin: auto;
 }
 
+#profileData {
+    margin: 50px;
+}
 .column {
     float: left;
-    width: 50%;
+    width: 33%;
+    vertical-align: top;
+    display: inline-block;
+}
+
+#inputButton {
+    margin: 20px;
+}
+
+#select {
+    margin: 20px;
 }
 
 /* Clear floats after the columns */
-#profileData:after {
-    content: "";
-    display: table;
-    clear: both;
-}
