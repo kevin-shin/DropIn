@@ -42,12 +42,14 @@ let VMtoView = function () {
             .select("#GUI")
             .append("div")
             .attr("id", "graph");
+
         let years = [2019,2020,2021,2022];
 
         let svgYears = svgNotTakenDivs.selectAll("taken")
             .data(years)
             .enter().append("div")
-            .attr("class","year");
+            .attr("class","year")
+            .html(function(d) {return String(d)});
 
         let svgContainer = svgNotTakenDivs.selectAll("taken")
             .data(taken)
@@ -122,11 +124,11 @@ let VMtoView = function () {
         function positionPreReqs() {
             $("#COMP123").css({
                 top: 250,
-                left: 50
+                left: 30
             });
             $("#COMP127").css({
                 top: 200,
-                left: 150
+                left: 130
             });
             $("#COMP128").css({
                 top: 230,
@@ -138,19 +140,19 @@ let VMtoView = function () {
             });
             $("#COMP240").css({
                 top: 130,
-                left: 400
+                left: 470
             });
             $("#COMP221").css({
                 top: 230,
-                left: 400
+                left: 470
             });
             $("#COMP225").css({
                 top: 330,
-                left: 400
+                left: 470
             });
             $("#COMP261").css({
                 top: 430,
-                left: 400
+                left: 470
             });
         }
     }
