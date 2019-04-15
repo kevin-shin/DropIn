@@ -42,6 +42,12 @@ let VMtoView = function () {
             .select("#GUI")
             .append("div")
             .attr("id", "graph");
+        let years = [2019,2020,2021,2022];
+
+        let svgYears = svgNotTakenDivs.selectAll("taken")
+            .data(years)
+            .enter().append("div")
+            .attr("class","year");
 
         let svgContainer = svgNotTakenDivs.selectAll("taken")
             .data(taken)
@@ -68,7 +74,7 @@ let VMtoView = function () {
             .attr("class", "draggable required inGraph");
 
         let buttonBar = d3.select("body")
-            .select("#GUI")
+            .select(".instructions")
             .append("div")
             .attr("id", "buttonBar");
 
