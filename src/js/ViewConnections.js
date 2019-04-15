@@ -20,7 +20,7 @@ let drawConnections = function () {
     var instance = jsPlumb.getInstance({
         Connector: ["Straight"],
         DragOptions: {cursor: "pointer", zIndex: 5},
-        PaintStyle: {stroke: "black", strokeWidth: 2},
+        PaintStyle: {stroke: "black", strokeWidth: 1}
     });
 
     jsPlumb.Defaults.MaxConnections = 10;
@@ -84,9 +84,11 @@ let drawConnections = function () {
                         anchors: [
                             ["Perimeter", {shape: "Diamond", anchorCount: 150}],
                             ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                        ],
+                        overlays:[
+                            ["Arrow",  {location: 0.75} ]
                         ]
                     });
-
                 }
                 if (insideGraph) {
                     instance.connect({
@@ -96,6 +98,9 @@ let drawConnections = function () {
                         anchors: [
                             ["Perimeter", {shape: "Diamond", anchorCount: 150}],
                             ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                        ],
+                        overlays:[
+                            ["Arrow",  {location: 0.75} ]
                         ]
                     });
                 }
@@ -133,6 +138,9 @@ let drawConnections = function () {
                 anchors: [
                     ["Perimeter", {shape: "Diamond", anchorCount: 150}],
                     ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                ],
+                overlays:[
+                    ["Arrow",  {location: 0.75} ]
                 ]
             })
         }));
