@@ -1,4 +1,4 @@
-import {courseCatalog} from "./prereq_dictionary.js";
+import { courseCatalog } from "./prereq_dictionary.js";
 
 let keys = [];
 let profileInput;
