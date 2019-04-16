@@ -1,18 +1,17 @@
-import {makeConnections} from "./connections_logic.js";
-import {Connections} from "../Model/connections.js";
-import {catalogue} from "../Model/cs_major.js";
+import { makeConnections } from "./connections_logic.js";
+import { catalogue } from "../Model/cs_major.js";
 
 var scope;
 
-let drawConnections = function () {
+let setUpDraggable  = function(){
+
+};
+
+
+
+let drawConnections = function ( Connections ) {
     const radius = 20;
     const displacement = radius + 10;
-
-    //TODO Reformat with ES6 Imports and Exports
-    var courses;
-    d3.json("../Model/ViewModel_Test.json").then(function (data) {
-        courses = data.Classes;
-    });
 
     //Set up jsPlumb. jsPlumbInstance will be the variable which controls jsPlumb draggable behavior.
     var jsPlumbInstance = jsPlumb.getInstance({
@@ -128,7 +127,7 @@ let drawConnections = function () {
 
     //Draw the connections between imported courses.
     function drawConnections() {
-        for(let entry of Connections) {
+        for ( let entry of Connections) {
             jsPlumbInstance.connect({
                 source: entry.source,
                 target: entry.target,

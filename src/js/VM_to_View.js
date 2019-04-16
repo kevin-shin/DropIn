@@ -2,15 +2,12 @@ import {Profile} from "../Model/profile.js";
 import {scope} from "./ViewConnections.js";
 import {rules} from "../Model/cs_major_rules.js";
 import { drawConnections } from "./ViewConnections.js";
+import { ViewModel } from "../Model/ViewModel_Test.js";
 
 let VMtoView = function () {
     //IMPORT DATA
-    let ViewModel;
-    d3.json("../Model/ViewModel_Test.json").then(function (data) {
-        ViewModel = data;
-        draw(data);
-        drawConnections();
-    });
+    draw(ViewModel);
+    drawConnections(ViewModel.Connections);
 
     function draw(ViewModel) {
 
@@ -45,7 +42,7 @@ let VMtoView = function () {
             .append("div")
             .attr("id", "graph");
 
-        let years = [2019, 2020, 2021, 2022];
+        let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
 
         let svgYears = svgNotTakenDivs.selectAll("taken")
             .data(years)

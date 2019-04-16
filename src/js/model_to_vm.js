@@ -1,7 +1,8 @@
 //initialize VM. input profile and major logic output viewmodel.
+
+
 let initializeVM = function(profile, rules){
     let VM = [];
-
     //Intro courses
     for (let course of rules.intro.courses){
         if (profile.some((element) => course === element)){
@@ -76,8 +77,6 @@ let initializeVM = function(profile, rules){
 };
 
 
-
-
 let modelToVM = function (profile, majorRules, draggedCourse) {
     makeConnections(draggedCourse);
     for (var course of adjList) {
@@ -89,7 +88,6 @@ let modelToVM = function (profile, majorRules, draggedCourse) {
                 "courseNum": courseNum,
                 "status": "sysAdded"
             })
-        
     }
     // return fullMajorCheck(profile, majorRules);
 };
