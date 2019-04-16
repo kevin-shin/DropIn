@@ -128,7 +128,7 @@ let drawConnections = function () {
 
     //Draw the connections between imported courses.
     function drawConnections() {
-        Connections.forEach((function (entry) {
+        for(let entry of Connections) {
             jsPlumbInstance.connect({
                 source: entry.source,
                 target: entry.target,
@@ -141,7 +141,7 @@ let drawConnections = function () {
                     ["Arrow",  {location: 1} ]
                 ]
             })
-        }));
+        }
     }
 
     function courseUpdate() {
