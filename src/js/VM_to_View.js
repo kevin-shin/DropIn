@@ -9,7 +9,6 @@ let VMtoView = function () {
     d3.json("../Model/ViewModel_Test.json").then(function (data) {
         ViewModel = data;
         draw(data);
-        draw(data);
         drawConnections();
     });
 
