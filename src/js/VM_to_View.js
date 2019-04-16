@@ -1,7 +1,7 @@
 import {Profile} from "../Model/profile.js";
 import {scope} from "./ViewConnections.js";
 import {rules} from "../Model/cs_major_rules.js";
-
+import { drawConnections } from "./ViewConnections.js";
 
 let VMtoView = function () {
     //IMPORT DATA
@@ -9,6 +9,8 @@ let VMtoView = function () {
     d3.json("../Model/ViewModel_Test.json").then(function (data) {
         ViewModel = data;
         draw(data);
+        draw(data);
+        drawConnections();
     });
 
     function draw(ViewModel) {
