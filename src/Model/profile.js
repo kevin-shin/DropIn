@@ -23,6 +23,6 @@ let Profile = [
         course: "COMP221",
         status: "taken"
     }
-    ];
+];
 
 export {Profile}
