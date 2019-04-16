@@ -65,7 +65,6 @@ let VMtoView = function () {
             })
             .attr("class", "draggable taken inGraph");
 
-
         //REQUIRED, NOT TAKEN COURSES Color: Gray
         let svgRequiredGroups = svgNotTakenDivs.selectAll("taken")
             .data(requiredNotTaken)

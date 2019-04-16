@@ -5,8 +5,6 @@ import {catalogue} from "../Model/cs_major.js";
 var scope;
 
 let drawConnections = function () {
-
-
     const radius = 20;
     const displacement = radius + 10;
 
