@@ -85,7 +85,7 @@ let initializeVM = function(profile, rules){
  * Takes a profile and the course ("COMP225") that was just dragged onto the screen
  */
 let updateProfile = function (profile, draggedCourse) {
-    courseWithPrereqs = dfs(draggedCourse);
+    var courseWithPrereqs = dfs(draggedCourse);
     for (course of courseWithPrereqs) {
         profile.push({
             course: draggedCourse,
@@ -100,7 +100,7 @@ let updateProfile = function (profile, draggedCourse) {
  *  Output lools like {source: "COMP123", target: "COMP124"}
  */
 let writeSourceTarget = function (profile) {
-    connections = [];
+    var connections = [];
     for (node of profile) {
         makeConnections(node.course);
         if (!connections.some((conn) => conn.source === prereq && conn.target === course)) {
