@@ -80,7 +80,7 @@ let initializeVM = function(profile, rules){
 
 
 
-/*
+/*  
  * Adds a course and its prereqs to the profile to be read by function writeSourceTarget for VM
  * Takes a profile and the course ("COMP225") that was just dragged onto the screen
  */
