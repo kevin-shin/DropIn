@@ -80,11 +80,11 @@ let drawConnections = function () {
                         target: course.target,
                         endpoint: "Blank",
                         anchors: [
-                            ["Perimeter", {shape: "Diamond", anchorCount: 150}],
-                            ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                            ["Perimeter", {shape: "Circle", anchorCount: 150}],
+                            ["Perimeter", {shape: "Circle", anchorCount: 150}]
                         ],
                         overlays:[
-                            ["Arrow",  {location: 0.75} ]
+                            ["Arrow",  {location: 1} ]
                         ]
                     });
                 }
@@ -94,11 +94,11 @@ let drawConnections = function () {
                         target: course.target,
                         endpoint: "Blank",
                         anchors: [
-                            ["Perimeter", {shape: "Diamond", anchorCount: 150}],
-                            ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                            ["Perimeter", {shape: "Circle", anchorCount: 150}],
+                            ["Perimeter", {shape: "Circle", anchorCount: 150}]
                         ],
                         overlays:[
-                            ["Arrow",  {location: 0.75} ]
+                            ["Arrow",  {location: 1} ]
                         ]
                     });
                 }
@@ -134,11 +134,11 @@ let drawConnections = function () {
                 target: entry.target,
                 endpoint: "Blank",
                 anchors: [
-                    ["Perimeter", {shape: "Diamond", anchorCount: 150}],
-                    ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                    ["Perimeter", {shape: "Circle", anchorCount: 150}],
+                    ["Perimeter", {shape: "Circle", anchorCount: 150}]
                 ],
                 overlays:[
-                    ["Arrow",  {location: 0.75} ]
+                    ["Arrow",  {location: 1} ]
                 ]
             })
         }));
