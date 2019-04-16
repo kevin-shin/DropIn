@@ -1,3 +1,4 @@
+//Making the requirements section depends on "intro" "core" "math" and "elective", so please don't change
 let rules = {
     intro : {
         courses: ["COMP123", "COMP120"],
