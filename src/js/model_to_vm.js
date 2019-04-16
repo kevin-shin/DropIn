@@ -1,3 +1,5 @@
+import { makeConnections, dfs } from "./connections_logic";
+
 //initialize VM. input profile and major logic output viewmodel.
 let initializeVM = function(profile, rules){
     let VM = [];
@@ -78,21 +80,39 @@ let initializeVM = function(profile, rules){
 
 
 
-let modelToVM = function (profile, majorRules, draggedCourse) {
-    makeConnections(draggedCourse);
-    for (var course of adjList) {
-            var dept = course.source.slice(0, 5);
-            var courseNum = course.source.slice(5);
-            profile.profile.push({
-                "course": course.source,
-                "dept": dept,
-                "courseNum": courseNum,
-                "status": "sysAdded"
-            })
-        
-    }
-    // return fullMajorCheck(profile, majorRules);
+/*
+ * Adds a course and its prereqs to the profile to be read by function writeSourceTarget for VM
+ * Takes a profile and the course ("COMP225") that was just dragged onto the screen
+ */
+let updateProfile = function (profile, draggedCourse) {
+    courseWithPrereqs = dfs(draggedCourse);
+    for (course of courseWithPrereqs) {
+        profile.push({
+            course: draggedCourse,
+            status: "planned"
+        });
+    };
 };
+
+
+/*
+ *  Reads a profile and outputs JSON object with source target components for VM 
+ *  Output lools like {source: "COMP123", target: "COMP124"}
+ */
+let writeSourceTarget = function (profile) {
+    connections = [];
+    for (node of profile) {
+        makeConnections(node.course);
+        if (!connections.some((conn) => conn.source === prereq && conn.target === course)) {
+            connections.push({
+                "source": prereq,
+                "target": course
+            });
+        }
+    }
+   return connections;
+}
+
 
 // let fullMajorCheck = function (profile, majorRules) {
 //     for (course in profile.profile) {
