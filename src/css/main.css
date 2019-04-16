@@ -13,15 +13,16 @@ body {
 
 /*           INSTRUCTIONS PANEL           */
 .instructions {
-    height: 50%;
-    width: 25%;
+    height: 40%;
+    width: 23%;
     position: absolute;
     right: 0;
     overflow-y: scroll;
     background-color: darkseagreen;
     z-index: 10;
     border-radius: 25px;
-    padding: 5px;
+    margin-right: 10px;
+    padding: 10px;
 }
 
 .instructions > p {
@@ -38,34 +39,35 @@ body {
 
 /*           REQUIREMENTS PANEL           */
 .requirements {
+    margin: 10px;
     padding: 10px;
-    height: 45%;
-    width: 25%;
+    height: 50%;
+    width: 23%;
     position: absolute;
     right: 0;
     bottom: 0;
     background-color: darkseagreen;
     border-radius: 25px;
-    padding: 5px;
 }
 
 .requirements a {
     font-size: 25px;
     color: #818181;
     display: block;
+    padding: 5px;
 }
 
 
 /*           GUI           */
 
 #graph{
-    height: 80%;
+    height: 82%;
     width: 72%;
     left: 0;
     background-color: white;
-    border-radius: 25px;
-    border: 2px solid #73AD21;
     margin: 5px;
+    float: left;
+    white-space: nowrap;
 }
 
 #availableCourses {
@@ -78,7 +80,7 @@ body {
 
 #svgNotTaken {
     width: 72%;
-    height: 100px;
+    height: 75px;
     position: relative;
     background-color: white;
     border-radius: 25px;
@@ -132,4 +134,19 @@ body {
     text-align: center;
     display: inline-block;
     line-height: 60px;
+}
+
+#graph > .year {
+    width: 24.8%;
+    height: 100%;
+    vertical-align: top;
+    display: inline-block;
+    background: white;
+    border: 2px solid #73AD21;
+    text-align: center;
+    padding-top: 5px;
+}
+
+ul {
+    list-style: none;
 }

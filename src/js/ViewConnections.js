@@ -1,38 +1,48 @@
-let drawConnections = function() {
-    //GLOBAL VARIABLES
+import {makeConnections} from "./connections_logic.js";
+import {Connections} from "../Model/connections.js";
+import {catalogue} from "../Model/cs_major.js";
+
+var scope;
+
+let drawConnections = function () {
+
+
     const radius = 20;
     const displacement = radius + 10;
 
-    var courses, arrows, catalog;
-    //IMPORT DATA
+    //TODO Reformat with ES6 Imports and Exports
+    var courses;
     d3.json("../Model/ViewModel_Test.json").then(function (data) {
         courses = data.Classes;
-        arrows = data.Connections;
-    });
-    d3.json("../Model/CS_major.json").then(function (data) {
-        catalog = data;
     });
 
-    //SET UP JSPLUMB. instance will be the variable which controls jsPlumb draggable behavior.
+    //Set up jsPlumb. instance will be the variable which controls jsPlumb draggable behavior.
     var instance = jsPlumb.getInstance({
         Connector: ["Straight"],
         DragOptions: {cursor: "pointer", zIndex: 5},
-        PaintStyle: {stroke: "black", strokeWidth: 2},
+        PaintStyle: {stroke: "black", strokeWidth: 1}
     });
 
-    /*Make courses draggable. Notice that the courses inside the top bar and the ones
-      in the graph have different programs controlling their drag behavior. This is
-      necessary for drag-and-drop to work with line drawing.
-     */
-    var availableCourses = $(".draggable.available");
-    var graphCourses = $(".inGraph");
+    jsPlumb.Defaults.MaxConnections = 10;
 
-    availableCourses.draggable({revert: true});
+    //Make courses draggable
+    var svgNotTaken = $("#svgNotTaken");
+    var graph = $("#graph");
+    var outGraph = $(".outGraph");
+    var graphCourses = $(".inGraph");
+    var allCourses = $(".draggable");
+
+    outGraph.draggable({revert: true});
     instance.draggable(graphCourses);
 
-    //DECLARE DRAGGABLE BEHAVIOR
-    $("#svgNotTaken").droppable({accept: '.draggable'});
-    $("#graph").droppable({
+    graphCourses.bind("click", function(){
+       scope = $(this);
+    });
+
+    /*            DRAGGABLE BEHAVIOR           */
+    svgNotTaken.droppable({ accept: '.draggable'});
+    graph.droppable({
+        accept: ".outGraph",
         drop: function (e, ui) {
             var x = ui.helper.clone();
             ui.helper.remove();
@@ -41,121 +51,86 @@ let drawConnections = function() {
                 left: e.clientX - displacement,
                 position: 'absolute'
             });
-            x.addClass("inGraph");
-            $("#graph").append(x);
+            x.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handlea ui-draggable-dragging");
+            graph.append(x);
+            instance.draggable(x);
+            var item = x.attr('id');
 
-            var courseStack = [];
-            var visited = [];
-            var returned = [];
+            //Run the prereq algorithms
+            let prereqs = makeConnections(item);
+            prereqs.forEach(function (course) {
+                var insideGraph = graphCourses.toArray().some((element) => element.id === course.source);
+                var insideBar = outGraph.toArray().some((element) => element.id === course.source);
 
-            let dfs = function (draggedCourse) {
-                courseStack.push(draggedCourse);
-                visited.push(draggedCourse);
-
-                while (courseStack.length !== 0) {
-                    var v = courseStack.pop();
-                    returned.push(v);
-                    for (var child of prereqDict.get(v)) {
-                        if (!(child in visited)) {
-                            dfs(child);
-                        }
-                    }
+                //Algorithm assumes that each course is either inside the graph or bar.
+                if (insideBar) {
+                    var toRemove = "#" + course.source;
+                    var nodeToRemove = $(toRemove);
+                    var clone = nodeToRemove.clone();
+                    clone.css({
+                        top: e.clientY - displacement - 50,
+                        left: e.clientX - displacement - 50,
+                        position: 'absolute',
+                        opacity: 0.5
+                    });
+                    clone.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handle");
+                    nodeToRemove.remove();
+                    $("#graph").append(clone);
+                    instance.draggable(clone);
+                    instance.connect({
+                        source: clone.attr('id'),
+                        target: course.target,
+                        endpoint: "Blank",
+                        anchors: [
+                            ["Perimeter", {shape: "Diamond", anchorCount: 150}],
+                            ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                        ],
+                        overlays:[
+                            ["Arrow",  {location: 0.75} ]
+                        ]
+                    });
                 }
-            };
-
-            var adjList = [];
-
-//connections to adjacency list
-            let returnedToAdjList = function () {
-                for (var course of returned) {
-                    var prereqs = prereqDict.get(course);
-                    for (var prereq of prereqs) {
-                        if (!adjList.some((adj) => adj.source === prereq && adj.target === course)) {
-                            adjList.push({
-                                "source": prereq,
-                                "target": course
-                            });
-                        }
-                    }
+                if (insideGraph) {
+                    instance.connect({
+                        source: course.source,
+                        target: course.target,
+                        endpoint: "Blank",
+                        anchors: [
+                            ["Perimeter", {shape: "Diamond", anchorCount: 150}],
+                            ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                        ],
+                        overlays:[
+                            ["Arrow",  {location: 0.75} ]
+                        ]
+                    });
                 }
-                returned = [];
-            };
+            });
 
-            let makeConnections = function(draggedCourse) {
-                var courseStack = [];
-                var visited = [];
-                var returned = [];
-
-                dfs(draggedCourse);
-                returnedToAdjList();
-            };
-
-
-            //JULIET'S ALGORITHM HERE
-            /*
-            Pseudocode
-
-            let prereqs = array of courses returned by prereq algorithm
-            for prereq in prereqs:
-                if prereq on graph already:
-                    draw line from that prereq to dropped node (x)
-                else:
-                    add node, in transparent red. Think about how you want to place it.
-                    draw connection between that node and this node.
-                    something about updating profiles.
-
-            */
-
-            availableCourses = $(".draggable.available");
+            //Having transferred courses, call the appropriate drag-enablers.
+            outGraph = $(".outGraph");
             graphCourses = $(".inGraph");
 
-            availableCourses.draggable({revert: true});
-            instance.draggable(graphCourses);
+            outGraph.draggable({revert: true});
+            drawConnections();
+            courseUpdate();
+
+            graphCourses.bind("click", function(){
+                scope = $(this);
+            });
+
         }
     });
 
-    $(".draggable").bind("mousedown", function () {
-        var course = findCourse(catalog, this);
-        var description = course.courseInfo;
-        var name = course.name;
-        var title = course.dept + course.courseNum;
-        $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
-        $("#courseDescription").replaceWith("<p id='courseDescription'>" + description + "</p>");
-    });
-
-    let sourceTarget = [
-        {
-            source: "COMP123",
-            target: "COMP127"
-        },
-        {
-            source: "COMP127",
-            target: "COMP128"
-        },
-        {
-            source: "COMP128",
-            target: "COMP221"
-        },
-        {
-            source: "MATH279",
-            target: "COMP221"
-        },
-        {
-            source: "COMP128",
-            target: "COMP240"
-        }
-    ];
-
-    initializeConnections(sourceTarget);
+    //Behavior to initialize nodes and connections.
+    drawConnections();
+    courseUpdate();
     jsPlumb.fire("jsPlumbDemoLoaded", instance);
-
-
 
     //-----------     HELPER FUNCTIONS     -----------
 
     //Draw the connections between imported courses.
-    function initializeConnections(connections) {
-        connections.forEach((function (entry) {
+    function drawConnections() {
+        Connections.forEach((function (entry) {
             instance.connect({
                 source: entry.source,
                 target: entry.target,
@@ -163,9 +138,29 @@ let drawConnections = function() {
                 anchors: [
                     ["Perimeter", {shape: "Diamond", anchorCount: 150}],
                     ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                ],
+                overlays:[
+                    ["Arrow",  {location: 0.75} ]
                 ]
             })
         }));
+    }
+
+    function courseUpdate() {
+        allCourses = $(".draggable");
+        allCourses.bind("mousedown", function () {
+            var course = findCourse(catalogue, this);
+            var prereq = course.prereq.toString();
+            var description = course.courseInfo;
+            var name = course.name;
+            var title = course.dept + course.courseNum;
+            $("#welcomeText").remove();
+            $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
+            $("#courseDescription").replaceWith(
+                "<p id='courseDescription'>" + description + "</p>" +
+                "<p>" + prereq + "</p>"
+            );
+        });
     }
 
     function findCourse(data, course) {
@@ -178,4 +173,4 @@ let drawConnections = function() {
     }
 };
 
-export { drawConnections }
+export {drawConnections, scope}

@@ -1,3 +1,83 @@
+//initialize VM. input profile and major logic output viewmodel.
+let initializeVM = function(profile, rules){
+    let VM = [];
+
+    //Intro courses
+    for (let course of rules.intro.courses){
+        if (profile.some((element) => course === element)){
+            VM.push({
+                course: course,
+                taken: true,
+                required: true
+            })
+        }
+        else {
+            VM.push({
+                course: course,
+                taken: false,
+                required: true
+            })
+        }
+    }
+
+    //Core courses
+    for (let course of rules.core.courses){
+        if (profile.some((element) => course === element)){
+            VM.push({
+                course: course,
+                taken: true,
+                required: true
+            })
+        }
+        else {
+            VM.push({
+                course: course,
+                taken: false,
+                required: true
+            })
+        }
+    }
+
+    //Math courses
+    for (let course of rules.math.courses) {
+        if (profile.some((element) => course === element)){
+            VM.push({
+                course: course,
+                taken: true,
+                required: false
+            })
+        }
+        else {
+            VM.push({
+                course: course,
+                taken: false,
+                required: false
+            })
+        }
+    }
+
+    for (let course of rules.elective.courses){
+        if (profile.some((element) => course === element)){
+            VM.push({
+                course: course,
+                taken: true,
+                required: false
+            })
+        }
+        else {
+            VM.push({
+                course: course,
+                taken: false,
+                required: false
+            })
+        }
+    }
+    return VM;
+};
+
+
+
+
 let modelToVM = function (profile, majorRules, draggedCourse) {
     makeConnections(draggedCourse);
     for (var course of adjList) {
@@ -12,8 +92,7 @@ let modelToVM = function (profile, majorRules, draggedCourse) {
         
     }
     // return fullMajorCheck(profile, majorRules);
-
-}
+};
 
 // let fullMajorCheck = function (profile, majorRules) {
 //     for (course in profile.profile) {

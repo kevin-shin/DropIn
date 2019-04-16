@@ -1,16 +1,18 @@
-let VMtoView = function () {
+import {Profile} from "../Model/profile.js";
+import {scope} from "./ViewConnections.js";
 
-//IMPORT DATA
+
+let VMtoView = function () {
+    //IMPORT DATA
     let ViewModel;
     d3.json("../Model/ViewModel_Test.json").then(function (data) {
-        draw(data);
         ViewModel = data;
+        draw(data);
     });
 
     function draw(ViewModel) {
 
         const radius = 20;
-        const displacement = radius + 20;
 
         let Classes = ViewModel.Classes;
         let taken = Classes.filter(course => course.taken === true);
@@ -33,14 +35,21 @@ let VMtoView = function () {
             .html(function (d) {
                 return String(d.course)
             })
-            .classed("draggable available", true);
+            .classed("draggable available outGraph", true);
 
         //TAKEN COURSES. Color: Green
-
         let svgNotTakenDivs = d3.select("body")
             .select("#GUI")
             .append("div")
             .attr("id", "graph");
+
+        let years = [2019,2020,2021,2022];
+
+        let svgYears = svgNotTakenDivs.selectAll("taken")
+            .data(years)
+            .enter().append("div")
+            .attr("class","year")
+            .html(function(d) {return String(d)});
 
         let svgContainer = svgNotTakenDivs.selectAll("taken")
             .data(taken)
@@ -66,6 +75,21 @@ let VMtoView = function () {
             })
             .attr("class", "draggable required inGraph");
 
+        let buttonBar = d3.select("body")
+            .select(".instructions")
+            .append("div")
+            .attr("id", "buttonBar");
+
+        buttonBar.append("button")
+                 .attr("id","markTaken")
+                 .html("Mark as Taken")
+                 .on("click", markTaken);
+
+        buttonBar.append("button")
+                 .attr("id","markUntaken")
+                 .html("Mark as Untaken")
+                 .on("click", markUntaken);
+
         positionPreReqs();
         positionTopBar();
 
@@ -86,39 +110,49 @@ let VMtoView = function () {
                 i++;
             }
         }
+        //TODO: THINK ABOUT THIS. Do you add and remove required? If so, how?
+        //Do you want your users to have this ability? Should they?
+
+        function markTaken(){
+            scope.addClass("taken").removeClass("available")
+        }
+
+        function markUntaken(){
+            scope.addClass("available").removeClass("taken")
+        }
 
         function positionPreReqs() {
             $("#COMP123").css({
-                top: 300,
-                left: 50
+                top: 250,
+                left: 30
             });
             $("#COMP127").css({
-                top: 250,
-                left: 150
+                top: 200,
+                left: 130
             });
             $("#COMP128").css({
-                top: 280,
-                left: 250
+                top: 230,
+                left: 280
             });
             $("#MATH279").css({
-                top: 380,
-                left: 250
+                top: 330,
+                left: 280
             });
             $("#COMP240").css({
-                top: 180,
-                left: 400
+                top: 130,
+                left: 510
             });
             $("#COMP221").css({
-                top: 280,
-                left: 400
+                top: 230,
+                left: 510
             });
             $("#COMP225").css({
-                top: 380,
-                left: 400
+                top: 330,
+                left: 510
             });
             $("#COMP261").css({
-                top: 480,
-                left: 400
+                top: 430,
+                left: 510
             });
         }
     }
