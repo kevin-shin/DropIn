@@ -51,7 +51,7 @@ let drawConnections = function () {
                 left: e.clientX - displacement,
                 position: 'absolute'
             });
-            x.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handlea ui-draggable-dragging");
+            x.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handle ui-draggable-dragging");
             graph.append(x);
             instance.draggable(x);
             var item = x.attr('id');
