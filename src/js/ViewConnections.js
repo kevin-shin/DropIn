@@ -5,8 +5,6 @@ import {catalogue} from "../Model/cs_major.js";
 var scope;
 
 let drawConnections = function () {
-
-
     const radius = 20;
     const displacement = radius + 10;
 
@@ -16,8 +14,8 @@ let drawConnections = function () {
         courses = data.Classes;
     });
 
-    //Set up jsPlumb. instance will be the variable which controls jsPlumb draggable behavior.
-    var instance = jsPlumb.getInstance({
+    //Set up jsPlumb. jsPlumbInstance will be the variable which controls jsPlumb draggable behavior.
+    var jsPlumbInstance = jsPlumb.getInstance({
         Connector: ["Straight"],
         DragOptions: {cursor: "pointer", zIndex: 5},
         PaintStyle: {stroke: "black", strokeWidth: 1}
@@ -33,7 +31,7 @@ let drawConnections = function () {
     var allCourses = $(".draggable");
 
     outGraph.draggable({revert: true});
-    instance.draggable(graphCourses);
+    jsPlumbInstance.draggable(graphCourses);
 
     graphCourses.bind("click", function(){
        scope = $(this);
@@ -53,7 +51,7 @@ let drawConnections = function () {
             });
             x.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handlea ui-draggable-dragging");
             graph.append(x);
-            instance.draggable(x);
+            jsPlumbInstance.draggable(x);
             var item = x.attr('id');
 
             //Run the prereq algorithms
@@ -76,31 +74,31 @@ let drawConnections = function () {
                     clone.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handle");
                     nodeToRemove.remove();
                     $("#graph").append(clone);
-                    instance.draggable(clone);
-                    instance.connect({
+                    jsPlumbInstance.draggable(clone);
+                    jsPlumbInstance.connect({
                         source: clone.attr('id'),
                         target: course.target,
                         endpoint: "Blank",
                         anchors: [
-                            ["Perimeter", {shape: "Diamond", anchorCount: 150}],
-                            ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                            ["Perimeter", {shape: "Circle", anchorCount: 150}],
+                            ["Perimeter", {shape: "Circle", anchorCount: 150}]
                         ],
                         overlays:[
-                            ["Arrow",  {location: 0.75} ]
+                            ["Arrow",  {location: 1} ]
                         ]
                     });
                 }
                 if (insideGraph) {
-                    instance.connect({
+                    jsPlumbInstance.connect({
                         source: course.source,
                         target: course.target,
                         endpoint: "Blank",
                         anchors: [
-                            ["Perimeter", {shape: "Diamond", anchorCount: 150}],
-                            ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                            ["Perimeter", {shape: "Circle", anchorCount: 150}],
+                            ["Perimeter", {shape: "Circle", anchorCount: 150}]
                         ],
                         overlays:[
-                            ["Arrow",  {location: 0.75} ]
+                            ["Arrow",  {location: 1} ]
                         ]
                     });
                 }
@@ -124,26 +122,26 @@ let drawConnections = function () {
     //Behavior to initialize nodes and connections.
     drawConnections();
     courseUpdate();
-    jsPlumb.fire("jsPlumbDemoLoaded", instance);
+    jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 
     //-----------     HELPER FUNCTIONS     -----------
 
     //Draw the connections between imported courses.
     function drawConnections() {
-        Connections.forEach((function (entry) {
-            instance.connect({
+        for(let entry of Connections) {
+            jsPlumbInstance.connect({
                 source: entry.source,
                 target: entry.target,
                 endpoint: "Blank",
                 anchors: [
-                    ["Perimeter", {shape: "Diamond", anchorCount: 150}],
-                    ["Perimeter", {shape: "Diamond", anchorCount: 150}]
+                    ["Perimeter", {shape: "Circle", anchorCount: 150}],
+                    ["Perimeter", {shape: "Circle", anchorCount: 150}]
                 ],
                 overlays:[
-                    ["Arrow",  {location: 0.75} ]
+                    ["Arrow",  {location: 1} ]
                 ]
             })
-        }));
+        }
     }
 
     function courseUpdate() {
