@@ -15,7 +15,6 @@ let VMtoView = function () {
 
         let Classes = ViewModel.Classes;
         let taken = Classes.filter(course => course.taken === true);
-        let requiredNotTaken = Classes.filter(course => (course.taken === false && course.required === true));
         let available = Classes.filter(course => (course.taken === false && course.required === false));
 
 
@@ -35,6 +34,7 @@ let VMtoView = function () {
                 return String(d.course)
             })
             .classed("draggable available outGraph", true);
+
 
         //TAKEN COURSES. Color: Green
         let svgNotTakenDivs = d3.select("body")
@@ -63,17 +63,18 @@ let VMtoView = function () {
             })
             .attr("class", "draggable taken inGraph");
 
+
         //REQUIRED, NOT TAKEN COURSES Color: Gray
-        let svgRequiredGroups = svgNotTakenDivs.selectAll("taken")
-            .data(requiredNotTaken)
-            .enter().append("div")
-            .attr("id", function (d) {
-                return String(d.dept) + String(d.course)
-            })
-            .html(function (d) {
-                return String(d.course)
-            })
-            .attr("class", "draggable required inGraph");
+        // let svgRequiredGroups = svgNotTakenDivs.selectAll("taken")
+        //     .data(requiredNotTaken)
+        //     .enter().append("div")
+        //     .attr("id", function (d) {
+        //         return String(d.dept) + String(d.course)
+        //     })
+        //     .html(function (d) {
+        //         return String(d.course)
+        //     })
+        //     .attr("class", "draggable required inGraph");
 
         for (let label in rules) {
             let inputLabel = "#" + String(label);
@@ -169,14 +170,6 @@ let VMtoView = function () {
             });
             $("#COMP221").css({
                 top: 230,
-                left: 510
-            });
-            $("#COMP225").css({
-                top: 330,
-                left: 510
-            });
-            $("#COMP261").css({
-                top: 430,
                 left: 510
             });
         }
