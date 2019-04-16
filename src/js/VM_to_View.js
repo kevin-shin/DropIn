@@ -1,5 +1,6 @@
 import {Profile} from "../Model/profile.js";
 import {scope} from "./ViewConnections.js";
+import {rules} from "../Model/cs_major_rules.js";
 
 
 let VMtoView = function () {
@@ -43,13 +44,15 @@ let VMtoView = function () {
             .append("div")
             .attr("id", "graph");
 
-        let years = [2019,2020,2021,2022];
+        let years = [2019, 2020, 2021, 2022];
 
         let svgYears = svgNotTakenDivs.selectAll("taken")
             .data(years)
             .enter().append("div")
-            .attr("class","year")
-            .html(function(d) {return String(d)});
+            .attr("class", "year")
+            .html(function (d) {
+                return String(d)
+            });
 
         let svgContainer = svgNotTakenDivs.selectAll("taken")
             .data(taken)
@@ -75,20 +78,44 @@ let VMtoView = function () {
             })
             .attr("class", "draggable required inGraph");
 
+        for (let label in rules) {
+            let inputLabel = "#" + String(label);
+            console.log(inputLabel);
+            console.log(label.courses) //Returns undefined. Need to figure out how to access this list.
+        }
+
+        // for (let label in rules) {
+        //     let inputLabel = "#" + String(label);
+        //     var subRequirementList = d3.select(inputLabel);
+        //
+        //     subRequirementList.selectAll("courses")
+        //         .data(label.courses)
+        //         .enter().append("li")
+        //         .attr("id", function (d) {
+        //             return d
+        //         })
+        //         .append("label").text(function (d) {
+        //             return d
+        //         })
+        //         .append("input").attr("type", "checkBox");
+        // }
+
+
+        //BUTTON BAR
         let buttonBar = d3.select("body")
             .select(".instructions")
             .append("div")
             .attr("id", "buttonBar");
 
         buttonBar.append("button")
-                 .attr("id","markTaken")
-                 .html("Mark as Taken")
-                 .on("click", markTaken);
+            .attr("id", "markTaken")
+            .html("Mark as Taken")
+            .on("click", markTaken);
 
         buttonBar.append("button")
-                 .attr("id","markUntaken")
-                 .html("Mark as Untaken")
-                 .on("click", markUntaken);
+            .attr("id", "markUntaken")
+            .html("Mark as Untaken")
+            .on("click", markUntaken);
 
         positionPreReqs();
         positionTopBar();
@@ -110,14 +137,15 @@ let VMtoView = function () {
                 i++;
             }
         }
+
         //TODO: THINK ABOUT THIS. Do you add and remove required? If so, how?
         //Do you want your users to have this ability? Should they?
 
-        function markTaken(){
+        function markTaken() {
             scope.addClass("taken").removeClass("available")
         }
 
-        function markUntaken(){
+        function markUntaken() {
             scope.addClass("available").removeClass("taken")
         }
 
@@ -159,4 +187,4 @@ let VMtoView = function () {
 };
 
 
-export { VMtoView }
+export {VMtoView}

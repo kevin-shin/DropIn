@@ -171,6 +171,15 @@ let drawConnections = function () {
             }
         }
     }
+
+    function checkRequirementBoxes(classAdded) {
+        let boxToBeChecked = d3.select("#requirements").select(classAdded);
+        if(!($(boxToBeChecked).checked)){//if the box is not checked
+            $(boxToBeChecked).toggle(this.checked)
+        }
+    }
+
+
 };
 
 export {drawConnections, scope}
