@@ -62,27 +62,27 @@ let VMtoView = function () {
 
 
         //DAVID'S FUNCTION HERE
-        for (let label in rules) {
-            let inputLabel = "#" + String(label);
-            console.log(inputLabel);
-            console.log(label.courses) //Returns undefined. Need to figure out how to access this list.
-        }
-
-        // for (let label in rules) {
-        //     let inputLabel = "#" + String(label);
-        //     var subRequirementList = d3.select(inputLabel);
-        //
-        //     subRequirementList.selectAll("courses")
-        //         .data(label.courses)
-        //         .enter().append("li")
-        //         .attr("id", function (d) {
-        //             return d
-        //         })
-        //         .append("label").text(function (d) {
-        //             return d
-        //         })
-        //         .append("input").attr("type", "checkBox");
+        // for (let obj of rules) {
+        //     let inputLabel = "#" + String(obj.label);
+        //     console.log(inputLabel);
+        //     console.log(obj.courses) //Returns undefined. Need to figure out how to access this list.
         // }
+
+        for (let obj of rules) {
+            let inputLabel = "#" + String(obj.label);
+            var subRequirementList = d3.select(inputLabel);
+
+            subRequirementList.selectAll("courses")
+                .data(obj.courses)
+                .enter().append("li")
+                .attr("id", function (d) {
+                    return d
+                })
+                .append("label").text(function (d) {
+                    return d
+                })
+                .append.lower("input").attr("type", "checkBox");
+        }
 
         //BUTTON BAR
         let buttonBar = d3.select("body")
