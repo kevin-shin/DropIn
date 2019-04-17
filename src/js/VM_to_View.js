@@ -62,12 +62,6 @@ let VMtoView = function () {
 
 
         //DAVID'S FUNCTION HERE
-        // for (let obj of rules) {
-        //     let inputLabel = "#" + String(obj.label);
-        //     console.log(inputLabel);
-        //     console.log(obj.courses) //Returns undefined. Need to figure out how to access this list.
-        // }
-        //
 
         for (let obj of rules) {
             let inputLabel = "#" + String(obj.label);

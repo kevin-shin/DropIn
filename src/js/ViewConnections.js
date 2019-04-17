@@ -181,11 +181,12 @@ let drawConnections = function ( Connections ) {
     }
 
     function checkRequirementBoxes(classAdded) {
-        let toSelect = "#req" + classAdded.id;
+        let toSelect = "#req" + classAdded.id; //classAdded.id = undefined
+        console.log(toSelect);
+
         let boxToBeChecked = d3.select(".requirements").select(toSelect);
-        console.log(boxToBeChecked);
-        if (!($(boxToBeChecked).checked)){//if the box is not checked
-            $(boxToBeChecked).toggle(this.checked)
+        if (!($(boxToBeChecked).filter(":checked"))){//if the box is not checked
+            $(boxToBeChecked).attr("checked", "checked");
         }
     }
 
