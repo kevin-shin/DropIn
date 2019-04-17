@@ -146,6 +146,7 @@ let drawConnections = function ( Connections ) {
     function courseUpdate() {
         allCourses = $(".draggable");
         allCourses.bind("mousedown", function () {
+            //change CSS to absolute so it can drag
             var course = findCourse(catalogue, this);
             var prereq = course.prereq.toString();
             var description = course.courseInfo;
@@ -158,7 +159,11 @@ let drawConnections = function ( Connections ) {
                 "<p>" + prereq + "</p>"
             );
         });
+
+        //all courses now needs to be relative so that it can move with window
+        //allCourses.bind("mouseup", function() { now make it relative}
     }
+
 
     function findCourse(data, course) {
         let ID = course.id;

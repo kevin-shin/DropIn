@@ -12,11 +12,10 @@ let VMtoView = function () {
     function draw(ViewModel) {
 
         const radius = 20;
+        let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
 
-        let Classes = ViewModel.Classes;
-        let taken = Classes.filter(course => course.taken === true);
-        let available = Classes.filter(course => (course.taken === false && course.required === false));
-
+        let taken = ViewModel.Classes.filter(course => course.taken === true);
+        let available = ViewModel.Classes.filter(course => (course.taken === false));
 
         //NOT TAKEN COURSES. Color: Red
         let svg = d3.select("body")
@@ -33,7 +32,7 @@ let VMtoView = function () {
             .html(function (d) {
                 return String(d.course)
             })
-            .classed("draggable available outGraph", true);
+            .attr("class", "draggable available outGraph");
 
 
         //TAKEN COURSES. Color: Green
@@ -42,9 +41,7 @@ let VMtoView = function () {
             .append("div")
             .attr("id", "graph");
 
-        let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
-
-        let svgYears = svgNotTakenDivs.selectAll("taken")
+        let svgYears = svgNotTakenDivs.selectAll("years")
             .data(years)
             .enter().append("div")
             .attr("class", "year")
@@ -64,18 +61,7 @@ let VMtoView = function () {
             .attr("class", "draggable taken inGraph");
 
 
-        //REQUIRED, NOT TAKEN COURSES Color: Gray
-        // let svgRequiredGroups = svgNotTakenDivs.selectAll("taken")
-        //     .data(requiredNotTaken)
-        //     .enter().append("div")
-        //     .attr("id", function (d) {
-        //         return String(d.dept) + String(d.course)
-        //     })
-        //     .html(function (d) {
-        //         return String(d.course)
-        //     })
-        //     .attr("class", "draggable required inGraph");
-
+        //DAVID'S FUNCTION HERE
         for (let label in rules) {
             let inputLabel = "#" + String(label);
             console.log(inputLabel);
@@ -97,7 +83,6 @@ let VMtoView = function () {
         //         })
         //         .append("input").attr("type", "checkBox");
         // }
-
 
         //BUTTON BAR
         let buttonBar = d3.select("body")
@@ -138,14 +123,8 @@ let VMtoView = function () {
 
         //TODO: THINK ABOUT THIS. Do you add and remove required? If so, how?
         //Do you want your users to have this ability? Should they?
-
-        function markTaken() {
-            scope.addClass("taken").removeClass("available")
-        }
-
-        function markUntaken() {
-            scope.addClass("available").removeClass("taken")
-        }
+        function markTaken() { scope.addClass("taken").removeClass("available") }
+        function markUntaken() { scope.addClass("available").removeClass("taken") }
 
         function positionPreReqs() {
             $("#COMP123").css({
@@ -165,11 +144,11 @@ let VMtoView = function () {
                 left: 280
             });
             $("#COMP240").css({
-                top: 130,
+                top: 190,
                 left: 510
             });
             $("#COMP221").css({
-                top: 230,
+                top: 300,
                 left: 510
             });
         }
