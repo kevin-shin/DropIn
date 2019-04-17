@@ -67,6 +67,7 @@ let VMtoView = function () {
         //     console.log(inputLabel);
         //     console.log(obj.courses) //Returns undefined. Need to figure out how to access this list.
         // }
+        //
 
         for (let obj of rules) {
             let inputLabel = "#" + String(obj.label);
@@ -76,14 +77,15 @@ let VMtoView = function () {
                 .data(obj.courses)
                 .enter().append("li")
                 .attr("id", function (d) {
-                    return d
+                    return "req" + d
                 })
                 .append("label").text(function (d) {
-                    return d
-                })
-                .append.lower("input").attr("type", "checkBox");
+                return d
+            })
+                .append("input").attr("type", "checkBox").lower();
         }
 
+        //
         //BUTTON BAR
         let buttonBar = d3.select("body")
             .select(".instructions")
@@ -99,6 +101,7 @@ let VMtoView = function () {
             .attr("id", "markUntaken")
             .html("Mark as Untaken")
             .on("click", markUntaken);
+
 
         positionPreReqs();
         positionTopBar();

@@ -103,6 +103,12 @@ let drawConnections = function ( Connections ) {
                 }
             });
 
+            //Implement checkbox behavior
+
+            checkRequirementBoxes(x);
+
+
+
             //Having transferred courses, call the appropriate drag-enablers.
             outGraph = $(".outGraph");
             graphCourses = $(".inGraph");
@@ -175,8 +181,10 @@ let drawConnections = function ( Connections ) {
     }
 
     function checkRequirementBoxes(classAdded) {
-        let boxToBeChecked = d3.select("#requirements").select(classAdded);
-        if(!($(boxToBeChecked).checked)){//if the box is not checked
+        let toSelect = "#req" + classAdded.id;
+        let boxToBeChecked = d3.select(".requirements").select(toSelect);
+        console.log(boxToBeChecked);
+        if (!($(boxToBeChecked).checked)){//if the box is not checked
             $(boxToBeChecked).toggle(this.checked)
         }
     }
