@@ -6,17 +6,17 @@ var scope;
 let setUpDraggable  = function(){
 };
 
+var jsPlumbInstance = jsPlumb.getInstance({
+    Connector: ["Straight"],
+    DragOptions: {cursor: "pointer", zIndex: 5},
+    PaintStyle: {stroke: "black", strokeWidth: 1}
+});
 
 let drawConnections = function ( Connections ) {
     const radius = 20;
     const displacement = radius + 10;
 
     //Set up jsPlumb. jsPlumbInstance will be the variable which controls jsPlumb draggable behavior.
-    var jsPlumbInstance = jsPlumb.getInstance({
-        Connector: ["Straight"],
-        DragOptions: {cursor: "pointer", zIndex: 5},
-        PaintStyle: {stroke: "black", strokeWidth: 1}
-    });
 
     jsPlumb.Defaults.MaxConnections = 10;
 
@@ -34,7 +34,9 @@ let drawConnections = function ( Connections ) {
        scope = $(this);
     });
 
+
     /*            DRAGGABLE BEHAVIOR           */
+
     // svgNotTaken.droppable({
     //     accept: ".inGraph",
     //     drop: function (e, ui) {
@@ -204,4 +206,4 @@ let drawConnections = function ( Connections ) {
 
 };
 
-export {drawConnections, scope}
+export {drawConnections, scope, jsPlumbInstance}

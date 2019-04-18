@@ -3,6 +3,7 @@ import {scope} from "./ViewConnections.js";
 import {rules} from "../Model/cs_major_rules.js";
 import { drawConnections } from "./ViewConnections.js";
 import { initPanel } from "./alertBox.js";
+import { jsPlumbInstance } from "./ViewConnections.js";
 
 let VMtoView = function () {
 
@@ -115,14 +116,19 @@ let VMtoView = function () {
         //-----------     HELPER FUNCTIONS     -----------
 
         function removeNode() {
-            scope.remove();
-            let connectionList = jsPlumbInstance.getConnections();
-            for (let connection of connectionList) {
-                if (connection.targetId === node.attr('id')){
-                    console.log(connection.targetId);
-                    jsPlumbInstance.detach(connection);
-                }
-            }
+            let clone = scope.clone();
+            jsPlumbInstance.remove(scope);
+            $("#svgNotTaken").append(clone);
+            //MORE HERE
+            positionTopBar();
+
+            // scope.remove();
+            // let connectionList = jsPlumbInstance.getConnections();
+            // for (let connection of connectionList) {
+            //     if (connection.targetId === scope.attr('id')){
+            //         jsPlumbInstance.detach(connection);
+            //     }
+            // }
         }
 
         function positionTopBar() {
