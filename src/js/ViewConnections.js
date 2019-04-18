@@ -179,6 +179,20 @@ let drawConnections = function ( Connections ) {
         }
     }
 
+
+    ///////////////////////////////////////////////////////////////Checking Requirement Boxes///////////////////////////////
+
+    let classesInGraph = d3.selectAll(".inGraph");
+
+    for(let singleClass of classesInGraph){//IDEA HOLDER FOR NOW, NEEDS TO BE ITERABLE
+        let boxToBeChecked = d3.select(".requirements").select("req"+singleClass.id)//select the box to be checked
+        if(!(boxToBeChecked.filter(":checked"))){
+            boxToBeChecked.attr("checked","checked");
+        }
+    }
+
+
+
     // function checkRequirementBoxes(classAdded) {
     //     let toSelect = "#req" + classAdded.attr('id'); //classAdded.id = undefined
     //     let boxToBeChecked = $(toSelect);
