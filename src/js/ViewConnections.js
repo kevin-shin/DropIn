@@ -104,8 +104,24 @@ let drawConnections = function ( Connections ) {
 
             //Implement checkbox behavior
 
-            checkRequirementBoxes(x);
+            //checkRequirementBoxes(x);
 
+            //^^^^^^^^^^^^^^^ Replaced by \/\/\/\/\/\/\/\/
+            ///////////////////////////////////////////////////////////////Checking Requirement Boxes///////////////////////////////
+
+            let classesInGraph = d3.selectAll(".inGraph").enter().each(function (d){
+
+                //for(let singleClass of classesInGraph){//IDEA HOLDER FOR NOW, NEEDS TO BE ITERABLE
+
+                //^^^^^^^^^^^^^^^^^  Used when delete ".enter().each(function (d) {}
+
+                let boxToBeChecked = d3.select(".requirements").select("req"+d.id)//select the box to be checked
+                if(!(boxToBeChecked.filter(":checked"))){
+                    boxToBeChecked.attr("checked","checked");
+                }
+
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
             //Having transferred courses, call the appropriate drag-enablers.
@@ -180,16 +196,7 @@ let drawConnections = function ( Connections ) {
     }
 
 
-    ///////////////////////////////////////////////////////////////Checking Requirement Boxes///////////////////////////////
 
-    let classesInGraph = d3.selectAll(".inGraph");
-
-    for(let singleClass of classesInGraph){//IDEA HOLDER FOR NOW, NEEDS TO BE ITERABLE
-        let boxToBeChecked = d3.select(".requirements").select("req"+singleClass.id)//select the box to be checked
-        if(!(boxToBeChecked.filter(":checked"))){
-            boxToBeChecked.attr("checked","checked");
-        }
-    }
 
 
 
