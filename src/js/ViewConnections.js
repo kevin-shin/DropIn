@@ -4,7 +4,6 @@ import { catalogue } from "../Model/cs_major.js";
 var scope;
 
 let setUpDraggable  = function(){
-
 };
 
 
@@ -180,15 +179,16 @@ let drawConnections = function ( Connections ) {
         }
     }
 
-    function checkRequirementBoxes(classAdded) {
-        let toSelect = "#req" + classAdded.id; //classAdded.id = undefined
-        console.log(toSelect);
-
-        let boxToBeChecked = d3.select(".requirements").select(toSelect);
-        if (!($(boxToBeChecked).filter(":checked"))){//if the box is not checked
-            $(boxToBeChecked).attr("checked", "checked");
-        }
-    }
+    // function checkRequirementBoxes(classAdded) {
+    //     let toSelect = "#req" + classAdded.attr('id'); //classAdded.id = undefined
+    //     let boxToBeChecked = $(toSelect);
+    //
+    //     console.log(boxToBeChecked);
+    //
+    //     if (!(boxToBeChecked).filter(":checked")){//if the box is not checked
+    //         boxToBeChecked.attr("checked", "checked");
+    //     }
+    // }
 
 
 };

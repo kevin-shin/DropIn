@@ -5,37 +5,20 @@ import { drawConnections } from "./ViewConnections.js";
 import { ViewModel } from "../Model/ViewModel_Test.js";
 
 let VMtoView = function () {
-    //IMPORT DATA
+
+    initializePanels();
     draw(ViewModel);
     drawConnections(ViewModel.Connections);
 
-    function draw(ViewModel) {
 
-        const radius = 20;
+    function initializePanels(){
         let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
 
-        let taken = ViewModel.Classes.filter(course => course.taken === true);
-        let available = ViewModel.Classes.filter(course => (course.taken === false));
-
-        //NOT TAKEN COURSES. Color: Red
         let svg = d3.select("body")
             .select("#GUI")
             .append("div")
             .attr("id", "svgNotTaken");
 
-        let svgGroups = svg.selectAll("notTaken")
-            .data(available)
-            .enter().append("div")
-            .attr("id", function (d) {
-                return String(d.dept) + String(d.course)
-            })
-            .html(function (d) {
-                return String(d.course)
-            })
-            .attr("class", "draggable available outGraph");
-
-
-        //TAKEN COURSES. Color: Green
         let svgNotTakenDivs = d3.select("body")
             .select("#GUI")
             .append("div")
@@ -49,7 +32,31 @@ let VMtoView = function () {
                 return String(d)
             });
 
-        let svgContainer = svgNotTakenDivs.selectAll("taken")
+    }
+
+    function draw(ViewModel) {
+
+        const radius = 20;
+
+
+        let taken = ViewModel.Classes.filter(course => course.taken === true);
+        let available = ViewModel.Classes.filter(course => (course.taken === false));
+
+        //NOT TAKEN COURSES. Color: Red
+
+        let svgGroups = d3.select("#svgNotTaken").selectAll("notTaken")
+            .data(available)
+            .enter().append("div")
+            .attr("id", function (d) {
+                return String(d.dept) + String(d.course)
+            })
+            .html(function (d) {
+                return String(d.course)
+            })
+            .attr("class", "draggable available outGraph");
+
+        //TAKEN COURSES. Color: Green
+        let svgContainer = d3.select("#graph").selectAll("taken")
             .data(taken)
             .enter().append("div")
             .attr("id", function (d) {
@@ -59,7 +66,6 @@ let VMtoView = function () {
                 return String(d.course)
             })
             .attr("class", "draggable taken inGraph");
-
 
         //DAVID'S FUNCTION HERE
 
