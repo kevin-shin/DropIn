@@ -10,7 +10,6 @@ let VMtoView = function () {
     draw(ViewModel);
     drawConnections(ViewModel.Connections);
 
-
     function initializePanels(){
         let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
 
@@ -31,7 +30,6 @@ let VMtoView = function () {
             .html(function (d) {
                 return String(d)
             });
-
     }
 
     function draw(ViewModel) {
