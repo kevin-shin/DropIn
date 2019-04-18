@@ -119,6 +119,23 @@ let drawConnections = function ( Connections ) {
 
             //checkRequirementBoxes(x);
 
+            //^^^^^^^^^^^^^^^ Replaced by \/\/\/\/\/\/\/\/
+            ///////////////////////////////////////////////////////////////Checking Requirement Boxes///////////////////////////////
+            //checkRequirementBoxes(x);
+
+            let classesInGraph = d3.selectAll(".inGraph").enter().each(function (d){
+
+                //for(let singleClass of classesInGraph){//IDEA HOLDER FOR NOW, NEEDS TO BE ITERABLE
+
+                //^^^^^^^^^^^^^^^^^  Used when delete ".enter().each(function (d) {}
+
+                let boxToBeChecked = d3.select(".requirements").select("req"+d.id)//select the box to be checked
+                if(!(boxToBeChecked.filter(":checked"))){
+                    boxToBeChecked.attr("checked","checked");
+                }
+
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
             //Having transferred courses, call the appropriate drag-enablers.
@@ -139,7 +156,6 @@ let drawConnections = function ( Connections ) {
     //Behavior to initialize nodes and connections.
     drawConnections();
     courseUpdate();
-
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 
     //-----------     HELPER FUNCTIONS     -----------
@@ -185,6 +201,7 @@ let drawConnections = function ( Connections ) {
         //allCourses.bind("mouseup", function() { now make it relative}
     }
 
+
     function findCourse(data, course) {
         let ID = course.id;
         for (let object of data) {
@@ -193,7 +210,6 @@ let drawConnections = function ( Connections ) {
             }
         }
     }
-
 
     // function checkRequirementBoxes(classAdded) {
     //     let toSelect = "#req" + classAdded.attr('id'); //classAdded.id = undefined
@@ -205,6 +221,7 @@ let drawConnections = function ( Connections ) {
     //         boxToBeChecked.attr("checked", "checked");
     //     }
     // }
+
 
 };
 
