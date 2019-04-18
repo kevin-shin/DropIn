@@ -105,7 +105,7 @@ let VMtoView = function () {
         buttonBar.append("button")
             .attr("id", "delete")
             .html("Delete")
-            .on("click", deleteNode);
+            .on("click", removeNode);
 
 
         positionPreReqs();
@@ -113,6 +113,17 @@ let VMtoView = function () {
 
 
         //-----------     HELPER FUNCTIONS     -----------
+
+        function removeNode() {
+            scope.remove();
+            let connectionList = jsPlumbInstance.getConnections();
+            for (let connection of connectionList) {
+                if (connection.targetId === node.attr('id')){
+                    console.log(connection.targetId);
+                    jsPlumbInstance.detach(connection);
+                }
+            }
+        }
 
         function positionTopBar() {
             let topCourses = $(".draggable.available");

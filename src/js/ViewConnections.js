@@ -137,6 +137,7 @@ let drawConnections = function ( Connections ) {
     //Behavior to initialize nodes and connections.
     drawConnections();
     courseUpdate();
+
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 
     //-----------     HELPER FUNCTIONS     -----------
@@ -189,6 +190,7 @@ let drawConnections = function ( Connections ) {
         }
     }
 
+
     // function checkRequirementBoxes(classAdded) {
     //     let toSelect = "#req" + classAdded.attr('id'); //classAdded.id = undefined
     //     let boxToBeChecked = $(toSelect);
@@ -199,7 +201,6 @@ let drawConnections = function ( Connections ) {
     //         boxToBeChecked.attr("checked", "checked");
     //     }
     // }
-
 
 };
 
