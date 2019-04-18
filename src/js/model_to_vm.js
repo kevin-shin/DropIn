@@ -1,5 +1,8 @@
 import { makeConnections, dfs } from "./connections_logic";
 
+// const dfs = require('./connections_logic');
+// const makeConnections = require("./connections_logic");
+
 //initialize VM. input profile and major logic output viewmodel.
 let initializeVM = function(profile, rules){
     let VM = [];
@@ -90,10 +93,23 @@ let updateProfile = function (profile, draggedCourse) {
         profile.push({
             course: draggedCourse,
             status: "planned"
-        });
-    };
+        })
+    }
 };
 
+
+/**
+ * 
+ * @param profile 
+ * @param deletedCourse 
+ */
+let deleteCourseProfile = function (profile, deletedCourse) {
+    for (course of profile) {
+        if (course.course == deletedCourse) {
+            profile.pop(course);
+        }
+    }
+};
 
 /*
  *  Reads a profile and outputs JSON object with source target components for VM
@@ -113,24 +129,8 @@ let writeSourceTarget = function (profile) {
    return connections;
 }
 
-
-// let fullMajorCheck = function (profile, majorRules) {
-//     for (course in profile.profile) {
-//         if (course in majorRules.intro) {
-//             profile.requirements.intro--;
-//         }
-//         else if (course in majorRules.core) {
-//             profile.requirements.core--;
-//         }
-//         else if (course in majorRules.math) {
-//             profile.requirements.math--;
-//         }
-//         else if (course in majorRules.elective) {
-//             profile.requirements.elective--;
-//         }
-//     }
-//     if (profile.requirements.intro == 0 && profile.requirements.core == 0 && profile.requirements.math == 0 && profile.requirements.elective == 0) {
-//         return true;
-//     }
-//     return false;
-// }
+export { makeConnections, resetConnectionsArrays, writeSourceTarget, updateProfile, deleteCourseProfile };
+    
+// module.exports = {};
+// module.exports.updateProfile = updateProfile;
+// module.exports.writeSourceTarget = writeSourceTarget;

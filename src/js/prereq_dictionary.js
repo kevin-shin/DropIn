@@ -1,6 +1,6 @@
 // --------- IMPORT --------
-import { catalogue } from "../Model/cs_major.js";
-// const catalogue = require("../Model/cs_major.js");
+// import { catalogue } from "../Model/cs_major.js";
+const catalogue = require("../Model/cs_major.js");
 
 
 /* makes a prerequisite dictionary based on a JSON object with dept, course number, and prerequisites
@@ -26,6 +26,6 @@ let makePrereqDict = function (catalogue) {
 
 let courseCatalog = makePrereqDict(catalogue);
 
-export { courseCatalog };
-// module.exports = courseCatalog;
+// export { courseCatalog };
+module.exports = courseCatalog;
 

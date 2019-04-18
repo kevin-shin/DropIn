@@ -4,10 +4,16 @@ import resetConnectionsArrays from '../src/js/connections_logic.js';
 // const makeConnectionsModule = require('../src/js/connections_logic.js');
 
 /*
-Test suite for makeConnections function
-As of 4.12.19, makeConnections DOES NOT WORK FOR CLASSES WITH PREREQUISITE PATH OPTIONS
-Juliet Kelson
-*/
+Test suite for make connections function
+Imports a module of functions from connections_logic.js
+
+@param:
+Profile: course as a string (i.e. "COMP123")
+
+@output:
+array of connection objects of the format   
+[ { source: "COMP123", target: "COMP124" }, { source: ...} ]
+ */
 
 test('comp225', () => {
     expect(makeConnectionsModule.makeConnections("COMP225")).toMatchObject(

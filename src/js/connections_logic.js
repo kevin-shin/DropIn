@@ -71,3 +71,4 @@ export { makeConnections, resetConnectionsArrays };
 // module.exports = {};
 // module.exports.makeConnections = makeConnections;
 // module.exports.reset = resetConnectionsArrays;
+// module.exports.dfs = dfs;
