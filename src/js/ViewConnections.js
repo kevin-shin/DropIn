@@ -177,6 +177,8 @@ let drawConnections = function ( Connections ) {
                 "<p id='courseDescription'>" + description + "</p>" +
                 "<p>" + prereq + "</p>"
             );
+
+            prereq = "";
         });
 
         //all courses now needs to be relative so that it can move with window
