@@ -1,9 +1,9 @@
-import { makeConnections } from "./connections_logic.js";
-import { catalogue } from "../Model/cs_major.js";
+import {makeConnections} from "./connections_logic.js";
+import {catalogue} from "../Model/cs_major.js";
 
 var scope;
 
-let setUpDraggable  = function(){
+let setUpDraggable = function () {
 };
 
 var jsPlumbInstance = jsPlumb.getInstance({
@@ -12,7 +12,7 @@ var jsPlumbInstance = jsPlumb.getInstance({
     PaintStyle: {stroke: "black", strokeWidth: 1}
 });
 
-let drawConnections = function ( Connections ) {
+let drawConnections = function (Connections) {
     const radius = 20;
     const displacement = radius + 10;
 
@@ -30,8 +30,8 @@ let drawConnections = function ( Connections ) {
     outGraph.draggable({revert: true});
     jsPlumbInstance.draggable(graphCourses);
 
-    graphCourses.bind("click", function(){
-       scope = $(this);
+    graphCourses.bind("click", function () {
+        scope = $(this);
     });
 
 
@@ -94,8 +94,8 @@ let drawConnections = function ( Connections ) {
                             ["Perimeter", {shape: "Circle", anchorCount: 150}],
                             ["Perimeter", {shape: "Circle", anchorCount: 150}]
                         ],
-                        overlays:[
-                            ["Arrow",  {location: 1} ]
+                        overlays: [
+                            ["Arrow", {location: 1}]
                         ]
                     });
                 }
@@ -108,8 +108,8 @@ let drawConnections = function ( Connections ) {
                             ["Perimeter", {shape: "Circle", anchorCount: 150}],
                             ["Perimeter", {shape: "Circle", anchorCount: 150}]
                         ],
-                        overlays:[
-                            ["Arrow",  {location: 1} ]
+                        overlays: [
+                            ["Arrow", {location: 1}]
                         ]
                     });
                 }
@@ -123,15 +123,15 @@ let drawConnections = function ( Connections ) {
             ///////////////////////////////////////////////////////////////Checking Requirement Boxes///////////////////////////////
             //checkRequirementBoxes(x);
 
-            let classesInGraph = d3.selectAll(".inGraph").enter().each(function (d){
+            let classesInGraph = d3.selectAll(".inGraph").enter().each(function (d) {
 
                 //for(let singleClass of classesInGraph){//IDEA HOLDER FOR NOW, NEEDS TO BE ITERABLE
 
                 //^^^^^^^^^^^^^^^^^  Used when delete ".enter().each(function (d) {}
 
-                let boxToBeChecked = d3.select(".requirements").select("req"+d.id)//select the box to be checked
-                if(!(boxToBeChecked.filter(":checked"))){
-                    boxToBeChecked.attr("checked","checked");
+                let boxToBeChecked = d3.select(".requirements").select("req" + d.id)//select the box to be checked
+                if (!(boxToBeChecked.filter(":checked"))) {
+                    boxToBeChecked.attr("checked", "checked");
                 }
 
             });
@@ -146,7 +146,7 @@ let drawConnections = function ( Connections ) {
             drawConnections();
             courseUpdate();
 
-            graphCourses.bind("click", function(){
+            graphCourses.bind("click", function () {
                 scope = $(this);
             });
 
@@ -162,7 +162,7 @@ let drawConnections = function ( Connections ) {
 
     //Draw the connections between imported courses.
     function drawConnections() {
-        for ( let entry of Connections) {
+        for (let entry of Connections) {
             jsPlumbInstance.connect({
                 source: entry.source,
                 target: entry.target,
@@ -171,8 +171,8 @@ let drawConnections = function ( Connections ) {
                     ["Perimeter", {shape: "Circle", anchorCount: 150}],
                     ["Perimeter", {shape: "Circle", anchorCount: 150}]
                 ],
-                overlays:[
-                    ["Arrow",  {location: 1} ]
+                overlays: [
+                    ["Arrow", {location: 1}]
                 ]
             })
         }
@@ -183,18 +183,19 @@ let drawConnections = function ( Connections ) {
         allCourses.bind("mousedown", function () {
             //change CSS to absolute so it can drag
             var course = findCourse(catalogue, this);
-            var prereq = course.prereq.toString();
+            var prereq = course.prereq;
             var description = course.courseInfo;
             var name = course.name;
             var title = course.dept + course.courseNum;
             $("#welcomeText").remove();
             $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
             $("#courseDescription").replaceWith(
-                "<p id='courseDescription'>" + description + "</p>" +
-                "<p>" + prereq + "</p>"
+                "<p id='courseDescription'>" + description + "</p>"
+            );
+            $("#prereq").replaceWith(
+                "<p id='prereq'>" + prereq + "</p>"
             );
 
-            prereq = "";
         });
 
         //all courses now needs to be relative so that it can move with window
