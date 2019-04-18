@@ -2,7 +2,6 @@ import {Profile} from "../Model/profile.js";
 import {scope} from "./ViewConnections.js";
 import {rules} from "../Model/cs_major_rules.js";
 import { drawConnections } from "./ViewConnections.js";
-import { ViewModel } from "../Model/ViewModel_Test.js";
 import { CustomAlert } from "./alertBox.js";
 
 let VMtoView = function () {
@@ -13,11 +12,8 @@ let VMtoView = function () {
     alert.render();
     $("#nextButton").on("click", alert.next);
 
-    draw(ViewModel);
-    drawConnections(ViewModel.Connections);
 
-
-    function initializePanels(){
+    function initializePanels() {
         let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
 
         let svg = d3.select("body")
@@ -38,7 +34,7 @@ let VMtoView = function () {
                 return String(d)
             });
     }
-
+};
     function draw(ViewModel) {
 
         const radius = 20;
@@ -159,8 +155,7 @@ let VMtoView = function () {
                 left: 510
             });
         }
-    }
-};
+    };
 
 
-export { VMtoView }
+export { VMtoView, draw }

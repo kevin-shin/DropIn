@@ -7,7 +7,6 @@ let setUpDraggable  = function(){
 };
 
 
-
 let drawConnections = function ( Connections ) {
     const radius = 20;
     const displacement = radius + 10;
@@ -168,7 +167,6 @@ let drawConnections = function ( Connections ) {
         //all courses now needs to be relative so that it can move with window
         //allCourses.bind("mouseup", function() { now make it relative}
     }
-
 
     function findCourse(data, course) {
         let ID = course.id;

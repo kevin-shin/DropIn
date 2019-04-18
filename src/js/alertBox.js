@@ -2,6 +2,9 @@
 //https://www.developphp.com/video/JavaScript/Custom-Alert-Box-Programming-Tutorial
 
 import { drawOptions } from "./welcomePage.js";
+import { ViewModel } from "../Model/ViewModel_Test.js";
+import { drawConnections } from "./ViewConnections.js";
+import { draw } from "./VM_to_View.js";
 
 function CustomAlert() {
 
@@ -28,6 +31,8 @@ function CustomAlert() {
     this.next = function() {
         dialogBox.css("display", "none");
         dialogOverlay.css("display","none");
+        draw(ViewModel);
+        drawConnections(ViewModel.Connections);
     }
 }
 
