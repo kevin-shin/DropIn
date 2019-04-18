@@ -169,7 +169,7 @@ ul {
     text-align: center;
     border-radius: 25px;
     z-index: 1000;
-    width: 500px;
+    width: 700px;
     height: 500px;
     overflow-y: scroll;
 }
@@ -187,4 +187,12 @@ ul {
 
 .column {
     height: 50%;
+    float: left;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#columnContainer {
+    overflow: hidden;
+    display: inline-block;
 }

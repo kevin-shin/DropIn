@@ -2,13 +2,13 @@ import {Profile} from "../Model/profile.js";
 import {scope} from "./ViewConnections.js";
 import {rules} from "../Model/cs_major_rules.js";
 import { drawConnections } from "./ViewConnections.js";
-import { CustomAlert } from "./alertBox.js";
+import { initPanel } from "./alertBox.js";
 
 let VMtoView = function () {
 
     initializePanels();
 
-    let alert = new CustomAlert();
+    let alert = new initPanel();
     alert.render();
     $("#nextButton").on("click", alert.next);
 

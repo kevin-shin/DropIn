@@ -6,7 +6,7 @@ import { ViewModel } from "../Model/ViewModel_Test.js";
 import { drawConnections } from "./ViewConnections.js";
 import { draw } from "./VM_to_View.js";
 
-function CustomAlert() {
+function initPanel() {
 
     let width = window.innerWidth;
     let height = window.innerHeight;
@@ -17,7 +17,7 @@ function CustomAlert() {
 
     this.render = function(){
 
-        let position = String(width/2-500/2) + "px";
+        let position = String(width/2-700/2) + "px";
 
         dialogOverlay.css("display","block");
         dialogOverlay.css("height",height);
@@ -36,4 +36,4 @@ function CustomAlert() {
     }
 }
 
-export { CustomAlert }
+export { initPanel }
