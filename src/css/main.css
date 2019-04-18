@@ -149,3 +149,42 @@ body {
 ul {
     list-style: none;
 }
+
+#dialogOverlay {
+    display: none;
+    opacity: 0.7;
+    background: white;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#dialogBox {
+    display: none;
+    background: beige;
+    position: fixed;
+    text-align: center;
+    border-radius: 25px;
+    z-index: 1000;
+    width: 500px;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+#nextButton {
+    margin-top: 10px;
+}
+
+#dialogNext {
+    background-color: darkgray;
+    position: absolute;
+    width: 100%;
+    height: 40px;
+}
+
+.column {
+    height: 50%;
+}

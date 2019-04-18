@@ -3,12 +3,19 @@ import {scope} from "./ViewConnections.js";
 import {rules} from "../Model/cs_major_rules.js";
 import { drawConnections } from "./ViewConnections.js";
 import { ViewModel } from "../Model/ViewModel_Test.js";
+import { CustomAlert } from "./alertBox.js";
 
 let VMtoView = function () {
 
     initializePanels();
+
+    let alert = new CustomAlert();
+    alert.render();
+    $("#nextButton").on("click", alert.next);
+
     draw(ViewModel);
     drawConnections(ViewModel.Connections);
+
 
     function initializePanels(){
         let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
@@ -35,7 +42,6 @@ let VMtoView = function () {
     function draw(ViewModel) {
 
         const radius = 20;
-
 
         let taken = ViewModel.Classes.filter(course => course.taken === true);
         let available = ViewModel.Classes.filter(course => (course.taken === false));
@@ -157,4 +163,4 @@ let VMtoView = function () {
 };
 
 
-export {VMtoView}
+export { VMtoView }
