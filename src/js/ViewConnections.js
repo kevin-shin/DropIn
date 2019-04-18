@@ -35,7 +35,19 @@ let drawConnections = function ( Connections ) {
     });
 
     /*            DRAGGABLE BEHAVIOR           */
-    svgNotTaken.droppable({ accept: '.draggable'});
+    // svgNotTaken.droppable({
+    //     accept: ".inGraph",
+    //     drop: function (e, ui) {
+    //         console.log("Dropped!");
+    //         var x = ui.helper.clone();
+    //         ui.helper.remove();
+    //         x.addClass("outGraph").removeClass("inGraph");
+    //         svgNotTaken.append(x);
+    //         jsPlumbInstance.draggable(x);
+    //
+    //     }
+    // });
+
     graph.droppable({
         accept: ".outGraph",
         drop: function (e, ui) {
@@ -103,7 +115,7 @@ let drawConnections = function ( Connections ) {
 
             //Implement checkbox behavior
 
-            checkRequirementBoxes(x);
+            //checkRequirementBoxes(x);
 
 
 

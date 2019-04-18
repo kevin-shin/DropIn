@@ -102,6 +102,11 @@ let VMtoView = function () {
             .html("Mark as Untaken")
             .on("click", markUntaken);
 
+        buttonBar.append("button")
+            .attr("id", "delete")
+            .html("Delete")
+            .on("click", deleteNode);
+
 
         positionPreReqs();
         positionTopBar();
@@ -128,6 +133,10 @@ let VMtoView = function () {
         //Do you want your users to have this ability? Should they?
         function markTaken() { scope.addClass("taken").removeClass("available") }
         function markUntaken() { scope.addClass("available").removeClass("taken") }
+        function deleteNode() {
+            markUntaken();
+            scope.remove();
+        }
 
         function positionPreReqs() {
             $("#COMP123").css({

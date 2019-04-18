@@ -102,7 +102,7 @@ body {
 /*           NODE BEHAVIOR           */
 .draggable {
     position: absolute;
-    z-index: 999;
+
 }
 
 .taken {
