@@ -1,4 +1,4 @@
-import { makeConnections, dfs } from "./connections_logic";
+import { makeConnections, dfs } from "./connections_logic.js";
 
 // const dfs = require('./connections_logic');
 // const makeConnections = require("./connections_logic");
@@ -117,7 +117,7 @@ let deleteCourseProfile = function (profile, deletedCourse) {
  */
 let writeSourceTarget = function (profile) {
     var connections = [];
-    for (node of profile) {
+    for (let node of profile) {
         makeConnections(node.course);
         if (!connections.some((conn) => conn.source === prereq && conn.target === course)) {
             connections.push({
@@ -129,7 +129,7 @@ let writeSourceTarget = function (profile) {
    return connections;
 }
 
-export { makeConnections, resetConnectionsArrays, writeSourceTarget, updateProfile, deleteCourseProfile };
+export { makeConnections, writeSourceTarget, updateProfile, deleteCourseProfile };
     
 // module.exports = {};
 // module.exports.updateProfile = updateProfile;

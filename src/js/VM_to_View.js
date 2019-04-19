@@ -5,6 +5,10 @@ import { drawConnections } from "./ViewConnections.js";
 import { initPanel } from "./alertBox.js";
 import { jsPlumbInstance } from "./ViewConnections.js";
 import { makeProfile } from "./makeProfile.js";
+import { writeSourceTarget } from "./model_to_vm.js";
+
+let exampleProfile;
+let Connections;
 
 let VMtoView = function () {
 
@@ -17,8 +21,11 @@ let VMtoView = function () {
     $('#profileData').submit((event) => {
         event.preventDefault();
         let profileString = ($('#profileData').serializeArray());
-        let profile = makeProfile(profileString);
-        console.log(profile);
+        exampleProfile = makeProfile(profileString);
+        Connections = writeSourceTarget(exampleProfile);
+        console.log(exampleProfile);
+        console.log(Connections);
+
     });
 
 
