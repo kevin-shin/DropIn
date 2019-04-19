@@ -71,19 +71,34 @@ let VMtoView = function () {
         //DAVID'S FUNCTION HERE
 
         for (let obj of rules) {
-            let inputLabel = "#" + String(obj.label);
-            var subRequirementList = d3.select(inputLabel);
+            let inputLabel = "#" + String(obj.label);//this is the grouping of "intro", "core", "math", or "elective"
+            var subRequirementList = d3.select(".requirements").select(inputLabel);
 
-            subRequirementList.selectAll("courses")
-                .data(obj.courses)
-                .enter().append("li")
-                .attr("id", function (d) {
-                    return "req" + d
+            if (inputLabel === "#intro") {
+                let label = "";
+                for(let course of obj.courses){
+                    label += course + " or ";
+                }
+                label = label.substring(0, label.length-4);//" or " = 4 chars
+                console.log("Here")
+
+
+                subRequirementList
+                    .append("li")
+                    .attr("id", "#reqIntro")
+                    .text(label);
+            } else {
+
+                subRequirementList.selectAll("courses")
+                    .data(obj.courses)
+                    .enter().append("li")
+                    .attr("id", function (d) {
+                        return "req" + d
+                    })
+                    .append("label").text(function (d) {
+                    return d
                 })
-                .append("label").text(function (d) {
-                return d
-            })
-                .append("input").attr("type", "checkBox").lower();
+            }
         }
 
         //
