@@ -88,8 +88,6 @@ let VMtoView = function () {
                     label += course + " or ";
                 }
                 label = label.substring(0, label.length-4);//" or " = 4 chars
-                console.log("Here")
-
 
                 subRequirementList
                     .append("li")
