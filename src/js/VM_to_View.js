@@ -78,11 +78,19 @@ let VMtoView = function () {
 
         //DAVID'S FUNCTION HERE
 
+
+
         for (let obj of rules) {
             let inputLabel = "#" + String(obj.label);//this is the grouping of "intro", "core", "math", or "elective"
             var subRequirementList = d3.select(".requirements").select(inputLabel);
 
+
+
             if (inputLabel === "#intro") {
+                //Add the counter to the
+                d3.select("#introLabel").text("Intro Classes : " + obj.required);
+
+                //Add li to the ul
                 let label = "";
                 for(let course of obj.courses){
                     label += course + " or ";
@@ -93,7 +101,11 @@ let VMtoView = function () {
                     .append("li")
                     .attr("id", "#reqIntro")
                     .text(label);
+
             } else {
+
+                let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
+                d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1,obj.label.length) + " Courses: \t\t" + obj.required);
 
                 subRequirementList.selectAll("courses")
                     .data(obj.courses)
@@ -106,6 +118,14 @@ let VMtoView = function () {
                 })
             }
         }
+
+
+
+        //Decrementing requirement numbers
+
+
+
+
 
         //
         //BUTTON BAR
