@@ -4,6 +4,7 @@ import {rules} from "../Model/cs_major_rules.js";
 import { drawConnections } from "./ViewConnections.js";
 import { initPanel } from "./alertBox.js";
 import { jsPlumbInstance } from "./ViewConnections.js";
+import { makeProfile } from "./makeProfile.js";
 
 let VMtoView = function () {
 
@@ -12,6 +13,13 @@ let VMtoView = function () {
     let alert = new initPanel();
     alert.render();
     $("#nextButton").on("click", alert.next);
+
+    $('#profileData').submit((event) => {
+        event.preventDefault();
+        let profileString = ($('#profileData').serializeArray());
+        let profile = makeProfile(profileString);
+        console.log(profile);
+    });
 
 
     function initializePanels() {
