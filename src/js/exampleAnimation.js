@@ -34,7 +34,7 @@ let animateNode = function () {
             // Move 'box' to the position described by 'coords' with a CSS translation.
             node.style.setProperty('transform', 'translate(' + coords.x + 'px, ' + coords.y + 'px)');
         });
-    tween.delay(2000);
+    tween.delay(1000);
     tween.start();
     tween.onComplete(function () {
         let newNode = node.cloneNode(true);
