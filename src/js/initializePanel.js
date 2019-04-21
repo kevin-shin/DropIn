@@ -5,14 +5,15 @@ let drawOptions = function() {
     let keys = [];
 
     for (let course of courseCatalog.keys()) {
-        keys.push(course);
+        if (course.substring(0,4) === "COMP") {
+            keys.push(course);
+        }
     }
 
     const third = Math.ceil(keys.length / 3);
     let leftSide = keys.slice(0, third);
     let middle = keys.slice(third, 2 * third);
     let rightSide = keys.slice(2 * third, keys.length);
-
 
     let inputs1 = d3.select('#column1').selectAll("courseOptions")
         .data(leftSide)
@@ -56,4 +57,4 @@ let drawOptions = function() {
 };
 
 
-export {drawOptions}
+export { drawOptions }

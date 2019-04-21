@@ -27,11 +27,9 @@
         <p> Now, check off the classes that you've taken.</p>
 
         <form id="profileData">
-            <div id = "columnContainer">
             <div id = "column1" class = "column"></div>
             <div id = "column2" class = "column"></div>
             <div id = "column3" class = "column"></div>
-            </div>
         </form>
     </div>
     <div id="dialogNext"></div>
@@ -41,24 +39,25 @@
     <p id="welcomeText">Welcome to Judasake! <br> Instructions are as follows: </p>
     <p id="name"></p>
     <p id="courseDescription"></p>
+    <p id ="prereq"></p>
 </div>
 <div class="requirements"><br>
     Requirements:
     <ul>
         <li>
-            <input type="checkbox"><label> Intro Courses</label>
+            <label id="introLabel"> Intro Courses</label>
             <ul id = "intro"></ul>
         </li>
         <li>
-            <input type="checkbox"><label> Core Courses</label>
+            <label id="coreLabel"> Core Courses</label>
             <ul id = "core"></ul>
         </li>
         <li>
-            <input type="checkbox"><label> Math Courses</label>
+            <label id="mathLabel"> Math Courses</label>
             <ul id = "math"></ul>
         </li>
         <li>
-            <input type="checkbox"><label> Electives</label>
+            <label id="electivesLabel"> Electives</label>
             <ul id = "elective"></ul>
         </li>
     </ul>

@@ -397,5 +397,5 @@ let catalogue = [
   }
 ];
 
-// export { catalogue };
-module.exports = catalogue;
+export { catalogue };
+// module.exports = catalogue;
