@@ -90,10 +90,12 @@ let initializeVM = function(profile, rules){
 let updateProfile = function (profile, draggedCourse) {
     var courseWithPrereqs = dfs(draggedCourse);
     for (course of courseWithPrereqs) {
-        profile.push({
-            course: draggedCourse,
-            status: "planned"
-        })
+        if (!profile.some((prof) => prof.course === course)) {
+            profile.push({
+                course: course,
+                status: "planned"
+            })
+        }
     }
 };
 
@@ -117,16 +119,16 @@ let deleteCourseProfile = function (profile, deletedCourse) {
  */
 let writeSourceTarget = function (profile) {
     var connections = [];
+    var tempConn = [];
     for (node of profile) {
-        makeConnections(node.course);
-        if (!connections.some((conn) => conn.source === prereq && conn.target === course)) {
-            connections.push({
-                "source": prereq,
-                "target": course
-            });
+        tempConn = makeConnections(node.course);
+        for (var conn of tempConn) {
+            if (!connections.some((next) => next.source === conn.source && next.target === conn.target)) {
+                connections.push(conn);
+            }
         }
     }
-   return connections;
+    return connections;
 }
 
 export { makeConnections, resetConnectionsArrays, writeSourceTarget, updateProfile, deleteCourseProfile };
