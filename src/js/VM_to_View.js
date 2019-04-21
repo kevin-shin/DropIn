@@ -1,15 +1,13 @@
-import {Profile} from "../Model/profile.js";
 import {scope} from "./ViewConnections.js";
 import {rules} from "../Model/cs_major_rules.js";
-import { drawConnections } from "./ViewConnections.js";
 import { initPanel } from "./alertBox.js";
-import { examplePanel } from "./alertBox.js";
 import { jsPlumbInstance } from "./ViewConnections.js";
 import { makeProfile } from "./makeProfile.js";
 import { writeSourceTarget } from "./model_to_vm.js";
 
 let exampleProfile;
 let Connections;
+let ViewModel = {};
 
 let VMtoView = function () {
 
@@ -24,8 +22,8 @@ let VMtoView = function () {
         let profileString = ($('#profileData').serializeArray());
         exampleProfile = makeProfile(profileString);
         Connections = writeSourceTarget(exampleProfile);
-        console.log(exampleProfile);
-        console.log(Connections);
+        ViewModel.Classes = exampleProfile;
+        ViewModel.Connections = Connections;
     });
 
 
@@ -55,8 +53,9 @@ let VMtoView = function () {
 
         const radius = 20;
 
-        let taken = ViewModel.Classes.filter(course => course.taken === true);
-        let available = ViewModel.Classes.filter(course => (course.taken === false));
+        let taken = ViewModel.Classes.filter(course => course.status === "taken");
+        let available = ViewModel.Classes.filter(course => (course.status === "false"));
+
 
         //NOT TAKEN COURSES. Color: Red
 
@@ -64,10 +63,10 @@ let VMtoView = function () {
             .data(available)
             .enter().append("div")
             .attr("id", function (d) {
-                return String(d.dept) + String(d.course)
+                return d.course
             })
             .html(function (d) {
-                return String(d.course)
+                return d.course
             })
             .attr("class", "draggable available outGraph");
 
@@ -76,16 +75,12 @@ let VMtoView = function () {
             .data(taken)
             .enter().append("div")
             .attr("id", function (d) {
-                return String(d.dept) + String(d.course)
+                return d.course
             })
             .html(function (d) {
-                return String(d.course)
+                return d.course
             })
             .attr("class", "draggable taken inGraph");
-
-        //DAVID'S FUNCTION HERE
-
-
 
         for (let obj of rules) {
             let inputLabel = "#" + String(obj.label);//this is the grouping of "intro", "core", "math", or "elective"
@@ -228,8 +223,12 @@ let VMtoView = function () {
                 top: 300,
                 left: 510
             });
+            $("#COMP225").css({
+                top: 150,
+                left: 510
+            });
         }
     };
 
 
-export { VMtoView, draw }
+export { VMtoView, draw, ViewModel}

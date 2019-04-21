@@ -33,21 +33,16 @@ let deleteCourseProfile = function (profile, deletedCourse) {
 
 /*
  *  Reads a profile and outputs JSON object with source target components for VM
- *  Output lools like {source: "COMP123", target: "COMP124"}
+ *  Output looks like {source: "COMP123", target: "COMP124"}
  */
 let writeSourceTarget = function (profile) {
-    var connections = [];
+    let connections;
     for (let node of profile) {
-        console.log(makeConnections(node.course));
-        // if (!connections.some((conn) => conn.source === prereq && conn.target === course)) {
-        //     connections.push({
-        //         "source": prereq,
-        //         "target": course
-        //     });
-        // }
+        connections = makeConnections(node.course);
+
     }
    return connections;
-}
+};
 
 export { writeSourceTarget, updateProfile, deleteCourseProfile };
     

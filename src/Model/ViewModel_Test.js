@@ -140,4 +140,4 @@ let ViewModel = {
   ]
 };
 
-export { ViewModel }
+//export { ViewModel }
