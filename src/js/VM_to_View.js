@@ -3,6 +3,7 @@ import {scope} from "./ViewConnections.js";
 import {rules} from "../Model/cs_major_rules.js";
 import { drawConnections } from "./ViewConnections.js";
 import { initPanel } from "./alertBox.js";
+import { examplePanel } from "./alertBox.js";
 import { jsPlumbInstance } from "./ViewConnections.js";
 import { makeProfile } from "./makeProfile.js";
 import { writeSourceTarget } from "./model_to_vm.js";
@@ -25,7 +26,6 @@ let VMtoView = function () {
         Connections = writeSourceTarget(exampleProfile);
         console.log(exampleProfile);
         console.log(Connections);
-
     });
 
 

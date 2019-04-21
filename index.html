@@ -6,6 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="libraries/jquery-ui-1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.9.0/js/jsplumb.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
     <script src="libraries/d3/d3.min.js"></script>
     <!--<script type="module" src="../js/VM_to_View.js"></script>-->
     <!--<script type="module" src="../js/ViewConnections.js"></script>-->
@@ -15,7 +16,7 @@
 <body>
 
 <div id="dialogOverlay"></div>
-<div id="dialogBox">
+<div id = "introBox">
     <div id="dialogContent">
         <h2>This is the super cool JuDaSaKe Major Planning Software</h2>
         <p>Select Your Major From The Dropdown Menu<br> Click the right arrow when you're ready</p>
@@ -32,10 +33,49 @@
             <div id = "column3" class = "column"></div>
         </form>
     </div>
-    <div id="dialogNext"></div>
+    <div id="introNext"></div>
 </div>
 
+<div id = "example">
+    <div id="exampleContent">
+        <div style="top:12px;left:162px; position:absolute" id = "exampleNode" class = "exampleAvailable"></div>
+        <div id = "upperPanel">
+            <div class = "exampleAvailable"></div>
+            <div class = "exampleAvailable"></div>
+        </div>
+        <div id = "lowerPanel">
+            <div style="top:50px;left:50px; position:absolute" class = "exampleTaken"></div>
+            <div style="top:90px;left:100px; position:absolute" class = "exampleTaken"></div>
+            <svg id="lowePanelSVG" style="height:100%;width:100%">
+                <line x1="75" y1="75" x2="125" y2="120" style="stroke:black;stroke-width:2" />
+                <line id = "animationLine" x1="75" y1="75" x2="125" y2="120" style="stroke:black;stroke-width:2" />
+            </svg>
+            <script>
+                function animate(time) {
+                    requestAnimationFrame(animate);
+                    TWEEN.update(time);
+                }
+                requestAnimationFrame(animate);
 
+                let node = document.getElementById("exampleNode");
+                var coords = { x: node.style.left, y: node.style.top}; // Start at (0, 0)
+                var tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
+                    .to({ x: 150, y: 150 }, 3000) // Move to (300, 200) in 1 second.
+                    .easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
+                    .onUpdate(function() { // Called after tween.js updates 'coords'.
+                        // Move 'box' to the position described by 'coords' with a CSS translation.
+                        node.style.setProperty('transform', 'translate(' + coords.x + 'px, ' + coords.y + 'px)');
+                    });
+                tween.delay(3000);
+                tween.start();
+                tween.onComplete(function() {document.getElementById("animationLine").style.display = "block"});
+
+
+            </script>
+        </div>
+    </div>
+    <div id="exampleNext"></div>
+</div>
 
 
 <div class="instructions">
