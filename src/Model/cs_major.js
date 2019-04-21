@@ -218,14 +218,14 @@ let catalogue = [
     courseInfo:
       "This course examines the theoretical foundations of computation. It explores different mathematical models that try to formalize our informal notion of an algorithm. Models include finite automata, regular expressions, grammars, and Turing machines. The course also discusses ideas about what can and cannot be computed. In addition, the course explores the basics of complexity theory, examining broad categories of problems and their algorithms, and their efficiency. The focus is on the question of P versus NP, and the NP-complete set."
   },
-  {
-    dept: "MATH",
-    courseNum: "365",
-    name: "Computational Linear Algebra",
-    prereq: [["COMP120", "MATH236"], ["COMP123", "MATH236"]],
-    courseInfo:
-      "A mix of applied linear algebra and numerical analysis, this course covers a central point of contact between mathematics and computer science. Many of the computational techniques important in science, commerce, and statistics are based on concepts from linear algebra, such as subspaces, projections, and matrix decompositions. The course reviews these concepts, adopts them to large scales, and applies them in the core techniques of scientific computing. These include solving systems of linear and nonlinear equations, approximation and statistical function estimation, optimization, interpolation, eigenvalue and singular value decompositions, and compression. Applications throughout the natural sciences, social sciences, statistics, and computer science."
-  },
+  // {
+  //   dept: "MATH",
+  //   courseNum: "365",
+  //   name: "Computational Linear Algebra",
+  //   prereq: [["COMP120", "MATH236"], ["COMP123", "MATH236"]],
+  //   courseInfo:
+  //     "A mix of applied linear algebra and numerical analysis, this course covers a central point of contact between mathematics and computer science. Many of the computational techniques important in science, commerce, and statistics are based on concepts from linear algebra, such as subspaces, projections, and matrix decompositions. The course reviews these concepts, adopts them to large scales, and applies them in the core techniques of scientific computing. These include solving systems of linear and nonlinear equations, approximation and statistical function estimation, optimization, interpolation, eigenvalue and singular value decompositions, and compression. Applications throughout the natural sciences, social sciences, statistics, and computer science."
+  // },
   {
     dept: "COMP",
     courseNum: "365",
@@ -352,7 +352,7 @@ let catalogue = [
     dept: "MATH",
     courseNum: "471",
     name: "Topology",
-    prereq: [["MATH365"], ["MATH376"], ["MATH377"]],
+    prereq: [["COMP365"], ["MATH376"], ["MATH377"]],
     courseInfo:
       "A course in both theoretical and computational mathematics. Theoretical concepts include fundamental ideas from point set topology---continuity, convergence, and connectedness---as well as selected topics from algebraic topology---the fundamental group, elementary homotopy theory, and homology. This theoretical framework provides a backbone to understand new advances in topological data analysis. Applications are chosen from diverse fields such as biological aggregations, medicine, image processing, signal processing, and sensor networks. This course counts towards the capstone requirement."
   },
@@ -363,14 +363,14 @@ let catalogue = [
     prereq: ["MATH376"],
     courseInfo: "A course in matrix representations of groups, a topic which unites the powers of group theory and linear algebra. Topics include: symmetry in linear spaces, modules, group actions, characters, tensor products, and Fourier analysis on groups. Applications are chosen from: ranked data, molecular vibrations, quantum mechanics, random walks, number theory, and combinatorics. Important ideas from linear algebra are revisited from a more sophisticated point of view. These include: linear transformations, abstract vector spaces, change of basis, subspaces, direct sums, projections, and eigenvalues and eigenvectors."
   },
-  {
-    dept: "MATH",
-    courseNum: "479",
-    name: "Network Science",
-    prereq: ["MATH236", "COMPM379", "COMP123"],
-    courseInfo:
-      'The modern Information Age has produced a wealth of data about the complex networks that tie us together. In response, the field of Network Science has arisen, bringing together mathematics, computer science, sociology, biology, economics and other fields. This course will explore the fundamental questions and the mathematical tools of Network Science. This includes: the structure of complex networks, including connectedness, centrality and "long tails"; community detection; random/strategic models for network formation; diffusion/contagion and "tipping points" on networks; and algorithms for analyzing complex networks.'
-  },
+  // {
+  //   dept: "MATH",
+  //   courseNum: "479",
+  //   name: "Network Science",
+  //   prereq: ["MATH236", "COMPM379", "COMP123"],
+  //   courseInfo:
+  //     'The modern Information Age has produced a wealth of data about the complex networks that tie us together. In response, the field of Network Science has arisen, bringing together mathematics, computer science, sociology, biology, economics and other fields. This course will explore the fundamental questions and the mathematical tools of Network Science. This includes: the structure of complex networks, including connectedness, centrality and "long tails"; community detection; random/strategic models for network formation; diffusion/contagion and "tipping points" on networks; and algorithms for analyzing complex networks.'
+  // },
   {
     dept: "COMP",
     courseNum: "479",
