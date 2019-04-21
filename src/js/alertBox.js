@@ -37,6 +37,7 @@ function initPanel() {
         introBox.css("display", "none");
         let intro = new examplePanel();
         intro.render();
+        animateNode();
         $("#startButton").on("click", intro.next);
     }
 }
