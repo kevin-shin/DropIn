@@ -5,7 +5,7 @@ let drawOptions = function() {
     let keys = [];
 
     for (let course of courseCatalog.keys()) {
-        if (course.substring(0,4) === "COMP") {
+        if (course.substring(0,4) === "COMP" || course === "MATH279") {
             keys.push(course);
         }
     }

@@ -1,18 +1,16 @@
 import {makeConnections} from "./connections_logic.js";
 import {catalogue} from "../Model/cs_major.js";
 
-var scope;
+let scope;
 
-let setUpDraggable = function () {
-};
-
-var jsPlumbInstance = jsPlumb.getInstance({
+let jsPlumbInstance = jsPlumb.getInstance({
     Connector: ["Straight"],
     DragOptions: {cursor: "pointer", zIndex: 5},
     PaintStyle: {stroke: "black", strokeWidth: 1}
 });
 
-let drawConnections = function (Connections) {
+
+let setUpDraggable = function () {
     const radius = 20;
     const displacement = radius + 10;
 
@@ -36,20 +34,6 @@ let drawConnections = function (Connections) {
 
 
     /*            DRAGGABLE BEHAVIOR           */
-
-    // svgNotTaken.droppable({
-    //     accept: ".inGraph",
-    //     drop: function (e, ui) {
-    //         console.log("Dropped!");
-    //         var x = ui.helper.clone();
-    //         ui.helper.remove();
-    //         x.addClass("outGraph").removeClass("inGraph");
-    //         svgNotTaken.append(x);
-    //         jsPlumbInstance.draggable(x);
-    //
-    //     }
-    // });
-
     graph.droppable({
         accept: ".outGraph",
         drop: function (e, ui) {
@@ -137,7 +121,6 @@ let drawConnections = function (Connections) {
             });
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
             //Having transferred courses, call the appropriate drag-enablers.
             outGraph = $(".outGraph");
             graphCourses = $(".inGraph");
@@ -153,15 +136,17 @@ let drawConnections = function (Connections) {
         }
     });
 
-    //Behavior to initialize nodes and connections.
-    drawConnections();
-    courseUpdate();
+};
+
+let drawConnections = function(Connections) {
+    initializeConnections();
+    instructionsBinding();
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 
     //-----------     HELPER FUNCTIONS     -----------
 
     //Draw the connections between imported courses.
-    function drawConnections() {
+    function initializeConnections() {
         for (let entry of Connections) {
             jsPlumbInstance.connect({
                 source: entry.source,
@@ -178,8 +163,8 @@ let drawConnections = function (Connections) {
         }
     }
 
-    function courseUpdate() {
-        allCourses = $(".draggable");
+    function instructionsBinding() {
+        let allCourses = $(".draggable");
         allCourses.bind("mousedown", function () {
             //change CSS to absolute so it can drag
             var course = findCourse(catalogue, this);
@@ -197,11 +182,7 @@ let drawConnections = function (Connections) {
             );
 
         });
-
-        //all courses now needs to be relative so that it can move with window
-        //allCourses.bind("mouseup", function() { now make it relative}
     }
-
 
     function findCourse(data, course) {
         let ID = course.id;
@@ -211,19 +192,6 @@ let drawConnections = function (Connections) {
             }
         }
     }
-
-    // function checkRequirementBoxes(classAdded) {
-    //     let toSelect = "#req" + classAdded.attr('id'); //classAdded.id = undefined
-    //     let boxToBeChecked = $(toSelect);
-    //
-    //     console.log(boxToBeChecked);
-    //
-    //     if (!(boxToBeChecked).filter(":checked")){//if the box is not checked
-    //         boxToBeChecked.attr("checked", "checked");
-    //     }
-    // }
-
-
 };
 
-export {drawConnections, scope, jsPlumbInstance}
+export {drawConnections, scope, jsPlumbInstance, setUpDraggable}

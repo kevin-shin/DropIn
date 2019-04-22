@@ -17,7 +17,6 @@ let updateProfile = function (profile, draggedCourse) {
     }
 };
 
-
 /**
  * 
  * @param profile 
@@ -25,7 +24,7 @@ let updateProfile = function (profile, draggedCourse) {
  */
 let deleteCourseProfile = function (profile, deletedCourse) {
     for (course of profile) {
-        if (course.course == deletedCourse) {
+        if (course.course === deletedCourse) {
             profile.pop(course);
         }
     }
