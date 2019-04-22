@@ -182,7 +182,7 @@ ul {
     border-radius: 25px;
     z-index: 1000;
     width: 700px;
-    height: 500px;
+    height: 450px;
     overflow-y: scroll;
 }
 
@@ -198,6 +198,7 @@ ul {
     width: 100%;
     height: 40px;
     z-index: 1000;
+    margin-top: 10px;
 }
 
 .column {
@@ -213,8 +214,8 @@ ul {
 }
 
 #upperPanel {
-    width: 72%;
     height: 15%;
+    width: 50%;
     position: relative;
     background-color: white;
     border-radius: 25px;
@@ -225,8 +226,8 @@ ul {
 }
 
 #lowerPanel {
-    height: 65%;
-    width: 72%;
+    height: 60%;
+    width: 50%;
     left: 0;
     background-color: white;
     float: left;
@@ -263,4 +264,17 @@ ul {
 
 #exampleNode {
     z-index: 2000;
+}
+
+#dragInstructions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 75%;
+    width: 35%;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid #73AD21;
+    margin-right: 50px;
+    margin-top: 10px;
 }

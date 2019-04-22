@@ -27,8 +27,8 @@ let animateNode = function () {
 
     let node = document.getElementById("exampleNode");
     var coords = {x: node.style.left, y: node.style.top}; // Start at (0, 0)
-    var tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
-        .to({x: 100, y: 150}, 3000) // Move to (300, 200) in 1 second.
+    var tween = new TWEEN.Tween(coords)
+        .to({x: 170, y: 150}, 3000)
         .easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
         .onUpdate(function () { // Called after tween.js updates 'coords'.
             // Move 'box' to the position described by 'coords' with a CSS translation.
