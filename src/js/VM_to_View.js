@@ -4,10 +4,11 @@ import { initPanel } from "./alertBox.js";
 import { jsPlumbInstance } from "./ViewConnections.js";
 import { makeProfile } from "./makeProfile.js";
 import { writeSourceTarget } from "./model_to_vm.js";
+import { makeViewModel } from "./makeViewModel.js";
 
 let exampleProfile;
 let Connections;
-let ViewModel = {};
+let ViewModel;
 
 let VMtoView = function () {
 
@@ -22,8 +23,8 @@ let VMtoView = function () {
         let profileString = ($('#profileData').serializeArray());
         exampleProfile = makeProfile(profileString);
         Connections = writeSourceTarget(exampleProfile);
-        ViewModel.Classes = exampleProfile;
-        ViewModel.Connections = Connections;
+        ViewModel = makeViewModel(exampleProfile,Connections);
+        console.log(ViewModel);
     });
 
 
@@ -66,7 +67,7 @@ let VMtoView = function () {
                 return d.course
             })
             .html(function (d) {
-                return d.course
+                return d.course.substring(4,7)
             })
             .attr("class", "draggable available outGraph");
 
@@ -78,7 +79,7 @@ let VMtoView = function () {
                 return d.course
             })
             .html(function (d) {
-                return d.course
+                return d.course.substring(4,7)
             })
             .attr("class", "draggable taken inGraph");
 

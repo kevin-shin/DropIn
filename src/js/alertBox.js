@@ -2,10 +2,10 @@
 //https://www.developphp.com/video/JavaScript/Custom-Alert-Box-Programming-Tutorial
 
 import { drawOptions } from "./initializePanel.js";
-import { ViewModel } from "./VM_to_View.js";
 import { drawConnections } from "./ViewConnections.js";
 import { draw } from "./VM_to_View.js";
 import { animateNode } from "./exampleAnimation.js";
+import { ViewModel } from "./VM_to_View.js";
 
 let width = window.innerWidth;
 let height = window.innerHeight;
@@ -58,6 +58,7 @@ function examplePanel() {
         dialogOverlay.css("display","none");
 
         console.log(ViewModel);
+
         draw(ViewModel);
         drawConnections(ViewModel.Connections);
     }
