@@ -9,10 +9,11 @@ import { makeConnections, dfs } from "./connections_logic.js";
  */
 let updateProfile = function (profile, draggedCourse) {
     var courseWithPrereqs = dfs(draggedCourse);
-    for (course of courseWithPrereqs) {
-        if (!profile.some((nextClass) => nextClass == profile.course)) {
+    console.log(courseWithPrereqs);
+    for (var course of courseWithPrereqs) {
+        if (!(profile.some((nextClass) => nextClass.course === course))) {
             profile.push({
-                course: draggedCourse,
+                course: course,
                 status: "planned"
             })
         }
@@ -25,7 +26,7 @@ let updateProfile = function (profile, draggedCourse) {
  * @param deletedCourse 
  */
 let deleteCourseProfile = function (profile, deletedCourse) {
-    for (course of profile) {
+    for (var course of profile) {
         if (course.course === deletedCourse) {
             profile.pop(course);
         }
@@ -39,7 +40,7 @@ let deleteCourseProfile = function (profile, deletedCourse) {
 let writeSourceTarget = function (profile) {
     var connections = [];
     var tempConn = [];
-    for (node of profile) {
+    for (var node of profile) {
         tempConn = makeConnections(node.course);
         for (var conn of tempConn) {
             if (!connections.some((next) => next.source === conn.source && next.target === conn.target)) {
@@ -52,8 +53,8 @@ let writeSourceTarget = function (profile) {
 
 let writeVM = function (profile, connectionsArr) {
     var viewModel;
-    viewModel.profile = profile;
-    viewModel.connections = connectionsArr;
+    viewModel.profile += profile;
+    viewModel.connections +=  connectionsArr;
     return viewModel;
 };
 
