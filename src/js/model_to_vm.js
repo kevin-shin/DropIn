@@ -9,11 +9,13 @@ import { makeConnections, dfs } from "./connections_logic.js";
  */
 let updateProfile = function (profile, draggedCourse) {
     var courseWithPrereqs = dfs(draggedCourse);
-    for (let course of courseWithPrereqs) {
-        profile.push({
-            course: draggedCourse,
-            status: "planned"
-        })
+    for (course of courseWithPrereqs) {
+        if (!profile.some((nextClass) => nextClass == profile.course)) {
+            profile.push({
+                course: draggedCourse,
+                status: "planned"
+            })
+        }
     }
 };
 
@@ -23,7 +25,7 @@ let updateProfile = function (profile, draggedCourse) {
  * @param deletedCourse 
  */
 let deleteCourseProfile = function (profile, deletedCourse) {
-    for (let course of profile) {
+    for (course of profile) {
         if (course.course === deletedCourse) {
             profile.pop(course);
         }
@@ -35,12 +37,24 @@ let deleteCourseProfile = function (profile, deletedCourse) {
  *  Output looks like {source: "COMP123", target: "COMP124"}
  */
 let writeSourceTarget = function (profile) {
-    let connections;
-    for (let node of profile) {
-        connections = makeConnections(node.course);
-
+    var connections = [];
+    var tempConn = [];
+    for (node of profile) {
+        tempConn = makeConnections(node.course);
+        for (var conn of tempConn) {
+            if (!connections.some((next) => next.source === conn.source && next.target === conn.target)) {
+                connections.push(conn);
+            }
+        }
     }
    return connections;
+};
+
+let writeVM = function (profile, connectionsArr) {
+    var viewModel;
+    viewModel.profile = profile;
+    viewModel.connections = connectionsArr;
+    return viewModel;
 };
 
 export { writeSourceTarget, updateProfile, deleteCourseProfile };
