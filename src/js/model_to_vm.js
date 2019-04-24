@@ -119,7 +119,6 @@ let deleteCourseProfile = function (profile, deletedCourse) {
  */
 let writeSourceTarget = function (profile) {
     var connections = [];
-<<<<<<< HEAD
     var tempConn = [];
     for (node of profile) {
         tempConn = makeConnections(node.course);
@@ -127,15 +126,6 @@ let writeSourceTarget = function (profile) {
             if (!connections.some((next) => next.source === conn.source && next.target === conn.target)) {
                 connections.push(conn);
             }
-=======
-    for (let node of profile) {
-        makeConnections(node.course);
-        if (!connections.some((conn) => conn.source === prereq && conn.target === course)) {
-            connections.push({
-                "source": prereq,
-                "target": course
-            });
->>>>>>> fb85aedcc5ba31782859d1604970032e728182b1
         }
     }
     return connections;
