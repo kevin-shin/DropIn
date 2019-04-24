@@ -205,4 +205,4 @@ function positionPreReqs() {
 };
 
 
-export {VMtoView, draw, ViewModel}
+export {VMtoView, draw, ViewModel, exampleProfile}

@@ -9,7 +9,6 @@ import { makeConnections, dfs } from "./connections_logic.js";
  */
 let updateProfile = function (profile, draggedCourse) {
     var courseWithPrereqs = dfs(draggedCourse);
-    console.log(courseWithPrereqs);
     for (var course of courseWithPrereqs) {
         if (!(profile.some((nextClass) => nextClass.course === course))) {
             profile.push({

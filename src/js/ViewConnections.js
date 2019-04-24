@@ -2,6 +2,8 @@ import {makeConnections} from "./connections_logic.js";
 import {catalogue} from "../Model/cs_major.js";
 import {updateProfile} from "./model_to_vm.js";
 import {ViewModel} from "./VM_to_View.js";
+import {exampleProfile} from "./VM_to_View.js";
+import {writeSourceTarget} from "./model_to_vm.js";
 
 let scope;
 
@@ -39,8 +41,10 @@ let setUpDraggable = function () {
         accept: ".outGraph",
         drop: function (e, ui) {
 
-            updateProfile(ViewModel.Classes, ui.helper.attr('id'));
-            console.log(ViewModel.Classes);
+            updateProfile(exampleProfile, ui.helper.attr('id'));
+            console.log("console drag behavior");
+            console.log(exampleProfile);
+            console.log()
 
 
             // var x = ui.helper.clone();
