@@ -1,5 +1,7 @@
 import {makeConnections} from "./connections_logic.js";
 import {catalogue} from "../Model/cs_major.js";
+import {updateProfile} from "./model_to_vm.js";
+import {ViewModel} from "./VM_to_View.js";
 
 let scope;
 
@@ -32,113 +34,117 @@ let setUpDraggable = function () {
         scope = $(this);
     });
 
-
     /*            DRAGGABLE BEHAVIOR           */
     graph.droppable({
         accept: ".outGraph",
         drop: function (e, ui) {
-            var x = ui.helper.clone();
-            ui.helper.remove();
-            x.css({
-                top: e.clientY - displacement,
-                left: e.clientX - displacement,
-                position: 'absolute'
-            });
-            x.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handle ui-draggable-dragging");
-            graph.append(x);
-            jsPlumbInstance.draggable(x);
-            var item = x.attr('id');
 
-            //Run the prereq algorithms
-            let prereqs = makeConnections(item);
-            prereqs.forEach(function (course) {
-                var insideGraph = graphCourses.toArray().some((element) => element.id === course.source);
-                var insideBar = outGraph.toArray().some((element) => element.id === course.source);
+            updateProfile(ViewModel.Classes, ui.helper.attr('id'));
+            console.log(ViewModel.Classes);
 
-                //Algorithm assumes that each course is either inside the graph or bar.
-                if (insideBar) {
-                    var toRemove = "#" + course.source;
-                    var nodeToRemove = $(toRemove);
-                    var clone = nodeToRemove.clone();
-                    clone.css({
-                        top: e.clientY - displacement - 50,
-                        left: e.clientX - displacement - 50,
-                        position: 'absolute',
-                        opacity: 0.5
-                    });
-                    clone.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handle");
-                    nodeToRemove.remove();
-                    $("#graph").append(clone);
-                    jsPlumbInstance.draggable(clone);
-                    jsPlumbInstance.connect({
-                        source: clone.attr('id'),
-                        target: course.target,
-                        endpoint: "Blank",
-                        anchors: [
-                            ["Perimeter", {shape: "Circle", anchorCount: 150}],
-                            ["Perimeter", {shape: "Circle", anchorCount: 150}]
-                        ],
-                        overlays: [
-                            ["Arrow", {location: 1}]
-                        ]
-                    });
-                }
-                if (insideGraph) {
-                    jsPlumbInstance.connect({
-                        source: course.source,
-                        target: course.target,
-                        endpoint: "Blank",
-                        anchors: [
-                            ["Perimeter", {shape: "Circle", anchorCount: 150}],
-                            ["Perimeter", {shape: "Circle", anchorCount: 150}]
-                        ],
-                        overlays: [
-                            ["Arrow", {location: 1}]
-                        ]
-                    });
-                }
-            });
 
-            //Implement checkbox behavior
-
-            //checkRequirementBoxes(x);
-
-            //^^^^^^^^^^^^^^^ Replaced by \/\/\/\/\/\/\/\/
-            ///////////////////////////////////////////////////////////////Checking Requirement Boxes///////////////////////////////
-            //checkRequirementBoxes(x);
-
-            let classesInGraph = d3.selectAll(".inGraph").enter().each(function (d) {
-
-                //for(let singleClass of classesInGraph){//IDEA HOLDER FOR NOW, NEEDS TO BE ITERABLE
-
-                //^^^^^^^^^^^^^^^^^  Used when delete ".enter().each(function (d) {}
-
-                let boxToBeChecked = d3.select(".requirements").select("req" + d.id)//select the box to be checked
-                if (!(boxToBeChecked.filter(":checked"))) {
-                    boxToBeChecked.attr("checked", "checked");
-                }
-
-            });
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            //Having transferred courses, call the appropriate drag-enablers.
-            outGraph = $(".outGraph");
-            graphCourses = $(".inGraph");
-
-            outGraph.draggable({revert: true});
-            drawConnections();
-            courseUpdate();
-
-            graphCourses.bind("click", function () {
-                scope = $(this);
-            });
+            // var x = ui.helper.clone();
+            // ui.helper.remove();
+            // x.css({
+            //     top: e.clientY - displacement,
+            //     left: e.clientX - displacement,
+            //     position: 'absolute'
+            // });
+            // x.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handle ui-draggable-dragging");
+            // graph.append(x);
+            // jsPlumbInstance.draggable(x);
+            // var item = x.attr('id');
+            //
+            // //Run the prereq algorithms
+            // let prereqs = makeConnections(item);
+            // prereqs.forEach(function (course) {
+            //     var insideGraph = graphCourses.toArray().some((element) => element.id === course.source);
+            //     var insideBar = outGraph.toArray().some((element) => element.id === course.source);
+            //
+            //     //Algorithm assumes that each course is either inside the graph or bar.
+            //     if (insideBar) {
+            //         var toRemove = "#" + course.source;
+            //         var nodeToRemove = $(toRemove);
+            //         var clone = nodeToRemove.clone();
+            //         clone.css({
+            //             top: e.clientY - displacement - 50,
+            //             left: e.clientX - displacement - 50,
+            //             position: 'absolute',
+            //             opacity: 0.5
+            //         });
+            //         clone.addClass("inGraph").removeClass("outGraph ui-draggable ui-draggable-handle");
+            //         nodeToRemove.remove();
+            //         $("#graph").append(clone);
+            //         jsPlumbInstance.draggable(clone);
+            //         jsPlumbInstance.connect({
+            //             source: clone.attr('id'),
+            //             target: course.target,
+            //             endpoint: "Blank",
+            //             anchors: [
+            //                 ["Perimeter", {shape: "Circle", anchorCount: 150}],
+            //                 ["Perimeter", {shape: "Circle", anchorCount: 150}]
+            //             ],
+            //             overlays: [
+            //                 ["Arrow", {location: 1}]
+            //             ]
+            //         });
+            //     }
+            //     if (insideGraph) {
+            //         jsPlumbInstance.connect({
+            //             source: course.source,
+            //             target: course.target,
+            //             endpoint: "Blank",
+            //             anchors: [
+            //                 ["Perimeter", {shape: "Circle", anchorCount: 150}],
+            //                 ["Perimeter", {shape: "Circle", anchorCount: 150}]
+            //             ],
+            //             overlays: [
+            //                 ["Arrow", {location: 1}]
+            //             ]
+            //         });
+            //     }
+            // });
+            //
+            // //Implement checkbox behavior
+            //
+            // //checkRequirementBoxes(x);
+            //
+            // //^^^^^^^^^^^^^^^ Replaced by \/\/\/\/\/\/\/\/
+            // ///////////////////////////////////////////////////////////////Checking Requirement Boxes///////////////////////////////
+            // //checkRequirementBoxes(x);
+            //
+            // let classesInGraph = d3.selectAll(".inGraph").enter().each(function (d) {
+            //
+            //     //for(let singleClass of classesInGraph){//IDEA HOLDER FOR NOW, NEEDS TO BE ITERABLE
+            //
+            //     //^^^^^^^^^^^^^^^^^  Used when delete ".enter().each(function (d) {}
+            //
+            //     let boxToBeChecked = d3.select(".requirements").select("req" + d.id)//select the box to be checked
+            //     if (!(boxToBeChecked.filter(":checked"))) {
+            //         boxToBeChecked.attr("checked", "checked");
+            //     }
+            //
+            // });
+            // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //
+            // //Having transferred courses, call the appropriate drag-enablers.
+            // outGraph = $(".outGraph");
+            // graphCourses = $(".inGraph");
+            //
+            // outGraph.draggable({revert: true});
+            // drawConnections();
+            // courseUpdate();
+            //
+            // graphCourses.bind("click", function () {
+            //     scope = $(this);
+            // });
 
         }
     });
 
 };
 
-let drawConnections = function(Connections) {
+let drawConnections = function (Connections) {
     initializeConnections();
     instructionsBinding();
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);

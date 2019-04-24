@@ -9,7 +9,7 @@ import { makeConnections, dfs } from "./connections_logic.js";
  */
 let updateProfile = function (profile, draggedCourse) {
     var courseWithPrereqs = dfs(draggedCourse);
-    for (course of courseWithPrereqs) {
+    for (let course of courseWithPrereqs) {
         profile.push({
             course: draggedCourse,
             status: "planned"
@@ -23,7 +23,7 @@ let updateProfile = function (profile, draggedCourse) {
  * @param deletedCourse 
  */
 let deleteCourseProfile = function (profile, deletedCourse) {
-    for (course of profile) {
+    for (let course of profile) {
         if (course.course === deletedCourse) {
             profile.pop(course);
         }
