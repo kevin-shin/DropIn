@@ -22,6 +22,7 @@ let VMtoView = function () {
         let profileString = ($('#profileData').serializeArray());
         exampleProfile = makeProfile(profileString);
         Connections = writeSourceTarget(exampleProfile);
+        ViewModel = makeViewModel(exampleProfile,Connections);
     });
 
 
