@@ -4,6 +4,9 @@ import {updateProfile} from "./model_to_vm.js";
 import {ViewModel} from "./VM_to_View.js";
 import {exampleProfile} from "./VM_to_View.js";
 import {writeSourceTarget} from "./model_to_vm.js";
+import {writeVM} from "./model_to_vm.js";
+import {draw} from "./VM_to_View.js";
+import {notTaken} from "./VM_to_View.js";
 
 let scope;
 
@@ -42,10 +45,20 @@ let setUpDraggable = function () {
         drop: function (e, ui) {
 
             updateProfile(exampleProfile, ui.helper.attr('id'));
-            console.log("console drag behavior");
-            console.log(exampleProfile);
-            console.log()
+            let connectionsArray = writeSourceTarget(exampleProfile);
 
+            //
+            // console.log("Profile");
+            // console.log(exampleProfile);
+            //
+            // console.log("connections");
+            // console.log(connectionsArray);
+            // console.log("VM");
+            let VM = writeVM(exampleProfile,connectionsArray);
+            let graphCourses = VM.Classes.filter((course => course.status === "taken") || (course => course.status === "planned"));
+            let available = notTaken(VM.Classes);
+            
+            draw(available, graphCourses);
 
             // var x = ui.helper.clone();
             // ui.helper.remove();

@@ -7,6 +7,8 @@ import { draw } from "./VM_to_View.js";
 import { animateNode } from "./exampleAnimation.js";
 import { ViewModel } from "./VM_to_View.js";
 import { setUpDraggable } from "./ViewConnections.js";
+import {writeVM} from "./model_to_vm.js";
+import {exampleProfile, notTaken} from "./VM_to_View.js";
 
 let width = window.innerWidth;
 let height = window.innerHeight;
@@ -58,7 +60,10 @@ function examplePanel() {
         exampleBox.css("display", "none");
         dialogOverlay.css("display","none");
 
-        draw(ViewModel);
+        let graphCourses = ViewModel.Classes.filter((course => course.status === "taken") || (course => course.status === "planned"));
+        let available = notTaken(ViewModel.Classes);
+
+        draw(available, graphCourses);
         drawConnections(ViewModel.Connections);
         setUpDraggable();
     }

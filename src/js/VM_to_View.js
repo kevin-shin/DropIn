@@ -4,7 +4,8 @@ import {initPanel} from "./alertBox.js";
 import {jsPlumbInstance} from "./ViewConnections.js";
 import {makeProfile} from "./makeProfile.js";
 import {writeSourceTarget} from "./model_to_vm.js";
-import {makeViewModel} from "./makeViewModel.js";
+import {writeVM} from "./model_to_vm.js";
+import {cleanCatalogue} from "./makeViewModel.js";
 
 let exampleProfile;
 let Connections;
@@ -20,9 +21,15 @@ let VMtoView = function () {
     $('#profileData').submit((event) => {
         event.preventDefault();
         let profileString = ($('#profileData').serializeArray());
+        console.log("Profile String");
+        console.log(profileString);
         exampleProfile = makeProfile(profileString);
         Connections = writeSourceTarget(exampleProfile);
-        ViewModel = makeViewModel(exampleProfile,Connections);
+        console.log("exampleProfile");
+        console.log(exampleProfile);
+
+        ViewModel = writeVM(exampleProfile,Connections);
+        console.log(ViewModel);
     });
 
 
@@ -73,41 +80,43 @@ let VMtoView = function () {
 
 };
 
-function draw(ViewModel) {
+function draw(available, graphCourses) {
 
-    let taken = ViewModel.Classes.filter(course => course.status === "taken");
-    let available = ViewModel.Classes.filter(course => (course.status === "false"));
-
+    console.log("taken");
+    console.log(graphCourses);
+    console.log("available");
+    console.log(available);
 
     //NOT TAKEN COURSES. Color: Red
     let svgGroups = d3.select("#svgNotTaken").selectAll("notTaken")
         .data(available)
         .enter().append("div")
         .attr("id", function (d) {
-            return d.course
+            return d
         })
         .html(function (d) {
-            return d.course.substring(4, 7)
+            return d
         })
         .attr("class", "draggable available outGraph");
 
     //TAKEN COURSES. Color: Green
     let svgContainer = d3.select("#graph").selectAll("taken")
-        .data(taken)
+        .data(graphCourses)
         .enter().append("div")
         .attr("id", function (d) {
             return d.course
         })
         .html(function (d) {
-            return d.course.substring(4, 7)
+            return d.course
         })
         .attr("class", "draggable taken inGraph");
 
+    svgGroups.exit().remove();
+    svgContainer.exit().remove();
 
     positionPreReqs();
     positionTopBar();
     requirementsPanelUpdate();
-
 }
 
 let requirementsPanelUpdate = function () {
@@ -165,6 +174,18 @@ function positionTopBar() {
     }
 }
 
+let notTaken = function (profile) {
+    let toReturn = [];
+    let compCat = cleanCatalogue();
+    for (let course of compCat){
+        if (!profile.some((thing) => thing.course === course)){
+            toReturn.push(course);
+        }
+    }
+    return toReturn;
+};
+
+
 function markTaken() {
     scope.addClass("taken").removeClass("available")
 }
@@ -205,4 +226,4 @@ function positionPreReqs() {
 };
 
 
-export {VMtoView, draw, ViewModel, exampleProfile}
+export {VMtoView, draw, ViewModel, exampleProfile, notTaken};

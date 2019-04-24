@@ -1,4 +1,4 @@
-
+let data1 = [1,2,3,4,5,6];
 
 $("#upgrade").on("click", upgrade);
 $("#downgrade").on("click", downgrade);

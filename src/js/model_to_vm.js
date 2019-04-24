@@ -52,12 +52,12 @@ let writeSourceTarget = function (profile) {
 
 let writeVM = function (profile, connectionsArr) {
     var viewModel = {};
-    viewModel.profile = profile;
-    viewModel.connections =  connectionsArr;
+    viewModel.Classes = profile;
+    viewModel.Connections =  connectionsArr;
     return viewModel;
 };
 
-export { writeSourceTarget, updateProfile, deleteCourseProfile };
+export { writeSourceTarget, updateProfile, deleteCourseProfile, writeVM };
     
 // module.exports = {};
 // module.exports.updateProfile = updateProfile;
