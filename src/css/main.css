@@ -61,7 +61,8 @@ body {
 
 /*           GUI           */
 
-#graph{
+#graph {
+
     height: 82%;
     width: 72%;
     left: 0;
@@ -162,7 +163,7 @@ ul {
     left: 0;
 }
 
-#dialogBox {
+#introBox, #example {
     display: none;
     background: beige;
     position: fixed;
@@ -174,15 +175,30 @@ ul {
     overflow-y: scroll;
 }
 
-#nextButton {
+#dialogContent, #exampleContent {
+    background: beige;
+    position: relative;
+    text-align: center;
+    border-radius: 25px;
+    z-index: 1000;
+    width: 700px;
+    height: 450px;
+    overflow-y: scroll;
+}
+
+
+
+#nextButton, #startButton {
     margin-top: 10px;
 }
 
-#dialogNext {
+#introNext, #exampleNext {
     background-color: darkgray;
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 40px;
+    z-index: 1000;
+    margin-top: 10px;
 }
 
 .column {
@@ -195,4 +211,70 @@ ul {
 #profileData {
     overflow: hidden;
     display: inline-block;
+}
+
+#upperPanel {
+    height: 15%;
+    width: 50%;
+    position: relative;
+    background-color: white;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    overflow: -moz-scrollbars-horizontal;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+#lowerPanel {
+    height: 60%;
+    width: 50%;
+    left: 0;
+    background-color: white;
+    float: left;
+    white-space: nowrap;
+    position: relative;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.exampleAvailable {
+    height: 35px;
+    width: 35px;
+    background-color: red;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
+    margin: 10px;
+}
+
+
+.exampleTaken {
+    height: 35px;
+    width: 35px;
+    background-color: green;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
+    margin: 10px;
+}
+
+#exampleNode {
+    z-index: 2000;
+}
+
+#dragInstructions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 75%;
+    width: 35%;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid #73AD21;
+    margin-right: 50px;
+    margin-top: 10px;
 }

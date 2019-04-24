@@ -5,7 +5,7 @@ let drawOptions = function() {
     let keys = [];
 
     for (let course of courseCatalog.keys()) {
-        if (course.substring(0,4) === "COMP") {
+        if (course.substring(0,4) === "COMP" || course === "MATH279") {
             keys.push(course);
         }
     }
@@ -17,7 +17,7 @@ let drawOptions = function() {
 
     let inputs1 = d3.select('#column1').selectAll("courseOptions")
         .data(leftSide)
-        .enter().append("p").lower()
+        .enter().append("p")
         .text(function (d) {
             return d
         })
@@ -30,7 +30,7 @@ let drawOptions = function() {
 
     let inputs2 = d3.select('#column2').selectAll("courseOptions")
         .data(middle)
-        .enter().append("p").lower()
+        .enter().append("p")
         .text(function (d) {
             return d
         })
@@ -43,7 +43,7 @@ let drawOptions = function() {
 
     let inputs3 = d3.select('#column3').selectAll("courseOptions")
         .data(rightSide)
-        .enter().append("p").lower()
+        .enter().append("p")
         .text(function (d) {
             return d
         })

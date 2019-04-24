@@ -1,0 +1,12 @@
+.example {
+    background-color: blue;
+    display: inline-block;
+    position: relative;
+    margin: 10px;
+}
+
+#container{
+
+    width: 100%;
+    height: 400px;
+}

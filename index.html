@@ -6,6 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="libraries/jquery-ui-1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.9.0/js/jsplumb.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
     <script src="libraries/d3/d3.min.js"></script>
     <!--<script type="module" src="../js/VM_to_View.js"></script>-->
     <!--<script type="module" src="../js/ViewConnections.js"></script>-->
@@ -15,7 +16,7 @@
 <body>
 
 <div id="dialogOverlay"></div>
-<div id="dialogBox">
+<div id = "introBox">
     <div id="dialogContent">
         <h2>This is the super cool JuDaSaKe Major Planning Software</h2>
         <p>Select Your Major From The Dropdown Menu<br> Click the right arrow when you're ready</p>
@@ -32,8 +33,29 @@
             <div id = "column3" class = "column"></div>
         </form>
     </div>
-    <div id="dialogNext"></div>
+    <div id="introNext"></div>
 </div>
+
+<div id = "example">
+    <div id="exampleContent">
+        <div style="top:12px;left:92px; position:absolute" id = "exampleNode" class = "exampleAvailable"></div>
+        <div id = "upperPanel">
+            <div class = "exampleAvailable"></div>
+            <div class = "exampleAvailable"></div>
+        </div>
+        <div id = "lowerPanel">
+            <div id = "connectSource" style="top:50px;left:50px; position:absolute" class = "exampleTaken"></div>
+            <div id = "connectTarget" style="top:90px;left:100px; position:absolute" class = "exampleTaken"></div>
+            <script>
+            </script>
+        </div>
+        <div id="dragInstructions">
+            <p> LOREM IPSUM </p>
+        </div>
+    </div>
+    <div id="exampleNext"></div>
+</div>
+
 
 <div class="instructions">
     <p id="welcomeText">Welcome to Judasake! <br> Instructions are as follows: </p>

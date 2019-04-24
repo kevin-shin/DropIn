@@ -2,18 +2,23 @@
 //https://www.developphp.com/video/JavaScript/Custom-Alert-Box-Programming-Tutorial
 
 import { drawOptions } from "./initializePanel.js";
-import { ViewModel } from "../Model/ViewModel_Test.js";
 import { drawConnections } from "./ViewConnections.js";
 import { draw } from "./VM_to_View.js";
+import { animateNode } from "./exampleAnimation.js";
+import { ViewModel } from "./VM_to_View.js";
+import { setUpDraggable } from "./ViewConnections.js";
+
+let width = window.innerWidth;
+let height = window.innerHeight;
+
+let dialogOverlay = $("#dialogOverlay");
+let introBox = $("#introBox");
+let exampleBox = $("#example");
+let introNext = $("#introNext");
+let exampleNext = $("#exampleNext");
+
 
 function initPanel() {
-
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-
-    let dialogOverlay = $("#dialogOverlay");
-    let dialogBox = $("#dialogBox");
-    let dialogNext = $("#dialogNext");
 
     this.render = function(){
 
@@ -21,20 +26,42 @@ function initPanel() {
 
         dialogOverlay.css("display","block");
         dialogOverlay.css("height",height);
-        dialogBox.css("top","50px");
-        dialogBox.css("left", position);
-        dialogBox.css("display", "block");
+        introBox.css("top","50px");
+        introBox.css("left", position);
+        introBox.css("display", "block");
+
         drawOptions();
-        dialogNext.html('<button form="profileData" type="submit" id="nextButton">Submit</button>');
+        introNext.html('<button form="profileData" type="submit" id="nextButton">Submit</button>');
     };
 
     this.next = function() {
-        dialogBox.css("display", "none");
+        introBox.css("display", "none");
+        let intro = new examplePanel();
+        intro.render();
+        animateNode();
+        $("#startButton").on("click", intro.next);
+    }
+}
+
+function examplePanel() {
+
+    this.render = function(){
+        let position = String(width/2-700/2) + "px";
+        exampleBox.css("top","50px");
+        exampleBox.css("left", position);
+        exampleBox.css("display", "block");
+        //animateNode();
+        exampleNext.html('<button type="submit" id="startButton">Start </button>');
+    };
+
+    this.next = function() {
+        exampleBox.css("display", "none");
         dialogOverlay.css("display","none");
 
         draw(ViewModel);
         drawConnections(ViewModel.Connections);
+        setUpDraggable();
     }
 }
 
-export { initPanel }
+export { initPanel, examplePanel }
