@@ -51,9 +51,9 @@ let writeSourceTarget = function (profile) {
 };
 
 let writeVM = function (profile, connectionsArr) {
-    var viewModel;
-    viewModel.profile += profile;
-    viewModel.connections +=  connectionsArr;
+    var viewModel = {};
+    viewModel.profile = profile;
+    viewModel.connections =  connectionsArr;
     return viewModel;
 };
 
