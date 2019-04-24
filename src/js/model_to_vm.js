@@ -10,10 +10,12 @@ import { makeConnections, dfs } from "./connections_logic.js";
 let updateProfile = function (profile, draggedCourse) {
     var courseWithPrereqs = dfs(draggedCourse);
     for (course of courseWithPrereqs) {
-        profile.push({
-            course: draggedCourse,
-            status: "planned"
-        })
+        if (!profile.some((nextClass) => nextClass == profile.course)) {
+            profile.push({
+                course: draggedCourse,
+                status: "planned"
+            })
+        }
     }
 };
 
@@ -35,7 +37,6 @@ let deleteCourseProfile = function (profile, deletedCourse) {
  *  Output looks like {source: "COMP123", target: "COMP124"}
  */
 let writeSourceTarget = function (profile) {
-<<<<<<< HEAD
     var connections = [];
     var tempConn = [];
     for (node of profile) {
@@ -45,15 +46,16 @@ let writeSourceTarget = function (profile) {
                 connections.push(conn);
             }
         }
-=======
-    let connections;
-    for (let node of profile) {
-        connections = makeConnections(node.course);
-
->>>>>>> 07e89ab3828a3834662ea82914fdc5818ea4158f
     }
    return connections;
 };
+
+let writeVM = function (profile, connectionsArr) {
+    var viewModel;
+    viewModel.profile = profile;
+    viewModel.connections = connectionsArr;
+    return viewModel;
+}
 
 export { writeSourceTarget, updateProfile, deleteCourseProfile };
     
