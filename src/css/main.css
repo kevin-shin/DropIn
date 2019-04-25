@@ -276,3 +276,13 @@ ul {
     margin-right: 50px;
     margin-top: 10px;
 }
+
+.draggable.planned {
+    height: 60px;
+    width: 60px;
+    background-color: orange;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
+}

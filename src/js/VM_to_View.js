@@ -21,15 +21,11 @@ let VMtoView = function () {
     $('#profileData').submit((event) => {
         event.preventDefault();
         let profileString = ($('#profileData').serializeArray());
-        console.log("Profile String");
-        console.log(profileString);
+
         exampleProfile = makeProfile(profileString);
         Connections = writeSourceTarget(exampleProfile);
-        console.log("exampleProfile");
-        console.log(exampleProfile);
 
         ViewModel = writeVM(exampleProfile,Connections);
-        console.log(ViewModel);
     });
 
     function initializePanels() {
@@ -54,9 +50,6 @@ let VMtoView = function () {
             });
     }
 
-    //Decrementing requirement numbers
-
-    //
     //BUTTON BAR
     let buttonBar = d3.select("body")
         .select(".instructions")
@@ -80,11 +73,6 @@ let VMtoView = function () {
 };
 
 function initialNodes(available, graphCourses){
-
-    console.log("taken");
-    console.log(graphCourses);
-    console.log("available");
-    console.log(available);
 
     var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
         .data(available);
@@ -113,15 +101,20 @@ function initialNodes(available, graphCourses){
 }
 
 
-function draw(available, graphCourses) {
+function draw(ViewModel) {
 
-    console.log("taken");
-    console.log(graphCourses);
-    console.log("available");
+    let available = notTaken(ViewModel.Classes);
+
+    console.log("Here is what should be in the profile")
+    console.log(ViewModel.Classes);
+
+    console.log("And here is what should be in the bar")
     console.log(available);
 
     var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
         .data(available);
+
+    svgGroups.exit().remove();
 
     svgGroups.enter()
         .append("div")
@@ -131,15 +124,15 @@ function draw(available, graphCourses) {
 
     //TAKEN COURSES. Color: Green
     let svgContainer = d3.select("#graph").selectAll(".draggable,.taken")
-        .data(graphCourses);
+        .data(ViewModel.Classes);
 
     svgContainer.enter()
         .append("div")
         .attr("id", function (d) { return d.course })
         .html(function (d) { return d.course })
-        .attr("class", "draggable taken inGraph");
+        .attr("class", "draggable planned inGraph");
 
-    svgGroups.exit().remove();
+
     svgContainer.exit().remove();
 
     positionPreReqs();
