@@ -45,18 +45,20 @@ let setUpDraggable = function () {
         accept: ".outGraph",
         drop: function (e, ui) {
 
+            console.log("I DROPPED A CLASS");
             updateProfile(exampleProfile, ui.helper.attr('id'));
             let connectionsArray = writeSourceTarget(exampleProfile);
 
             let element = document.getElementById(ui.helper.attr('id'));
             element.parentNode.removeChild(element);
 
-            let VM = writeVM(exampleProfile, connectionsArray);
+            let ViewModel = writeVM(exampleProfile, connectionsArray);
 
-            console.log(VM);
-            draw(VM);
+            console.log("Here is the generated ViewModel");
+            console.log(ViewModel);
+            draw(ViewModel);
             jsPlumbInstance.reset();
-            drawConnections(VM.Connections);
+            drawConnections(ViewModel.Connections);
 
             var graphCourses = $(".inGraph");
             jsPlumbInstance.draggable(graphCourses, {disabled:true});
