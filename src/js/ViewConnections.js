@@ -45,6 +45,7 @@ let setUpDraggable = function () {
         accept: ".outGraph",
         drop: function (e, ui) {
 
+
             updateProfile(exampleProfile, ui.helper.attr('id'));
             let connectionsArray = writeSourceTarget(exampleProfile);
 
@@ -64,7 +65,7 @@ let setUpDraggable = function () {
             let newOtherClasses = notTaken(VM.Classes);
 
             draw(newOtherClasses, VM.Classes);
-
+            drawConnections(VM.Connections);
             var graphCourses = $(".inGraph");
             jsPlumbInstance.draggable(graphCourses, {disabled:true});
         }
