@@ -32,7 +32,6 @@ let VMtoView = function () {
         console.log(ViewModel);
     });
 
-
     function initializePanels() {
         let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
 
@@ -80,35 +79,30 @@ let VMtoView = function () {
 
 };
 
-function draw(available, graphCourses) {
+function initialNodes(available, graphCourses){
 
     console.log("taken");
     console.log(graphCourses);
     console.log("available");
     console.log(available);
 
-    //NOT TAKEN COURSES. Color: Red
-    let svgGroups = d3.select("#svgNotTaken").selectAll("notTaken")
-        .data(available)
-        .enter().append("div")
-        .attr("id", function (d) {
-            return d
-        })
-        .html(function (d) {
-            return d
-        })
+    var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
+        .data(available);
+
+    svgGroups.enter()
+        .append("div")
+        .attr("id", function (d) { return d })
+        .html(function (d) { return d })
         .attr("class", "draggable available outGraph");
 
     //TAKEN COURSES. Color: Green
-    let svgContainer = d3.select("#graph").selectAll("taken")
-        .data(graphCourses)
-        .enter().append("div")
-        .attr("id", function (d) {
-            return d.course
-        })
-        .html(function (d) {
-            return d.course
-        })
+    let svgContainer = d3.select("#graph").selectAll(".draggable,.taken")
+        .data(graphCourses);
+
+    svgContainer.enter()
+        .append("div")
+        .attr("id", function (d) { return d.course })
+        .html(function (d) { return d.course })
         .attr("class", "draggable taken inGraph");
 
     svgGroups.exit().remove();
@@ -116,8 +110,42 @@ function draw(available, graphCourses) {
 
     positionPreReqs();
     positionTopBar();
-    requirementsPanelUpdate();
 }
+
+
+function draw(available, graphCourses) {
+
+    console.log("taken");
+    console.log(graphCourses);
+    console.log("available");
+    console.log(available);
+
+    var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
+        .data(available);
+
+    svgGroups.enter()
+        .append("div")
+        .attr("id", function (d) { return d })
+        .html(function (d) { return d })
+        .attr("class", "draggable available outGraph");
+
+    //TAKEN COURSES. Color: Green
+    let svgContainer = d3.select("#graph").selectAll(".draggable,.taken")
+        .data(graphCourses);
+
+    svgContainer.enter()
+        .append("div")
+        .attr("id", function (d) { return d.course })
+        .html(function (d) { return d.course })
+        .attr("class", "draggable taken inGraph");
+
+    svgGroups.exit().remove();
+    svgContainer.exit().remove();
+
+    positionPreReqs();
+    positionTopBar();
+}
+
 
 let requirementsPanelUpdate = function () {
     for (let obj of rules) {
@@ -226,4 +254,4 @@ function positionPreReqs() {
 };
 
 
-export {VMtoView, draw, ViewModel, exampleProfile, notTaken};
+export {VMtoView, draw, ViewModel, exampleProfile, notTaken, initialNodes};

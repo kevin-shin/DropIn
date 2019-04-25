@@ -9,6 +9,7 @@ import { ViewModel } from "./VM_to_View.js";
 import { setUpDraggable } from "./ViewConnections.js";
 import {writeVM} from "./model_to_vm.js";
 import {exampleProfile, notTaken} from "./VM_to_View.js";
+import {initialNodes} from "./VM_to_View.js";
 
 let width = window.innerWidth;
 let height = window.innerHeight;
@@ -63,7 +64,7 @@ function examplePanel() {
         let graphCourses = ViewModel.Classes.filter((course => course.status === "taken") || (course => course.status === "planned"));
         let available = notTaken(ViewModel.Classes);
 
-        draw(available, graphCourses);
+        initialNodes(available, graphCourses);
         drawConnections(ViewModel.Connections);
         setUpDraggable();
     }
