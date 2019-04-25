@@ -65,7 +65,8 @@ let setUpDraggable = function () {
 
             draw(newOtherClasses, VM.Classes);
 
-            jsPlumbInstance.draggable($(ui.helper.attr('id')));
+            var graphCourses = $(".inGraph");
+            jsPlumbInstance.draggable(graphCourses, {disabled:true});
         }
     });
 
