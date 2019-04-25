@@ -49,8 +49,17 @@ let setUpDraggable = function () {
             updateProfile(exampleProfile, ui.helper.attr('id'));
             let connectionsArray = writeSourceTarget(exampleProfile);
 
-            let element = document.getElementById(ui.helper.attr('id'));
-            element.parentNode.removeChild(element);
+            //should this be delete is and any prereqs inside the bar too?
+            for (let prereq of exampleProfile){
+                if (prereq.status === "planned"){
+                    let element = document.getElementById(prereq.course);
+                    element.parentNode.removeChild(element);
+                }
+            }
+
+
+            // let element = document.getElementById(ui.helper.attr('id'));
+            // element.parentNode.removeChild(element);
 
             let ViewModel = writeVM(exampleProfile, connectionsArray);
 
@@ -65,7 +74,6 @@ let setUpDraggable = function () {
 
         }
     });
-
 };
 
 

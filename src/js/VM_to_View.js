@@ -196,13 +196,15 @@ function positionTopBar() {
 }
 
 let notTaken = function (profile) {
-    let toReturn = [];
+    let toReturn = ["MATH279"];
     let compCat = cleanCatalogue();
     for (let course of compCat){
         if (!profile.some((thing) => thing.course === course)){
             toReturn.push(course);
         }
     }
+    console.log("here is to return");
+    console.log(toReturn);
     return toReturn;
 };
 
