@@ -12,14 +12,20 @@
     <!--<script type="module" src="../js/ViewConnections.js"></script>-->
     <script type="module" src="app.js"></script>
     <link rel="stylesheet" href="src/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
+    <style type="text/css">
+        body {
+            font-family: 'Barlow';
+        }
+    </style>
 </head>
 <body>
 
 <div id="dialogOverlay"></div>
 <div id = "introBox">
     <div id="dialogContent">
-        <h2>This is the super cool JuDaSaKe Major Planning Software</h2>
-        <p>Select Your Major From The Dropdown Menu<br> Click the right arrow when you're ready</p>
+        <h2 class ="custom ">This is the super cool JuDaSaKe Major Planning Software</h2>
+        <p>Select your major from the dropdown menu<br> Click the right arrow when you're ready</p>
 
         <select id = "select">
             <option value="Computer Science">Computer Science</option>
@@ -50,7 +56,9 @@
             </script>
         </div>
         <div id="dragInstructions">
-            <p> LOREM IPSUM </p>
+            <p style = "font-size: 24px; font-weight: bold"> HOW TO USE</p>
+            <p> Drag a course from the top bar into the middle to plan it.
+            Connections are automatically drawn between the course and its prerequisites.</p>
         </div>
     </div>
     <div id="exampleNext"></div>
@@ -58,7 +66,8 @@
 
 
 <div class="instructions">
-    <p id="welcomeText">Welcome to Judasake! <br> Instructions are as follows: </p>
+    <p id="welcomeText">Welcome to Judasake! <br> Click a course to see the description </p>
+    <p> Blue: taken <br> Orange: planned </p>
     <p id="name"></p>
     <p id="courseDescription"></p>
     <p id ="prereq"></p>
