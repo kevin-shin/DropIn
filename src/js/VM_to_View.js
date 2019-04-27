@@ -178,6 +178,43 @@ let requirementsPanelUpdate = function () {
     }
 };
 
+let introNumReqs = rules[0].required, coreNumReqs = rules[1].required;
+let mathNumReqs = rules[2].required, electiveNumReq = rules[3].required;
+let decrementNumReqs = function () {
+    let reqToDecrement; //will be one of the labels in rules
+
+    for (let obj of rules) {
+        for (let course of obj.courses) {
+            if (classDropped === course) {//TODO - How to get this information
+                reqToDecrement = obj.label;
+            }
+        }
+    }
+    switch (reqToDecrement) {//Decrementing reqToDecrement
+        case "intro":
+            introNumReqs--;
+            break;
+        case "core":
+            coreNumReqs--;
+            break;
+        case "math":
+            mathNumReqs--;
+            break;
+        case "elective":
+            electiveNumReq--;
+            break;
+        default:
+            console.log("reqToDecrement variable miss-assigned")
+
+    }
+    d3.select("#" + reqToDecrement + "Label")
+        .innerText(reqToDecrement.toUpperCase().charAt(0) +  //first letter capitalized
+            reqToDecrement.substring(1, reqToDecrement.length) + //rest lowercase
+            "Courses : " + (reqToDecrement + "NumReqs")); //previous number of reqs - 1
+
+};
+
+
 //-----------     HELPER FUNCTIONS     -----------
 function positionTopBar() {
     const radius = 20;

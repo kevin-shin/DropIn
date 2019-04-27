@@ -20,13 +20,13 @@ body {
     overflow-y: scroll;
     background-color: #AECBC9;
     z-index: 10;
-    border-radius: 25px;
+    border-radius: 15px;
     margin-right: 10px;
     padding: 10px;
 }
 
 .instructions > p {
-    padding: 10px;
+    padding: 0px;
 }
 
 
@@ -47,7 +47,7 @@ body {
     right: 0;
     bottom: 0;
     background-color: #AECBC9;
-    border-radius: 25px;
+    border-radius: 15px;
     overflow-y: scroll;
 }
 
