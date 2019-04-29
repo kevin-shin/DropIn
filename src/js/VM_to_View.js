@@ -6,6 +6,7 @@ import {makeProfile} from "./makeProfile.js";
 import {writeSourceTarget} from "./model_to_vm.js";
 import {writeVM} from "./model_to_vm.js";
 import {cleanCatalogue} from "./makeViewModel.js";
+import { Profile } from "../Model/profile.js";
 
 let exampleProfile;
 let Connections;
@@ -22,7 +23,8 @@ let VMtoView = function () {
         event.preventDefault();
         let profileString = ($('#profileData').serializeArray());
 
-        exampleProfile = makeProfile(profileString);
+        exampleProfile = Profile;
+        //exampleProfile = makeProfile(profileString);
         Connections = writeSourceTarget(exampleProfile);
 
         ViewModel = writeVM(exampleProfile,Connections);
@@ -91,6 +93,8 @@ function initialNodes(available, graphCourses){
         .append("div")
         .attr("id", function (d) { return d.course })
         .html(function (d) { return d.course })
+        .style("top", function(d) { return d.x + 'px'})
+        .style("left", function(d) { return d.y + 'px'})
         .attr("class", "draggable taken inGraph");
 
     svgGroups.exit().remove();
@@ -105,10 +109,10 @@ function draw(ViewModel) {
 
     let available = notTaken(ViewModel.Classes);
 
-    console.log("Here is what should be in the profile")
+    console.log("Here is what should be in the profile");
     console.log(ViewModel.Classes);
 
-    console.log("And here is what should be in the bar")
+    console.log("And here is what should be in the bar");
     console.log(available);
 
     var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
@@ -130,6 +134,8 @@ function draw(ViewModel) {
         .append("div")
         .attr("id", function (d) { return d.course })
         .html(function (d) { return d.course })
+        .style("top", function(d) { return d.x + 'px'})
+        .style("left", function(d) { return d.y + 'px'})
         .attr("class", "draggable planned inGraph");
 
 
@@ -255,35 +261,35 @@ function markUntaken() {
 }
 
 function positionPreReqs() {
-    $("#COMP123").css({
-        top: 250,
-        left: 30
-    });
-    $("#COMP127").css({
-        top: 200,
-        left: 130
-    });
-    $("#COMP128").css({
-        top: 230,
-        left: 280
-    });
-    $("#MATH279").css({
-        top: 330,
-        left: 280
-    });
-    $("#COMP240").css({
-        top: 190,
-        left: 510
-    });
-    $("#COMP221").css({
-        top: 300,
-        left: 510
-    });
-    $("#COMP225").css({
-        top: 150,
-        left: 510
-    });
-};
+    // $("#COMP123").css({
+    //     top: 250,
+    //     left: 30
+    // });
+    // $("#COMP127").css({
+    //     top: 200,
+    //     left: 130
+    // });
+    // $("#COMP128").css({
+    //     top: 230,
+    //     left: 280
+    // });
+    // $("#MATH279").css({
+    //     top: 330,
+    //     left: 280
+    // });
+    // $("#COMP240").css({
+    //     top: 190,
+    //     left: 510
+    // });
+    // $("#COMP221").css({
+    //     top: 300,
+    //     left: 510
+    // });
+    // $("#COMP225").css({
+    //     top: 150,
+    //     left: 510
+    // });
+}
 
 
 export {VMtoView, draw, ViewModel, exampleProfile, notTaken, initialNodes};

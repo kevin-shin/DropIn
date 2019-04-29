@@ -46,17 +46,24 @@ let setUpDraggable = function () {
         drop: function (e, ui) {
 
             console.log("I DROPPED A CLASS");
-            updateProfile(exampleProfile, ui.helper.attr('id'));
+            console.log(e);
+            console.log(event.clientX + "," + event.clientY);
+            console.log(exampleProfile);
+            let offsetHeight = $("#graph").height();
+            let offsetWidth = $("#graph").width();
+            updateProfile(exampleProfile, ui.helper.attr('id'),
+                        event.clientY - displacement, event.clientX-displacement);
             let connectionsArray = writeSourceTarget(exampleProfile);
 
             //should this be delete is and any prereqs inside the bar too?
             for (let prereq of exampleProfile){
                 if (prereq.status === "planned"){
                     let element = document.getElementById(prereq.course);
-                    element.parentNode.removeChild(element);
+                    if (element != null){
+                        element.parentNode.removeChild(element);
+                    }
                 }
             }
-
 
             // let element = document.getElementById(ui.helper.attr('id'));
             // element.parentNode.removeChild(element);
@@ -65,6 +72,7 @@ let setUpDraggable = function () {
 
             console.log("Here is the generated ViewModel");
             console.log(ViewModel);
+
             draw(ViewModel);
             jsPlumbInstance.reset();
             drawConnections(ViewModel.Connections);
