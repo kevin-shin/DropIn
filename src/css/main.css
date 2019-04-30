@@ -176,6 +176,7 @@ ul {
     overflow-y: scroll;
 }
 
+
 #dialogContent, #exampleContent {
     background: beige;
     position: relative;

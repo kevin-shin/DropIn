@@ -10,6 +10,7 @@ import { Profile } from "../Model/profile.js";
 import {deleteCourseProfile} from "./model_to_vm.js";
 import {drawConnections} from "./ViewConnections.js";
 import { deleteButton } from "./ViewConnections.js";
+import {dfs} from "./connections_logic.js";
 
 let exampleProfile;
 let Connections;
@@ -25,9 +26,17 @@ let VMtoView = function () {
     $('#profileData').submit((event) => {
         event.preventDefault();
         let profileString = ($('#profileData').serializeArray());
+        for(let profCourse of profileString){
+            let dfsCourse = dfs(profCourse.name);
+            for (let postDfsCourse of dfsCourse){
+                if(!(profileString.some((nextCourse) => nextCourse.name === postDfsCourse))){
+                    profileString.push({name: postDfsCourse, value: "on"});
+                }
+            }
+        }
 
         //exampleProfile = Profile;
-
+        console.log(profileString);
         exampleProfile = makeProfile(profileString);
         positionInitialCourses(exampleProfile);
         Connections = writeSourceTarget(exampleProfile);
