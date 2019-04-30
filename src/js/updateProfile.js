@@ -32,4 +32,4 @@ function update() {
 }
 
 
-update()
+update();

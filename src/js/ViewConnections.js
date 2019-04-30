@@ -2,14 +2,15 @@ import {makeConnections} from "./connections_logic.js";
 import {catalogue} from "../Model/cs_major.js";
 import {updateProfile} from "./model_to_vm.js";
 import {ViewModel} from "./VM_to_View.js";
-import {exampleProfile} from "./VM_to_View.js";
+import { exampleProfile } from "./VM_to_View.js";
 import {writeSourceTarget} from "./model_to_vm.js";
 import {writeVM} from "./model_to_vm.js";
 import {draw} from "./VM_to_View.js";
 import {notTaken} from "./VM_to_View.js";
+import {deleteCourseProfile} from "./model_to_vm.js";
+import { decrementNumReqs } from "./VM_to_View.js";
 
 let scope;
-
 
 let jsPlumbInstance = jsPlumb.getInstance({
     Connector: ["Straight"],
@@ -49,16 +50,17 @@ let setUpDraggable = function () {
         drop: function (e, ui) {
             console.log("I DROPPED A CLASS");
             console.log(exampleProfile);
+            decrementNumReqs(ui.helper.attr('id'));
             updateProfile(exampleProfile, ui.helper.attr('id'),
-                        event.clientY - (displacement+100),
-                event.clientX-displacement-5);
+                event.clientY - (displacement + 100),
+                event.clientX - displacement - 5);
             let connectionsArray = writeSourceTarget(exampleProfile);
 
             //should this be delete is and any prereqs inside the bar too?
-            for (let prereq of exampleProfile){
-                if (prereq.status === "planned"){
+            for (let prereq of exampleProfile) {
+                if (prereq.status === "planned") {
                     let element = document.getElementById(prereq.course);
-                    if (element != null){
+                    if (element != null) {
                         element.parentNode.removeChild(element);
                     }
                 }
@@ -75,7 +77,7 @@ let setUpDraggable = function () {
 
             var graphCourses = $(".inGraph");
             jsPlumbInstance.draggable(graphCourses, {
-                disabled:true,
+                disabled: true,
                 containment: "parent"
             });
 
@@ -87,6 +89,11 @@ let setUpDraggable = function () {
 let drawConnections = function (Connections) {
     initializeConnections(Connections);
     instructionsBinding();
+    let plannedCourses = $(".draggable, .inGraph, .planned");
+    plannedCourses.bind("mousedown", function () {
+        scope = $(this);
+    });
+
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 };
 
@@ -131,6 +138,20 @@ function instructionsBinding() {
     });
 }
 
+function deleteButton() {
+    console.log("DELETE ACTIVATE");
+    deleteCourseProfile(exampleProfile, scope.attr('id'));
+    let connectionsArray = writeSourceTarget(exampleProfile);
+    let ViewModel = writeVM(exampleProfile, connectionsArray);
+    draw(ViewModel);
+    console.log("DELETE BUTTON VIEWMODEL");
+    console.log(ViewModel);
+    jsPlumbInstance.reset();
+    drawConnections(ViewModel.Connections);
+    console.log("ENDED DELETE");
+}
+
+
 function findCourse(data, course) {
     let ID = course.id;
     for (let object of data) {
@@ -140,4 +161,4 @@ function findCourse(data, course) {
     }
 };
 
-export {drawConnections, scope, jsPlumbInstance, setUpDraggable}
+export {drawConnections, scope, jsPlumbInstance, setUpDraggable, deleteButton, exampleProfile}

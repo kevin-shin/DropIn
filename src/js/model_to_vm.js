@@ -39,6 +39,7 @@ let deleteCourseProfile = function (profile, deletedCourse) {
             profile.pop(course);
         }
     }
+
 };
 
 /*
