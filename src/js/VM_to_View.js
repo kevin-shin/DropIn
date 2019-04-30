@@ -180,7 +180,7 @@ let requirementsPanelUpdate = function () {
 
 let introNumReqs = rules[0].required, coreNumReqs = rules[1].required;
 let mathNumReqs = rules[2].required, electiveNumReq = rules[3].required;
-let decrementNumReqs = function () {
+let decrementNumReqs = function (classDropped) {
     let reqToDecrement; //will be one of the labels in rules
 
     for (let obj of rules) {
