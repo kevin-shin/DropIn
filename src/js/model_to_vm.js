@@ -9,16 +9,23 @@ import { makeConnections, dfs } from "./connections_logic.js";
  */
 let updateProfile = function (profile, draggedCourse, eventX, eventY) {
     var courseWithPrereqs = dfs(draggedCourse);
+    let initialPositionX = eventX;
+    let initialPositionY = eventY;
     for (var course of courseWithPrereqs) {
         if (!(profile.some((nextClass) => nextClass.course === course))) {
             profile.push({
                 course: course,
                 status: "planned",
-                x: eventX,
-                y: eventY
-            })
+                x: initialPositionX,
+                y: initialPositionY
+            });
+            console.log("I'm pushing course" + course);
+            initialPositionX -= 100;
+            initialPositionY -= 100;
         }
+
     }
+
 };
 
 /**

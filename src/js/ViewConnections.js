@@ -34,7 +34,10 @@ let setUpDraggable = function () {
     var allCourses = $(".draggable");
 
     outGraph.draggable({revert: true});
-    jsPlumbInstance.draggable(graphCourses);
+    jsPlumbInstance.draggable(graphCourses,
+        {
+            containment: "parent"
+        });
 
     graphCourses.bind("click", function () {
         scope = $(this);
@@ -44,13 +47,8 @@ let setUpDraggable = function () {
     graph.droppable({
         accept: ".outGraph",
         drop: function (e, ui) {
-
             console.log("I DROPPED A CLASS");
-            console.log(e);
-            console.log(event.clientX + "," + event.clientY);
             console.log(exampleProfile);
-            let offsetHeight = $("#graph").height();
-            let offsetWidth = $("#graph").width();
             updateProfile(exampleProfile, ui.helper.attr('id'),
                         event.clientY - displacement, event.clientX-displacement);
             let connectionsArray = writeSourceTarget(exampleProfile);
@@ -65,9 +63,6 @@ let setUpDraggable = function () {
                 }
             }
 
-            // let element = document.getElementById(ui.helper.attr('id'));
-            // element.parentNode.removeChild(element);
-
             let ViewModel = writeVM(exampleProfile, connectionsArray);
 
             console.log("Here is the generated ViewModel");
@@ -78,7 +73,9 @@ let setUpDraggable = function () {
             drawConnections(ViewModel.Connections);
 
             var graphCourses = $(".inGraph");
-            jsPlumbInstance.draggable(graphCourses, {disabled:true});
+            jsPlumbInstance.draggable(graphCourses, {
+                disabled:true
+            });
 
         }
     });
