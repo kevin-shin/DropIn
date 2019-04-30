@@ -50,7 +50,8 @@ let setUpDraggable = function () {
             console.log("I DROPPED A CLASS");
             console.log(exampleProfile);
             updateProfile(exampleProfile, ui.helper.attr('id'),
-                        event.clientY - displacement, event.clientX-displacement);
+                        event.clientY - (displacement+100),
+                event.clientX-displacement-5);
             let connectionsArray = writeSourceTarget(exampleProfile);
 
             //should this be delete is and any prereqs inside the bar too?
@@ -74,7 +75,8 @@ let setUpDraggable = function () {
 
             var graphCourses = $(".inGraph");
             jsPlumbInstance.draggable(graphCourses, {
-                disabled:true
+                disabled:true,
+                containment: "parent"
             });
 
         }
