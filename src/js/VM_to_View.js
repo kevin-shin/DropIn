@@ -26,6 +26,8 @@ let VMtoView = function () {
     $('#profileData').submit((event) => {
         event.preventDefault();
         let profileString = ($('#profileData').serializeArray());
+        //run dfs algorithm on user input so that prerequisites are included
+        //example: if user says they've taken 127, make sure 123 appears in the profile
         for(let profCourse of profileString){
             let dfsCourse = dfs(profCourse.name);
             for (let postDfsCourse of dfsCourse){
