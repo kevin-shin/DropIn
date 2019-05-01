@@ -2,8 +2,11 @@ import { courseCatalog } from "./prereq_dictionary.js";
 // const courseCatalog = require("./prereq_dictionary.js");
 
 let makeConnections = function (draggedCourse) {
+    let prereqList = dfs(draggedCourse);
+    console.log("Prereq List");
+    console.log(prereqList);
+    return returnedToAdjList(prereqList);
 
-    return returnedToAdjList(dfs(draggedCourse));
     function returnedToAdjList(returned){
         var adjList = [];
         for (var course of returned) {
@@ -21,23 +24,24 @@ let makeConnections = function (draggedCourse) {
     }
 };
 
+
 let dfs = function (draggedCourse) {
-    var courseStack = [];
-    var visited = [];
-    var returned = [];
+    let visited = [];
+    let courseStack = [];
 
     courseStack.push(draggedCourse);
-    visited.push(draggedCourse);
+    visitedStack.push(draggedCourse);
 
     while (courseStack.length !== 0) {
-        var v = courseStack.pop();
-        returned.push(v);
-        for (var child of courseCatalog.get(v)) {
+        let v = courseStack.pop();
+        for (let child of courseCatalog.get(v)) {
             if (!(child in visited)) {
                 dfs(child);
             }
         }
     }
+
+    console.log(returned);
     return returned;
 };
 

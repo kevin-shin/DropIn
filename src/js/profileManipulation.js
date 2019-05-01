@@ -14,6 +14,8 @@ let makeProfile = function(inputArray){
 let addCourseToProfile = function (profile, draggedCourse, eventX, eventY) {
 
     var courseWithPrereqs = dfs(draggedCourse);
+    console.log("Prereqs: ");
+    console.log(courseWithPrereqs);
     let initialPositionX = eventX;
     let initialPositionY = eventY;
     for (var course of courseWithPrereqs) {

@@ -38,12 +38,13 @@ let implementDragBehavior = function () {
         drop: function (e, ui) {
 
             console.log("-------->  I DROPPED A CLASS");
-            console.log("Here is the Profile:");
-            console.log(Profile);
 
             addCourseToProfile(Profile, ui.helper.attr('id'),
                 event.clientY - (displacement + 100),
                 event.clientX - displacement - 5);
+
+            console.log("Here is the new profile");
+            console.log(Profile);
 
             let ViewModel = makeViewModel(Profile);
             console.log(ViewModel);
