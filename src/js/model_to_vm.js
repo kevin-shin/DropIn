@@ -7,16 +7,25 @@ import { makeConnections, dfs } from "./connections_logic.js";
  * Adds a course and its prereqs to the profile to be read by function writeSourceTarget for VM
  * Takes a profile and the course ("COMP225") that was just dragged onto the screen
  */
-let updateProfile = function (profile, draggedCourse) {
+let updateProfile = function (profile, draggedCourse, eventX, eventY) {
     var courseWithPrereqs = dfs(draggedCourse);
+    let initialPositionX = eventX;
+    let initialPositionY = eventY;
     for (var course of courseWithPrereqs) {
         if (!(profile.some((nextClass) => nextClass.course === course))) {
             profile.push({
                 course: course,
-                status: "planned"
-            })
+                status: "planned",
+                x: initialPositionX,
+                y: initialPositionY
+            });
+            console.log("I'm pushing course" + course);
+            initialPositionX -= 100;
+            initialPositionY -= 100;
         }
+
     }
+
 };
 
 /**
@@ -30,6 +39,7 @@ let deleteCourseProfile = function (profile, deletedCourse) {
             profile.pop(course);
         }
     }
+
 };
 
 /*

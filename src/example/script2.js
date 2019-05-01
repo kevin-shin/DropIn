@@ -1,6 +1,6 @@
 let data1 = [1,2,3,4,5,6, 7, 8, 9, 10];
 
-$("#upgrade").on("click", upgrade);
+$("#upgrade").on("click", choose);
 $("#downgrade").on("click", downgrade);
 
 
@@ -31,5 +31,13 @@ function update() {
     selection.exit().remove();
 }
 
-
-update()
+function choose() {
+    let x = Math.random();
+    let paragraph = $("#text");
+    if (x < 0.5) {
+        paragraph.html("Cahoots");
+    }
+    else {
+        paragraph.html("Roots")
+    }
+}
