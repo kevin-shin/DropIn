@@ -11,10 +11,6 @@ import { courseCatalog } from "./prereq_dictionary.js";
  * Juliet Kelson and Kevin Shin
  */
 
-var courseStack = [];
-var visited = [];
-var returned = [];
-
 let makeConnections = function (draggedCourse) {
     return returnedToAdjList(dfs(draggedCourse));
 };
@@ -24,6 +20,10 @@ let makeConnections = function (draggedCourse) {
 * Outputs an array of courses
 */
 let dfs = function (draggedCourse) {
+    var courseStack = [];
+    var visited = [];
+    var returned = [];
+
     courseStack.push(draggedCourse);
     visited.push(draggedCourse);
 

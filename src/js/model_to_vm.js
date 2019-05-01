@@ -8,10 +8,13 @@ import { makeConnections, dfs } from "./connections_logic.js";
  * Takes a profile and the course ("COMP225") that was just dragged onto the screen
  */
 let updateProfile = function (profile, draggedCourse, eventX, eventY) {
+    console.log("------> started updateProfile ")
     var courseWithPrereqs = dfs(draggedCourse);
+    console.log("------> courseWithPrereqs", courseWithPrereqs);
     let initialPositionX = eventX;
     let initialPositionY = eventY;
     for (var course of courseWithPrereqs) {
+        console.log("------> adding", course);
         if (!(profile.some((nextClass) => nextClass.course === course))) {
             profile.push({
                 course: course,
@@ -23,9 +26,8 @@ let updateProfile = function (profile, draggedCourse, eventX, eventY) {
             initialPositionX -= 100;
             initialPositionY -= 100;
         }
-
     }
-
+    console.log("------> ended updateProfile ")
 };
 
 /**

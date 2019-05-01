@@ -8,8 +8,8 @@ import {writeVM} from "./model_to_vm.js";
 import {cleanCatalogue} from "./makeViewModel.js";
 import { Profile } from "../Model/profile.js";
 import {deleteCourseProfile} from "./model_to_vm.js";
+import {deleteButton} from "./ViewConnections.js";
 import {drawConnections} from "./ViewConnections.js";
-import { deleteButton } from "./ViewConnections.js";
 
 let exampleProfile;
 let Connections;
@@ -77,6 +77,11 @@ let VMtoView = function () {
         .attr("id", "delete")
         .html("Delete")
         .on("click", deleteButton);
+
+    let garbage = d3.select("#graph")
+                    .append("div")
+                    .attr("id","garbage")
+
 };
 
 function initialNodes(available, graphCourses){
@@ -108,7 +113,6 @@ function initialNodes(available, graphCourses){
     positionTopBar();
     requirementsPanelUpdate();
 }
-
 
 function draw(ViewModel) {
 
@@ -142,7 +146,6 @@ function draw(ViewModel) {
         .style("top", function(d) { return d.x + 'px'})
         .style("left", function(d) { return d.y + 'px'})
         .attr("class", "draggable planned inGraph");
-
 
     svgContainer.exit().remove();
     positionTopBar();

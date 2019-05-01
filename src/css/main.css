@@ -62,7 +62,6 @@ body {
 /*           GUI           */
 
 #graph {
-
     height: 82%;
     width: 72%;
     left: 0;
@@ -286,4 +285,13 @@ ul {
     text-align: center;
     display: inline-block;
     line-height: 60px;
+}
+
+#garbage {
+    right:0;
+    bottom:0;
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    position: absolute;
 }

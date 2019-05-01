@@ -42,29 +42,58 @@ let setUpDraggable = function () {
 
     graphCourses.bind("click", function () {
         scope = $(this);
+
     });
 
     /*            DRAGGABLE BEHAVIOR           */
+
+    // $(document).ready(function() {
+    //     var garbage = $("#garbage");
+    //     garbage.click(function(){
+    //         console.log("Garbage clicked");
+    //     });
+    //     garbage.on("drop", function(event){
+    //         event.preventDefault();
+    //         console.log("Dropped triggered");
+    //     });
+    //     garbage.droppable({
+    //         accept: ".draggable",
+    //         greedy: true,
+    //         drop: function(e,ui) {
+    //             console.log("DELETE ACTIVATE");
+    //             deleteCourseProfile(exampleProfile, ui.helper.attr('id'));
+    //             let connectionsArray = writeSourceTarget(exampleProfile);
+    //             let ViewModel = writeVM(exampleProfile, connectionsArray);
+    //             draw(ViewModel);
+    //             console.log(ViewModel);
+    //             jsPlumbInstance.reset();
+    //             drawConnections(ViewModel.Connections);
+    //             console.log("ENDED DELETE");
+    //         }
+    //     });
+    // });
+
     graph.droppable({
         accept: ".outGraph",
         drop: function (e, ui) {
             console.log("I DROPPED A CLASS");
             console.log(exampleProfile);
             decrementNumReqs(ui.helper.attr('id'));
+            console.log("------> calling updateProfile from drop")
             updateProfile(exampleProfile, ui.helper.attr('id'),
                 event.clientY - (displacement + 100),
                 event.clientX - displacement - 5);
             let connectionsArray = writeSourceTarget(exampleProfile);
 
             //should this be delete is and any prereqs inside the bar too?
-            for (let prereq of exampleProfile) {
-                if (prereq.status === "planned") {
-                    let element = document.getElementById(prereq.course);
-                    if (element != null) {
-                        element.parentNode.removeChild(element);
-                    }
-                }
-            }
+            // for (let prereq of exampleProfile) {
+            //     if (prereq.status === "planned") {
+            //         let element = document.getElementById(prereq.course);
+            //         if (element != null) {
+            //             element.parentNode.removeChild(element);
+            //         }
+            //     }
+            // }
 
             let ViewModel = writeVM(exampleProfile, connectionsArray);
 
@@ -151,7 +180,6 @@ function deleteButton() {
     console.log("ENDED DELETE");
 }
 
-
 function findCourse(data, course) {
     let ID = course.id;
     for (let object of data) {
@@ -159,6 +187,6 @@ function findCourse(data, course) {
             return object;
         }
     }
-};
+}
 
-export {drawConnections, scope, jsPlumbInstance, setUpDraggable, deleteButton, exampleProfile}
+export {drawConnections, scope, jsPlumbInstance, setUpDraggable, exampleProfile, deleteButton}
