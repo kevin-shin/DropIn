@@ -1,16 +1,9 @@
-import {makeConnections} from "./connections_logic.js";
-import {catalogue} from "../Model/cs_major.js";
-import {updateProfile} from "./model_to_vm.js";
-import {ViewModel} from "./VM_to_View.js";
-import { exampleProfile } from "./VM_to_View.js";
-import {writeSourceTarget} from "./model_to_vm.js";
-import {writeVM} from "./model_to_vm.js";
-import {draw} from "./VM_to_View.js";
-import {notTaken} from "./VM_to_View.js";
-import {deleteCourseProfile} from "./model_to_vm.js";
-import { decrementNumReqs } from "./VM_to_View.js";
+import { catalogue } from "../Model/cs_major.js";
+import { Profile, draw  } from "./VMtoView.js";
+import { addCourseToProfile, removeCourseFromProfile } from "./profileManipulation.js";
+import { makeViewModel } from "./makeViewModel.js";
 
-let scope;
+let focus;
 
 let jsPlumbInstance = jsPlumb.getInstance({
     Connector: ["Straight"],
@@ -18,90 +11,45 @@ let jsPlumbInstance = jsPlumb.getInstance({
     PaintStyle: {stroke: "black", strokeWidth: 1}
 });
 
+jsPlumb.Defaults.MaxConnections = 10;
 
-let setUpDraggable = function () {
+let implementDragBehavior = function () {
     const radius = 20;
     const displacement = radius + 10;
 
-    //Set up jsPlumb. jsPlumbInstance will be the variable which controls jsPlumb draggable behavior.
+    let graph = $("#graph");
+    let outGraph = $(".outGraph");
+    let graphCourses = $(".inGraph");
 
-    jsPlumb.Defaults.MaxConnections = 10;
 
-    //Make courses draggable
-    var svgNotTaken = $("#svgNotTaken");
-    var graph = $("#graph");
-    var outGraph = $(".outGraph");
-    var graphCourses = $(".inGraph");
-    var allCourses = $(".draggable");
-
+    /*            DRAGGABLE BEHAVIOR           */
     outGraph.draggable({revert: true});
-    jsPlumbInstance.draggable(graphCourses,
-        {
+    jsPlumbInstance.draggable(graphCourses, {
             containment: "parent"
         });
 
     graphCourses.bind("click", function () {
-        scope = $(this);
-
+        focus = $(this);
     });
 
-    /*            DRAGGABLE BEHAVIOR           */
-
-    // $(document).ready(function() {
-    //     var garbage = $("#garbage");
-    //     garbage.click(function(){
-    //         console.log("Garbage clicked");
-    //     });
-    //     garbage.on("drop", function(event){
-    //         event.preventDefault();
-    //         console.log("Dropped triggered");
-    //     });
-    //     garbage.droppable({
-    //         accept: ".draggable",
-    //         greedy: true,
-    //         drop: function(e,ui) {
-    //             console.log("DELETE ACTIVATE");
-    //             deleteCourseProfile(exampleProfile, ui.helper.attr('id'));
-    //             let connectionsArray = writeSourceTarget(exampleProfile);
-    //             let ViewModel = writeVM(exampleProfile, connectionsArray);
-    //             draw(ViewModel);
-    //             console.log(ViewModel);
-    //             jsPlumbInstance.reset();
-    //             drawConnections(ViewModel.Connections);
-    //             console.log("ENDED DELETE");
-    //         }
-    //     });
-    // });
-
+    /*           GRAPH DROPPABLE BEHAVIOR             */
     graph.droppable({
         accept: ".outGraph",
         drop: function (e, ui) {
-            console.log("I DROPPED A CLASS");
-            console.log(exampleProfile);
-            decrementNumReqs(ui.helper.attr('id'));
-            console.log("------> calling updateProfile from drop")
-            updateProfile(exampleProfile, ui.helper.attr('id'),
+
+            console.log("-------->  I DROPPED A CLASS");
+            console.log("Here is the Profile:");
+            console.log(Profile);
+
+            addCourseToProfile(Profile, ui.helper.attr('id'),
                 event.clientY - (displacement + 100),
                 event.clientX - displacement - 5);
-            let connectionsArray = writeSourceTarget(exampleProfile);
 
-            //should this be delete is and any prereqs inside the bar too?
-            // for (let prereq of exampleProfile) {
-            //     if (prereq.status === "planned") {
-            //         let element = document.getElementById(prereq.course);
-            //         if (element != null) {
-            //             element.parentNode.removeChild(element);
-            //         }
-            //     }
-            // }
-
-            let ViewModel = writeVM(exampleProfile, connectionsArray);
-
-            console.log("Here is the generated ViewModel");
+            let ViewModel = makeViewModel(Profile);
             console.log(ViewModel);
 
-            draw(ViewModel);
             jsPlumbInstance.reset();
+            draw(ViewModel);
             drawConnections(ViewModel.Connections);
 
             var graphCourses = $(".inGraph");
@@ -110,8 +58,11 @@ let setUpDraggable = function () {
                 containment: "parent"
             });
 
+
         }
     });
+
+
 };
 
 
@@ -120,9 +71,8 @@ let drawConnections = function (Connections) {
     instructionsBinding();
     let plannedCourses = $(".draggable, .inGraph, .planned");
     plannedCourses.bind("mousedown", function () {
-        scope = $(this);
+        focus = $(this);
     });
-
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 };
 
@@ -169,9 +119,9 @@ function instructionsBinding() {
 
 function deleteButton() {
     console.log("DELETE ACTIVATE");
-    deleteCourseProfile(exampleProfile, scope.attr('id'));
-    let connectionsArray = writeSourceTarget(exampleProfile);
-    let ViewModel = writeVM(exampleProfile, connectionsArray);
+    removeCourseFromProfile(Profile, focus.attr('id'));
+    let connectionsArray = writeSourceTarget(Profile);
+    let ViewModel = writeVM(Profile, connectionsArray);
     draw(ViewModel);
     console.log("DELETE BUTTON VIEWMODEL");
     console.log(ViewModel);
@@ -189,4 +139,32 @@ function findCourse(data, course) {
     }
 }
 
-export {drawConnections, scope, jsPlumbInstance, setUpDraggable, exampleProfile, deleteButton}
+
+// $(document).ready(function() {
+//     var garbage = $("#garbage");
+//     garbage.click(function(){
+//         console.log("Garbage clicked");
+//     });
+//     garbage.on("drop", function(event){
+//         event.preventDefault();
+//         console.log("Dropped triggered");
+//     });
+//     garbage.droppable({
+//         accept: ".draggable",
+//         greedy: true,
+//         drop: function(e,ui) {
+//             console.log("DELETE ACTIVATE");
+//             removeCourseFromProfile(Profile, ui.helper.attr('id'));
+//             let connectionsArray = writeSourceTarget(Profile);
+//             let ViewModel = makeViewModel(Profile, connectionsArray);
+//             draw(ViewModel);
+//             console.log(ViewModel);
+//             jsPlumbInstance.reset();
+//             drawConnections(ViewModel.Connections);
+//             console.log("ENDED DELETE");
+//         }
+//     });
+// });
+
+
+export {drawConnections, focus, jsPlumbInstance, implementDragBehavior, Profile, deleteButton}

@@ -1,8 +1,8 @@
-const vmUpdateModule = require('../src/js/model_to_vm.js');
+const vmUpdateModule = require('../src/js/profileManipulation.js');
 
 /*
-Test suite for updateProfile function
-Imports a module of functions from model_to_vm.js and uses the updateProfile function
+Test suite for addCourseToProfile function
+Imports a module of functions from profileManipulation.js and uses the addCourseToProfile function
 
 @param:
 profile: contains information about courses taken or planned.
@@ -24,7 +24,7 @@ let minimalProf = [
 ];
 
 test('minimalProf + comp128', () => {
-    expect(vmUpdateModule.updateProfile(minimalProf, "COMP128")).toMatchObject([
+    expect(vmUpdateModule.addCourseToProfile(minimalProf, "COMP128")).toMatchObject([
         {
             course: "COMP123",
             status: "taken"
@@ -41,7 +41,7 @@ test('minimalProf + comp128', () => {
 });
 
 test('minimalProf + comp221 adds 279', () => {
-    expect(vmUpdateModule.updateProfile(minimalProf, "COMP221")).toMatchObject([
+    expect(vmUpdateModule.addCourseToProfile(minimalProf, "COMP221")).toMatchObject([
         {
             course: "COMP123",
             status: "taken"

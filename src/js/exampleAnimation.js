@@ -57,8 +57,6 @@ let animateNode = function () {
             ]
         })
     });
-
-
 };
 
 export {animateNode}

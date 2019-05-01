@@ -1,11 +1,11 @@
-import makeConnections   from '../src/js/connections_logic.js';
-import resetConnectionsArrays from '../src/js/connections_logic.js';
+import makeConnections   from '../src/js/connectionsLogic.js';
+import resetConnectionsArrays from '../src/js/connectionsLogic.js';
 
-// const makeConnectionsModule = require('../src/js/connections_logic.js');
+// const makeConnectionsModule = require('../src/js/connectionsLogic.js');
 
 /*
 Test suite for make connections function
-Imports a module of functions from connections_logic.js
+Imports a module of functions from connectionsLogic.js
 
 @param:
 Profile: course as a string (i.e. "COMP123")

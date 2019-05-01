@@ -6349,7 +6349,7 @@ var widgetsControlgroup = $.widget( "ui.controlgroup", {
 					var instance = element[ widget ]( "instance" );
 
 					// We need to clone the default options for this type of widget to avoid
-					// polluting the variable options which has a wider scope than a single widget.
+					// polluting the variable options which has a wider focus than a single widget.
 					var instanceOptions = $.widget.extend( {}, options );
 
 					// If the button is the child of a spinner ignore it
@@ -8923,7 +8923,7 @@ $.extend( Datepicker.prototype, {
 				thead = ( showWeek ? "<th class='ui-datepicker-week-col'>" + this._get( inst, "weekHeader" ) + "</th>" : "" );
 				for ( dow = 0; dow < 7; dow++ ) { // days of the week
 					day = ( dow + firstDay ) % 7;
-					thead += "<th scope='col'" + ( ( dow + firstDay + 6 ) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "" ) + ">" +
+					thead += "<th focus='col'" + ( ( dow + firstDay + 6 ) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "" ) + ">" +
 						"<span title='" + dayNames[ day ] + "'>" + dayNamesMin[ day ] + "</span></th>";
 				}
 				calender += thead + "</tr></thead><tbody>";
@@ -13254,7 +13254,7 @@ $.ui.ddmanager = {
 
 			if ( this.options.greedy ) {
 
-				// find droppable parents with same scope
+				// find droppable parents with same focus
 				scope = this.options.scope;
 				parent = this.element.parents( ":data(ui-droppable)" ).filter( function() {
 					return $( this ).droppable( "instance" ).options.scope === scope;
@@ -16572,7 +16572,7 @@ var widgetsSortable = $.widget( "ui.sortable", $.ui.mouse, {
 		//Various things done here to improve the performance:
 		// 1. we create a setTimeout, that calls refreshPositions
 		// 2. on the instance, we have a counter variable, that get's higher after every append
-		// 3. on the local scope, we copy the counter variable, and check in the timeout,
+		// 3. on the local focus, we copy the counter variable, and check in the timeout,
 		// if it's still the same
 		// 4. this lets only the last addition to the timeout stack through
 		this.counter = this.counter ? ++this.counter : 1;

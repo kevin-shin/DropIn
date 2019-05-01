@@ -1,4 +1,28 @@
 import {catalogue} from "../Model/cs_major.js";
+import { makeConnections } from "./connectionsLogic.js";
+
+
+let makeViewModel = function (profile) {
+    let ViewModel = {};
+    ViewModel.Classes = profile;
+    ViewModel.Connections =  writeSourceTarget(profile);
+
+    function writeSourceTarget(profile) {
+        var connections = [];
+        var tempConn = [];
+        for (var node of profile) {
+            tempConn = makeConnections(node.course);
+            for (var conn of tempConn) {
+                if (!connections.some((next) => next.source === conn.source && next.target === conn.target)) {
+                    connections.push(conn);
+                }
+            }
+        }
+        return connections;
+    }
+    return ViewModel;
+};
+
 
 function cleanCatalogue() {
     let compCourses = [];
@@ -10,4 +34,5 @@ function cleanCatalogue() {
     return compCourses;
 }
 
-export {cleanCatalogue}
+
+export { makeViewModel, cleanCatalogue };
