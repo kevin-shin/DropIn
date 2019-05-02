@@ -1,13 +1,13 @@
 //Custom AlertBox, created by following tutorial
 //https://www.developphp.com/video/JavaScript/Custom-Alert-Box-Programming-Tutorial
 
-import { drawConnections } from "./ViewConnections.js";
+import { drawConnections } from "./UIBehavior.js";
 import { animateNode } from "./exampleAnimation.js";
 import { ViewModel } from "./VMtoView.js";
-import { implementDragBehavior } from "./ViewConnections.js";
-import { Profile, notTaken } from "./VMtoView.js";
+import { implementDragBehavior } from "./UIBehavior.js";
 import { initialNodes } from "./VMtoView.js";
 import { courseCatalog } from "./prereq_dictionary.js";
+import { notTaken} from "./VMtoView.js";
 
 let width = window.innerWidth;
 let height = window.innerHeight;
@@ -20,7 +20,6 @@ let exampleNext = $("#exampleNext");
 
 
 function WelcomePanel() {
-
     this.render = function(){
         let position = String(width/2-700/2) + "px";
 
@@ -56,6 +55,7 @@ function InputPanel() {
         exampleBox.css("display", "none");
         dialogOverlay.css("display","none");
 
+        console.log(ViewModel);
         let graphCourses = ViewModel.Classes.filter((course => course.status === "taken") || (course => course.status === "planned"));
         let available = notTaken(ViewModel.Classes);
 

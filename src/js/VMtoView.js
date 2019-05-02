@@ -1,8 +1,9 @@
 import {rules} from "../Model/cs_major_rules.js";
 import {WelcomePanel} from "./WelcomePanel.js";
 import {makeProfile} from "./profileManipulation.js";
-import {deleteButton, focus} from "./ViewConnections.js";
+import {deleteButton, focus} from "./UIBehavior.js";
 import {makeViewModel, cleanCatalogue} from "./makeViewModel.js";
+import {catalogue} from "../Model/cs_major.js";
 
 let Profile;
 let ViewModel;
@@ -19,6 +20,9 @@ let initializeView = function () {
 
         Profile = makeProfile(profileString);
         ViewModel = makeViewModel(Profile);
+
+        console.log("Here is where the submit is triggered");
+        console.log(ViewModel);
 
         positionInitialCourses(Profile);
     });
@@ -110,6 +114,7 @@ let initialNodes = function(available, graphCourses) {
     svgContainer.exit().remove();
 
     positionTopBar();
+    instructionsBinding();
 };
 
 let draw = function(ViewModel) {
@@ -128,6 +133,12 @@ let draw = function(ViewModel) {
 
     svgGroups.exit().remove();
 
+    //TAKEN COURSES. Color: Green
+    let svgContainer = d3.select("#graph").selectAll(".draggable,.taken")
+        .data(ViewModel.Classes);
+
+    svgContainer.exit().remove();
+
     svgGroups.enter()
         .append("div")
         .attr("id", function (d) {
@@ -138,9 +149,6 @@ let draw = function(ViewModel) {
         })
         .attr("class", "draggable availableCourses outGraph");
 
-    //TAKEN COURSES. Color: Green
-    let svgContainer = d3.select("#graph").selectAll(".draggable,.taken")
-        .data(ViewModel.Classes);
 
     svgContainer.enter()
         .append("div")
@@ -158,9 +166,32 @@ let draw = function(ViewModel) {
         })
         .attr("class", "draggable planned inGraph");
 
-    svgContainer.exit().remove();
     positionTopBar();
+    instructionsBinding();
+
 };
+
+function instructionsBinding() {
+    let allCourses = $(".draggable");
+    allCourses.bind("mousedown", function () {
+        //change CSS to absolute so it can drag
+        var course = findCourse(catalogue, this);
+        var prereq = course.prereq;
+        var description = course.courseInfo;
+        var name = course.name;
+        var title = course.dept + course.courseNum;
+        $("#welcomeText").remove();
+        $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
+        $("#courseDescription").replaceWith(
+            "<p id='courseDescription'>" + description + "</p>"
+        );
+        $("#prereq").replaceWith(
+            "<p id='prereq'>" + prereq + "</p>"
+        );
+
+    });
+}
+
 
 
 let requirementsPanelUpdate = function () {
@@ -258,6 +289,15 @@ function positionTopBar() {
             left: i * placement - 40
         });
         i++;
+    }
+}
+
+function findCourse(data, course) {
+    let ID = course.id;
+    for (let object of data) {
+        if ((object.dept + object.courseNum) === ID) {
+            return object;
+        }
     }
 }
 

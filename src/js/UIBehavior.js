@@ -49,38 +49,36 @@ let implementDragBehavior = function () {
             let ViewModel = makeViewModel(Profile);
             console.log(ViewModel);
 
-            jsPlumbInstance.reset();
-            draw(ViewModel);
-            drawConnections(ViewModel.Connections);
-
-            var graphCourses = $(".inGraph");
-            jsPlumbInstance.draggable(graphCourses, {
-                disabled: true,
-                containment: "parent"
-            });
+            refreshView(ViewModel);
 
 
         }
     });
-
-
 };
 
 
-let drawConnections = function (Connections) {
-    initializeConnections(Connections);
-    instructionsBinding();
+let refreshView = function(ViewModel) {
+    jsPlumbInstance.reset();
+
+    draw(ViewModel);
+    drawConnections(ViewModel.Connections);
+
+    let graphCourses = $(".inGraph");
+    jsPlumbInstance.draggable(graphCourses, {
+        disabled: true,
+        containment: "parent"
+    });
+
     let plannedCourses = $(".draggable, .inGraph, .planned");
     plannedCourses.bind("mousedown", function () {
         focus = $(this);
     });
+
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
+
 };
 
-//-----------     HELPER FUNCTIONS     -----------
-
-//Draw the connections between imported courses.
-function initializeConnections(Connections) {
+let drawConnections = function(Connections) {
     for (let entry of Connections) {
         jsPlumbInstance.connect({
             source: entry.source,
@@ -95,28 +93,11 @@ function initializeConnections(Connections) {
             ]
         })
     }
-}
+};
 
-function instructionsBinding() {
-    let allCourses = $(".draggable");
-    allCourses.bind("mousedown", function () {
-        //change CSS to absolute so it can drag
-        var course = findCourse(catalogue, this);
-        var prereq = course.prereq;
-        var description = course.courseInfo;
-        var name = course.name;
-        var title = course.dept + course.courseNum;
-        $("#welcomeText").remove();
-        $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
-        $("#courseDescription").replaceWith(
-            "<p id='courseDescription'>" + description + "</p>"
-        );
-        $("#prereq").replaceWith(
-            "<p id='prereq'>" + prereq + "</p>"
-        );
 
-    });
-}
+//-----------     HELPER FUNCTIONS     -----------
+
 
 function deleteButton() {
     console.log("DELETE ACTIVATE");
@@ -129,15 +110,6 @@ function deleteButton() {
     jsPlumbInstance.reset();
     drawConnections(ViewModel.Connections);
     console.log("ENDED DELETE");
-}
-
-function findCourse(data, course) {
-    let ID = course.id;
-    for (let object of data) {
-        if ((object.dept + object.courseNum) === ID) {
-            return object;
-        }
-    }
 }
 
 
