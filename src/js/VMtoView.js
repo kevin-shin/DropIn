@@ -128,9 +128,10 @@ let draw = function(ViewModel) {
     console.log("And here is what should be in the bar.");
     console.log(availableCourses);
 
-    var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
+    var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable,.available")
         .data(availableCourses);
 
+    console.log(svgGroups);
     svgGroups.exit().remove();
 
     //TAKEN COURSES. Color: Green

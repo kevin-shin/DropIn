@@ -60,6 +60,15 @@ let implementDragBehavior = function () {
 let refreshView = function(ViewModel) {
     jsPlumbInstance.reset();
 
+    for (let prereq of ViewModel.Classes){
+        if (prereq.status === "planned"){
+            let element = document.getElementById(prereq.course);
+            if (element != null){
+                element.parentNode.removeChild(element);
+            }
+        }
+    }
+
     draw(ViewModel);
     drawConnections(ViewModel.Connections);
 
