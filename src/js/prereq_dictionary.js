@@ -1,5 +1,4 @@
 // --------- IMPORT --------
-// import { catalogue } from "../Model/cs_major.js";
 import { catalogue } from "../Model/cs_major.js";
 // const catalogue = require("../Model/cs_major.js");
 
@@ -11,10 +10,10 @@ import { catalogue } from "../Model/cs_major.js";
 
 
 var prereqDict = new Map();
+//Goes through courses and maps them to prerequisites
+// takes a catalogue of courses which must include department, course number, and prerequisites
 
-/* Goes through courses and maps them to prerequisites
- * @param catalogue: course catalogue which must include department, course number, and prerequisites
- */
+
 let makePrereqDict = function (catalogue) {
     for (var course of catalogue) {
         let courseDescription = course.dept + course.courseNum;
@@ -29,4 +28,3 @@ let courseCatalog = makePrereqDict(catalogue);
 
 export { courseCatalog };
 // module.exports = courseCatalog;
-

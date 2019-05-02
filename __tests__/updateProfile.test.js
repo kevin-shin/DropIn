@@ -1,8 +1,8 @@
-const vmUpdateModule = require('../src/js/model_to_vm.js');
+const vmUpdateModule = require('../src/js/profileManipulation.js');
 
 /*
 Test suite for updateProfile function
-Imports a module of functions from model_to_vm.js and uses the updateProfile function
+Imports a module of functions from profileManipulation.js and uses the updateProfile function
 
 @param:
 profile: contains information about courses taken or planned.

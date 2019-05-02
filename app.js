@@ -1,4 +1,4 @@
-import { VMtoView } from "./src/js/VM_to_View.js";
+import { initializeView } from "./src/js/VMtoView.js";
 
 
-VMtoView();
+initializeView();

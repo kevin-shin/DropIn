@@ -1,33 +1,24 @@
-import {scope} from "./ViewConnections.js";
 import {rules} from "../Model/cs_major_rules.js";
-import {initPanel} from "./alertBox.js";
-import {jsPlumbInstance} from "./ViewConnections.js";
-import { makeProfile } from "./makeProfile.js";
-import {writeSourceTarget} from "./model_to_vm.js";
-import {writeVM} from "./model_to_vm.js";
-import {cleanCatalogue} from "./makeViewModel.js";
-import { Profile } from "../Model/profile.js";
-import {deleteCourseProfile} from "./model_to_vm.js";
-import {drawConnections} from "./ViewConnections.js";
-import { deleteButton } from "./ViewConnections.js";
-import {dfs} from "./connections_logic.js";
+import {WelcomePanel} from "./WelcomePanel.js";
+import {makeProfile} from "./profileManipulation.js";
+import {deleteButton, focus} from "./UIBehavior.js";
+import {makeViewModel, cleanCatalogue} from "./makeViewModel.js";
+import {catalogue} from "../Model/cs_major.js";
+import {dfs} from "./connectionsLogic.js";
 
-let exampleProfile;
-let Connections;
+let Profile;
 let ViewModel;
 
-let VMtoView = function () {
-
+let initializeView = function () {
     initializePanels();
-    let alert = new initPanel();
+    let alert = new WelcomePanel();
     alert.render();
     $("#nextButton").on("click", alert.next);
 
     $('#profileData').submit((event) => {
         event.preventDefault();
         let profileString = ($('#profileData').serializeArray());
-        //run dfs algorithm on user input so that prerequisites are included
-        //example: if user says they've taken 127, make sure 123 appears in the profile
+
         for(let profCourse of profileString){
             let dfsCourse = dfs(profCourse.name);
             for (let postDfsCourse of dfsCourse){
@@ -37,13 +28,13 @@ let VMtoView = function () {
             }
         }
 
-        //exampleProfile = Profile;
-        console.log(profileString);
-        exampleProfile = makeProfile(profileString);
-        positionInitialCourses(exampleProfile);
-        Connections = writeSourceTarget(exampleProfile);
+        Profile = makeProfile(profileString);
+        ViewModel = makeViewModel(Profile);
 
-        ViewModel = writeVM(exampleProfile,Connections);
+        console.log("Here is where the submit is triggered");
+        console.log(ViewModel);
+
+        positionInitialCourses(Profile);
     });
 
     function initializePanels() {
@@ -88,17 +79,25 @@ let VMtoView = function () {
         .attr("id", "delete")
         .html("Delete")
         .on("click", deleteButton);
+
+    let garbage = d3.select("#graph")
+        .append("div")
+        .attr("id", "garbage")
+
 };
 
-function initialNodes(available, graphCourses){
-
+let initialNodes = function(available, graphCourses) {
     var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
         .data(available);
 
     svgGroups.enter()
         .append("div")
-        .attr("id", function (d) { return d })
-        .html(function (d) { return d.substr(4,7) })
+        .attr("id", function (d) {
+            return d
+        })
+        .html(function (d) {
+            return d.substr(4, 7)
+        })
         .attr("class", "draggable available outGraph");
 
     //TAKEN COURSES. Color: Green
@@ -107,57 +106,103 @@ function initialNodes(available, graphCourses){
 
     svgContainer.enter()
         .append("div")
-        .attr("id", function (d) { return d.course })
-        .html(function (d) { return d.course.substr(4,7) })
-        .style("top", function(d) { return d.x + 'px'})
-        .style("left", function(d) { return d.y + 'px'})
+        .attr("id", function (d) {
+            return d.course
+        })
+        .html(function (d) {
+            return d.course.substr(4, 7)
+        })
+        .style("top", function (d) {
+            return d.x + 'px'
+        })
+        .style("left", function (d) {
+            return d.y + 'px'
+        })
         .attr("class", "draggable taken inGraph");
 
     svgGroups.exit().remove();
     svgContainer.exit().remove();
 
     positionTopBar();
-    requirementsPanelUpdate();
-}
+    instructionsBinding();
+};
 
+let draw = function(ViewModel) {
 
-function draw(ViewModel) {
+    let availableCourses = notTaken(ViewModel.Classes);
 
-    let available = notTaken(ViewModel.Classes);
-
-    console.log("Here is what should be in the profile");
+    console.log("*******  DRAW CALLED");
+    console.log("Here is what should be in the profile.");
     console.log(ViewModel.Classes);
 
-    console.log("And here is what should be in the bar");
-    console.log(available);
+    console.log("And here is what should be in the bar.");
+    console.log(availableCourses);
 
-    var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
-        .data(available);
+    var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable,.available")
+        .data(availableCourses);
 
+    console.log(svgGroups);
     svgGroups.exit().remove();
-
-    svgGroups.enter()
-        .append("div")
-        .attr("id", function (d) { return d })
-        .html(function (d) { return d.substr(4,7) })
-        .attr("class", "draggable available outGraph");
 
     //TAKEN COURSES. Color: Green
     let svgContainer = d3.select("#graph").selectAll(".draggable,.taken")
         .data(ViewModel.Classes);
 
+    svgContainer.exit().remove();
+
+    svgGroups.enter()
+        .append("div")
+        .attr("id", function (d) {
+            return d
+        })
+        .html(function (d) {
+            return d.substr(4, 7)
+        })
+        .attr("class", "draggable availableCourses outGraph");
+
+
     svgContainer.enter()
         .append("div")
-        .attr("id", function (d) { return d.course })
-        .html(function (d) { return d.course.substr(4,7) })
-        .style("top", function(d) { return d.x + 'px'})
-        .style("left", function(d) { return d.y + 'px'})
+        .attr("id", function (d) {
+            return d.course
+        })
+        .html(function (d) {
+            return d.course.substr(4, 7)
+        })
+        .style("top", function (d) {
+            return d.x + 'px'
+        })
+        .style("left", function (d) {
+            return d.y + 'px'
+        })
         .attr("class", "draggable planned inGraph");
 
-
-    svgContainer.exit().remove();
     positionTopBar();
+    instructionsBinding();
+
+};
+
+function instructionsBinding() {
+    let allCourses = $(".draggable");
+    allCourses.bind("mousedown", function () {
+        //change CSS to absolute so it can drag
+        var course = findCourse(catalogue, this);
+        var prereq = course.prereq;
+        var description = course.courseInfo;
+        var name = course.name;
+        var title = course.dept + course.courseNum;
+        $("#welcomeText").remove();
+        $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
+        $("#courseDescription").replaceWith(
+            "<p id='courseDescription'>" + description + "</p>"
+        );
+        $("#prereq").replaceWith(
+            "<p id='prereq'>" + prereq + "</p>"
+        );
+
+    });
 }
+
 
 
 let requirementsPanelUpdate = function () {
@@ -166,6 +211,7 @@ let requirementsPanelUpdate = function () {
         var subRequirementList = d3.select(".requirements").select(inputLabel);
 
         if (inputLabel === "#intro") {
+            //Add the counter to the
             d3.select("#introLabel").text("Intro Classes : " + obj.required);
 
             //Add li to the ul
@@ -182,18 +228,17 @@ let requirementsPanelUpdate = function () {
 
         } else {
             let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
-            d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: " + obj.required);
+            d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t" + obj.required);
 
-
-            // subRequirementList.selectAll("courses")   //Adding all the classes to the requirement Section
-            //     .data(obj.courses)
-            //     .enter().append("li")
-            //     .attr("id", function (d) {
-            //         return "req" + d
-            //     })
-            //     .append("label").text(function (d) {
-            //     return d
-            // })
+            subRequirementList.selectAll("courses")
+                .data(obj.courses)
+                .enter().append("li")
+                .attr("id", function (d) {
+                    return "req" + d
+                })
+                .append("label").text(function (d) {
+                return d
+            })
         }
     }
 };
@@ -209,15 +254,10 @@ let decrementNumReqs = function (classDropped) {
                 reqToDecrement = obj.label;
                 console.log("REQ TO DECREMENT");
                 console.log(reqToDecrement);
-                //Adding the class to MATH or ELECTIVE
-                if(reqToDecrement === "elective" || reqToDecrement === "math"){// Adding the dropped course to the req screen
-                    d3.select("#" + reqToDecrement)
-                        .append("li")
-                        .text(course);
-                }
             }
         }
     }
+
     switch (reqToDecrement) {//Decrementing reqToDecrement
         case "intro":
             introNumReqs--;
@@ -233,11 +273,13 @@ let decrementNumReqs = function (classDropped) {
             break;
         default:
             console.log("reqToDecrement variable miss-assigned")
+
     }
+
     d3.select("#" + reqToDecrement + "Label")
         .html(reqToDecrement.toUpperCase().charAt(0) +  //first letter capitalized
             reqToDecrement.substring(1, reqToDecrement.length) + //rest lowercase
-            " Courses : " + (reqToDecrement + "NumReqs")); //previous number of reqs - 1  //TODO Returns a string, must be the data
+            " Courses : " + (reqToDecrement + "NumReqs")); //previous number of reqs - 1
     console.log(reqToDecrement.toUpperCase().charAt(0) +  //first letter capitalized
         reqToDecrement.substring(1, reqToDecrement.length) + //rest lowercase
         " Courses : " + (reqToDecrement + "NumReqs"))
@@ -261,55 +303,61 @@ function positionTopBar() {
     }
 }
 
-let notTaken = function (profile) {
+function findCourse(data, course) {
+    let ID = course.id;
+    for (let object of data) {
+        if ((object.dept + object.courseNum) === ID) {
+            return object;
+        }
+    }
+}
+
+function notTaken(profile) {
     let toReturn = ["MATH279"];
     let compCat = cleanCatalogue();
-    for (let course of compCat){
-        if (!profile.some((thing) => thing.course === course)){
+    for (let course of compCat) {
+        if (!profile.some((thing) => thing.course === course)) {
             toReturn.push(course);
         }
     }
-    console.log("here is to return");
-    console.log(toReturn);
     return toReturn;
-};
-
+}
 
 function markTaken() {
-    scope.addClass("taken").removeClass("available")
+    focus.addClass("taken").removeClass("available")
 }
 
 function markUntaken() {
-    scope.addClass("available").removeClass("taken")
+    focus.addClass("available").removeClass("taken")
 }
 
 function positionInitialCourses(profile) {
-    for (let course of profile){
-        if (course.course === "COMP123"){
+    for (let course of profile) {
+        if (course.course === "COMP123") {
             course.x = 250;
             course.y = 30
         }
-        if (course.course === "COMP127"){
+        if (course.course === "COMP127") {
             course.x = 200;
             course.y = 130
         }
-        if (course.course === "COMP128"){
+        if (course.course === "COMP128") {
             course.x = 230;
             course.y = 280
         }
-        if (course.course === "MATH279"){
+        if (course.course === "MATH279") {
             course.x = 330;
             course.y = 280
         }
-        if (course.course === "COMP240"){
+        if (course.course === "COMP240") {
             course.x = 190;
             course.y = 510
         }
-        if (course.course === "COMP221"){
+        if (course.course === "COMP221") {
             course.x = 300;
             course.y = 510
         }
-        if (course.course === "COMP225"){
+        if (course.course === "COMP225") {
             course.x = 150;
             course.y = 510
         }
@@ -317,4 +365,4 @@ function positionInitialCourses(profile) {
 }
 
 
-export {VMtoView, draw, ViewModel, exampleProfile, notTaken, initialNodes, decrementNumReqs};
+export {initializeView, draw, ViewModel, Profile, notTaken, initialNodes};

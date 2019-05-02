@@ -40,8 +40,8 @@ let animateNode = function () {
         let newNode = node.cloneNode(true);
         node.remove();
         newNode.setAttribute("style", "top: 62px;" +
-                                      "left: 230px;" +
-                                        "position: absolute");
+            "left: 230px;" +
+            "position: absolute");
 
         $("#lowerPanel").append(newNode);
         jsPlumbInstance.connect({
@@ -57,8 +57,6 @@ let animateNode = function () {
             ]
         })
     });
-
-
 };
 
 export {animateNode}
