@@ -22,6 +22,7 @@ let makeConnections = function (draggedCourse) {
 /*depth first search on prerequisites for class via the courseCatalog (from prereq_dictionary.js).
 *takes a course as a string ("COMP123", "MATH155", etc)
 * Outputs an array of courses
+*@param: draggedCourse the string name of a course just dragged into the graph
 */
 let dfs = function (draggedCourse) {
     courseStack.push(draggedCourse);
@@ -41,7 +42,8 @@ let dfs = function (draggedCourse) {
 
 /*connections to adjacency list
 *takes array from dfs function and outputs an object of source, target pairs
-* example: [{ source: COMP123, target: COMP124 }, { source: COMP124, target: COMP225 }]
+*example: [{ source: COMP123, target: COMP124 }, { source: COMP124, target: COMP225 }]
+* @param returned: array of courses that includes all relevant prerequisites
 */
 let returnedToAdjList = function (returned) {
     var adjList = [];

@@ -3,9 +3,14 @@ import { makeConnections, dfs } from "./connections_logic.js";
 // const dfs = require('./connections_logic');
 // const makeConnections = require("./connections_logic");
 
-/*  
+/*
  * Adds a course and its prereqs to the profile to be read by function writeSourceTarget for VM
  * Takes a profile and the course ("COMP225") that was just dragged onto the screen
+ *
+ * @param: profile a distinct user profile that describes planned and taken courses
+ * @param: draggedCourse the string name of a course just dragged into the graph
+ * @param: eventX
+ * @param: eventY
  */
 let updateProfile = function (profile, draggedCourse, eventX, eventY) {
     var courseWithPrereqs = dfs(draggedCourse);
@@ -29,9 +34,9 @@ let updateProfile = function (profile, draggedCourse, eventX, eventY) {
 };
 
 /**
- * 
- * @param profile 
- * @param deletedCourse 
+ * removes only the deleted course from the profile
+ * @param profile: a distinct user profile that describes planned and taken courses
+ * @param deletedCourse: course just deleted from proflie
  */
 let deleteCourseProfile = function (profile, deletedCourse) {
     for (var course of profile) {
@@ -45,6 +50,7 @@ let deleteCourseProfile = function (profile, deletedCourse) {
 /*
  *  Reads a profile and outputs JSON object with source target components for VM
  *  Output looks like {source: "COMP123", target: "COMP124"}
+ *  @param profile: a distinct user profile that describes planned and taken courses
  */
 let writeSourceTarget = function (profile) {
     var connections = [];

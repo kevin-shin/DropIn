@@ -10,6 +10,7 @@ import { Profile } from "../Model/profile.js";
 import {deleteCourseProfile} from "./model_to_vm.js";
 import {drawConnections} from "./ViewConnections.js";
 import { deleteButton } from "./ViewConnections.js";
+import {dfs} from "./connections_logic.js";
 
 let exampleProfile;
 let Connections;
@@ -25,9 +26,19 @@ let VMtoView = function () {
     $('#profileData').submit((event) => {
         event.preventDefault();
         let profileString = ($('#profileData').serializeArray());
+        //run dfs algorithm on user input so that prerequisites are included
+        //example: if user says they've taken 127, make sure 123 appears in the profile
+        for(let profCourse of profileString){
+            let dfsCourse = dfs(profCourse.name);
+            for (let postDfsCourse of dfsCourse){
+                if(!(profileString.some((nextCourse) => nextCourse.name === postDfsCourse))){
+                    profileString.push({name: postDfsCourse, value: "on"});
+                }
+            }
+        }
 
         //exampleProfile = Profile;
-
+        console.log(profileString);
         exampleProfile = makeProfile(profileString);
         positionInitialCourses(exampleProfile);
         Connections = writeSourceTarget(exampleProfile);
@@ -155,7 +166,6 @@ let requirementsPanelUpdate = function () {
         var subRequirementList = d3.select(".requirements").select(inputLabel);
 
         if (inputLabel === "#intro") {
-            //Add the counter to the
             d3.select("#introLabel").text("Intro Classes : " + obj.required);
 
             //Add li to the ul
@@ -172,17 +182,18 @@ let requirementsPanelUpdate = function () {
 
         } else {
             let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
-            d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t" + obj.required);
+            d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: " + obj.required);
 
-            subRequirementList.selectAll("courses")
-                .data(obj.courses)
-                .enter().append("li")
-                .attr("id", function (d) {
-                    return "req" + d
-                })
-                .append("label").text(function (d) {
-                return d
-            })
+
+            // subRequirementList.selectAll("courses")   //Adding all the classes to the requirement Section
+            //     .data(obj.courses)
+            //     .enter().append("li")
+            //     .attr("id", function (d) {
+            //         return "req" + d
+            //     })
+            //     .append("label").text(function (d) {
+            //     return d
+            // })
         }
     }
 };
@@ -198,10 +209,15 @@ let decrementNumReqs = function (classDropped) {
                 reqToDecrement = obj.label;
                 console.log("REQ TO DECREMENT");
                 console.log(reqToDecrement);
+                //Adding the class to MATH or ELECTIVE
+                if(reqToDecrement === "elective" || reqToDecrement === "math"){// Adding the dropped course to the req screen
+                    d3.select("#" + reqToDecrement)
+                        .append("li")
+                        .text(course);
+                }
             }
         }
     }
-
     switch (reqToDecrement) {//Decrementing reqToDecrement
         case "intro":
             introNumReqs--;
@@ -217,13 +233,11 @@ let decrementNumReqs = function (classDropped) {
             break;
         default:
             console.log("reqToDecrement variable miss-assigned")
-
     }
-
     d3.select("#" + reqToDecrement + "Label")
         .html(reqToDecrement.toUpperCase().charAt(0) +  //first letter capitalized
             reqToDecrement.substring(1, reqToDecrement.length) + //rest lowercase
-            " Courses : " + (reqToDecrement + "NumReqs")); //previous number of reqs - 1
+            " Courses : " + (reqToDecrement + "NumReqs")); //previous number of reqs - 1  //TODO Returns a string, must be the data
     console.log(reqToDecrement.toUpperCase().charAt(0) +  //first letter capitalized
         reqToDecrement.substring(1, reqToDecrement.length) + //rest lowercase
         " Courses : " + (reqToDecrement + "NumReqs"))
