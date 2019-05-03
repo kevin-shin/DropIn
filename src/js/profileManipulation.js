@@ -13,9 +13,7 @@ let makeProfile = function(inputArray){
 
 let addCourseToProfile = function (profile, draggedCourse, eventX, eventY) {
 
-    var courseWithPrereqs = dfs(draggedCourse);
-    console.log("Prereqs: ");
-    console.log(courseWithPrereqs);
+    let courseWithPrereqs = dfs(draggedCourse);
     let initialPositionX = eventX;
     let initialPositionY = eventY;
     for (var course of courseWithPrereqs) {
@@ -33,11 +31,15 @@ let addCourseToProfile = function (profile, draggedCourse, eventX, eventY) {
 };
 
 let removeCourseFromProfile = function (profile, deletedCourse) {
-    for (var course of profile) {
-        if (course.course === deletedCourse) {
-            profile.pop(course);
+    let i = 0;
+    let j;
+    for (let course of profile){
+        if (course.course === deletedCourse){
+            j = i;
         }
+        i++;
     }
+    profile.splice(j,1);
 };
 
 
