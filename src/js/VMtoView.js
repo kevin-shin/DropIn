@@ -4,6 +4,7 @@ import {makeProfile} from "./profileManipulation.js";
 import {makeViewModel, cleanCatalogue} from "./makeViewModel.js";
 import {catalogue} from "../Model/cs_major.js";
 import {dfs} from "./connectionsLogic.js";
+import {calculateRequirements} from "./requirements.js";
 
 let Profile;
 let ViewModel;
@@ -29,11 +30,17 @@ let initializeView = function () {
 
         Profile = makeProfile(profileString);
         ViewModel = makeViewModel(Profile);
-        initializePanels();
+
+
+        initializeYearGrid();
+        initializeButtonBar();
+        initializeRequirementsPanel();
         positionInitialCourses(Profile);
+        updateRequirementsCount(Profile);
+
     });
 
-    function initializePanels() {
+    function initializeYearGrid() {
         let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
         let svgYears = d3.select("#graph").selectAll("yeargraphs")
             .data(years)
@@ -43,27 +50,28 @@ let initializeView = function () {
                 return String(d)
             });
     }
+    function initializeButtonBar() {
+        //BUTTON BAR
+        let buttonBar = d3.select("body")
+            .select("#buttonBar");
 
-    //BUTTON BAR
-    let buttonBar = d3.select("body")
-        .select("#buttonBar");
+        buttonBar.append("button")
+            .attr("id", "markTaken")
+            .html("Mark as Taken");
 
-    buttonBar.append("button")
-        .attr("id", "markTaken")
-        .html("Mark as Taken");
+        buttonBar.append("button")
+            .attr("id", "markUntaken")
+            .html("Mark as Planned");
 
-    buttonBar.append("button")
-        .attr("id", "markUntaken")
-        .html("Mark as Planned");
+        buttonBar.append("button")
+            .attr("id", "delete")
+            .html("Delete");
 
-    buttonBar.append("button")
-        .attr("id", "delete")
-        .html("Delete")
-
+    }
 };
 
 let initialNodes = function(available, graphCourses) {
-    var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
+    let svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
         .data(available);
 
     svgGroups.enter()
@@ -104,7 +112,6 @@ let initialNodes = function(available, graphCourses) {
 };
 
 let draw = function(ViewModel) {
-
     console.log("*******  DRAW CALLED");
     console.log("Here is what should be in the profile.");
     console.log(ViewModel.Classes);
@@ -127,13 +134,9 @@ let draw = function(ViewModel) {
         list.removeChild(list.firstChild);
     }
 
-
     //TAKEN COURSES. Color: Red
     let svgNotTaken = d3.select("#svgNotTaken").selectAll(".available")
         .data(availableCourses);
-
-    console.log("SVGNOTTAKEN");
-    console.log(svgNotTaken);
 
     svgNotTaken.enter()
         .append("div")
@@ -186,6 +189,7 @@ let draw = function(ViewModel) {
         .attr("class", "draggable planned inGraph");
 
     positionTopBar();
+    updateRequirementsCount(ViewModel.Classes);
     instructionsBinding();
 
 };
@@ -212,17 +216,14 @@ function instructionsBinding() {
 }
 
 
-
-let requirementsPanelUpdate = function () {
+let initializeRequirementsPanel = function () {
     for (let obj of rules) {
         let inputLabel = "#" + String(obj.label);//this is the grouping of "intro", "core", "math", or "elective"
-        var subRequirementList = d3.select(".requirements").select(inputLabel);
+        let subRequirementList = d3.select(".requirements").select(inputLabel);
 
         if (inputLabel === "#intro") {
-            //Add the counter to the
-            d3.select("#introLabel").text("Intro Classes : " + obj.required);
+            d3.select("#introLabel").text("Intro Courses: ");
 
-            //Add li to the ul
             let label = "";
             for (let course of obj.courses) {
                 label += course + " or ";
@@ -234,9 +235,21 @@ let requirementsPanelUpdate = function () {
                 .attr("id", "#reqIntro")
                 .text(label);
 
-        } else {
+        }
+
+        if (inputLabel === "#math" || inputLabel === "#elective"){
             let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
-            d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t" + obj.required);
+            d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t");
+        }
+
+        if (inputLabel === "#elective"){
+            let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
+            d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t");
+        }
+
+        if (inputLabel === "#core"){
+            let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
+            d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t");
 
             subRequirementList.selectAll("courses")
                 .data(obj.courses)
@@ -251,50 +264,16 @@ let requirementsPanelUpdate = function () {
     }
 };
 
-let introNumReqs = rules[0].required, coreNumReqs = rules[1].required;
-let mathNumReqs = rules[2].required, electiveNumReq = rules[3].required;
-
-let decrementNumReqs = function (classDropped) {
-    let reqToDecrement; //will be one of the labels in rules
-    for (let obj of rules) {
-        for (let course of obj.courses) {
-            if (course === classDropped) {
-                reqToDecrement = obj.label;
-                console.log("REQ TO DECREMENT");
-                console.log(reqToDecrement);
-            }
-        }
-    }
-
-    switch (reqToDecrement) {//Decrementing reqToDecrement
-        case "intro":
-            introNumReqs--;
-            break;
-        case "core":
-            coreNumReqs--;
-            break;
-        case "math":
-            mathNumReqs--;
-            break;
-        case "elective":
-            electiveNumReq--;
-            break;
-        default:
-            console.log("reqToDecrement variable miss-assigned")
-
-    }
-
-    d3.select("#" + reqToDecrement + "Label")
-        .html(reqToDecrement.toUpperCase().charAt(0) +  //first letter capitalized
-            reqToDecrement.substring(1, reqToDecrement.length) + //rest lowercase
-            " Courses : " + (reqToDecrement + "NumReqs")); //previous number of reqs - 1
-    console.log(reqToDecrement.toUpperCase().charAt(0) +  //first letter capitalized
-        reqToDecrement.substring(1, reqToDecrement.length) + //rest lowercase
-        " Courses : " + (reqToDecrement + "NumReqs"))
-};
-
-
 //-----------     HELPER FUNCTIONS     -----------
+
+function updateRequirementsCount(profile){
+    let newCount = calculateRequirements(profile);
+    for (let count of newCount){
+        let string = "#" + Object.keys(count)[0] + "Label";
+        $(string).text(Object.keys(count)[0].charAt(0).toUpperCase() + Object.keys(count)[0].slice(1) + " Courses: " + Object.values(count)[0]);
+    }
+}
+
 function positionTopBar() {
     const radius = 20;
     let topCourses = $(".draggable.available");
@@ -337,15 +316,6 @@ function filterTaken(profile){
 
 function filterPlanned(profile){
     return profile.filter((course) => course.status === "planned");
-}
-
-
-function markTaken() {
-    focus.addClass("taken").removeClass("available")
-}
-
-function markUntaken() {
-    focus.addClass("available").removeClass("taken")
 }
 
 function positionInitialCourses(profile) {
