@@ -333,6 +333,14 @@ function markUntaken() {
 
 function positionInitialCourses(profile) {
     for (let course of profile) {
+        if (course.course === "COMP120") {
+            course.x = 100;
+            course.y = 30
+        }
+        if (course.course === "COMP112") {
+            course.x = 30;
+            course.y = 30
+        }
         if (course.course === "COMP123") {
             course.x = 250;
             course.y = 30
@@ -345,22 +353,39 @@ function positionInitialCourses(profile) {
             course.x = 230;
             course.y = 280
         }
+        if (course.course === "COMP154") {
+            course.x = 100;
+            course.y = 140
+        }
         if (course.course === "MATH279") {
-            course.x = 330;
+            course.x = 100;
             course.y = 280
         }
         if (course.course === "COMP240") {
-            course.x = 190;
-            course.y = 510
+            course.x = 320;
+            course.y = 525
         }
         if (course.course === "COMP221") {
-            course.x = 300;
-            course.y = 510
+            course.x = 90;
+            course.y = 525
         }
         if (course.course === "COMP225") {
-            course.x = 150;
-            course.y = 510
+            course.x = 400;
+            course.y = 525
         }
+        if (course.course === "COMP261") {
+            course.x = 230;
+            course.y = 525
+        }
+        if (course.course === "COMP302") {
+            course.x = 450;
+            course.y = 350
+        }
+        if (course.course === "COMP320") {
+            course.x = 520;
+            course.y = 350
+        }
+
     }
 }
 
