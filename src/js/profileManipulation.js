@@ -33,11 +33,15 @@ let addCourseToProfile = function (profile, draggedCourse, eventX, eventY) {
 };
 
 let removeCourseFromProfile = function (profile, deletedCourse) {
-    for (var course of profile) {
-        if (course.course === deletedCourse) {
-            profile.pop(course);
+    let i = 0;
+    let j;
+    for (let course of profile){
+        if (course.course === deletedCourse){
+            j = i;
         }
+        i++;
     }
+    profile.splice(j,1);
 };
 
 

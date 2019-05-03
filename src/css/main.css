@@ -62,7 +62,7 @@ body {
 /*           GUI           */
 
 #graph {
-
+    display: block;
     height: 82%;
     width: 72%;
     left: 0;
@@ -71,6 +71,8 @@ body {
     float: left;
     white-space: nowrap;
     position: relative;
+    border-radius: 25px;
+    border: 2px solid #D8C684;
 }
 
 #availableCourses {
@@ -89,6 +91,7 @@ body {
     border-radius: 25px;
     border: 2px solid #D8C684;
     margin: 5px;
+    display: block;
     overflow: -moz-scrollbars-horizontal;
 }
 
@@ -287,4 +290,19 @@ ul {
     text-align: center;
     display: inline-block;
     line-height: 60px;
+}
+
+#garbage {
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    z-index: 999;
+}
+
+#buttonBar {
+    display: none;
 }

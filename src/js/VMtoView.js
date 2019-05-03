@@ -1,7 +1,6 @@
 import {rules} from "../Model/cs_major_rules.js";
 import {WelcomePanel} from "./WelcomePanel.js";
 import {makeProfile} from "./profileManipulation.js";
-import {deleteButton, focus} from "./UIBehavior.js";
 import {makeViewModel, cleanCatalogue} from "./makeViewModel.js";
 import {catalogue} from "../Model/cs_major.js";
 import {dfs} from "./connectionsLogic.js";
@@ -10,7 +9,7 @@ let Profile;
 let ViewModel;
 
 let initializeView = function () {
-    initializePanels();
+
     let alert = new WelcomePanel();
     alert.render();
     $("#nextButton").on("click", alert.next);
@@ -33,24 +32,24 @@ let initializeView = function () {
 
         console.log("Here is where the submit is triggered");
         console.log(ViewModel);
-
+        initializePanels();
         positionInitialCourses(Profile);
     });
 
     function initializePanels() {
         let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
 
-        let svg = d3.select("body")
-            .select("#GUI")
-            .append("div")
-            .attr("id", "svgNotTaken");
+        // let svg = d3.select("body")
+        //     .select("#GUI")
+        //     .append("div")
+        //     .attr("id", "svgNotTaken");
+        //
+        // let svgNotTakenDivs = d3.select("body")
+        //     .select("#GUI")
+        //     .append("div")
+        //     .attr("id", "graph");
 
-        let svgNotTakenDivs = d3.select("body")
-            .select("#GUI")
-            .append("div")
-            .attr("id", "graph");
-
-        let svgYears = svgNotTakenDivs.selectAll("years")
+        let svgYears = d3.select("#graph").selectAll("yeargraphs")
             .data(years)
             .enter().append("div")
             .attr("class", "year")
@@ -61,9 +60,7 @@ let initializeView = function () {
 
     //BUTTON BAR
     let buttonBar = d3.select("body")
-        .select(".instructions")
-        .append("div")
-        .attr("id", "buttonBar");
+        .select("#buttonBar");
 
     buttonBar.append("button")
         .attr("id", "markTaken")
@@ -78,11 +75,6 @@ let initializeView = function () {
     buttonBar.append("button")
         .attr("id", "delete")
         .html("Delete")
-        .on("click", deleteButton);
-
-    let garbage = d3.select("#graph")
-        .append("div")
-        .attr("id", "garbage")
 
 };
 
@@ -180,12 +172,14 @@ let draw = function(ViewModel) {
     positionTopBar();
     instructionsBinding();
 
+
+
 };
 
 function instructionsBinding() {
     let allCourses = $(".draggable");
     allCourses.bind("mousedown", function () {
-        //change CSS to absolute so it can drag
+        $("#buttonBar").css("display", "block");
         var course = findCourse(catalogue, this);
         var prereq = course.prereq;
         var description = course.courseInfo;
@@ -199,7 +193,6 @@ function instructionsBinding() {
         $("#prereq").replaceWith(
             "<p id='prereq'>" + prereq + "</p>"
         );
-
     });
 }
 
