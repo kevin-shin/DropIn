@@ -5,6 +5,7 @@ import {makeViewModel, cleanCatalogue} from "./makeViewModel.js";
 import {catalogue} from "../Model/cs_major.js";
 import {dfs} from "./connectionsLogic.js";
 import {calculateRequirements} from "./requirements.js";
+import {fullMajorCheck} from "./requirements.js";
 
 let Profile;
 let ViewModel;
@@ -190,6 +191,12 @@ let draw = function(ViewModel) {
 
     positionTopBar();
     updateRequirementsCount(ViewModel.Classes);
+
+    let isFullMajor = fullMajorCheck(ViewModel.Classes);
+    if ( isFullMajor ){
+        $("#requirementsText").append("<p>This is a full major!</p>")
+    }
+
     instructionsBinding();
 
 };
