@@ -50,13 +50,11 @@ let initializeView = function () {
 
     buttonBar.append("button")
         .attr("id", "markTaken")
-        .html("Mark as Taken")
-        .on("click", markTaken);
+        .html("Mark as Taken");
 
     buttonBar.append("button")
         .attr("id", "markUntaken")
-        .html("Mark as Untaken")
-        .on("click", markUntaken);
+        .html("Mark as Planned");
 
     buttonBar.append("button")
         .attr("id", "delete")
@@ -196,19 +194,20 @@ function instructionsBinding() {
     let allCourses = $(".draggable");
     allCourses.bind("mousedown", function () {
         $("#buttonBar").css("display", "block");
-        var course = findCourse(catalogue, this);
-        var prereq = course.prereq;
-        var description = course.courseInfo;
-        var name = course.name;
-        var title = course.dept + course.courseNum;
-        $("#welcomeText").remove();
-        $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
-        $("#courseDescription").replaceWith(
+        let course = findCourse(catalogue, this);
+        let prereq = course.prereq;
+        let description = course.courseInfo;
+        let name = course.name;
+        let title = course.dept + course.courseNum;
+        $("#welcomeText").css("display","none");
+        $("#name").css("display","block").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
+        $("#courseDescription").css("display","block").replaceWith(
             "<p id='courseDescription'>" + description + "</p>"
         );
-        $("#prereq").replaceWith(
+        $("#prereq").css("display","block").replaceWith(
             "<p id='prereq'>" + prereq + "</p>"
         );
+
     });
 }
 
@@ -333,13 +332,11 @@ function notTaken(profile) {
 }
 
 function filterTaken(profile){
-    let toReturn = profile.filter((course) => course.status === "taken");
-    return toReturn;
+    return profile.filter((course) => course.status === "taken");
 }
 
 function filterPlanned(profile){
-    let toReturn = profile.filter((course) => course.status === "planned");
-    return toReturn;
+    return profile.filter((course) => course.status === "planned");
 }
 
 

@@ -4,6 +4,7 @@ import {addCourseToProfile, removeCourseFromProfile} from "./profileManipulation
 import {makeViewModel} from "./makeViewModel.js";
 
 let focus;
+
 let jsPlumbInstance = jsPlumb.getInstance({
     Connector: ["Straight"],
     DragOptions: {cursor: "pointer", zIndex: 5},
@@ -52,6 +53,17 @@ let setUpBehavior = function () {
             focus = $(this);
         });
 
+        $(window).click(function(event){
+            if (event.target.className === "year"){
+                $("#welcomeText").css("display","block");
+                $("#name").css("display","none");
+                $("#courseDescription").css("display","none");
+                $("#prereq").css("display","none");
+                $("#buttonBar").css("display","none");
+            }
+        });
+
+
         $("#delete").on('click',function(){
             console.log("-------->  DELETING A CLASS");
             removeCourseFromProfile(Profile, focus.attr('id'));
@@ -64,6 +76,14 @@ let setUpBehavior = function () {
             refreshView(ViewModel);
 
             focus = null;
+        });
+
+        $("#markTaken").on('click',function(){
+            focus.addClass("taken").removeClass("available").removeClass("planned");
+        });
+
+        $("#markUntaken").on('click',function(){
+            focus.addClass("planned").removeClass("taken");
         });
 
     });
@@ -122,22 +142,5 @@ let drawConnections = function (Connections) {
         })
     }
 };
-
-//-----------     HELPER FUNCTIONS     -----------
-
-
-function deleteButton() {
-    console.log("DELETE ACTIVATE");
-    removeCourseFromProfile(Profile, focus.attr('id'));
-    let connectionsArray = writeSourceTarget(Profile);
-    let ViewModel = writeVM(Profile, connectionsArray);
-    draw(ViewModel);
-    console.log("DELETE BUTTON VIEWMODEL");
-    console.log(ViewModel);
-    jsPlumbInstance.reset();
-    drawConnections(ViewModel.Connections);
-    console.log("ENDED DELETE");
-}
-
 
 export {drawConnections, jsPlumbInstance, setUpBehavior, Profile}
