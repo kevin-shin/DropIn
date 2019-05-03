@@ -4,6 +4,8 @@ import {addCourseToProfile, removeCourseFromProfile} from "./profileManipulation
 import {makeViewModel} from "./makeViewModel.js";
 
 let focus;
+const radius = 20;
+const displacement = radius + 10;
 
 let jsPlumbInstance = jsPlumb.getInstance({
     Connector: ["Straight"],
@@ -14,8 +16,6 @@ let jsPlumbInstance = jsPlumb.getInstance({
 jsPlumb.Defaults.MaxConnections = 10;
 
 let setUpBehavior = function () {
-    const radius = 20;
-    const displacement = radius + 10;
 
     let graph = $("#graph");
     let outGraph = $(".outGraph");
@@ -26,6 +26,21 @@ let setUpBehavior = function () {
 
     jsPlumbInstance.draggable(graphCourses, {
         containment: "parent"
+    });
+
+    graphCourses.mouseup(function(event){
+        for (let course of Profile){
+            if ($(this).attr('id') === course.course){
+                course.x = event.clientY - (displacement + 100);
+                course.y = event.clientX - displacement - 5;
+            }
+        }
+        console.log("inGraph mouse up activate");
+        console.log(Profile);
+
+        let ViewModel = makeViewModel(Profile);
+        console.log(ViewModel);
+        refreshView(ViewModel);
     });
 
     /*           GRAPH DROPPABLE BEHAVIOR             */
@@ -85,9 +100,7 @@ let setUpBehavior = function () {
         $("#markUntaken").on('click',function(){
             focus.addClass("planned").removeClass("taken");
         });
-
     });
-
 
 };
 
@@ -113,16 +126,26 @@ let refreshView = function (ViewModel) {
         containment: "parent"
     });
 
-    let courses = $(".draggable");
-    courses.bind("click", function () {
-        focus = $(this);
-        console.log("FOCUS");
-        console.log(focus);
-    });
-
     let outGraph = $(".outGraph");
     outGraph.draggable({revert: true});
 
+    graphCourses.mouseup(function(event){
+        focus = $(this);
+        console.log("FOCUS");
+        console.log(focus);
+        for (let course of Profile){
+            if ($(this).attr('id') === course.course){
+                course.x = event.clientY - (displacement + 100);
+                course.y = event.clientX - displacement - 5;
+            }
+        }
+        console.log("inGraph mouse up activate");
+        console.log(Profile);
+
+        let ViewModel = makeViewModel(Profile);
+        console.log(ViewModel);
+        refreshView(ViewModel);
+    });
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 };
 

@@ -194,7 +194,7 @@ let draw = function(ViewModel) {
 
     let isFullMajor = fullMajorCheck(ViewModel.Classes);
     if ( isFullMajor ){
-        $("#requirementsText").append("<p>This is a full major!</p>")
+        $("#majorText").text("This is a full major!")
     }
 
     instructionsBinding();
