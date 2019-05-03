@@ -17,4 +17,15 @@ let calculateRequirements = function(profile) {
       return count;
 };
 
-export {calculateRequirements}
+let fullMajorCheck = function(profile){
+    let categoryCount = calculateRequirements(profile);
+    for (let category of categoryCount){
+        if (Object.values(category)[0] !== 0){
+            return false;
+        }
+    }
+    return true;
+};
+
+
+export {calculateRequirements, fullMajorCheck}

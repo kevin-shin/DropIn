@@ -9,6 +9,7 @@ body {
     margin: 0;
     position: relative;
     overflow: hidden;
+    font-family: 'Barlow';
 }
 
 /*           INSTRUCTIONS PANEL           */
