@@ -349,22 +349,22 @@ function positionInitialCourses(profile) {
         }
         if (course.course === "COMP240") {
             course.x = 320;
-            course.y = 525
+            course.y = 530
         }
         if (course.course === "COMP221") {
             course.x = 90;
-            course.y = 525
+            course.y = 530
         }
         if (course.course === "COMP225") {
             course.x = 400;
-            course.y = 525
+            course.y = 530
         }
         if (course.course === "COMP261") {
             course.x = 230;
-            course.y = 525
+            course.y = 530
         }
         if (course.course === "COMP302") {
-            course.x = 450;
+            course.x = 420;
             course.y = 350
         }
         if (course.course === "COMP320") {
