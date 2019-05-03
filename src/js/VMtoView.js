@@ -31,7 +31,6 @@ let initializeView = function () {
         Profile = makeProfile(profileString);
         ViewModel = makeViewModel(Profile);
 
-
         initializeYearGrid();
         initializeButtonBar();
         initializeRequirementsPanel();
