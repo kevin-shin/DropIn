@@ -62,6 +62,8 @@ let setUpBehavior = function () {
             console.log(ViewModel);
 
             refreshView(ViewModel);
+
+            focus = null;
         });
 
     });
@@ -97,6 +99,9 @@ let refreshView = function (ViewModel) {
         console.log("FOCUS");
         console.log(focus);
     });
+
+    let outGraph = $(".outGraph");
+    outGraph.draggable({revert: true});
 
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 };

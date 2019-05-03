@@ -52,7 +52,6 @@ function InputPanel() {
         exampleBox.css("display", "none");
         dialogOverlay.css("display","none");
 
-        console.log(ViewModel);
         let graphCourses = ViewModel.Classes.filter((course => course.status === "taken") || (course => course.status === "planned"));
         let available = notTaken(ViewModel.Classes);
 

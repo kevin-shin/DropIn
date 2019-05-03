@@ -29,26 +29,12 @@ let initializeView = function () {
 
         Profile = makeProfile(profileString);
         ViewModel = makeViewModel(Profile);
-
-        console.log("Here is where the submit is triggered");
-        console.log(ViewModel);
         initializePanels();
         positionInitialCourses(Profile);
     });
 
     function initializePanels() {
         let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
-
-        // let svg = d3.select("body")
-        //     .select("#GUI")
-        //     .append("div")
-        //     .attr("id", "svgNotTaken");
-        //
-        // let svgNotTakenDivs = d3.select("body")
-        //     .select("#GUI")
-        //     .append("div")
-        //     .attr("id", "graph");
-
         let svgYears = d3.select("#graph").selectAll("yeargraphs")
             .data(years)
             .enter().append("div")
@@ -121,28 +107,37 @@ let initialNodes = function(available, graphCourses) {
 
 let draw = function(ViewModel) {
 
-    let availableCourses = notTaken(ViewModel.Classes);
-
     console.log("*******  DRAW CALLED");
     console.log("Here is what should be in the profile.");
     console.log(ViewModel.Classes);
 
+    let availableCourses = notTaken(ViewModel.Classes);
+    let plannedCourses = filterPlanned(ViewModel.Classes);
+    let takenCourses = filterTaken(ViewModel.Classes);
+
     console.log("And here is what should be in the bar.");
     console.log(availableCourses);
 
-    var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable,.available")
+    let inGraph = $(".inGraph");
+    for (let course of inGraph){
+        let element = document.getElementById(course.id);
+        element.parentNode.removeChild(element);
+    }
+
+    let list = document.getElementById("svgNotTaken");
+    while (list.hasChildNodes()) {
+        list.removeChild(list.firstChild);
+    }
+
+
+    //TAKEN COURSES. Color: Red
+    let svgNotTaken = d3.select("#svgNotTaken").selectAll(".available")
         .data(availableCourses);
 
-    console.log(svgGroups);
-    svgGroups.exit().remove();
+    console.log("SVGNOTTAKEN");
+    console.log(svgNotTaken);
 
-    //TAKEN COURSES. Color: Green
-    let svgContainer = d3.select("#graph").selectAll(".draggable,.taken")
-        .data(ViewModel.Classes);
-
-    svgContainer.exit().remove();
-
-    svgGroups.enter()
+    svgNotTaken.enter()
         .append("div")
         .attr("id", function (d) {
             return d
@@ -150,10 +145,33 @@ let draw = function(ViewModel) {
         .html(function (d) {
             return d.substr(4, 7)
         })
-        .attr("class", "draggable availableCourses outGraph");
+        .attr("class", "draggable available outGraph");
 
+    //TAKEN COURSES. Color: Green
+    let svgTaken = d3.select("#graph").selectAll(".taken")
+        .data(takenCourses);
 
-    svgContainer.enter()
+    svgTaken.enter()
+        .append("div")
+        .attr("id", function (d) {
+            return d.course
+        })
+        .html(function (d) {
+            return d.course.substr(4, 7)
+        })
+        .style("top", function (d) {
+            return d.x + 'px'
+        })
+        .style("left", function (d) {
+            return d.y + 'px'
+        })
+        .attr("class", "draggable taken inGraph");
+
+    //TAKEN COURSES. Color: Orange
+    let svgPlanned = d3.select("#graph").selectAll(".planned")
+        .data(plannedCourses);
+
+    svgPlanned.enter()
         .append("div")
         .attr("id", function (d) {
             return d.course
@@ -171,8 +189,6 @@ let draw = function(ViewModel) {
 
     positionTopBar();
     instructionsBinding();
-
-
 
 };
 
@@ -306,7 +322,7 @@ function findCourse(data, course) {
 }
 
 function notTaken(profile) {
-    let toReturn = ["MATH279"];
+    let toReturn = [];
     let compCat = cleanCatalogue();
     for (let course of compCat) {
         if (!profile.some((thing) => thing.course === course)) {
@@ -315,6 +331,17 @@ function notTaken(profile) {
     }
     return toReturn;
 }
+
+function filterTaken(profile){
+    let toReturn = profile.filter((course) => course.status === "taken");
+    return toReturn;
+}
+
+function filterPlanned(profile){
+    let toReturn = profile.filter((course) => course.status === "planned");
+    return toReturn;
+}
+
 
 function markTaken() {
     focus.addClass("taken").removeClass("available")
