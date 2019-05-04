@@ -22,7 +22,18 @@ function writeSourceTarget(profile) {
                 });
         }
     }
-    return connections;
+
+    //Get rid of connections between two taken courses
+    let newConnections = [];
+    for (let connection of connections){
+        let sourceCourse = profile.filter(course => course.course === connection.source);
+        let targetCourse = profile.filter(course => course.course === connection.target);
+        if (!(sourceCourse[0].status === "taken" && targetCourse[0].status === "taken")){
+            newConnections.push(connection);
+        }
+    }
+
+    return newConnections;
 }
 
 function cleanCatalogue() {
