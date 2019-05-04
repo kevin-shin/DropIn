@@ -27,9 +27,9 @@ function updatePosy(initPos){
         return initPos;
     }
     else if(initPos < 100 ) {
-        var newPos = initPos - randomInt(35, 60);
+        var newPos = initPos - randomInt(50, 60);
         while (newPos < 0) {
-            newPos = initPos - randomInt(35, 60);
+            newPos = initPos - randomInt(50, 60);
         }
         return newPos;
     }
@@ -75,7 +75,7 @@ function plusOrMinus(x, y){
  * @param initPos: initial x position of dragged course
  */
 function updatePosx(initPos){
-    if(initPos <30 || initPos > 590){ //if the initial class is at an edge
+    if(initPos <30 || initPos >= 590){ //if the initial class is at an edge
         if(initPos > 590 ){
             return initPos - randomInt(20, 50);
         }
@@ -84,9 +84,9 @@ function updatePosx(initPos){
         }
     }
     else if(initPos < 100 ) {
-        var newPos = plusOrMinus(initPos,randomInt(30, 50));
+        var newPos = plusOrMinus(initPos,randomInt(40, 60));
         while (newPos < 0 || newPos > 580) {
-            newPos = plusOrMinus(initPos, randomInt(30, 50));
+            newPos = plusOrMinus(initPos, randomInt(40, 60));
         }
         return newPos;
     }
