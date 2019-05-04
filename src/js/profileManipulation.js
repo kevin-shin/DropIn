@@ -146,10 +146,11 @@ let removeCourseFromProfile = function (profile, deletedCourse) {
 };
 
 let markasTaken = function(Profile, markedCourse){
+    let prereqs = dfs(markedCourse);
     for (let course of Profile){
-        if (course.course === markedCourse){
-            course.status = "taken"
-        }
+            if (prereqs.some((prereq) => prereq === course.course)){
+                    course.status = "taken"
+                }
     }
 };
 
