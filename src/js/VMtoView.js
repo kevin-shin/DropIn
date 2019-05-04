@@ -280,7 +280,7 @@ function updateRequirementsCount(profile) {
     let newCount = calculateRequirements(profile);
     for (let count of newCount) {
         let string = "#" + Object.keys(count)[0] + "Label";
-        $(string).text(Object.keys(count)[0].charAt(0).toUpperCase() + Object.keys(count)[0].slice(1) + " Courses: " + Object.values(count)[0]);
+        $(string).text(Object.keys(count)[0].charAt(0).toUpperCase() + Object.keys(count)[0].slice(1) + " Courses: " + Object.values(count)[0] + " Remaining");
     }
     for (let course of profile) {
         let reqSelectorString = "#req" + course.course;
