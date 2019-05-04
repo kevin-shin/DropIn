@@ -135,20 +135,6 @@ let draw = function(ViewModel) {
         list.removeChild(list.firstChild);
     }
 
-    //TAKEN COURSES. Color: Red
-    let svgNotTaken = d3.select("#svgNotTaken").selectAll(".available")
-        .data(availableCourses);
-
-    svgNotTaken.enter()
-        .append("div")
-        .attr("id", function (d) {
-            return d
-        })
-        .html(function (d) {
-            return d.substr(4, 7)
-        })
-        .attr("class", "draggable available outGraph");
-
     //TAKEN COURSES. Color: Green
     let svgTaken = d3.select("#graph").selectAll(".taken")
         .data(takenCourses);
@@ -188,6 +174,21 @@ let draw = function(ViewModel) {
             return d.y + 'px'
         })
         .attr("class", "draggable planned inGraph");
+
+    //TAKEN COURSES. Color: Red
+    let svgNotTaken = d3.select("#svgNotTaken").selectAll(".available")
+        .data(availableCourses);
+
+    svgNotTaken.enter()
+        .append("div")
+        .attr("id", function (d) {
+            return d
+        })
+        .html(function (d) {
+            return d.substr(4, 7)
+        })
+        .attr("class", "draggable available outGraph");
+
 
     positionTopBar();
     updateRequirementsCount(ViewModel.Classes);

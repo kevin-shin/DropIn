@@ -15,10 +15,11 @@ function writeSourceTarget(profile) {
     for (let course of profile) {
         let coursePrereqs = courseCatalog.get(course.course);
         for (let prereq of coursePrereqs) {
-            connections.push({
-                "source": prereq,
-                "target": course.course
-            });
+            if (profile.some((course) => course.course === prereq))
+                connections.push({
+                    "source": prereq,
+                    "target": course.course
+                });
         }
     }
     return connections;
