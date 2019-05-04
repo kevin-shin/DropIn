@@ -284,6 +284,10 @@ function updateRequirementsCount(profile){
         let string = "#" + Object.keys(count)[0] + "Label";
         $(string).text(Object.keys(count)[0].charAt(0).toUpperCase() + Object.keys(count)[0].slice(1) + " Courses: " + Object.values(count)[0]);
     }
+    for (let course of profile){
+        let reqSelectorString = "#req" + course.course;
+        $(reqSelectorString).css("opacity","0.5");
+    }
 }
 
 function positionTopBar() {

@@ -84,17 +84,18 @@ let setUpBehavior = function () {
 
 
         $("#delete").on('click',function(){
-            console.log("-------->  DELETING A CLASS");
-            removeCourseFromProfile(Profile, focus.attr('id'));
-            console.log("Here is the new profile AFTER DELETION");
-            console.log(Profile);
+            if (focus !== null) {
+                console.log("-------->  DELETING A CLASS");
+                removeCourseFromProfile(Profile, focus.attr('id'));
+                console.log("Here is the new profile AFTER DELETION");
+                console.log(Profile);
 
-            let ViewModel = makeViewModel(Profile);
-            console.log(ViewModel);
+                let ViewModel = makeViewModel(Profile);
+                console.log(ViewModel);
 
-            refreshView(ViewModel);
-
-            focus = null;
+                refreshView(ViewModel);
+                focus = null;
+            }
         });
 
         $("#markTaken").on('click',function(){
