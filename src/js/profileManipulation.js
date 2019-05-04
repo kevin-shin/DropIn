@@ -145,5 +145,22 @@ let removeCourseFromProfile = function (profile, deletedCourse) {
     profile.splice(j,1);
 };
 
+let markasTaken = function(Profile, markedCourse){
+    for (let course of Profile){
+        if (course.course === markedCourse){
+            course.status = "taken"
+        }
+    }
+};
 
-export { makeProfile, addCourseToProfile, removeCourseFromProfile }
+let markasPlanned = function(Profile, markedCourse){
+    for (let course of Profile){
+        if (course.course === markedCourse){
+            course.status = "planned"
+        }
+    }
+};
+
+
+
+export { makeProfile, addCourseToProfile, removeCourseFromProfile, markasTaken, markasPlanned}

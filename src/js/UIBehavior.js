@@ -1,6 +1,6 @@
 import {catalogue} from "../Model/cs_major.js";
 import {Profile, draw} from "./VMtoView.js";
-import {addCourseToProfile, removeCourseFromProfile} from "./profileManipulation.js";
+import {addCourseToProfile, removeCourseFromProfile, markasTaken, markasPlanned} from "./profileManipulation.js";
 import {makeViewModel} from "./makeViewModel.js";
 
 let focus;
@@ -29,6 +29,9 @@ let setUpBehavior = function () {
     });
 
     graphCourses.mouseup(function(event){
+        focus = $(this);
+        console.log("FOCUS");
+        console.log(focus);
         for (let course of Profile){
             if ($(this).attr('id') === course.course){
                 course.x = event.clientY - (displacement + 100);
@@ -94,11 +97,26 @@ let setUpBehavior = function () {
         });
 
         $("#markTaken").on('click',function(){
-            focus.addClass("taken").removeClass("available").removeClass("planned");
+            console.log("MarkTaken button fired");
+            markasTaken(Profile, focus.attr('id'));
+            console.log("Here is the new profile AFTER markasTaken");
+            console.log(Profile);
+
+            let ViewModel = makeViewModel(Profile);
+            console.log(ViewModel);
+
+            refreshView(ViewModel);
         });
 
-        $("#markUntaken").on('click',function(){
-            focus.addClass("planned").removeClass("taken");
+        $("#markPlanned").on('click',function(){
+            console.log("MarkPlanned button fired");
+            markasPlanned(Profile, focus.attr('id'));
+            console.log("Here is the new profile AFTER markasPlanned");
+            console.log(Profile);
+            let ViewModel = makeViewModel(Profile);
+            console.log(ViewModel);
+
+            refreshView(ViewModel)
         });
     });
 

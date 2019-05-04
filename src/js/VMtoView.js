@@ -42,7 +42,7 @@ let initializeView = function () {
     });
 
     function initializeYearGrid() {
-        let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
+        let years = ["Year 1 Fall", "Year 1 Spring", "Year 2 Fall","Year 2 Spring", "Year 3 Fall", "Year 3 Spring","Year 4 Fall", "Year 4 Spring"];
         let svgYears = d3.select("#graph").selectAll("yeargraphs")
             .data(years)
             .enter().append("div")
@@ -61,7 +61,7 @@ let initializeView = function () {
             .html("Mark as Taken");
 
         buttonBar.append("button")
-            .attr("id", "markUntaken")
+            .attr("id", "markPlanned")
             .html("Mark as Planned");
 
         buttonBar.append("button")
