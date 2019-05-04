@@ -111,6 +111,10 @@ body {
     z-index: 999;
 }
 
+.draggable:hover{
+    border: 2px solid cornflowerblue;
+}
+
 .taken {
     height: 60px;
     width: 60px;
@@ -141,7 +145,7 @@ body {
     line-height: 60px;
 }
 
-#graph > .year {
+.year {
     width: 12%;
     height: 100%;
     vertical-align: top;

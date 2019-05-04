@@ -42,7 +42,7 @@ let initializeView = function () {
     });
 
     function initializeYearGrid() {
-        let years = ["Year 1 Fall", "Year 1 Spring", "Year 2 Fall","Year 2 Spring", "Year 3 Fall", "Year 3 Spring","Year 4 Fall", "Year 4 Spring"];
+        let years = ["FY Fall", "FY Spring", "SO Fall","SO Spring", "JR Fall", "JR Spring","SR Fall", "SR Spring"];
         let svgYears = d3.select("#graph").selectAll("yeargraphs")
             .data(years)
             .enter().append("div")
@@ -196,6 +196,10 @@ let draw = function(ViewModel) {
     let isFullMajor = fullMajorCheck(ViewModel.Classes);
     if ( isFullMajor ){
         $("#majorText").text("This is a full major!")
+    }
+
+    else {
+        $("#majorText").text("")
     }
 
     instructionsBinding();

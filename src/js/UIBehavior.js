@@ -79,6 +79,7 @@ let setUpBehavior = function () {
                 $("#prereq").css("display","none");
                 $("#buttonBar").css("display","none");
             }
+            focus = null;
         });
 
 
