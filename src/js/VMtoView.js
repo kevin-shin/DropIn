@@ -20,10 +20,10 @@ let initializeView = function () {
         event.preventDefault();
         let profileString = ($('#profileData').serializeArray());
 
-        for(let profCourse of profileString){
+        for (let profCourse of profileString) {
             let dfsCourse = dfs(profCourse.name);
-            for (let postDfsCourse of dfsCourse){
-                if(!(profileString.some((nextCourse) => nextCourse.name === postDfsCourse))){
+            for (let postDfsCourse of dfsCourse) {
+                if (!(profileString.some((nextCourse) => nextCourse.name === postDfsCourse))) {
                     profileString.push({name: postDfsCourse, value: "on"});
                 }
             }
@@ -42,7 +42,7 @@ let initializeView = function () {
     });
 
     function initializeYearGrid() {
-        let years = ["FY Fall", "FY Spring", "SO Fall","SO Spring", "JR Fall", "JR Spring","SR Fall", "SR Spring"];
+        let years = ["FY Fall", "FY Spring", "SO Fall", "SO Spring", "JR Fall", "JR Spring", "SR Fall", "SR Spring"];
         let svgYears = d3.select("#graph").selectAll("yeargraphs")
             .data(years)
             .enter().append("div")
@@ -51,6 +51,7 @@ let initializeView = function () {
                 return String(d)
             });
     }
+
     function initializeButtonBar() {
         //BUTTON BAR
         let buttonBar = d3.select("body")
@@ -71,7 +72,7 @@ let initializeView = function () {
     }
 };
 
-let initialNodes = function(available, graphCourses) {
+let initialNodes = function (available, graphCourses) {
     let svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
         .data(available);
 
@@ -112,7 +113,7 @@ let initialNodes = function(available, graphCourses) {
     instructionsBinding();
 };
 
-let draw = function(ViewModel) {
+let draw = function (ViewModel) {
     console.log("*******  DRAW CALLED");
     console.log("Here is what should be in the profile.");
     console.log(ViewModel.Classes);
@@ -125,7 +126,7 @@ let draw = function(ViewModel) {
     console.log(availableCourses);
 
     let inGraph = $(".inGraph");
-    for (let course of inGraph){
+    for (let course of inGraph) {
         let element = document.getElementById(course.id);
         element.parentNode.removeChild(element);
     }
@@ -194,11 +195,9 @@ let draw = function(ViewModel) {
     updateRequirementsCount(ViewModel.Classes);
 
     let isFullMajor = fullMajorCheck(ViewModel.Classes);
-    if ( isFullMajor ){
+    if (isFullMajor) {
         $("#majorText").text("This is a full major!")
-    }
-
-    else {
+    } else {
         $("#majorText").text("")
     }
 
@@ -215,12 +214,12 @@ function instructionsBinding() {
         let description = course.courseInfo;
         let name = course.name;
         let title = course.dept + course.courseNum;
-        $("#welcomeText").css("display","none");
-        $("#name").css("display","block").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
-        $("#courseDescription").css("display","block").replaceWith(
+        $("#welcomeText").css("display", "none");
+        $("#name").css("display", "block").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
+        $("#courseDescription").css("display", "block").replaceWith(
             "<p id='courseDescription'>" + description + "</p>"
         );
-        $("#prereq").css("display","block").replaceWith(
+        $("#prereq").css("display", "block").replaceWith(
             "<p id='prereq'>" + prereq + "</p>"
         );
 
@@ -246,20 +245,19 @@ let initializeRequirementsPanel = function () {
                 .append("li")
                 .attr("id", "#reqIntro")
                 .text(label);
-
         }
 
-        if (inputLabel === "#math" || inputLabel === "#elective"){
+        if (inputLabel === "#math" || inputLabel === "#elective") {
             let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
             d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t");
         }
 
-        if (inputLabel === "#elective"){
+        if (inputLabel === "#elective") {
             let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
             d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t");
         }
 
-        if (inputLabel === "#core"){
+        if (inputLabel === "#core") {
             let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
             d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t");
 
@@ -278,16 +276,68 @@ let initializeRequirementsPanel = function () {
 
 //-----------     HELPER FUNCTIONS     -----------
 
-function updateRequirementsCount(profile){
+function updateRequirementsCount(profile) {
     let newCount = calculateRequirements(profile);
-    for (let count of newCount){
+    for (let count of newCount) {
         let string = "#" + Object.keys(count)[0] + "Label";
         $(string).text(Object.keys(count)[0].charAt(0).toUpperCase() + Object.keys(count)[0].slice(1) + " Courses: " + Object.values(count)[0]);
     }
-    for (let course of profile){
+    for (let course of profile) {
         let reqSelectorString = "#req" + course.course;
-        $(reqSelectorString).css("opacity","0.5");
+        if ($(reqSelectorString) !== null) {
+            $(reqSelectorString).css("opacity", "0.5");
+        }
     }
+
+    let mathRules = rules.filter((category) => category.label === "math")[0].courses;
+    let electiveRules = rules.filter((category) => category.label === "elective")[0].courses;
+
+    console.log("RULES");
+    console.log(mathRules);
+    console.log(electiveRules);
+
+    let mathProfile = [];
+    let electiveProfile = [];
+
+    for (let course of profile) {
+        if (mathRules.some((requirement) => requirement === course.course)) {
+            mathProfile.push(course);
+        }
+        if (electiveRules.some((requirement) => requirement === course.course)) {
+            electiveProfile.push(course);
+        }
+    }
+
+    console.log("MATH PROFILE");
+    console.log(mathProfile);
+    console.log("ELECTIVE PROFILE");
+    console.log(electiveProfile);
+
+    $("#math").empty();
+    $("#elective").empty();
+
+    d3.select("#math").selectAll("newElements")
+        .data(mathProfile)
+        .enter().append("li")
+        .attr("id", function (d) {
+            return "req" + d.course
+        })
+        .style("opacity","0.5")
+        .append("label").text(function (d) {
+        return d.course
+        });
+
+    d3.select("#elective").selectAll("newElements")
+        .data(electiveProfile)
+        .enter().append("li")
+        .attr("id", function (d) {
+            return "req" + d.course
+        })
+        .style("opacity","0.5")
+        .append("label").text(function (d) {
+        return d.course
+    });
+
 }
 
 function positionTopBar() {
@@ -326,11 +376,11 @@ function notTaken(profile) {
     return toReturn;
 }
 
-function filterTaken(profile){
+function filterTaken(profile) {
     return profile.filter((course) => course.status === "taken");
 }
 
-function filterPlanned(profile){
+function filterPlanned(profile) {
     return profile.filter((course) => course.status === "planned");
 }
 
