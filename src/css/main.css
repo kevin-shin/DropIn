@@ -3,6 +3,9 @@ html {
     margin: 0;
 }
 
+p {
+    font-weight: bold;
+}
 body {
     background-color: #eee;
     height: 100vh;
@@ -15,7 +18,7 @@ body {
 /*           INSTRUCTIONS PANEL           */
 .instructions {
     height: 40%;
-    width: 23%;
+    width: 24%;
     position: absolute;
     right: 0;
     overflow-y: scroll;
@@ -23,11 +26,11 @@ body {
     z-index: 10;
     border-radius: 15px;
     margin-right: 10px;
-    padding: 10px;
+    padding: 5px;
 }
 
 .instructions > p {
-    padding: 0px;
+    padding: 10px;
 }
 
 
@@ -43,7 +46,7 @@ body {
     margin: 10px;
     padding: 10px;
     height: 50%;
-    width: 23%;
+    width: 24%;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -113,6 +116,7 @@ body {
 .draggable {
     position: absolute;
     z-index: 999;
+    font-weight: bold;
 }
 
 .draggable:hover{
@@ -235,7 +239,7 @@ ul {
     border: 2px solid #AECBC9;
     overflow: -moz-scrollbars-horizontal;
     margin-left: 30px;
-    margin-top: 10px;
+    margin-top: 25px;
 }
 
 #lowerPanel {
@@ -288,8 +292,10 @@ ul {
     background-color: white;
     border-radius: 5px;
     border: 2px solid #AECBC9;
-    margin-right: 50px;
-    margin-top: 10px;
+    margin-right: 35px;
+    margin-left: 40px;
+    margin-top: 25px;
+    padding: 10px;
 }
 
 .draggable.planned {
@@ -315,8 +321,13 @@ ul {
 
 #buttonBar {
     display: none;
+    margin-left: 10px;
 }
 
 #requirementsText, #welcomeText {
     margin-left: 10px;
+}
+
+.requirements{
+    font-weight: bold;
 }
