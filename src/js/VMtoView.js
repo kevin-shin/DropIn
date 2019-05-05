@@ -353,124 +353,124 @@ function filterPlanned(profile) {
 function positionInitialCourses(profile) {
     for (let course of profile) {
         if (course.course === "COMP120") {
-            course.x = 400;
-            course.y = 30
+            course.y = 400;
+            course.x = 30
         }
         if (course.course === "COMP112") {
-            course.x = 30;
-            course.y = 30
+            course.y = 30;
+            course.x = 30
         }
         if (course.course === "COMP123") {
-            course.x = 250;
-            course.y = 30
+            course.y = 250;
+            course.x = 30
         }
         if (course.course === "COMP127") {
-            course.x = 200;
-            course.y = 130
+            course.y = 200;
+            course.x = 130
         }
         if (course.course === "COMP128") {
-            course.x = 230;
-            course.y = 280
+            course.y = 230;
+            course.x = 280
         }
         if (course.course === "COMP154") {
-            course.x = 500;
-            course.y = 30
+            course.y = 500;
+            course.x = 30
         }
         if (course.course === "MATH279") {
-            course.x = 160;
-            course.y = 280
+            course.y = 160;
+            course.x = 280
         }
         if (course.course === "COMP240") {
             course.x = 320;
             course.y = 530
         }
         if (course.course === "COMP221") {
-            course.x = 90;
-            course.y = 530
+            course.y = 90;
+            course.x = 530
         }
         if (course.course === "COMP225") {
-            course.x = 330;
-            course.y = 400
+            course.y = 330;
+            course.x = 400
         }
         if (course.course === "COMP261") {
-            course.x = 230;
-            course.y = 530
+            course.y = 230;
+            course.x = 530
         }
         if (course.course === "COMP302") {
-            course.x = 440;
-            course.y = 350
+            course.y = 440;
+            course.x = 350
         }
         if (course.course === "COMP320") {
-            course.x = 520;
-            course.y = 350
+            course.y = 520;
+            course.x = 350
         }
         if (course.course === "COMP340") {
-            course.x = 50;
-            course.y = 590
+            course.y = 50;
+            course.x = 590
         }
         if (course.course === "MATH137") {
-            course.x = 50;
-            course.y = 330
+            course.y = 50;
+            course.x = 330
         }
         if (course.course === "MATH135") {
-            course.x = 40;
-            course.y = 150
+            course.y = 40;
+            course.x = 150
         }
         if (course.course === "COMP342") {
-            course.x = 320;
-            course.y = 680
+            course.y = 320;
+            course.x = 680
         }
         if (course.course === "COMP346") {
-            course.x = 400;
-            course.y = 590
+            course.y = 400;
+            course.x = 590
         }
         if (course.course === "COMP365") {
-            course.x = 520;
-            course.y = 660
+            course.y = 520;
+            course.x = 660
         }
         if (course.course === "MATH236") {
-            course.x = 160;
-            course.y = 600
+            course.y = 160;
+            course.x = 600
         }
         if (course.course === "COMP380") {
-            course.x = 90;
-            course.y = 800
+            course.y = 90;
+            course.x = 800
         }
         if (course.course === "COMP394") {
-            course.x = 300;
-            course.y = 800
+            course.y = 300;
+            course.x = 800
         }
         if (course.course === "COMP440") {
-            course.x = 200;
-            course.y = 860
+            course.y = 200;
+            course.x = 860
         }
         if (course.course === "COMP445") {
-            course.x = 230;
-            course.y = 800
+            course.y = 230;
+            course.x = 800
         }
         if (course.course === "COMP465") {
-            course.x = 460;
-            course.y = 780
+            course.y = 460;
+            course.x = 780
         }
         if (course.course === "COMP479") {
-            course.x = 530;
-            course.y = 890
+            course.y = 530;
+            course.x = 890
         }
         if (course.course === "MATH379") {
-            course.x = 250;
-            course.y = 950
+            course.y = 250;
+            course.x = 950
         }
         if (course.course === "MATH237") {
-            course.x = 50;
-            course.y = 950
+            course.y = 50;
+            course.x = 950
         }
         if (course.course === "COMP484") {
-            course.x = 140;
-            course.y = 905
+            course.y = 140;
+            course.x = 905
         }
         if (course.course === "COMP494") {
-            course.x = 430;
-            course.y = 950
+            course.y = 430;
+            course.x = 950
         }
     }
 }
