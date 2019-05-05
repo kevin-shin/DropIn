@@ -5,7 +5,8 @@ import {makeViewModel} from "./makeViewModel.js";
 
 let focus;
 const radius = 20;
-const displacement = radius + 10;
+const displacementX = 37;
+const displacementY = 125;
 
 let jsPlumbInstance = jsPlumb.getInstance({
     Connector: ["Straight"],
@@ -29,8 +30,8 @@ let setUpBehavior = function () {
         focus = $(this);
         for (let course of Profile){
             if ($(this).attr('id') === course.course){
-                course.x = event.clientY - (displacement + 100);
-                course.y = event.clientX - displacement - 5;
+                course.x = event.clientX-displacementX;
+                course.y = event.clientY-displacementY;
             }
         }
         let ViewModel = makeViewModel(Profile);
@@ -42,8 +43,8 @@ let setUpBehavior = function () {
         accept: ".draggable",
         drop: function (e, ui) {
             addCourseToProfile(Profile, ui.helper.attr('id'),
-                event.clientY - (displacement + 100),
-                event.clientX - displacement - 5);
+                event.clientX-displacementX,
+                event.clientY-displacementY);
 
             let ViewModel = makeViewModel(Profile);
             refreshView(ViewModel);
@@ -122,6 +123,11 @@ let refreshView = function (ViewModel) {
         }
     }
 
+    draw(ViewModel);
+    drawConnections(ViewModel.Connections);
+
+
+
     let graphCourses = $(".inGraph");
     let outGraph = $(".outGraph");
 
@@ -135,16 +141,13 @@ let refreshView = function (ViewModel) {
         focus = $(this);
         for (let course of Profile){
             if ($(this).attr('id') === course.course){
-                course.x = event.clientY - (displacement + 100);
-                course.y = event.clientX - displacement - 5;
+                course.x = event.clientX-displacementX;
+                course.y = event.clientY-displacementY;
             }
         }
         let ViewModel = makeViewModel(Profile);
         refreshView(ViewModel);
     });
-
-    draw(ViewModel);
-    drawConnections(ViewModel.Connections);
 
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 };

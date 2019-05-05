@@ -96,10 +96,10 @@ let initialNodes = function (available, graphCourses) {
             return d.course.substr(4, 7)
         })
         .style("top", function (d) {
-            return d.x + 'px'
+            return d.y + 'px'
         })
         .style("left", function (d) {
-            return d.y + 'px'
+            return d.x + 'px'
         })
         .attr("class", "draggable taken inGraph");
 
@@ -140,10 +140,10 @@ let draw = function (ViewModel) {
             return d.course.substr(4, 7)
         })
         .style("top", function (d) {
-            return d.x + 'px'
+            return d.y + 'px'
         })
         .style("left", function (d) {
-            return d.y + 'px'
+            return d.x + 'px'
         })
         .attr("class", "draggable taken inGraph");
 
@@ -160,10 +160,10 @@ let draw = function (ViewModel) {
             return d.course.substr(4, 7)
         })
         .style("top", function (d) {
-            return d.x + 'px'
+            return d.y + 'px'
         })
         .style("left", function (d) {
-            return d.y + 'px'
+            return d.x + 'px'
         })
         .attr("class", "draggable planned inGraph");
 
