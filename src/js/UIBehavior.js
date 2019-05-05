@@ -23,26 +23,17 @@ let setUpBehavior = function () {
 
     /*            DRAGGABLE BEHAVIOR           */
     outGraph.draggable({revert: true});
-
-    jsPlumbInstance.draggable(graphCourses, {
-        containment: "parent"
-    });
+    jsPlumbInstance.draggable(graphCourses, { containment: "parent" });
 
     graphCourses.mouseup(function(event){
         focus = $(this);
-        console.log("FOCUS");
-        console.log(focus);
         for (let course of Profile){
             if ($(this).attr('id') === course.course){
                 course.x = event.clientY - (displacement + 100);
                 course.y = event.clientX - displacement - 5;
             }
         }
-        console.log("inGraph mouse up activate");
-        console.log(Profile);
-
         let ViewModel = makeViewModel(Profile);
-        console.log(ViewModel);
         refreshView(ViewModel);
     });
 
@@ -50,17 +41,11 @@ let setUpBehavior = function () {
     graph.droppable({
         accept: ".draggable",
         drop: function (e, ui) {
-
-            console.log("-------->  I DROPPED A CLASS");
             addCourseToProfile(Profile, ui.helper.attr('id'),
                 event.clientY - (displacement + 100),
                 event.clientX - displacement - 5);
 
-            console.log("Here is the new profile AFTER ADDITION");
-            console.log(Profile);
             let ViewModel = makeViewModel(Profile);
-            console.log(ViewModel);
-
             refreshView(ViewModel);
         }
     });
@@ -137,35 +122,30 @@ let refreshView = function (ViewModel) {
         }
     }
 
-    draw(ViewModel);
-    drawConnections(ViewModel.Connections);
-
     let graphCourses = $(".inGraph");
+    let outGraph = $(".outGraph");
+
+    outGraph.draggable({revert: true});
     jsPlumbInstance.draggable(graphCourses, {
         disabled: true,
         containment: "parent"
     });
 
-    let outGraph = $(".outGraph");
-    outGraph.draggable({revert: true});
-
     graphCourses.mouseup(function(event){
         focus = $(this);
-        console.log("FOCUS");
-        console.log(focus);
         for (let course of Profile){
             if ($(this).attr('id') === course.course){
                 course.x = event.clientY - (displacement + 100);
                 course.y = event.clientX - displacement - 5;
             }
         }
-        console.log("inGraph mouse up activate");
-        console.log(Profile);
-
         let ViewModel = makeViewModel(Profile);
-        console.log(ViewModel);
         refreshView(ViewModel);
     });
+
+    draw(ViewModel);
+    drawConnections(ViewModel.Connections);
+
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 };
 

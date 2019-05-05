@@ -32,18 +32,16 @@ let initializeView = function () {
         Profile = makeProfile(profileString);
         ViewModel = makeViewModel(Profile);
 
-
         initializeYearGrid();
         initializeButtonBar();
         initializeRequirementsPanel();
         positionInitialCourses(Profile);
         updateRequirementsCount(Profile);
-
     });
 
     function initializeYearGrid() {
         let years = ["FY Fall", "FY Spring", "SO Fall", "SO Spring", "JR Fall", "JR Spring", "SR Fall", "SR Spring"];
-        let svgYears = d3.select("#graph").selectAll("yeargraphs")
+        let svgYears = d3.select("#graph").selectAll("yearGraphs")
             .data(years)
             .enter().append("div")
             .attr("class", "year")
@@ -53,7 +51,6 @@ let initializeView = function () {
     }
 
     function initializeButtonBar() {
-        //BUTTON BAR
         let buttonBar = d3.select("body")
             .select("#buttonBar");
 
@@ -114,16 +111,10 @@ let initialNodes = function (available, graphCourses) {
 };
 
 let draw = function (ViewModel) {
-    console.log("*******  DRAW CALLED");
-    console.log("Here is what should be in the profile.");
-    console.log(ViewModel.Classes);
 
     let availableCourses = notTaken(ViewModel.Classes);
     let plannedCourses = filterPlanned(ViewModel.Classes);
     let takenCourses = filterTaken(ViewModel.Classes);
-
-    console.log("And here is what should be in the bar.");
-    console.log(availableCourses);
 
     let inGraph = $(".inGraph");
     for (let course of inGraph) {
@@ -192,17 +183,16 @@ let draw = function (ViewModel) {
 
 
     positionTopBar();
+    instructionsBinding();
     updateRequirementsCount(ViewModel.Classes);
 
     let isFullMajor = fullMajorCheck(ViewModel.Classes);
     if (isFullMajor) {
         $("#majorText").text("This is a full major!")
+
     } else {
         $("#majorText").text("")
     }
-
-    instructionsBinding();
-
 };
 
 function instructionsBinding() {
@@ -222,7 +212,6 @@ function instructionsBinding() {
         $("#prereq").css("display", "block").replaceWith(
             "<p id='prereq'>" + prereq + "</p>"
         );
-
     });
 }
 
@@ -231,21 +220,6 @@ let initializeRequirementsPanel = function () {
     for (let obj of rules) {
         let inputLabel = "#" + String(obj.label);//this is the grouping of "intro", "core", "math", or "elective"
         let subRequirementList = d3.select(".requirements").select(inputLabel);
-
-        if (inputLabel === "#intro") {
-            d3.select("#introLabel").text("Intro Courses: ");
-
-            let label = "";
-            for (let course of obj.courses) {
-                label += course + " or ";
-            }
-            label = label.substring(0, label.length - 4);//" or " = 4 chars
-
-            subRequirementList
-                .append("li")
-                .attr("id", "#reqIntro")
-                .text(label);
-        }
 
         if (inputLabel === "#math" || inputLabel === "#elective") {
             let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
@@ -257,7 +231,7 @@ let initializeRequirementsPanel = function () {
             d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t");
         }
 
-        if (inputLabel === "#core") {
+        if (inputLabel === "#intro" | inputLabel === "#core") {
             let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
             d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t");
 
@@ -273,6 +247,7 @@ let initializeRequirementsPanel = function () {
         }
     }
 };
+
 
 //-----------     HELPER FUNCTIONS     -----------
 
@@ -292,10 +267,6 @@ function updateRequirementsCount(profile) {
     let mathRules = rules.filter((category) => category.label === "math")[0].courses;
     let electiveRules = rules.filter((category) => category.label === "elective")[0].courses;
 
-    console.log("RULES");
-    console.log(mathRules);
-    console.log(electiveRules);
-
     let mathProfile = [];
     let electiveProfile = [];
 
@@ -307,11 +278,6 @@ function updateRequirementsCount(profile) {
             electiveProfile.push(course);
         }
     }
-
-    console.log("MATH PROFILE");
-    console.log(mathProfile);
-    console.log("ELECTIVE PROFILE");
-    console.log(electiveProfile);
 
     $("#math").empty();
     $("#elective").empty();
@@ -506,7 +472,6 @@ function positionInitialCourses(profile) {
             course.x = 430;
             course.y = 950
         }
-
     }
 }
 
