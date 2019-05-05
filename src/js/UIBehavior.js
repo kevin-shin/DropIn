@@ -4,7 +4,7 @@ import {addCourseToProfile, removeCourseFromProfile, markasTaken, markasPlanned}
 import {makeViewModel} from "./makeViewModel.js";
 
 let focus;
-const radius = 20;
+
 const displacementX = 37;
 const displacementY = 125;
 

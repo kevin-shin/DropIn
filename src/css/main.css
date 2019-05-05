@@ -71,7 +71,7 @@ body {
     width: 72%;
     left: 0;
     background-color: #ffffff00;
-    margin: 5px;
+    margin-left:11px;
     padding: 10px;
     float: left;
     white-space: nowrap;
@@ -91,13 +91,13 @@ body {
 }
 
 #svgNotTaken {
-    width: 72%;
+    width: 900px;
     height: 75px;
     position: relative;
     background-color: white;
     border-radius: 25px;
     border: 2px solid #D8C684;
-    margin-left: 10px;
+    margin-left: 17px;
     margin-top: 10px;
     display: block;
     overflow: -moz-scrollbars-horizontal;
@@ -154,7 +154,7 @@ body {
 }
 
 .year {
-    width: 12%;
+    width: 109px;
     height: 100%;
     vertical-align: top;
     display: inline-block;

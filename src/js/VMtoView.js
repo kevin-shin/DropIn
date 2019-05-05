@@ -79,7 +79,7 @@ let initialNodes = function (available, graphCourses) {
             return d
         })
         .html(function (d) {
-            return d.substr(4, 7)
+            return  d.substr(4, 7)
         })
         .attr("class", "draggable available outGraph");
 
