@@ -48,11 +48,21 @@ let initializeView = function () {
             .html(function (d) {
                 return String(d)
             });
+
+        d3.select("#GUI").append("div").attr("id","statusBar");
     }
 
     function initializeButtonBar() {
         let buttonBar = d3.select("body")
-            .select("#buttonBar");
+            .select("#statusBar");
+
+        buttonBar.append("button")
+            .attr("id", "organize")
+            .html("Organize");
+
+        buttonBar.append("button")
+            .attr("id", "missingPrereq")
+            .html("Fill in Prereqs");
 
         buttonBar.append("button")
             .attr("id", "markTaken")
