@@ -82,7 +82,7 @@ body {
 }
 
 #svgNotTaken {
-    width: 72%;
+    width: 60%;
     height: 75px;
     position: relative;
     background-color: white;
@@ -95,6 +95,8 @@ body {
 #GUI {
     height: 100vh;
 }
+
+
 
 .result {
     display: inline-block;
@@ -190,6 +192,16 @@ ul {
 
 #nextButton, #startButton {
     margin-top: 10px;
+}
+
+#subButton {
+    position: absolute;
+    left: 65%;
+    top:0;
+    opacity: 110;
+    cursor: pointer;
+    height: 0;
+    width: 0;
 }
 
 #introNext, #exampleNext {

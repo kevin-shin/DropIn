@@ -82,9 +82,15 @@ let initializeView = function () {
 
     let garbage = d3.select("#graph")
         .append("div")
-        .attr("id", "garbage")
-
+        .attr("id", "garbage");
 };
+
+//I WROTE THIS
+let changeSubject = function(){
+//
+
+d3.select("subButton").on("change", changeSubject());
+
 
 let initialNodes = function(available, graphCourses) {
     var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
