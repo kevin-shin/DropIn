@@ -1,16 +1,17 @@
 import {rules} from "../Model/cs_major_rules.js";
 import {WelcomePanel} from "./WelcomePanel.js";
 import {makeProfile} from "./profileManipulation.js";
-import {deleteButton, focus} from "./UIBehavior.js";
 import {makeViewModel, cleanCatalogue} from "./makeViewModel.js";
 import {catalogue} from "../Model/cs_major.js";
 import {dfs} from "./connectionsLogic.js";
+import {calculateRequirements} from "./requirements.js";
+import {fullMajorCheck} from "./requirements.js";
 
 let Profile;
 let ViewModel;
 
 let initializeView = function () {
-    initializePanels();
+
     let alert = new WelcomePanel();
     alert.render();
     $("#nextButton").on("click", alert.next);
@@ -19,10 +20,10 @@ let initializeView = function () {
         event.preventDefault();
         let profileString = ($('#profileData').serializeArray());
 
-        for(let profCourse of profileString){
+        for (let profCourse of profileString) {
             let dfsCourse = dfs(profCourse.name);
-            for (let postDfsCourse of dfsCourse){
-                if(!(profileString.some((nextCourse) => nextCourse.name === postDfsCourse))){
+            for (let postDfsCourse of dfsCourse) {
+                if (!(profileString.some((nextCourse) => nextCourse.name === postDfsCourse))) {
                     profileString.push({name: postDfsCourse, value: "on"});
                 }
             }
@@ -31,69 +32,59 @@ let initializeView = function () {
         Profile = makeProfile(profileString);
         ViewModel = makeViewModel(Profile);
 
-        console.log("Here is where the submit is triggered");
-        console.log(ViewModel);
-
+        initializeYearGrid();
+        initializeButtonBar();
+        initializeRequirementsPanel();
         positionInitialCourses(Profile);
+        updateRequirementsCount(Profile);
     });
 
-    function initializePanels() {
-        let years = ["Year 1", "Year 2", "Year 3", "Year 4"];
-
-        let svg = d3.select("body")
-            .select("#GUI")
-            .append("div")
-            .attr("id", "svgNotTaken");
-
-        let svgNotTakenDivs = d3.select("body")
-            .select("#GUI")
-            .append("div")
-            .attr("id", "graph");
-
-        let svgYears = svgNotTakenDivs.selectAll("years")
+    function initializeYearGrid() {
+        let years = ["FY Fall", "FY Spring", "SO Fall", "SO Spring", "JR Fall", "JR Spring", "SR Fall", "SR Spring"];
+        let svgYears = d3.select("#graph").selectAll("yearGraphs")
             .data(years)
             .enter().append("div")
             .attr("class", "year")
             .html(function (d) {
                 return String(d)
             });
+
+        d3.select("#GUI").append("div").attr("id","statusBar");
     }
 
-    //BUTTON BAR
-    let buttonBar = d3.select("body")
-        .select(".instructions")
-        .append("div")
-        .attr("id", "buttonBar");
+    function initializeButtonBar() {
+        let buttonBar = d3.select("body")
+            .select("#statusBar");
 
-    buttonBar.append("button")
-        .attr("id", "markTaken")
-        .html("Mark as Taken")
-        .on("click", markTaken);
+        buttonBar.append("button")
+            .attr("id", "organize")
+            .html("Organize");
 
-    buttonBar.append("button")
-        .attr("id", "markUntaken")
-        .html("Mark as Untaken")
-        .on("click", markUntaken);
+        buttonBar.append("button")
+            .attr("id", "missingPrereq")
+            .html("Fill in Prereqs");
 
-    buttonBar.append("button")
-        .attr("id", "delete")
-        .html("Delete")
-        .on("click", deleteButton);
+        buttonBar.append("button")
+            .attr("id", "markTaken")
+            .html("Mark as Taken");
 
-    let garbage = d3.select("#graph")
-        .append("div")
-        .attr("id", "garbage");
+        buttonBar.append("button")
+            .attr("id", "markPlanned")
+            .html("Mark as Planned");
+
+        buttonBar.append("button")
+            .attr("id", "delete")
+            .html("Delete");
+
+        buttonBar.append("button")
+            .attr("id", "export")
+            .html("Export");
+
+    }
 };
 
-//I WROTE THIS
-let changeSubject = function(){
-//
-
-d3.select("subButton").on("change", changeSubject());
-
-
-let initialNodes = function(available, graphCourses) {
-    var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
+let initialNodes = function (available, graphCourses) {
+    let svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
         .data(available);
 
     svgGroups.enter()
@@ -102,9 +93,22 @@ let initialNodes = function(available, graphCourses) {
             return d
         })
         .html(function (d) {
-            return d.substr(4, 7)
+            return  d.substr(4, 7)
         })
-        .attr("class", "draggable available outGraph");
+        .attr("class", "draggable available compsci outGraph");
+
+    let svgMathGroups = d3.select("#mathNotTaken").selectAll(".draggable")
+        .data(available);
+
+    svgMathGroups.enter()
+        .append("div")
+        .attr("id", function (d) {
+            return d
+        })
+        .html(function (d) {
+            return  d.substr(4, 7)
+        })
+        .attr("class", "draggable available math outGraph");
 
     //TAKEN COURSES. Color: Green
     let svgContainer = d3.select("#graph").selectAll(".draggable,.taken")
@@ -119,10 +123,10 @@ let initialNodes = function(available, graphCourses) {
             return d.course.substr(4, 7)
         })
         .style("top", function (d) {
-            return d.x + 'px'
+            return d.y + 'px'
         })
         .style("left", function (d) {
-            return d.y + 'px'
+            return d.x + 'px'
         })
         .attr("class", "draggable taken inGraph");
 
@@ -133,41 +137,28 @@ let initialNodes = function(available, graphCourses) {
     instructionsBinding();
 };
 
-let draw = function(ViewModel) {
+let draw = function (ViewModel) {
 
     let availableCourses = notTaken(ViewModel.Classes);
+    let plannedCourses = filterPlanned(ViewModel.Classes);
+    let takenCourses = filterTaken(ViewModel.Classes);
 
-    console.log("*******  DRAW CALLED");
-    console.log("Here is what should be in the profile.");
-    console.log(ViewModel.Classes);
+    let inGraph = $(".inGraph");
+    for (let course of inGraph) {
+        let element = document.getElementById(course.id);
+        element.parentNode.removeChild(element);
+    }
 
-    console.log("And here is what should be in the bar.");
-    console.log(availableCourses);
-
-    var svgGroups = d3.select("#svgNotTaken").selectAll(".draggable,.available")
-        .data(availableCourses);
-
-    console.log(svgGroups);
-    svgGroups.exit().remove();
+    let list = document.getElementById("svgNotTaken");
+    while (list.hasChildNodes()) {
+        list.removeChild(list.firstChild);
+    }
 
     //TAKEN COURSES. Color: Green
-    let svgContainer = d3.select("#graph").selectAll(".draggable,.taken")
-        .data(ViewModel.Classes);
+    let svgTaken = d3.select("#graph").selectAll(".taken")
+        .data(takenCourses);
 
-    svgContainer.exit().remove();
-
-    svgGroups.enter()
-        .append("div")
-        .attr("id", function (d) {
-            return d
-        })
-        .html(function (d) {
-            return d.substr(4, 7)
-        })
-        .attr("class", "draggable availableCourses outGraph");
-
-
-    svgContainer.enter()
+    svgTaken.enter()
         .append("div")
         .attr("id", function (d) {
             return d.course
@@ -176,65 +167,100 @@ let draw = function(ViewModel) {
             return d.course.substr(4, 7)
         })
         .style("top", function (d) {
-            return d.x + 'px'
+            return d.y + 'px'
         })
         .style("left", function (d) {
+            return d.x + 'px'
+        })
+        .attr("class", "draggable taken inGraph");
+
+    //TAKEN COURSES. Color: Orange
+    let svgPlanned = d3.select("#graph").selectAll(".planned")
+        .data(plannedCourses);
+
+    svgPlanned.enter()
+        .append("div")
+        .attr("id", function (d) {
+            return d.course
+        })
+        .html(function (d) {
+            return d.course.substr(4, 7)
+        })
+        .style("top", function (d) {
             return d.y + 'px'
+        })
+        .style("left", function (d) {
+            return d.x + 'px'
         })
         .attr("class", "draggable planned inGraph");
 
+    //TAKEN COURSES. Color: Red
+    let svgNotTaken = d3.select("#svgNotTaken").selectAll(".available")
+        .data(availableCourses);
+
+    svgNotTaken.enter()
+        .append("div")
+        .attr("id", function (d) {
+            return d
+        })
+        .html(function (d) {
+            return d.substr(4, 7)
+        })
+        .attr("class", "draggable available outGraph");
+
+
     positionTopBar();
     instructionsBinding();
+    updateRequirementsCount(ViewModel.Classes);
 
+    let isFullMajor = fullMajorCheck(ViewModel.Classes);
+    if (isFullMajor) {
+        $("#majorText").text("This is a full major!")
+
+    } else {
+        $("#majorText").text("")
+    }
 };
 
 function instructionsBinding() {
     let allCourses = $(".draggable");
     allCourses.bind("mousedown", function () {
-        //change CSS to absolute so it can drag
-        var course = findCourse(catalogue, this);
-        var prereq = course.prereq;
-        var description = course.courseInfo;
-        var name = course.name;
-        var title = course.dept + course.courseNum;
-        $("#welcomeText").remove();
-        $("#name").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
-        $("#courseDescription").replaceWith(
+        $("#buttonBar").css("display", "block");
+        let course = findCourse(catalogue, this);
+        let prereq = course.prereq;
+        let description = course.courseInfo;
+        let name = course.name;
+        let title = course.dept + course.courseNum;
+        $("#welcomeText").css("display", "none");
+        $("#name").css("display", "block").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
+        $("#courseDescription").css("display", "block").replaceWith(
             "<p id='courseDescription'>" + description + "</p>"
         );
-        $("#prereq").replaceWith(
+        $("#prereq").css("display", "block").replaceWith(
             "<p id='prereq'>" + prereq + "</p>"
         );
-
     });
 }
 
 
-
-let requirementsPanelUpdate = function () {
+let initializeRequirementsPanel = function () {
     for (let obj of rules) {
         let inputLabel = "#" + String(obj.label);//this is the grouping of "intro", "core", "math", or "elective"
-        var subRequirementList = d3.select(".requirements").select(inputLabel);
+        let subRequirementList = d3.select(".requirements").select(inputLabel);
 
-        if (inputLabel === "#intro") {
-            //Add the counter to the
-            d3.select("#introLabel").text("Intro Classes : " + obj.required);
-
-            //Add li to the ul
-            let label = "";
-            for (let course of obj.courses) {
-                label += course + " or ";
-            }
-            label = label.substring(0, label.length - 4);//" or " = 4 chars
-
-            subRequirementList
-                .append("li")
-                .attr("id", "#reqIntro")
-                .text(label);
-
-        } else {
+        if (inputLabel === "#math" || inputLabel === "#elective") {
             let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
-            d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t" + obj.required);
+            d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t");
+        }
+
+        if (inputLabel === "#elective") {
+            let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
+            d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t");
+        }
+
+        if (inputLabel === "#intro" | inputLabel === "#core") {
+            let temp = obj.label.charAt(0).toUpperCase();//Making the first character capital
+            d3.select("#" + obj.label + "Label").text(temp + obj.label.substring(1, obj.label.length) + " Courses: \t\t");
 
             subRequirementList.selectAll("courses")
                 .data(obj.courses)
@@ -249,53 +275,67 @@ let requirementsPanelUpdate = function () {
     }
 };
 
-let introNumReqs = rules[0].required, coreNumReqs = rules[1].required;
-let mathNumReqs = rules[2].required, electiveNumReq = rules[3].required;
 
-let decrementNumReqs = function (classDropped) {
-    let reqToDecrement; //will be one of the labels in rules
-    for (let obj of rules) {
-        for (let course of obj.courses) {
-            if (course === classDropped) {
-                reqToDecrement = obj.label;
-                console.log("REQ TO DECREMENT");
-                console.log(reqToDecrement);
-            }
+//-----------     HELPER FUNCTIONS     -----------
+
+function updateRequirementsCount(profile) {
+    let newCount = calculateRequirements(profile);
+    for (let count of newCount) {
+        let string = "#" + Object.keys(count)[0] + "Label";
+        $(string).text(Object.keys(count)[0].charAt(0).toUpperCase() + Object.keys(count)[0].slice(1) + " Courses: " + Object.values(count)[0] + " Remaining");
+    }
+    for (let course of profile) {
+        let reqSelectorString = "#req" + course.course;
+        if ($(reqSelectorString) !== null) {
+            $(reqSelectorString).css("opacity", "0.5");
         }
     }
 
-    switch (reqToDecrement) {//Decrementing reqToDecrement
-        case "intro":
-            introNumReqs--;
-            break;
-        case "core":
-            coreNumReqs--;
-            break;
-        case "math":
-            mathNumReqs--;
-            break;
-        case "elective":
-            electiveNumReq--;
-            break;
-        default:
-            console.log("reqToDecrement variable miss-assigned")
+    let mathRules = rules.filter((category) => category.label === "math")[0].courses;
+    let electiveRules = rules.filter((category) => category.label === "elective")[0].courses;
 
+    let mathProfile = [];
+    let electiveProfile = [];
+
+    for (let course of profile) {
+        if (mathRules.some((requirement) => requirement === course.course)) {
+            mathProfile.push(course);
+        }
+        if (electiveRules.some((requirement) => requirement === course.course)) {
+            electiveProfile.push(course);
+        }
     }
 
-    d3.select("#" + reqToDecrement + "Label")
-        .html(reqToDecrement.toUpperCase().charAt(0) +  //first letter capitalized
-            reqToDecrement.substring(1, reqToDecrement.length) + //rest lowercase
-            " Courses : " + (reqToDecrement + "NumReqs")); //previous number of reqs - 1
-    console.log(reqToDecrement.toUpperCase().charAt(0) +  //first letter capitalized
-        reqToDecrement.substring(1, reqToDecrement.length) + //rest lowercase
-        " Courses : " + (reqToDecrement + "NumReqs"))
-};
+    $("#math").empty();
+    $("#elective").empty();
 
+    d3.select("#math").selectAll("newElements")
+        .data(mathProfile)
+        .enter().append("li")
+        .attr("id", function (d) {
+            return "req" + d.course
+        })
+        .style("opacity","0.5")
+        .append("label").text(function (d) {
+        return d.course
+        });
 
-//-----------     HELPER FUNCTIONS     -----------
+    d3.select("#elective").selectAll("newElements")
+        .data(electiveProfile)
+        .enter().append("li")
+        .attr("id", function (d) {
+            return "req" + d.course
+        })
+        .style("opacity","0.5")
+        .append("label").text(function (d) {
+        return d.course
+    });
+
+}
+
 function positionTopBar() {
     const radius = 20;
-    let topCourses = $(".draggable.available");
+    let topCourses = $(".draggable.available.math");
     const length = topCourses.length;
     const width = $("#svgNotTaken").width() - 75;
     const placement = width / length;
@@ -319,7 +359,7 @@ function findCourse(data, course) {
 }
 
 function notTaken(profile) {
-    let toReturn = ["MATH279"];
+    let toReturn = [];
     let compCat = cleanCatalogue();
     for (let course of compCat) {
         if (!profile.some((thing) => thing.course === course)) {
@@ -329,43 +369,135 @@ function notTaken(profile) {
     return toReturn;
 }
 
-function markTaken() {
-    focus.addClass("taken").removeClass("available")
+function filterTaken(profile) {
+    return profile.filter((course) => course.status === "taken");
 }
 
-function markUntaken() {
-    focus.addClass("available").removeClass("taken")
+function filterPlanned(profile) {
+    return profile.filter((course) => course.status === "planned");
 }
 
 function positionInitialCourses(profile) {
     for (let course of profile) {
+        if (course.course === "COMP120") {
+            course.y = 400;
+            course.x = 30
+        }
+        if (course.course === "COMP112") {
+            course.y = 30;
+            course.x = 30
+        }
         if (course.course === "COMP123") {
-            course.x = 250;
-            course.y = 30
+            course.y = 250;
+            course.x = 30
         }
         if (course.course === "COMP127") {
-            course.x = 200;
-            course.y = 130
+            course.y = 200;
+            course.x = 130
         }
         if (course.course === "COMP128") {
-            course.x = 230;
-            course.y = 280
+            course.y = 230;
+            course.x = 280
+        }
+        if (course.course === "COMP154") {
+            course.y = 500;
+            course.x = 30
         }
         if (course.course === "MATH279") {
-            course.x = 330;
-            course.y = 280
+            course.y = 160;
+            course.x = 280
         }
         if (course.course === "COMP240") {
-            course.x = 190;
-            course.y = 510
+            course.x = 320;
+            course.y = 530
         }
         if (course.course === "COMP221") {
-            course.x = 300;
-            course.y = 510
+            course.y = 90;
+            course.x = 530
         }
         if (course.course === "COMP225") {
-            course.x = 150;
-            course.y = 510
+            course.y = 330;
+            course.x = 400
+        }
+        if (course.course === "COMP261") {
+            course.y = 230;
+            course.x = 530
+        }
+        if (course.course === "COMP302") {
+            course.y = 440;
+            course.x = 350
+        }
+        if (course.course === "COMP320") {
+            course.y = 520;
+            course.x = 350
+        }
+        if (course.course === "COMP340") {
+            course.y = 50;
+            course.x = 590
+        }
+        if (course.course === "MATH137") {
+            course.y = 50;
+            course.x = 330
+        }
+        if (course.course === "MATH135") {
+            course.y = 40;
+            course.x = 150
+        }
+        if (course.course === "COMP342") {
+            course.y = 320;
+            course.x = 680
+        }
+        if (course.course === "COMP346") {
+            course.y = 400;
+            course.x = 590
+        }
+        if (course.course === "COMP365") {
+            course.y = 520;
+            course.x = 660
+        }
+        if (course.course === "MATH236") {
+            course.y = 160;
+            course.x = 600
+        }
+        if (course.course === "COMP380") {
+            course.y = 90;
+            course.x = 800
+        }
+        if (course.course === "COMP394") {
+            course.y = 300;
+            course.x = 800
+        }
+        if (course.course === "COMP440") {
+            course.y = 200;
+            course.x = 860
+        }
+        if (course.course === "COMP445") {
+            course.y = 230;
+            course.x = 800
+        }
+        if (course.course === "COMP465") {
+            course.y = 460;
+            course.x = 780
+        }
+        if (course.course === "COMP479") {
+            course.y = 530;
+            course.x = 890
+        }
+        if (course.course === "MATH379") {
+            course.y = 250;
+            course.x = 950
+        }
+        if (course.course === "MATH237") {
+            course.y = 50;
+            course.x = 950
+        }
+        if (course.course === "COMP484") {
+            course.y = 140;
+            course.x = 905
+        }
+        if (course.course === "COMP494") {
+            course.y = 430;
+            course.x = 950
         }
     }
 }

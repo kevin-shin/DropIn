@@ -17,5 +17,6 @@
     <orderEntry type="library" name="jquery-3.3.1" level="application" />
     <orderEntry type="library" name="TweenLite" level="application" />
     <orderEntry type="library" name="CSSPlugin" level="application" />
+    <orderEntry type="library" name="Tween" level="application" />
   </component>
 </module>

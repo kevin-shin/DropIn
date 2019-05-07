@@ -1,7 +1,7 @@
 import { drawConnections } from "./UIBehavior.js";
 import { animateNode } from "./exampleAnimation.js";
 import { ViewModel } from "./VMtoView.js";
-import { implementDragBehavior } from "./UIBehavior.js";
+import { setUpBehavior } from "./UIBehavior.js";
 import { initialNodes } from "./VMtoView.js";
 import { courseCatalog } from "./prereq_dictionary.js";
 import { notTaken} from "./VMtoView.js";
@@ -52,13 +52,12 @@ function InputPanel() {
         exampleBox.css("display", "none");
         dialogOverlay.css("display","none");
 
-        console.log(ViewModel);
         let graphCourses = ViewModel.Classes.filter((course => course.status === "taken") || (course => course.status === "planned"));
         let available = notTaken(ViewModel.Classes);
 
         initialNodes(available, graphCourses);
         drawConnections(ViewModel.Connections);
-        implementDragBehavior();
+        setUpBehavior();
     }
 }
 

@@ -1,7 +1,7 @@
 //Making the requirements section depends on "intro" "core" "math" and "elective", so please don't change
 let rules = [
     {   label : "intro",
-        courses: ["COMP123", "COMP120"],
+        courses: ["COMP123"],
         required: 1
     },
 
