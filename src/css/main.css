@@ -374,9 +374,8 @@ button {
     margin-top: 11px;
 }
 
-.subButton{
-    display: inline;
+#subButton{
     position:absolute;
-    left: 500px;
+    left: 65%;
     top:0;
 }
