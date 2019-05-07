@@ -84,8 +84,17 @@ let initializeView = function () {
 };
 
 let initialNodes = function (available, graphCourses) {
+
+    console.log(available);
+    let mathCourses = available.filter((course) => course.substr(0,4) === "MATH");
+    let compCourses = available.filter((course) => course.substr(0,4) === "COMP");
+
+    console.log(mathCourses);
+    console.log(compCourses);
+
+    //TAKEN COURSES. Color: Red
     let svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
-        .data(available);
+        .data(compCourses);
 
     svgGroups.enter()
         .append("div")
@@ -98,7 +107,7 @@ let initialNodes = function (available, graphCourses) {
         .attr("class", "draggable available compsci outGraph");
 
     let svgMathGroups = d3.select("#mathNotTaken").selectAll(".draggable")
-        .data(available);
+        .data(mathCourses);
 
     svgMathGroups.enter()
         .append("div")
@@ -143,6 +152,16 @@ let draw = function (ViewModel) {
     let plannedCourses = filterPlanned(ViewModel.Classes);
     let takenCourses = filterTaken(ViewModel.Classes);
 
+    let mathCourses = availableCourses.filter((course) => course.substr(0,4) === "MATH");
+    let compCourses = availableCourses.filter((course) => course.substr(0,4) === "COMP");
+
+    console.log("available");
+    console.log(availableCourses);
+    console.log("math");
+    console.log(mathCourses);
+    console.log("CS");
+    console.log(compCourses);
+
     let inGraph = $(".inGraph");
     for (let course of inGraph) {
         let element = document.getElementById(course.id);
@@ -153,6 +172,33 @@ let draw = function (ViewModel) {
     while (list.hasChildNodes()) {
         list.removeChild(list.firstChild);
     }
+
+    //TAKEN COURSES. Color: Red
+    let svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
+        .data(compCourses);
+
+    svgGroups.enter()
+        .append("div")
+        .attr("id", function (d) {
+            return d
+        })
+        .html(function (d) {
+            return  d.substr(4, 7)
+        })
+        .attr("class", "draggable available compsci outGraph");
+
+    let svgMathGroups = d3.select("#mathNotTaken").selectAll(".draggable")
+        .data(mathCourses);
+
+    svgMathGroups.enter()
+        .append("div")
+        .attr("id", function (d) {
+            return d
+        })
+        .html(function (d) {
+            return  d.substr(4, 7)
+        })
+        .attr("class", "draggable available math outGraph");
 
     //TAKEN COURSES. Color: Green
     let svgTaken = d3.select("#graph").selectAll(".taken")
@@ -193,20 +239,6 @@ let draw = function (ViewModel) {
             return d.x + 'px'
         })
         .attr("class", "draggable planned inGraph");
-
-    //TAKEN COURSES. Color: Red
-    let svgNotTaken = d3.select("#svgNotTaken").selectAll(".available")
-        .data(availableCourses);
-
-    svgNotTaken.enter()
-        .append("div")
-        .attr("id", function (d) {
-            return d
-        })
-        .html(function (d) {
-            return d.substr(4, 7)
-        })
-        .attr("class", "draggable available outGraph");
 
 
     positionTopBar();
@@ -335,17 +367,30 @@ function updateRequirementsCount(profile) {
 
 function positionTopBar() {
     const radius = 20;
-    let topCourses = $(".draggable.available.math");
-    const length = topCourses.length;
-    const width = $("#svgNotTaken").width() - 75;
-    const placement = width / length;
+    let compCourses = $(".draggable.available.compsci");
+    let compLength = compCourses.length;
+    let compWidth = $("#svgNotTaken").width() - 75;
+    let compPlacement = compWidth / compLength;
     let i = 1;
-    for (let course of topCourses) {
+    for (let course of compCourses) {
         $(course).css({
             top: $("#svgNotTaken").height() / 2 - (radius + 10),
-            left: i * placement - 40
+            left: i * compPlacement - 40
         });
         i++;
+    }
+
+    let mathCourses = $(".draggable.available.math");
+    let mathLength = mathCourses.length;
+    let mathWidth = $("#mathNotTaken").width() - 75;
+    let mathPlacement = mathWidth / mathLength;
+    let j = 1;
+    for (let course of mathCourses) {
+        $(course).css({
+            top: $("#mathNotTaken").height() / 2 - (radius + 10),
+            left: j * mathPlacement - 40
+        });
+        j++;
     }
 }
 

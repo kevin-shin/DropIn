@@ -39,9 +39,7 @@ function writeSourceTarget(profile) {
 function cleanCatalogue() {
     let compCourses = [];
     for (let course of catalogue) {
-        if (course.dept === "COMP") {
             compCourses.push(course.dept + course.courseNum)
-        }
     }
     return compCourses;
 }
