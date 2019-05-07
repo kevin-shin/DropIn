@@ -381,8 +381,8 @@ function positionInitialCourses(profile) {
             course.x = 280
         }
         if (course.course === "COMP240") {
-            course.x = 320;
-            course.y = 530
+            course.x = 270;
+            course.y = 460
         }
         if (course.course === "COMP221") {
             course.y = 90;
@@ -454,23 +454,23 @@ function positionInitialCourses(profile) {
         }
         if (course.course === "COMP479") {
             course.y = 530;
-            course.x = 890
+            course.x = 850
         }
         if (course.course === "MATH379") {
-            course.y = 250;
-            course.x = 950
+            course.y = 270;
+            course.x = 850
         }
         if (course.course === "MATH237") {
             course.y = 50;
-            course.x = 950
+            course.x = 850
         }
         if (course.course === "COMP484") {
             course.y = 140;
-            course.x = 905
+            course.x = 840
         }
         if (course.course === "COMP494") {
             course.y = 430;
-            course.x = 950
+            course.x = 840
         }
     }
 }
