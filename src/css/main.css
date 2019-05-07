@@ -6,6 +6,7 @@ html {
 p {
     font-weight: bold;
 }
+
 body {
     background-color: #eee;
     height: 100vh;
@@ -26,11 +27,11 @@ body {
     z-index: 10;
     border-radius: 15px;
     margin-right: 10px;
-    padding: 5px;
+    padding: 10px;
 }
 
 .instructions > p {
-    padding: 10px;
+    padding-left: 10px;
 }
 
 
@@ -45,11 +46,11 @@ body {
 .requirements {
     margin: 10px;
     padding: 10px;
-    height: 50%;
+    height: 48%;
     width: 24%;
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 10px;
     background-color: #AECBC9;
     border-radius: 15px;
     overflow-y: scroll;
@@ -91,17 +92,32 @@ body {
 }
 
 #svgNotTaken {
-    width: 900px;
+    display: block;
+    width: 750px;
+    margin-left: 17px;
     height: 75px;
     position: relative;
     background-color: white;
     border-radius: 25px;
     border: 2px solid #D8C684;
-    margin-left: 17px;
     margin-top: 10px;
-    display: block;
     overflow: -moz-scrollbars-horizontal;
 }
+
+
+#mathNotTaken {
+    display: none;
+    width: 750px;
+    height: 75px;
+    margin-left: 17px;
+    position: relative;
+    background-color: white;
+    border-radius: 25px;
+    border: 2px solid coral;
+    margin-top: 10px;
+    overflow: -moz-scrollbars-horizontal;
+}
+
 
 #GUI {
     height: 100vh;
@@ -328,6 +344,26 @@ ul {
     margin-left: 10px;
 }
 
-.requirements{
+.requirements {
     font-weight: bold;
+}
+
+#statusBar {
+    bottom: 25px;
+    height: 40px;
+    background-color: #AECBCF;
+    position: absolute;
+    width: 904px;
+    margin-left: 21px;
+}
+
+button {
+    margin-left: 60px;
+    margin-top: 11px;
+}
+
+#subButton{
+    position:absolute;
+    left: 65%;
+    top:0;
 }

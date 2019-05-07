@@ -63,7 +63,6 @@ let setUpBehavior = function () {
                 $("#name").css("display","none");
                 $("#courseDescription").css("display","none");
                 $("#prereq").css("display","none");
-                $("#buttonBar").css("display","none");
             }
             focus = null;
         });
