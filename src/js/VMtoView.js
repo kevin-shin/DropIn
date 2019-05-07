@@ -173,6 +173,11 @@ let draw = function (ViewModel) {
         list.removeChild(list.firstChild);
     }
 
+    let mathList = document.getElementById("mathNotTaken");
+    while (mathList.hasChildNodes()) {
+        mathList.removeChild(mathList.firstChild);
+    }
+
     //TAKEN COURSES. Color: Red
     let svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
         .data(compCourses);
