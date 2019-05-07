@@ -11,6 +11,57 @@ let makeProfile = function(inputArray){
     return Profile;
 };
 
+
+let addCourseToProfile = function (profile, draggedCourse, eventX, eventY) {
+    let courseWithPrereqs = dfs(draggedCourse);
+    let initialPositionX = eventX;
+    let initialPositionY = eventY;
+    for (var course of courseWithPrereqs) {
+        if (!(profile.some((nextClass) => nextClass.course === course))) {
+            profile.push({
+                course: course,
+                status: "planned",
+                x: initialPositionX,
+                y: initialPositionY
+            });
+            initialPositionX = updatePosx(initialPositionX);
+            initialPositionY = updatePosy(initialPositionY);
+        }
+    }
+};
+
+let removeCourseFromProfile = function (profile, deletedCourse) {
+    let i = 0;
+    let j;
+    for (let course of profile){
+        if (course.course === deletedCourse){
+            j = i;
+        }
+        i++;
+    }
+    profile.splice(j,1);
+};
+
+let markasTaken = function(Profile, markedCourse){
+    let prereqs = dfs(markedCourse);
+    for (let course of Profile){
+        if (prereqs.some((prereq) => prereq === course.course)){
+            course.status = "taken"
+        }
+    }
+};
+
+let markasPlanned = function(Profile, markedCourse){
+    for (let course of Profile){
+        if (course.course === markedCourse){
+            course.status = "planned"
+        }
+    }
+};
+
+
+//PLACEMENT ALGORITHMS
+
 /*
 * generates random int to be used in updating position
 */
@@ -113,54 +164,6 @@ function updatePosx(initPos){
     }
 }
 
-
-let addCourseToProfile = function (profile, draggedCourse, eventX, eventY) {
-
-    let courseWithPrereqs = dfs(draggedCourse);
-    let initialPositionX = eventX;
-    let initialPositionY = eventY;
-    for (var course of courseWithPrereqs) {
-        if (!(profile.some((nextClass) => nextClass.course === course))) {
-            profile.push({
-                course: course,
-                status: "planned",
-                x: initialPositionX,
-                y: initialPositionY
-            });
-            initialPositionX = updatePosx(initialPositionX);
-            initialPositionY = updatePosy(initialPositionY);
-        }
-    }
-};
-
-let removeCourseFromProfile = function (profile, deletedCourse) {
-    let i = 0;
-    let j;
-    for (let course of profile){
-        if (course.course === deletedCourse){
-            j = i;
-        }
-        i++;
-    }
-    profile.splice(j,1);
-};
-
-let markasTaken = function(Profile, markedCourse){
-    let prereqs = dfs(markedCourse);
-    for (let course of Profile){
-            if (prereqs.some((prereq) => prereq === course.course)){
-                    course.status = "taken"
-                }
-    }
-};
-
-let markasPlanned = function(Profile, markedCourse){
-    for (let course of Profile){
-        if (course.course === markedCourse){
-            course.status = "planned"
-        }
-    }
-};
 
 
 

@@ -76,6 +76,10 @@ let initializeView = function () {
             .attr("id", "delete")
             .html("Delete");
 
+        buttonBar.append("button")
+            .attr("id", "export")
+            .html("Export");
+
     }
 };
 
@@ -91,7 +95,20 @@ let initialNodes = function (available, graphCourses) {
         .html(function (d) {
             return  d.substr(4, 7)
         })
-        .attr("class", "draggable available outGraph");
+        .attr("class", "draggable available compsci outGraph");
+
+    let svgMathGroups = d3.select("#mathNotTaken").selectAll(".draggable")
+        .data(available);
+
+    svgMathGroups.enter()
+        .append("div")
+        .attr("id", function (d) {
+            return d
+        })
+        .html(function (d) {
+            return  d.substr(4, 7)
+        })
+        .attr("class", "draggable available math outGraph");
 
     //TAKEN COURSES. Color: Green
     let svgContainer = d3.select("#graph").selectAll(".draggable,.taken")
@@ -318,7 +335,7 @@ function updateRequirementsCount(profile) {
 
 function positionTopBar() {
     const radius = 20;
-    let topCourses = $(".draggable.available");
+    let topCourses = $(".draggable.available.math");
     const length = topCourses.length;
     const width = $("#svgNotTaken").width() - 75;
     const placement = width / length;

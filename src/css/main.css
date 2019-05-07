@@ -92,7 +92,8 @@ body {
 }
 
 #svgNotTaken {
-    width: 900px;
+    display: block;
+    width: 750px;
     margin-left: 17px;
     height: 75px;
     position: relative;
@@ -100,9 +101,23 @@ body {
     border-radius: 25px;
     border: 2px solid #D8C684;
     margin-top: 10px;
-    display: block;
     overflow: -moz-scrollbars-horizontal;
 }
+
+
+#mathNotTaken {
+    display: none;
+    width: 750px;
+    height: 75px;
+    margin-left: 17px;
+    position: relative;
+    background-color: white;
+    border-radius: 25px;
+    border: 2px solid coral;
+    margin-top: 10px;
+    overflow: -moz-scrollbars-horizontal;
+}
+
 
 #GUI {
     height: 100vh;
@@ -343,6 +358,13 @@ ul {
 }
 
 button {
-    margin-left: 75px;
+    margin-left: 60px;
     margin-top: 11px;
+}
+
+.subButton{
+    display: inline;
+    position:absolute;
+    left: 500px;
+    top:0;
 }
