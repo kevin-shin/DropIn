@@ -73,7 +73,7 @@ function randomInt(min, max) {
  *updates y position for auto added prereqisites
  * @param initPos: initial y position of dragged course
  */
-function updatePosy(initPos){
+function updatePosx(initPos){
     if (initPos < 30){
         return initPos;
     }
@@ -125,7 +125,7 @@ function plusOrMinus(x, y){
  *updates x position for auto added prereqisites
  * @param initPos: initial x position of dragged course
  */
-function updatePosx(initPos){
+function updatePosy(initPos){
     if(initPos <30 || initPos >= 590){ //if the initial class is at an edge
         if(initPos > 590 ){
             return initPos - randomInt(20, 50);
