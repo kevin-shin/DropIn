@@ -1,8 +1,7 @@
-import { drawConnections } from "./UIBehavior.js";
+import { refreshView } from "./UIBehavior.js";
 import { animateNode } from "./exampleAnimation.js";
 import { ViewModel } from "./VMtoView.js";
 import { setUpBehavior } from "./UIBehavior.js";
-import { initialNodes } from "./VMtoView.js";
 import { courseCatalog } from "./prereq_dictionary.js";
 import { notTaken} from "./VMtoView.js";
 
@@ -55,9 +54,9 @@ function InputPanel() {
         let graphCourses = ViewModel.Classes.filter((course => course.status === "taken") || (course => course.status === "planned"));
         let available = notTaken(ViewModel.Classes);
 
-        initialNodes(available, graphCourses);
-        drawConnections(ViewModel.Connections);
+        // initialNodes(available, graphCourses);
         setUpBehavior();
+        refreshView(ViewModel);
     }
 }
 

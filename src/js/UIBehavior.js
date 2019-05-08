@@ -5,8 +5,8 @@ import {makeViewModel} from "./makeViewModel.js";
 
 let focus;
 
-const displacementX = 37;
-const displacementY = 125;
+let displacementX;
+let displacementY;
 
 let jsPlumbInstance = jsPlumb.getInstance({
     Connector: ["Straight"],
@@ -15,6 +15,8 @@ let jsPlumbInstance = jsPlumb.getInstance({
 });
 
 jsPlumb.Defaults.MaxConnections = 10;
+
+console.log("----> I am loading");
 
 let setUpBehavior = function () {
 
@@ -25,18 +27,6 @@ let setUpBehavior = function () {
     /*            DRAGGABLE BEHAVIOR           */
     outGraph.draggable({revert: true});
     jsPlumbInstance.draggable(graphCourses, { containment: "parent" });
-
-    graphCourses.mouseup(function(event){
-        focus = $(this);
-        for (let course of Profile){
-            if ($(this).attr('id') === course.course){
-                course.x = event.clientX-displacementX;
-                course.y = event.clientY-displacementY;
-            }
-        }
-        let ViewModel = makeViewModel(Profile);
-        refreshView(ViewModel);
-    });
 
     /*           GRAPH DROPPABLE BEHAVIOR             */
     graph.droppable({
@@ -83,6 +73,11 @@ let setUpBehavior = function () {
             }
         });
 
+        $("#switchComp").on('click',function(){
+            $("#svgNotTaken").css("display","none");
+            $("#mathNotTaken").css("display", "block");
+        });
+
         $("#markTaken").on('click',function(){
             console.log("MarkTaken button fired");
             markasTaken(Profile, focus.attr('id'));
@@ -111,6 +106,7 @@ let setUpBehavior = function () {
 
 
 let refreshView = function (ViewModel) {
+console.log("-----------> refreshView")
     jsPlumbInstance.reset();
 
     for (let prereq of ViewModel.Classes) {
@@ -125,8 +121,6 @@ let refreshView = function (ViewModel) {
     draw(ViewModel);
     drawConnections(ViewModel.Connections);
 
-
-
     let graphCourses = $(".inGraph");
     let outGraph = $(".outGraph");
 
@@ -136,12 +130,23 @@ let refreshView = function (ViewModel) {
         containment: "parent"
     });
 
+    graphCourses.mousedown(function(event){
+        for (let course of Profile){
+            if ($(this).attr('id') === course.course){
+console.log("----> mousedown click at", event.clientX, event.clientY, "course at", course.x, course.y);
+                displacementX = event.clientX - course.x;
+                displacementY = event.clientY - course.y;
+            }
+        }
+    });
+
     graphCourses.mouseup(function(event){
         focus = $(this);
         for (let course of Profile){
             if ($(this).attr('id') === course.course){
                 course.x = event.clientX-displacementX;
                 course.y = event.clientY-displacementY;
+console.log("----> mouseup   click at", event.clientX, event.clientY, "course at", course.x, course.y);
             }
         }
         let ViewModel = makeViewModel(Profile);
@@ -168,4 +173,4 @@ let drawConnections = function (Connections) {
     }
 };
 
-export {drawConnections, jsPlumbInstance, setUpBehavior, Profile}
+export {drawConnections, refreshView, jsPlumbInstance, setUpBehavior, Profile}
