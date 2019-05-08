@@ -227,15 +227,6 @@ ul {
     margin-top: 10px;
 }
 
-#subButton {
-    position: absolute;
-    left: 65%;
-    top:0;
-    opacity: 110;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
 
 #introNext, #exampleNext {
     background-color: darkgray;
@@ -376,8 +367,15 @@ button {
     display: inline-grid;
 }
 
-#subButton{
+#subButton1{
     position:absolute;
-    left: 65%;
+    left: 62%;
     top:0;
+    margin-bottom: 0;
+}
+#subButton2{
+
+    position:absolute;
+    left: 62%;
+    top:40px;
 }
