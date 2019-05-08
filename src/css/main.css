@@ -123,6 +123,8 @@ body {
     height: 100vh;
 }
 
+
+
 .result {
     display: inline-block;
     margin-left: 30px;
@@ -224,6 +226,7 @@ ul {
 #nextButton, #startButton {
     margin-top: 10px;
 }
+
 
 #introNext, #exampleNext {
     background-color: darkgray;
@@ -364,8 +367,15 @@ button {
     display: inline-grid;
 }
 
-#subButton{
+#subButton1{
     position:absolute;
-    left: 65%;
+    left: 62%;
     top:0;
+    margin-bottom: 0;
+}
+#subButton2{
+
+    position:absolute;
+    left: 62%;
+    top:40px;
 }
