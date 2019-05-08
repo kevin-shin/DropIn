@@ -372,6 +372,8 @@ ul {
 button {
     margin-left: 60px;
     margin-top: 11px;
+    position: relative;
+    display: inline-grid;
 }
 
 #subButton{
