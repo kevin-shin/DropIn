@@ -1,4 +1,5 @@
 import {dfs} from "./connectionsLogic.js";
+// const dfs = require("./connectionsLogic.js");
 
 let makeProfile = function (inputArray) {
     let Profile = [];
@@ -138,7 +139,7 @@ function plusOrMinus(x, y) {
  * @param initPos: initial x position of dragged course
  */
 function updatePosy(initPos) {
-    if (initPos < 30 || initPos >= 590) { //if the initial class is at an edge
+    if (initPos < 30 || initPos >= 580) { //if the initial class is at an edge
         if (initPos > 590) {
             return initPos - randomInt(20, 50);
         } else {
@@ -173,3 +174,4 @@ function updatePosy(initPos) {
 
 
 export {makeProfile, addCourseToProfile, removeCourseFromProfile, markasTaken, markasPlanned, fillPrereqs}
+// module.exports = makeProfile;
