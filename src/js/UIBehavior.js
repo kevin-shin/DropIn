@@ -229,28 +229,28 @@ function findCourse(data, course) {
 
 function alignProfile(Profile){
     for (let course of Profile){
-        if (22 < course.x && course.x < 134){
+        if (22 < course.x+radius && course.x+radius < 134){
             course.x = 78-align;
         }
-        if (134 < course.x && course.x < 247){
+        if (134 < course.x+radius && course.x+radius < 247){
             course.x = 190-align;
         }
-        if (247 < course.x && course.x < 359){
+        if (247 < course.x+radius && course.x+radius < 359){
             course.x = 303-align;
         }
-        if (359 < course.x && course.x < 471){
+        if (359 < course.x+radius && course.x+radius < 471){
             course.x = 415 - align;
         }
-        if (471 < course.x && course.x < 586){
+        if (471 < course.x+radius && course.x+radius < 586){
             course.x = 529-align;
         }
-        if (586 < course.x && course.x < 699){
+        if (586 < course.x+radius && course.x+radius < 699){
             course.x = 643-align;
         }
-        if (699 < course.x && course.x < 813){
+        if (699 < course.x+radius && course.x+radius < 813){
             course.x = 756-align;
         }
-        if (813 < course.x && course.x < 923){
+        if (813 < course.x+radius && course.x+radius < 923){
             course.x = 868-align;
         }
     }
