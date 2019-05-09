@@ -15,8 +15,6 @@ This is then taken by VM_to_View and drawn on the screen.
  */
 
 test("initialize ViewModel", () => {
-
-
 });
 
 
