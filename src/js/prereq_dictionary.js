@@ -1,5 +1,6 @@
 // --------- IMPORT --------
-import { catalogue } from "../Model/cs_major.js";
+// import { catalogue } from "../Model/cs_major.js";
+import {catalogue} from "../Model/cs_major.js";
 // const catalogue = require("../Model/cs_major.js");
 
 

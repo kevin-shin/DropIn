@@ -1,4 +1,5 @@
 import {dfs} from "./connectionsLogic.js";
+// const dfs = require("./connectionsLogic.js");
 
 let makeProfile = function (inputArray) {
     let Profile = [];
@@ -173,3 +174,4 @@ function updatePosy(initPos) {
 
 
 export {makeProfile, addCourseToProfile, removeCourseFromProfile, markasTaken, markasPlanned, fillPrereqs}
+// module.exports = makeProfile;

@@ -1,6 +1,8 @@
 import {catalogue} from "../Model/cs_major.js";
 import {courseCatalog} from "./prereq_dictionary.js";
 
+// const courseCatalog = require("./prereq_dictionary.js");
+// const catalogue = require("../Model/cs_major.js");
 
 let makeViewModel = function (profile) {
     let ViewModel = {};
@@ -46,3 +48,4 @@ function cleanCatalogue() {
 
 
 export {makeViewModel, cleanCatalogue};
+// module.exports = writeSourceTarget;
