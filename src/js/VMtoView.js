@@ -57,8 +57,8 @@ let initializeView = function () {
             .select("#statusBar");
 
         buttonBar.append("button")
-            .attr("id", "organize")
-            .html("Organize");
+            .attr("id", "align")
+            .html("Align");
 
         buttonBar.append("button")
             .attr("id", "missingPrereq")

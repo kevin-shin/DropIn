@@ -8,6 +8,7 @@ let focus;
 let displacementX;
 let displacementY;
 let radius = 30;
+let align = radius + 7;
 
 let jsPlumbInstance = jsPlumb.getInstance({
     Connector: ["Straight"],
@@ -48,6 +49,7 @@ let setUpBehavior = function () {
                 $("#prereq").css("display", "none");
             }
             focus = null;
+            console.log("I'm clicking on:" + event.clientX + ", " + event.clientY);
         });
 
         $("#delete").on('click', function () {
@@ -59,6 +61,8 @@ let setUpBehavior = function () {
                 refreshView(ViewModel);
                 focus = null;
             }
+            console.log("Having deleted, focus is:");
+            console.log(focus);
         });
 
         $("#switchComp").on('click', function () {
@@ -72,16 +76,33 @@ let setUpBehavior = function () {
         });
 
         $("#markTaken").on('click', function () {
+            console.log("Mark Taken triggered");
+            console.log("Focus should be:");
+            console.log(focus);
             markasTaken(Profile, focus.attr('id'));
+            let ViewModel = makeViewModel(Profile);
+            refreshView(ViewModel);
+            console.log("Having marked taken, focus is:");
+            console.log(focus);
+        });
+
+        $("#markPlanned").on('click', function () {
+            console.log("Mark Planned triggered");
+            console.log("Focus should be:");
+            console.log(focus);
+            markasPlanned(Profile, focus.attr('id'));
+            let ViewModel = makeViewModel(Profile);
+            refreshView(ViewModel);
+            console.log("Having marked planned, focus is:");
+            console.log(focus);
+        });
+
+        $("#align").on('click', function () {
+            alignProfile(Profile);
             let ViewModel = makeViewModel(Profile);
             refreshView(ViewModel);
         });
 
-        $("#markPlanned").on('click', function () {
-            markasPlanned(Profile, focus.attr('id'));
-            let ViewModel = makeViewModel(Profile);
-            refreshView(ViewModel)
-        });
     });
 };
 
@@ -111,6 +132,7 @@ let refreshView = function (ViewModel) {
     });
 
     graphCourses.mousedown(function (event) {
+        instructionsDisplay($(this));
         for (let course of Profile) {
             if ($(this).attr('id') === course.course) {
                 displacementX = event.clientX - course.x;
@@ -120,9 +142,6 @@ let refreshView = function (ViewModel) {
     });
 
     graphCourses.mouseup(function (event) {
-        focus = $(this);
-        console.log(focus);
-        instructionsDisplay($(this));
         for (let course of Profile) {
             if ($(this).attr('id') === course.course) {
                 course.x = event.clientX - displacementX;
@@ -132,9 +151,15 @@ let refreshView = function (ViewModel) {
         let ViewModel = makeViewModel(Profile);
         refreshView(ViewModel);
 
+        focus = $(this);
+        console.log("FOCUS SHOULD BE SET TO: ");
+        console.log(focus);
+        $(this).css({
+            "border":"2px solid #D8C684"
+        });
     });
 
-    outGraph.mouseup(function () {
+    outGraph.mousedown(function () {
         instructionsDisplay($(this));
     });
 
@@ -159,7 +184,6 @@ let drawConnections = function (Connections) {
 };
 
 function instructionsDisplay(selectedCourse) {
-    console.log("INSTRUCTIONS DISPLY");
     let course = findCourse(catalogue, selectedCourse.attr('id'));
     let prereq = course.prereq;
     let description = course.courseInfo;
@@ -195,5 +219,41 @@ function findCourse(data, course) {
     }
 }
 
+function alignProfile(Profile){
+    for (let course of Profile){
 
+        if (22 < course.x && course.x < 134){
+            course.x = 78-align;
+        }
+
+        if (134 < course.x && course.x < 247){
+            course.x = 190-align;
+        }
+
+        if (247 < course.x && course.x < 359){
+            course.x = 303-align;
+        }
+
+        if (359 < course.x && course.x < 471){
+            course.x = 415 - align;
+        }
+
+        if (471 < course.x && course.x < 586){
+            course.x = 529-align;
+        }
+
+        if (586 < course.x && course.x < 699){
+            course.x = 643-align;
+        }
+
+        if (699 < course.x && course.x < 813){
+            course.x = 756-align;
+        }
+
+        if (813 < course.x && course.x < 923){
+            course.x = 868-align;
+        }
+    }
+
+}
 export {drawConnections, refreshView, jsPlumbInstance, setUpBehavior, Profile}

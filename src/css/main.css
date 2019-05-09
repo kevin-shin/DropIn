@@ -141,8 +141,8 @@ body {
     font-weight: bold;
 }
 
-.draggable:active{
-    outline:none;
+.draggable:active {
+    outline : none;
     border-color:#9ecaed;
     box-shadow:0 0 12px #9ecaed;
 }
