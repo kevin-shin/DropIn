@@ -389,3 +389,13 @@ button {
     left: 62%;
     top:40px;
 }
+
+#majorText {
+    display:none;
+    padding-top:5px;
+    width: 175px;
+    height: 29px;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+}

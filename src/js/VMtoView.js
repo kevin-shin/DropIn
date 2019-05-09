@@ -178,10 +178,9 @@ let draw = function (ViewModel) {
 
     let isFullMajor = fullMajorCheck(ViewModel.Classes);
     if (isFullMajor) {
-        $("#majorText").text("This is a full major!")
-
+        $("#majorText").css("display","block");
     } else {
-        $("#majorText").text("")
+        $("#majorText").css("display","none");
     }
 };
 
