@@ -1,9 +1,8 @@
-import { refreshView } from "./UIBehavior.js";
-import { animateNode } from "./exampleAnimation.js";
-import { ViewModel } from "./VMtoView.js";
-import { setUpBehavior } from "./UIBehavior.js";
-import { courseCatalog } from "./prereq_dictionary.js";
-import { notTaken} from "./VMtoView.js";
+import {refreshView} from "./UIBehavior.js";
+import {animateNode} from "./exampleAnimation.js";
+import {ViewModel} from "./VMtoView.js";
+import {setUpBehavior} from "./UIBehavior.js";
+import {courseCatalog} from "./prereq_dictionary.js";
 
 let width = window.innerWidth;
 let height = window.innerHeight;
@@ -11,25 +10,29 @@ let height = window.innerHeight;
 let dialogOverlay = $("#dialogOverlay");
 let introBox = $("#introBox");
 let exampleBox = $("#example");
-let introNext = $("#introNext");
 let exampleNext = $("#exampleNext");
 
-
 function WelcomePanel() {
-    this.render = function(){
-        let position = String(width/2-700/2) + "px";
+    this.render = function () {
+        let position = String(width / 2 - 700 / 2) + "px";
 
-        dialogOverlay.css("display","block");
-        dialogOverlay.css("height",height);
-        introBox.css("top","50px");
+        dialogOverlay.css("display", "block");
+        dialogOverlay.css("height", height);
+        introBox.css("top", "50px");
         introBox.css("left", position);
         introBox.css("display", "block");
 
+        $("#submitMajorChoice").on("click", function () {
+            if (document.getElementById("select").value === "Computer Science") {
+                $("#compInitCourses").css("display", "block");
+                $("#introNext").css("display", "block");
+            }
+        });
+
         drawOptions();
-        introNext.html('<button form="profileData" type="submit" id="nextButton">Submit</button>');
     };
 
-    this.next = function() {
+    this.next = function () {
         introBox.css("display", "none");
         let intro = new InputPanel();
         intro.render();
@@ -39,24 +42,20 @@ function WelcomePanel() {
 }
 
 function InputPanel() {
-    this.render = function(){
-        let position = String(width/2-700/2) + "px";
-        exampleBox.css("top","50px");
+    this.render = function () {
+        let position = String(width / 2 - 700 / 2) + "px";
+        exampleBox.css("top", "50px");
         exampleBox.css("left", position);
         exampleBox.css("display", "block");
         exampleNext.html('<button type="submit" id="startButton">Start </button>');
     };
 
-    this.next = function() {
+    this.next = function () {
         exampleBox.css("display", "none");
-        dialogOverlay.css("display","none");
+        dialogOverlay.css("display", "none");
 
-        let graphCourses = ViewModel.Classes.filter((course => course.status === "taken") || (course => course.status === "planned"));
-        let available = notTaken(ViewModel.Classes);
-
-        // initialNodes(available, graphCourses);
-        setUpBehavior();
         refreshView(ViewModel);
+        setUpBehavior();
     }
 }
 
@@ -65,7 +64,7 @@ function drawOptions() {
     let keys = [];
 
     for (let course of courseCatalog.keys()) {
-        if (course.substring(0,4) === "COMP" || course === "MATH279") {
+        if (course.substring(0, 4) === "COMP" || course === "MATH279") {
             keys.push(course);
         }
     }
@@ -116,4 +115,4 @@ function drawOptions() {
 }
 
 
-export { WelcomePanel, InputPanel }
+export {WelcomePanel, InputPanel}

@@ -7,6 +7,7 @@ let focus;
 
 let displacementX;
 let displacementY;
+let radius = 30;
 
 let jsPlumbInstance = jsPlumb.getInstance({
     Connector: ["Straight"],
@@ -24,89 +25,68 @@ let setUpBehavior = function () {
     let outGraph = $(".outGraph");
     let graphCourses = $(".inGraph");
 
-    /*            DRAGGABLE BEHAVIOR           */
     outGraph.draggable({revert: true});
-    jsPlumbInstance.draggable(graphCourses, { containment: "parent" });
+    jsPlumbInstance.draggable(graphCourses, {containment: "parent"});
 
-    /*           GRAPH DROPPABLE BEHAVIOR             */
     graph.droppable({
         accept: ".draggable",
         drop: function (e, ui) {
             addCourseToProfile(Profile, ui.helper.attr('id'),
-                event.clientX-displacementX,
-                event.clientY-displacementY);
-
+                event.clientX - ($("#graph").offset().left + radius),
+                event.clientY - ($("#graph").offset().top + radius));
             let ViewModel = makeViewModel(Profile);
             refreshView(ViewModel);
         }
     });
 
     $(document).ready(function () {
-        let courses = $(".draggable");
-        courses.bind("click", function () {
-            focus = $(this);
-        });
-
-        $(window).click(function(event){
-            if (event.target.className === "year"){
-                $("#welcomeText").css("display","block");
-                $("#name").css("display","none");
-                $("#courseDescription").css("display","none");
-                $("#prereq").css("display","none");
+        $(window).click(function (event) {
+            if (event.target.className === "year") {
+                $("#welcomeText").css("display", "block");
+                $("#name").css("display", "none");
+                $("#courseDescription").css("display", "none");
+                $("#prereq").css("display", "none");
             }
             focus = null;
         });
 
-
-        $("#delete").on('click',function(){
+        $("#delete").on('click', function () {
             if (focus !== null) {
-                console.log("-------->  DELETING A CLASS");
+                console.log("DELETE ACTIVATE");
+                console.log(focus);
                 removeCourseFromProfile(Profile, focus.attr('id'));
-                console.log("Here is the new profile AFTER DELETION");
-                console.log(Profile);
-
                 let ViewModel = makeViewModel(Profile);
-                console.log(ViewModel);
-
                 refreshView(ViewModel);
                 focus = null;
             }
         });
 
-        $("#switchComp").on('click',function(){
-            $("#svgNotTaken").css("display","none");
+        $("#switchComp").on('click', function () {
+            $("#svgNotTaken").css("display", "block");
+            $("#mathNotTaken").css("display", "none");
+        });
+
+        $("#switchMath").on('click', function () {
+            $("#svgNotTaken").css("display", "none");
             $("#mathNotTaken").css("display", "block");
         });
 
-        $("#markTaken").on('click',function(){
-            console.log("MarkTaken button fired");
+        $("#markTaken").on('click', function () {
             markasTaken(Profile, focus.attr('id'));
-            console.log("Here is the new profile AFTER markasTaken");
-            console.log(Profile);
-
             let ViewModel = makeViewModel(Profile);
-            console.log(ViewModel);
-
             refreshView(ViewModel);
         });
 
-        $("#markPlanned").on('click',function(){
-            console.log("MarkPlanned button fired");
+        $("#markPlanned").on('click', function () {
             markasPlanned(Profile, focus.attr('id'));
-            console.log("Here is the new profile AFTER markasPlanned");
-            console.log(Profile);
             let ViewModel = makeViewModel(Profile);
-            console.log(ViewModel);
-
             refreshView(ViewModel)
         });
     });
-
 };
 
 
 let refreshView = function (ViewModel) {
-console.log("-----------> refreshView")
     jsPlumbInstance.reset();
 
     for (let prereq of ViewModel.Classes) {
@@ -130,27 +110,32 @@ console.log("-----------> refreshView")
         containment: "parent"
     });
 
-    graphCourses.mousedown(function(event){
-        for (let course of Profile){
-            if ($(this).attr('id') === course.course){
-console.log("----> mousedown click at", event.clientX, event.clientY, "course at", course.x, course.y);
+    graphCourses.mousedown(function (event) {
+        for (let course of Profile) {
+            if ($(this).attr('id') === course.course) {
                 displacementX = event.clientX - course.x;
                 displacementY = event.clientY - course.y;
             }
         }
     });
 
-    graphCourses.mouseup(function(event){
+    graphCourses.mouseup(function (event) {
         focus = $(this);
-        for (let course of Profile){
-            if ($(this).attr('id') === course.course){
-                course.x = event.clientX-displacementX;
-                course.y = event.clientY-displacementY;
-console.log("----> mouseup   click at", event.clientX, event.clientY, "course at", course.x, course.y);
+        console.log(focus);
+        instructionsDisplay($(this));
+        for (let course of Profile) {
+            if ($(this).attr('id') === course.course) {
+                course.x = event.clientX - displacementX;
+                course.y = event.clientY - displacementY;
             }
         }
         let ViewModel = makeViewModel(Profile);
         refreshView(ViewModel);
+
+    });
+
+    outGraph.mouseup(function () {
+        instructionsDisplay($(this));
     });
 
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
@@ -172,5 +157,43 @@ let drawConnections = function (Connections) {
         })
     }
 };
+
+function instructionsDisplay(selectedCourse) {
+    console.log("INSTRUCTIONS DISPLY");
+    let course = findCourse(catalogue, selectedCourse.attr('id'));
+    let prereq = course.prereq;
+    let description = course.courseInfo;
+    let name = course.name;
+    let title = course.dept + course.courseNum;
+
+    let prereqString = "";
+    if (prereq.length > 0) {
+        for (let course of prereq) {
+            prereqString += course + ", ";
+        }
+        prereqString = prereqString.slice(0, -2);
+
+        $("#prereq").css("display", "block").replaceWith(
+            "<p id='prereq'>" + "Prerequisites: " + prereqString + "</p>"
+        );
+    } else {
+        $("#prereq").css("display", "none")
+    }
+
+    $("#welcomeText").css("display", "none");
+    $("#name").css("display", "block").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
+    $("#courseDescription").css("display", "block").replaceWith(
+        "<p id='courseDescription'>" + description + "</p>"
+    );
+}
+
+function findCourse(data, course) {
+    for (let object of data) {
+        if ((object.dept + object.courseNum) === course) {
+            return object;
+        }
+    }
+}
+
 
 export {drawConnections, refreshView, jsPlumbInstance, setUpBehavior, Profile}

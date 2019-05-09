@@ -16,6 +16,11 @@ body {
     font-family: 'Barlow';
 }
 
+#dialogContent > p {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 /*           INSTRUCTIONS PANEL           */
 .instructions {
     height: 40%;
@@ -93,7 +98,7 @@ body {
 
 #svgNotTaken {
     display: block;
-    width: 750px;
+    width: 810px;
     margin-left: 17px;
     height: 75px;
     position: relative;
@@ -107,7 +112,7 @@ body {
 
 #mathNotTaken {
     display: none;
-    width: 750px;
+    width: 810px;
     height: 75px;
     margin-left: 17px;
     position: relative;
@@ -137,8 +142,10 @@ body {
     font-weight: bold;
 }
 
-.draggable:hover{
-    border: 2px solid cornflowerblue;
+.draggable:active{
+    outline:none;
+    border-color:#9ecaed;
+    box-shadow:0 0 12px #9ecaed;
 }
 
 .taken {
@@ -211,7 +218,6 @@ ul {
     overflow-y: scroll;
 }
 
-
 #dialogContent, #exampleContent {
     background: beige;
     position: relative;
@@ -219,8 +225,13 @@ ul {
     border-radius: 25px;
     z-index: 1000;
     width: 700px;
-    height: 450px;
-    overflow-y: scroll;
+    height: 350px;
+    display: block;
+    margin-top: 50px;
+}
+
+#compInitCourses {
+    display: none;
 }
 
 #nextButton, #startButton {
@@ -229,12 +240,13 @@ ul {
 
 
 #introNext, #exampleNext {
-    background-color: darkgray;
     position: relative;
     width: 100%;
     height: 40px;
     z-index: 1000;
     margin-top: 10px;
+    margin-bottom: 15px;
+    bottom: 0;
 }
 
 .column {
@@ -255,7 +267,7 @@ ul {
     position: relative;
     background-color: white;
     border-radius: 25px;
-    border: 2px solid #AECBC9;
+    border: 2px solid #D8C684;
     overflow: -moz-scrollbars-horizontal;
     margin-left: 30px;
     margin-top: 25px;
@@ -313,7 +325,6 @@ ul {
     border: 2px solid #AECBC9;
     margin-right: 35px;
     margin-left: 40px;
-    margin-top: 25px;
     padding: 10px;
 }
 
@@ -367,14 +378,14 @@ button {
     display: inline-grid;
 }
 
-#subButton1{
+#switchComp{
     position:absolute;
     left: 62%;
     top:0;
     margin-bottom: 0;
 }
-#subButton2{
 
+#switchMath{
     position:absolute;
     left: 62%;
     top:40px;

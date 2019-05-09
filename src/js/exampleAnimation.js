@@ -1,4 +1,5 @@
 let animateNode = function () {
+
     let jsPlumbInstance = jsPlumb.getInstance({
         Connector: ["Straight"],
         DragOptions: {cursor: "pointer", zIndex: 5},
@@ -26,17 +27,18 @@ let animateNode = function () {
     requestAnimationFrame(animate);
 
     let node = document.getElementById("exampleNode");
-    var coords = {x: node.style.left, y: node.style.top}; // Start at (0, 0)
-    var tween = new TWEEN.Tween(coords)
-        .to({x: 170, y: 145}, 3000)
-        .easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
-        .onUpdate(function () { // Called after tween.js updates 'coords'.
-            // Move 'box' to the position described by 'coords' with a CSS translation.
+    let coords = {x: node.style.left, y: node.style.top};
+    let tween = new TWEEN.Tween(coords)
+        .to({x: 170, y: 130}, 3500)
+        .easing(TWEEN.Easing.Quadratic.Out)
+        .onUpdate(function () {
             node.style.setProperty('transform', 'translate(' + coords.x + 'px, ' + coords.y + 'px)');
         });
+
     tween.delay(1000);
     tween.start();
     tween.onComplete(function () {
+
         let newNode = node.cloneNode(true);
         node.remove();
         newNode.setAttribute("style", "top: 62px;" +
@@ -44,6 +46,7 @@ let animateNode = function () {
             "position: absolute");
 
         $("#lowerPanel").append(newNode);
+
         jsPlumbInstance.connect({
             source: "connectTarget",
             target: "exampleNode",

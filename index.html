@@ -19,28 +19,34 @@
 <div id="dialogOverlay"></div>
 <div id = "introBox">
     <div id="dialogContent">
-        <h2 class ="custom ">This is the super cool JuDaSaKe Major Planning Software</h2>
-        <p>Select your major from the dropdown menu
-            <br> Click the right arrow when you're ready</p>
-
+        <h2 class ="custom">Welcome to DropIn</h2>
+        <p>DropIn is a web-application that helps you plan a major by providing a graph interface to visualize your major track.</p>
+        <p>To start, select your major from the dropdown menu</p>
         <select id = "select">
+            <option selected disabled hidden>Choose Major</option>
             <option value="Computer Science">Computer Science</option>
         </select>
 
-        <p> Now, check off the classes that you've taken.</p>
+        <button id="submitMajorChoice">Submit</button>
 
-        <form id="profileData">
-            <div id = "column1" class = "column"></div>
-            <div id = "column2" class = "column"></div>
-            <div id = "column3" class = "column"></div>
-        </form>
+        <div id="compInitCourses">
+            <p> Now, check off the classes that you've already taken.</p>
+            <form id="profileData">
+                <div id = "column1" class = "column"></div>
+                <div id = "column2" class = "column"></div>
+                <div id = "column3" class = "column"></div>
+            </form>
+            <div id="introNext">
+                <button form="profileData" type="submit" id="nextButton">Next</button>
+            </div>
+        </div>
     </div>
-    <div id="introNext"></div>
+
 </div>
 
 <div id = "example">
     <div id="exampleContent">
-        <div style="top:27px;left:92px; position:absolute" id = "exampleNode" class = "exampleAvailable"></div>
+        <div style="top:1px;left:92px; position:absolute" id = "exampleNode" class = "exampleAvailable"></div>
         <div id = "upperPanel">
             <div class = "exampleAvailable"></div>
             <div class = "exampleAvailable"></div>
@@ -53,7 +59,7 @@
         </div>
         <div id="dragInstructions">
             <p style = "font-size: 24px; font-weight: bold"> HOW TO USE</p>
-            <p> Drag a course from the top bar into the middle to plan it.
+            <p> Drag a course from the top bar into the middle to plan it. <br>
             Connections are automatically drawn between the course and its prerequisites.</p>
         </div>
     </div>
@@ -62,9 +68,9 @@
 
 
 <div class="instructions">
-    <p id="welcomeText">Welcome to Judasake! <br> Click a course to see the description. </p>
+    <p id="welcomeText">Welcome to DropIn! <br> Click a course to see the description. </p>
     <p id="name"></p>
-    <p id ="prereq"></p>
+    <p id = "prereq"></p>
     <p id="courseDescription"></p>
 </div>
 <div class="requirements">
@@ -95,8 +101,8 @@
         <div id="svgNotTaken"></div>
         <div id ="mathNotTaken"></div>
     <div id="subButton">
-        <button id= "switchComp" type="button">COMP</button>
-        <button type="button">MATH</button>
+        <button type="button" id="switchComp">COMP</button>
+        <button type="button" id="switchMath">MATH</button>
     </div>
     <div id ="graph"></div>
 </div>

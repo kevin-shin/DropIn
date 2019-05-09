@@ -49,7 +49,7 @@ let initializeView = function () {
                 return String(d)
             });
 
-        d3.select("#GUI").append("div").attr("id","statusBar");
+        d3.select("#GUI").append("div").attr("id", "statusBar");
     }
 
     function initializeButtonBar() {
@@ -74,76 +74,10 @@ let initializeView = function () {
 
         buttonBar.append("button")
             .attr("id", "delete")
-            .html("Delete");
+            .html("Delete Course");
 
-        buttonBar.append("button")
-            .attr("id", "export")
-            .html("Export");
 
     }
-};
-
-let initialNodes = function (available, graphCourses) {
-
-    console.log(available);
-    let mathCourses = available.filter((course) => course.substr(0,4) === "MATH");
-    let compCourses = available.filter((course) => course.substr(0,4) === "COMP");
-
-    console.log(mathCourses);
-    console.log(compCourses);
-
-    //TAKEN COURSES. Color: Red
-    let svgGroups = d3.select("#svgNotTaken").selectAll(".draggable")
-        .data(compCourses);
-
-    svgGroups.enter()
-        .append("div")
-        .attr("id", function (d) {
-            return d
-        })
-        .html(function (d) {
-            return  d.substr(4, 7)
-        })
-        .attr("class", "draggable available compsci outGraph");
-
-    let svgMathGroups = d3.select("#mathNotTaken").selectAll(".draggable")
-        .data(mathCourses);
-
-    svgMathGroups.enter()
-        .append("div")
-        .attr("id", function (d) {
-            return d
-        })
-        .html(function (d) {
-            return  d.substr(4, 7)
-        })
-        .attr("class", "draggable available math outGraph");
-
-    //TAKEN COURSES. Color: Green
-    let svgContainer = d3.select("#graph").selectAll(".draggable,.taken")
-        .data(graphCourses);
-
-    svgContainer.enter()
-        .append("div")
-        .attr("id", function (d) {
-            return d.course
-        })
-        .html(function (d) {
-            return d.course.substr(4, 7)
-        })
-        .style("top", function (d) {
-            return d.y + 'px'
-        })
-        .style("left", function (d) {
-            return d.x + 'px'
-        })
-        .attr("class", "draggable taken inGraph");
-
-    svgGroups.exit().remove();
-    svgContainer.exit().remove();
-
-    positionTopBar();
-    instructionsBinding();
 };
 
 let draw = function (ViewModel) {
@@ -152,15 +86,8 @@ let draw = function (ViewModel) {
     let plannedCourses = filterPlanned(ViewModel.Classes);
     let takenCourses = filterTaken(ViewModel.Classes);
 
-    let mathCourses = availableCourses.filter((course) => course.substr(0,4) === "MATH");
-    let compCourses = availableCourses.filter((course) => course.substr(0,4) === "COMP");
-
-    console.log("available");
-    console.log(availableCourses);
-    console.log("math");
-    console.log(mathCourses);
-    console.log("CS");
-    console.log(compCourses);
+    let mathCourses = availableCourses.filter((course) => course.substr(0, 4) === "MATH");
+    let compCourses = availableCourses.filter((course) => course.substr(0, 4) === "COMP");
 
     let inGraph = $(".inGraph");
     for (let course of inGraph) {
@@ -188,7 +115,7 @@ let draw = function (ViewModel) {
             return d
         })
         .html(function (d) {
-            return  d.substr(4, 7)
+            return d.substr(4, 7)
         })
         .attr("class", "draggable available compsci outGraph");
 
@@ -201,7 +128,7 @@ let draw = function (ViewModel) {
             return d
         })
         .html(function (d) {
-            return  d.substr(4, 7)
+            return d.substr(4, 7)
         })
         .attr("class", "draggable available math outGraph");
 
@@ -247,7 +174,6 @@ let draw = function (ViewModel) {
 
 
     positionTopBar();
-    instructionsBinding();
     updateRequirementsCount(ViewModel.Classes);
 
     let isFullMajor = fullMajorCheck(ViewModel.Classes);
@@ -259,6 +185,7 @@ let draw = function (ViewModel) {
     }
 };
 
+
 function instructionsBinding() {
     let allCourses = $(".draggable");
     allCourses.bind("mousedown", function () {
@@ -268,17 +195,28 @@ function instructionsBinding() {
         let description = course.courseInfo;
         let name = course.name;
         let title = course.dept + course.courseNum;
+
+        let prereqString = "";
+        if (prereq.length > 0) {
+            for (let course of prereq) {
+                prereqString += course + ", ";
+            }
+            prereqString = prereqString.slice(0, -2);
+
+            $("#prereq").css("display", "block").replaceWith(
+                "<p id='prereq'>" + "Prerequisites: " + prereqString + "</p>"
+            );
+        } else {
+            $("#prereq").css("display", "none")
+        }
+
         $("#welcomeText").css("display", "none");
         $("#name").css("display", "block").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
         $("#courseDescription").css("display", "block").replaceWith(
             "<p id='courseDescription'>" + description + "</p>"
         );
-        $("#prereq").css("display", "block").replaceWith(
-            "<p id='prereq'>" + prereq + "</p>"
-        );
     });
 }
-
 
 let initializeRequirementsPanel = function () {
     for (let obj of rules) {
@@ -314,7 +252,6 @@ let initializeRequirementsPanel = function () {
 
 
 //-----------     HELPER FUNCTIONS     -----------
-
 function updateRequirementsCount(profile) {
     let newCount = calculateRequirements(profile);
     for (let count of newCount) {
@@ -352,10 +289,10 @@ function updateRequirementsCount(profile) {
         .attr("id", function (d) {
             return "req" + d.course
         })
-        .style("opacity","0.5")
+        .style("opacity", "0.5")
         .append("label").text(function (d) {
         return d.course
-        });
+    });
 
     d3.select("#elective").selectAll("newElements")
         .data(electiveProfile)
@@ -363,37 +300,35 @@ function updateRequirementsCount(profile) {
         .attr("id", function (d) {
             return "req" + d.course
         })
-        .style("opacity","0.5")
+        .style("opacity", "0.5")
         .append("label").text(function (d) {
         return d.course
     });
-
 }
 
 function positionTopBar() {
     const radius = 20;
     let compCourses = $(".draggable.available.compsci");
     let compLength = compCourses.length;
-    let compWidth = $("#svgNotTaken").width() - 75;
+    let compWidth = $("#svgNotTaken").width() - 60;
     let compPlacement = compWidth / compLength;
     let i = 1;
     for (let course of compCourses) {
         $(course).css({
             top: $("#svgNotTaken").height() / 2 - (radius + 10),
-            left: i * compPlacement - 40
+            left: i * compPlacement - radius
         });
         i++;
     }
-
     let mathCourses = $(".draggable.available.math");
     let mathLength = mathCourses.length;
-    let mathWidth = $("#mathNotTaken").width() - 75;
+    let mathWidth = $("#mathNotTaken").width() - 60;
     let mathPlacement = mathWidth / mathLength;
     let j = 1;
     for (let course of mathCourses) {
         $(course).css({
             top: $("#mathNotTaken").height() / 2 - (radius + 10),
-            left: j * mathPlacement - 40
+            left: j * mathPlacement - radius
         });
         j++;
     }
@@ -553,4 +488,4 @@ function positionInitialCourses(profile) {
 }
 
 
-export {initializeView, draw, ViewModel, Profile, notTaken, initialNodes};
+export {initializeView, draw, ViewModel, Profile};
