@@ -1,6 +1,6 @@
 import {catalogue} from "../Model/cs_major.js";
 import {Profile, draw} from "./VMtoView.js";
-import {addCourseToProfile, removeCourseFromProfile, markasTaken, markasPlanned} from "./profileManipulation.js";
+import {addCourseToProfile, removeCourseFromProfile, markasTaken, markasPlanned, fillPrereqs} from "./profileManipulation.js";
 import {makeViewModel} from "./makeViewModel.js";
 
 let focus;
@@ -102,6 +102,14 @@ let setUpBehavior = function () {
             let ViewModel = makeViewModel(Profile);
             refreshView(ViewModel);
         });
+
+        $("#missingPrereq").on('click', function () {
+            console.log("HEERRR");
+            fillPrereqs(Profile);
+            let ViewModel = makeViewModel(Profile);
+            refreshView(ViewModel);
+        });
+
 
     });
 };
@@ -221,39 +229,31 @@ function findCourse(data, course) {
 
 function alignProfile(Profile){
     for (let course of Profile){
-
         if (22 < course.x && course.x < 134){
             course.x = 78-align;
         }
-
         if (134 < course.x && course.x < 247){
             course.x = 190-align;
         }
-
         if (247 < course.x && course.x < 359){
             course.x = 303-align;
         }
-
         if (359 < course.x && course.x < 471){
             course.x = 415 - align;
         }
-
         if (471 < course.x && course.x < 586){
             course.x = 529-align;
         }
-
         if (586 < course.x && course.x < 699){
             course.x = 643-align;
         }
-
         if (699 < course.x && course.x < 813){
             course.x = 756-align;
         }
-
         if (813 < course.x && course.x < 923){
             course.x = 868-align;
         }
     }
-
 }
+
 export {drawConnections, refreshView, jsPlumbInstance, setUpBehavior, Profile}

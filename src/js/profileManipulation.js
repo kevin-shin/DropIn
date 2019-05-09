@@ -1,6 +1,6 @@
-import { dfs } from "./connectionsLogic.js";
+import {dfs} from "./connectionsLogic.js";
 
-let makeProfile = function(inputArray){
+let makeProfile = function (inputArray) {
     let Profile = [];
     for (let course of inputArray) {
         Profile.push({
@@ -33,27 +33,44 @@ let addCourseToProfile = function (profile, draggedCourse, eventX, eventY) {
 let removeCourseFromProfile = function (profile, deletedCourse) {
     let i = 0;
     let j;
-    for (let course of profile){
-        if (course.course === deletedCourse){
+    for (let course of profile) {
+        if (course.course === deletedCourse) {
             j = i;
         }
         i++;
     }
-    profile.splice(j,1);
+    profile.splice(j, 1);
 };
 
-let markasTaken = function(Profile, markedCourse){
+let markasTaken = function (Profile, markedCourse) {
     let prereqs = dfs(markedCourse);
-    for (let course of Profile){
-        if (prereqs.some((prereq) => prereq === course.course)){
+    for (let course of Profile) {
+        if (prereqs.some((prereq) => prereq === course.course)) {
             course.status = "taken"
         }
     }
 };
 
-let markasPlanned = function(Profile, markedCourse){
-    for (let course of Profile){
-        if (course.course === markedCourse){
+let fillPrereqs = function (Profile) {
+    for (let course of Profile) {
+        let prereqs = dfs(course.course);
+        for (let prereq of prereqs) {
+            if (!(Profile.some((alreadyCourse) => alreadyCourse.course === prereq))) {
+                Profile.push({
+                    course: prereq,
+                    status: "planned",
+                    x: updatePosx(course.x),
+                    y: updatePosy(course.y)
+                });
+            }
+        }
+    }
+};
+
+
+let markasPlanned = function (Profile, markedCourse) {
+    for (let course of Profile) {
+        if (course.course === markedCourse) {
             course.status = "planned"
         }
     }
@@ -73,32 +90,28 @@ function randomInt(min, max) {
  *updates y position for auto added prereqisites
  * @param initPos: initial y position of dragged course
  */
-function updatePosx(initPos){
-    if (initPos < 30){
+function updatePosx(initPos) {
+    if (initPos < 30) {
         return initPos;
-    }
-    else if(initPos < 100 ) {
+    } else if (initPos < 100) {
         var newPos = initPos - randomInt(50, 60);
         while (newPos < 0) {
             newPos = initPos - randomInt(50, 60);
         }
         return newPos;
-    }
-    else if(initPos < 200) {
+    } else if (initPos < 200) {
         newPos = initPos - randomInt(60, 90);
         while (newPos < 0) {
             newPos = initPos - randomInt(60, 90);
         }
         return newPos;
-    }
-    else if(initPos < 400) {
+    } else if (initPos < 400) {
         newPos = initPos - randomInt(60, 200);
         while (newPos < 0) {
             newPos = initPos - randomInt(60, 2000);
         }
         return newPos;
-    }
-    else if(initPos < 1000) {
+    } else if (initPos < 1000) {
         newPos = initPos - randomInt(60, 200);
         while (newPos < 0) {
             newPos = initPos - randomInt(60, 200);
@@ -111,12 +124,11 @@ function updatePosx(initPos){
 * randomly decides addition or subtraction
 * to be used when generating position of prerequisites
 */
-function plusOrMinus(x, y){
-    let decide = randomInt(0,1);
-    if(decide === 1){
+function plusOrMinus(x, y) {
+    let decide = randomInt(0, 1);
+    if (decide === 1) {
         return x + y;
-    }
-    else{
+    } else {
         return x - y;
     }
 }
@@ -125,46 +137,39 @@ function plusOrMinus(x, y){
  *updates x position for auto added prereqisites
  * @param initPos: initial x position of dragged course
  */
-function updatePosy(initPos){
-    if(initPos <30 || initPos >= 590){ //if the initial class is at an edge
-        if(initPos > 590 ){
+function updatePosy(initPos) {
+    if (initPos < 30 || initPos >= 590) { //if the initial class is at an edge
+        if (initPos > 590) {
             return initPos - randomInt(20, 50);
-        }
-        else {
+        } else {
             return initPos;
         }
-    }
-    else if(initPos < 100 ) {
-        var newPos = plusOrMinus(initPos,randomInt(40, 60));
+    } else if (initPos < 100) {
+        var newPos = plusOrMinus(initPos, randomInt(40, 60));
         while (newPos < 0 || newPos > 580) {
             newPos = plusOrMinus(initPos, randomInt(40, 60));
         }
         return newPos;
-    }
-    else if(initPos < 200) {
+    } else if (initPos < 200) {
         newPos = plusOrMinus(initPos, randomInt(0, 90));
         while (newPos < 0 || newPos > 580) {
             newPos = plusOrMinus(initPos, randomInt(60, 90));
         }
         return newPos;
-    }
-    else if(initPos < 400) {
-        newPos = plusOrMinus(initPos , randomInt(0, 200));
+    } else if (initPos < 400) {
+        newPos = plusOrMinus(initPos, randomInt(0, 200));
         while (newPos < 0 || newPos > 580) {
-            newPos = plusOrMinus(initPos , randomInt(60, 2000));
+            newPos = plusOrMinus(initPos, randomInt(60, 2000));
         }
         return newPos;
-    }
-    else if(initPos < 1000) {
-        newPos = plusOrMinus(initPos , randomInt(0, 200));
+    } else if (initPos < 1000) {
+        newPos = plusOrMinus(initPos, randomInt(0, 200));
         while (newPos < 0 || newPos > 580) {
-            newPos = plusOrMinus(initPos , randomInt(0, 200));
+            newPos = plusOrMinus(initPos, randomInt(0, 200));
         }
         return newPos;
     }
 }
 
 
-
-
-export { makeProfile, addCourseToProfile, removeCourseFromProfile, markasTaken, markasPlanned}
+export {makeProfile, addCourseToProfile, removeCourseFromProfile, markasTaken, markasPlanned, fillPrereqs}
