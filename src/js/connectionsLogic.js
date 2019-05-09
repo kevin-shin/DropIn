@@ -24,8 +24,5 @@ let dfs = function (draggedCourse) {
 // --------- EXPORT  --------- //
 
 export { dfs };
-// module.exports = {};
-// module.exports.makeConnections = makeConnections;
-// module.exports.reset = resetConnectionsArrays;
-// module.exports.dfs = dfs;
+// module.exports = dfs;
 
