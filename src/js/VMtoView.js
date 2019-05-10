@@ -185,38 +185,6 @@ let draw = function (ViewModel) {
 };
 
 
-function instructionsBinding() {
-    let allCourses = $(".draggable");
-    allCourses.bind("mousedown", function () {
-        $("#buttonBar").css("display", "block");
-        let course = findCourse(catalogue, this);
-        let prereq = course.prereq;
-        let description = course.courseInfo;
-        let name = course.name;
-        let title = course.dept + course.courseNum;
-
-        let prereqString = "";
-        if (prereq.length > 0) {
-            for (let course of prereq) {
-                prereqString += course + ", ";
-            }
-            prereqString = prereqString.slice(0, -2);
-
-            $("#prereq").css("display", "block").replaceWith(
-                "<p id='prereq'>" + "Prerequisites: " + prereqString + "</p>"
-            );
-        } else {
-            $("#prereq").css("display", "none")
-        }
-
-        $("#welcomeText").css("display", "none");
-        $("#name").css("display", "block").replaceWith("<p id='name'>" + title + "<br>" + name + "</p>");
-        $("#courseDescription").css("display", "block").replaceWith(
-            "<p id='courseDescription'>" + description + "</p>"
-        );
-    });
-}
-
 let initializeRequirementsPanel = function () {
     for (let obj of rules) {
         let inputLabel = "#" + String(obj.label);//this is the grouping of "intro", "core", "math", or "elective"
@@ -330,15 +298,6 @@ function positionTopBar() {
             left: j * mathPlacement - radius
         });
         j++;
-    }
-}
-
-function findCourse(data, course) {
-    let ID = course.id;
-    for (let object of data) {
-        if ((object.dept + object.courseNum) === ID) {
-            return object;
-        }
     }
 }
 

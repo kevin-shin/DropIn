@@ -16,9 +16,9 @@ body {
     font-family: 'Barlow';
 }
 
-#dialogContent > p {
-    margin-left: 20px;
-    margin-right: 20px;
+#initScreen > p {
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 /*           INSTRUCTIONS PANEL           */
@@ -124,7 +124,8 @@ body {
 
 
 #GUI {
-    height: 100vh;
+    height: 100%;
+    width: 100%;
 }
 
 
@@ -139,6 +140,7 @@ body {
     position: absolute;
     z-index: 999;
     font-weight: bold;
+    cursor: move;
 }
 
 .draggable:active {
@@ -166,6 +168,12 @@ body {
     display: inline-block;
     line-height: 60px;
 }
+
+.available:hover{
+    outline : none;
+    box-shadow:0 0 12px gray;
+}
+
 
 .required {
     height: 60px;
@@ -297,6 +305,10 @@ ul {
     margin: 10px;
 }
 
+#dialogContent > img {
+    display:block;
+    margin:auto;
+}
 
 .exampleTaken {
     height: 35px;
@@ -398,4 +410,8 @@ button {
     background-color: white;
     border-radius: 5px;
     text-align: center;
+}
+
+#interface {
+    min-width: 1000px;
 }

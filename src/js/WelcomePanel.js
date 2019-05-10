@@ -26,6 +26,7 @@ function WelcomePanel() {
             if (document.getElementById("select").value === "Computer Science") {
                 $("#compInitCourses").css("display", "block");
                 $("#introNext").css("display", "block");
+                $("#initScreen").css("display","none");
             }
         });
 

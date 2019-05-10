@@ -27,6 +27,15 @@ let setUpBehavior = function () {
     let graphCourses = $(".inGraph");
 
     outGraph.draggable({revert: true});
+
+    outGraph.mouseenter(function(){
+        $(this).css("z-index","1000");
+    });
+
+    outGraph.mouseleave(function(){
+        $(this).css("z-index","999");
+    });
+
     jsPlumbInstance.draggable(graphCourses, {containment: "parent"});
 
     graph.droppable({
@@ -134,6 +143,12 @@ let refreshView = function (ViewModel) {
     let outGraph = $(".outGraph");
 
     outGraph.draggable({revert: true});
+    outGraph.mouseenter(function(){
+        $(this).css("z-index","1000");
+    });
+    outGraph.mouseleave(function(){
+        $(this).css("z-index","999");
+    });
     jsPlumbInstance.draggable(graphCourses, {
         disabled: true,
         containment: "parent"

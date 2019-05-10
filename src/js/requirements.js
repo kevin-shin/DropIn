@@ -1,4 +1,5 @@
 import {rules} from "../Model/cs_major_rules.js";
+import {dfs} from "./connectionsLogic.js";
 
 let calculateRequirements = function(profile) {
       let count = [];
@@ -24,6 +25,16 @@ let fullMajorCheck = function(profile){
             return false;
         }
     }
+
+    for (let course of profile){
+        let prereqs = dfs(course.course);
+        for (let prereq of prereqs){
+            if (!profile.some((course) => course.course === prereq)){
+                return false;
+            }
+        }
+    }
+
     return true;
 };
 
