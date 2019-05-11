@@ -18,10 +18,8 @@ let jsPlumbInstance = jsPlumb.getInstance({
 
 jsPlumb.Defaults.MaxConnections = 10;
 
-console.log("----> I am loading");
-
+/* Initialize draggable, droppable, and mouse behavior. Associate functions with buttons. */
 let setUpBehavior = function () {
-
     let graph = $("#graph");
     let outGraph = $(".outGraph");
     let graphCourses = $(".inGraph");
@@ -118,15 +116,18 @@ let setUpBehavior = function () {
             let ViewModel = makeViewModel(Profile);
             refreshView(ViewModel);
         });
-
-
     });
 };
 
 
+/*
+refreshView takes a ViewModel and calls the appropriate draw methods. Responsible for reinstituting draggable, droppable,
+and mouse behavior after the nodes are redrawn.
+ */
 let refreshView = function (ViewModel) {
     jsPlumbInstance.reset();
 
+    //Prevent jsPlumb error of connecting a course before the View has been redrawn.
     for (let prereq of ViewModel.Classes) {
         if (prereq.status === "planned") {
             let element = document.getElementById(prereq.course);
@@ -139,6 +140,7 @@ let refreshView = function (ViewModel) {
     draw(ViewModel);
     drawConnections(ViewModel.Connections);
 
+    // Reinstate appropriate UI Behaviors
     let graphCourses = $(".inGraph");
     let outGraph = $(".outGraph");
 
@@ -173,13 +175,7 @@ let refreshView = function (ViewModel) {
         }
         let ViewModel = makeViewModel(Profile);
         refreshView(ViewModel);
-
         focus = $(this);
-        console.log("FOCUS SHOULD BE SET TO: ");
-        console.log(focus);
-        $(this).css({
-            "border":"2px solid #D8C684"
-        });
     });
 
     outGraph.mousedown(function () {
@@ -188,6 +184,7 @@ let refreshView = function (ViewModel) {
 
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 };
+
 
 let drawConnections = function (Connections) {
     for (let entry of Connections) {
@@ -206,6 +203,13 @@ let drawConnections = function (Connections) {
     }
 };
 
+/*
+@param
+selectedCourse: JQuery selection of a HTML object representing a course
+
+Each course node is associated with a mouse event bound to this function. On click, the instructions panel populates
+with information specific to that node.
+ */
 function instructionsDisplay(selectedCourse) {
     let course = findCourse(catalogue, selectedCourse.attr('id'));
     let prereq = course.prereq;
@@ -234,6 +238,7 @@ function instructionsDisplay(selectedCourse) {
     );
 }
 
+//Helper method for instructionsDisplay. Returns appropriate course object from catalog.
 function findCourse(data, course) {
     for (let object of data) {
         if ((object.dept + object.courseNum) === course) {
@@ -242,6 +247,7 @@ function findCourse(data, course) {
     }
 }
 
+//Centers each course to a Year panel. Can be called by user at any point to reposition courses on graph.
 function alignProfile(Profile){
     for (let course of Profile){
         if (22 < course.x+radius && course.x+radius < 134){

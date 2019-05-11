@@ -8,7 +8,8 @@ Set of functions to control Profile Manipulation behavior.
 /*
 @param
 inputArray: array returned by input form in welcome Panel
-
+output: Profile, an array of objects representing a course. The course property holds the name of the course, and status
+        corresponds to "taken" or "planned"
  */
 let makeProfile = function (inputArray) {
     let Profile = [];
@@ -21,7 +22,16 @@ let makeProfile = function (inputArray) {
     return Profile;
 };
 
-
+/*
+@param
+profile: A Profile object.
+draggedCourse: the courseID of course
+eventX: position of mouse X coordinate
+eventY: position of mouse Y coordinate
+output: Profile, an array of objects representing a course. The course property holds the name of the course,
+        and status corresponds to "taken" or "planned". The draggedCourse, and all of its prerequisites, are
+        pushed onto the profile.
+*/
 let addCourseToProfile = function (profile, draggedCourse, eventX, eventY) {
     let courseWithPrereqs = dfs(draggedCourse);
     let initialPositionX = eventX;
@@ -40,6 +50,12 @@ let addCourseToProfile = function (profile, draggedCourse, eventX, eventY) {
     }
 };
 
+/*
+@param
+profile: A Profile object.
+deletedCourse: the courseID of course
+output: Profile, an array of objects representing a course. The deletedCourse is removed from the profile.
+*/
 let removeCourseFromProfile = function (profile, deletedCourse) {
     let i = 0;
     let j;
@@ -52,6 +68,7 @@ let removeCourseFromProfile = function (profile, deletedCourse) {
     profile.splice(j, 1);
 };
 
+/* markedCourse represents the ID of a course. Iterates through Profile and marks the course's property as taken */
 let markasTaken = function (Profile, markedCourse) {
     let prereqs = dfs(markedCourse);
     for (let course of Profile) {
@@ -61,6 +78,20 @@ let markasTaken = function (Profile, markedCourse) {
     }
 };
 
+/* markedCourse represents the ID of a course. Iterates through Profile and marks the course's property as planned */
+let markasPlanned = function (Profile, markedCourse) {
+    for (let course of Profile) {
+        if (course.course === markedCourse) {
+            course.status = "planned"
+        }
+    }
+};
+
+/*
+@param
+profile: A Profile object.
+output: The profile, with all missing prereqs filled in.
+*/
 let fillPrereqs = function (Profile) {
     for (let course of Profile) {
         let prereqs = dfs(course.course);
@@ -78,16 +109,7 @@ let fillPrereqs = function (Profile) {
 };
 
 
-let markasPlanned = function (Profile, markedCourse) {
-    for (let course of Profile) {
-        if (course.course === markedCourse) {
-            course.status = "planned"
-        }
-    }
-};
-
-
-//PLACEMENT ALGORITHMS
+//***********  PLACEMENT ALGORITHMS  ***********//
 
 /*
 * generates random int to be used in updating position

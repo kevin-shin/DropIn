@@ -2,7 +2,6 @@ import {rules} from "../Model/cs_major_rules.js";
 import {WelcomePanel} from "./WelcomePanel.js";
 import {makeProfile} from "./profileManipulation.js";
 import {makeViewModel, cleanCatalogue} from "./makeViewModel.js";
-import {catalogue} from "../Model/cs_major.js";
 import {dfs} from "./connectionsLogic.js";
 import {calculateRequirements} from "./requirements.js";
 import {fullMajorCheck} from "./requirements.js";
@@ -10,8 +9,10 @@ import {fullMajorCheck} from "./requirements.js";
 let Profile;
 let ViewModel;
 
+/*
+Called to draw the structure of the View. Renders the WelcomePanel, and takes information to initialize the Profile.
+ */
 let initializeView = function () {
-
     let alert = new WelcomePanel();
     alert.render();
     $("#nextButton").on("click", alert.next);
@@ -75,20 +76,27 @@ let initializeView = function () {
         buttonBar.append("button")
             .attr("id", "delete")
             .html("Delete Course");
-
-
     }
 };
 
-let draw = function (ViewModel) {
+/*
+@param
+ViewModel: A ViewModel object
 
+draw() is called after each user-driven event. The ViewModel provides new information corresponding to an updated
+Profile. draw() takes this ViewModel and updates the View.
+ */
+let draw = function (ViewModel) {
+    //Given a ViewModel, calculate the not taken courses, the planned courses, and taken courses.
     let availableCourses = notTaken(ViewModel.Classes);
     let plannedCourses = filterPlanned(ViewModel.Classes);
     let takenCourses = filterTaken(ViewModel.Classes);
 
+    //Split into Math and Computer Science courses
     let mathCourses = availableCourses.filter((course) => course.substr(0, 4) === "MATH");
     let compCourses = availableCourses.filter((course) => course.substr(0, 4) === "COMP");
 
+    /*   Delete HTML elements in graphs */
     let inGraph = $(".inGraph");
     for (let course of inGraph) {
         let element = document.getElementById(course.id);
@@ -152,7 +160,7 @@ let draw = function (ViewModel) {
         })
         .attr("class", "draggable taken inGraph");
 
-    //TAKEN COURSES. Color: Orange
+    //PLANNED COURSES. Color: Orange
     let svgPlanned = d3.select("#graph").selectAll(".planned")
         .data(plannedCourses);
 
@@ -172,10 +180,10 @@ let draw = function (ViewModel) {
         })
         .attr("class", "draggable planned inGraph");
 
-
     positionTopBar();
     updateRequirementsCount(ViewModel.Classes);
 
+    //Check if full major
     let isFullMajor = fullMajorCheck(ViewModel.Classes);
     if (isFullMajor) {
         $("#majorText").css("display","block");
@@ -184,7 +192,10 @@ let draw = function (ViewModel) {
     }
 };
 
-
+/*
+For each category of rules, initialize a panel which holds the core courses and provides a section in which classes
+are later populated if they qualify as filling that requirement.
+ */
 let initializeRequirementsPanel = function () {
     for (let obj of rules) {
         let inputLabel = "#" + String(obj.label);//this is the grouping of "intro", "core", "math", or "elective"
@@ -219,6 +230,11 @@ let initializeRequirementsPanel = function () {
 
 
 //-----------     HELPER FUNCTIONS     -----------
+
+/*
+Using the information reported by calculateRequirements(profile), update the Requirement Panel to reflect the requirements
+now satisfied or not satisfied by current version of the profile.
+ */
 function updateRequirementsCount(profile) {
     let newCount = calculateRequirements(profile);
     for (let count of newCount) {
@@ -273,6 +289,7 @@ function updateRequirementsCount(profile) {
     });
 }
 
+//Equal spacing on the top course bar.
 function positionTopBar() {
     const radius = 20;
     let compCourses = $(".draggable.available.compsci");
@@ -301,10 +318,16 @@ function positionTopBar() {
     }
 }
 
+/*
+@param:
+profile: A profile.
+output: An array of courses associated with courses in the catalog that are not reported as planned or taken by
+        the user profile. This method is used to populate the top bar.
+ */
 function notTaken(profile) {
     let toReturn = [];
-    let compCat = cleanCatalogue();
-    for (let course of compCat) {
+    let compCourses = cleanCatalogue();
+    for (let course of compCourses) {
         if (!profile.some((thing) => thing.course === course)) {
             toReturn.push(course);
         }
@@ -320,6 +343,7 @@ function filterPlanned(profile) {
     return profile.filter((course) => course.status === "planned");
 }
 
+//Method to control placement of courses when Profile is first initialize and displayed on the graph.
 function positionInitialCourses(profile) {
     for (let course of profile) {
         if (course.course === "COMP120") {

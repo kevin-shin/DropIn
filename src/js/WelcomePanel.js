@@ -29,10 +29,8 @@ function WelcomePanel() {
                 $("#initScreen").css("display","none");
             }
         });
-
         drawOptions();
     };
-
     this.next = function () {
         introBox.css("display", "none");
         let intro = new InputPanel();
@@ -51,16 +49,16 @@ function InputPanel() {
         exampleNext.html('<button type="submit" id="startButton">Start </button>');
     };
 
+    // LAUNCHES GRAPH
     this.next = function () {
         exampleBox.css("display", "none");
         dialogOverlay.css("display", "none");
-
         refreshView(ViewModel);
         setUpBehavior();
     }
 }
 
-
+//Each course on the catalog is displayed as checkbox.
 function drawOptions() {
     let keys = [];
 
