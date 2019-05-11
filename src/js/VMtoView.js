@@ -3,8 +3,7 @@ import {WelcomePanel} from "./WelcomePanel.js";
 import {makeProfile} from "./profileManipulation.js";
 import {makeViewModel, cleanCatalogue} from "./makeViewModel.js";
 import {dfs} from "./connectionsLogic.js";
-import {calculateRequirements} from "./requirements.js";
-import {fullMajorCheck} from "./requirements.js";
+import {calculateRequirements, fullMajorCheck} from "./requirements.js";
 
 let Profile;
 let ViewModel;
@@ -258,7 +257,6 @@ function updateRequirementsCount(profile) {
             $(reqSelectorString).css("opacity", "0.5");
         }
     }
-
 
     let mathRules = rules.filter((category) => category.label === "math")[0].courses;
     let electiveRules = rules.filter((category) => category.label === "elective")[0].courses;
