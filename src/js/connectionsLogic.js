@@ -1,6 +1,12 @@
-import { courseCatalog } from "./prereq_dictionary.js";
+import {courseCatalog} from "./prereq_dictionary.js";
 // const courseCatalog = require("./prereq_dictionary.js");
 
+/*
+@param  draggedCourse: the ID of a course dragged onto the graph
+        output: an array containing the courseID, as well as the IDs of any associated prereqs, and prereqs of those prereqs.
+
+Used to calculate which courses should pop-up on the graph having dropped a course.
+ */
 let dfs = function (draggedCourse) {
     let visitedStack = [];
     let courseStack = [];
@@ -23,6 +29,6 @@ let dfs = function (draggedCourse) {
 
 // --------- EXPORT  --------- //
 
-export { dfs };
+export {dfs};
 // module.exports = dfs;
 

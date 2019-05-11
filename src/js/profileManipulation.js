@@ -1,6 +1,15 @@
 import {dfs} from "./connectionsLogic.js";
 // const dfs = require("./connectionsLogic.js");
 
+/*
+Set of functions to control Profile Manipulation behavior.
+ */
+
+/*
+@param
+inputArray: array returned by input form in welcome Panel
+
+ */
 let makeProfile = function (inputArray) {
     let Profile = [];
     for (let course of inputArray) {

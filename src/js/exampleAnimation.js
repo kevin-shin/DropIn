@@ -1,5 +1,11 @@
-let animateNode = function () {
 
+/*
+animateNode is responsible for creating the animation that is displayed in the tutorial panel.
+Uses jsPlumb and TWEEN to move an exampleNode to a position, and draw a connection between that node
+and another one on the graph.
+ */
+
+let animateNode = function () {
     let jsPlumbInstance = jsPlumb.getInstance({
         Connector: ["Straight"],
         DragOptions: {cursor: "pointer", zIndex: 5},

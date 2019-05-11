@@ -1,6 +1,13 @@
+/*      GENERAL        */
 html {
     padding: 0;
     margin: 0;
+}
+
+h2.visualizeText {
+    margin-top: 15px;
+    font-size:35px;
+    margin-bottom: 10px;
 }
 
 p {
@@ -16,9 +23,16 @@ body {
     font-family: 'Barlow';
 }
 
+/*                INTRO PANEL                 */
 #initScreen > p {
     margin-left: 40px;
     margin-right: 40px;
+}
+
+p.visualizeText {
+    font-size: 25px;
+    padding: 0;
+    margin-top:0px;
 }
 
 /*           INSTRUCTIONS PANEL           */
@@ -43,162 +57,6 @@ body {
     font-size: 25px;
     color: #818181;
     display: block;
-}
-
-
-/*           REQUIREMENTS PANEL           */
-.requirements {
-    margin: 10px;
-    padding: 10px;
-    height: 48%;
-    width: 24%;
-    position: absolute;
-    right: 0;
-    bottom: 10px;
-    background-color: #AECBC9;
-    border-radius: 15px;
-    overflow-y: scroll;
-}
-
-.requirements a {
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    padding: 5px;
-}
-
-
-/*           GUI           */
-
-#graph {
-    display: block;
-    height: 79%;
-    width: 72%;
-    left: 0;
-    background-color: #ffffff00;
-    margin-left:11px;
-    padding: 10px;
-    float: left;
-    white-space: nowrap;
-    position: absolute;
-    object-fit: none;
-    resize: none;
-
-
-}
-
-#availableCourses {
-    width:75%;
-    height:120px;
-    border-radius: 25px;
-    border: 2px solid white;
-    white-space: nowrap;
-}
-
-#svgNotTaken {
-    display: block;
-    width: 810px;
-    margin-left: 17px;
-    height: 75px;
-    position: relative;
-    background-color: white;
-    border-radius: 25px;
-    border: 2px solid #D8C684;
-    margin-top: 10px;
-    overflow: -moz-scrollbars-horizontal;
-}
-
-
-#mathNotTaken {
-    display: none;
-    width: 810px;
-    height: 75px;
-    margin-left: 17px;
-    position: relative;
-    background-color: white;
-    border-radius: 25px;
-    border: 2px solid coral;
-    margin-top: 10px;
-    overflow: -moz-scrollbars-horizontal;
-}
-
-
-#GUI {
-    height: 100%;
-    width: 100%;
-}
-
-
-
-.result {
-    display: inline-block;
-    margin-left: 30px;
-}
-
-/*           NODE BEHAVIOR           */
-.draggable {
-    position: absolute;
-    z-index: 999;
-    font-weight: bold;
-    cursor: move;
-}
-
-.draggable:active {
-    outline : none;
-    border-color:#9ecaed;
-    box-shadow:0 0 12px #9ecaed;
-}
-
-.taken {
-    height: 60px;
-    width: 60px;
-    background-color: #AECBCF;
-    border-radius: 50%;
-    text-align: center;
-    display: inline-block;
-    line-height: 60px;
-}
-
-.available {
-    height: 60px;
-    width: 60px;
-    background-color: rgb(255, 219, 111);
-    border-radius: 50%;
-    text-align: center;
-    display: inline-block;
-    line-height: 60px;
-}
-
-.available:hover{
-    outline : none;
-    box-shadow:0 0 12px gray;
-}
-
-
-.required {
-    height: 60px;
-    width: 60px;
-    background-color: gray;
-    border-radius: 50%;
-    text-align: center;
-    display: inline-block;
-    line-height: 60px;
-}
-
-.year {
-    width: 109px;
-    height: 100%;
-    vertical-align: top;
-    display: inline-block;
-    background: white;
-    border: 2px solid #AECBC9;
-    text-align: center;
-    padding-top: 5px;
-    object-fit: none;
-}
-
-ul {
-    list-style: none;
 }
 
 #dialogOverlay {
@@ -339,26 +197,92 @@ ul {
     padding: 10px;
 }
 
-.draggable.planned {
-    height: 60px;
-    width: 60px;
-    background-color: orange;
-    border-radius: 50%;
-    text-align: center;
-    display: inline-block;
-    line-height: 60px;
-}
-
-#garbage {
-    height: 100px;
-    width: 100px;
-    background-color: black;
+/*           REQUIREMENTS PANEL           */
+.requirements {
+    margin: 10px;
+    padding: 10px;
+    height: 48%;
+    width: 24%;
     position: absolute;
     right: 0;
-    bottom: 0;
-    display: block;
-    z-index: 999;
+    bottom: 10px;
+    background-color: #AECBC9;
+    border-radius: 15px;
+    overflow-y: scroll;
 }
+
+.requirements a {
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    padding: 5px;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/*           GUI           */
+#GUI {
+    height: 100%;
+    width: 100%;
+}
+
+#graph {
+    display: block;
+    height: 79%;
+    width: 90%;
+    left: 0;
+    background-color: #ffffff00;
+    margin-left:11px;
+    padding: 10px;
+    float: left;
+    white-space: nowrap;
+    position: absolute;
+    object-fit: none;
+    resize: none;
+}
+
+#availableCourses {
+    width:75%;
+    height:120px;
+    border-radius: 25px;
+    border: 2px solid white;
+    white-space: nowrap;
+}
+
+#svgNotTaken {
+    display: block;
+    width: 810px;
+    margin-left: 17px;
+    height: 75px;
+    position: relative;
+    background-color: white;
+    border-radius: 25px;
+    border: 2px solid #D8C684;
+    margin-top: 10px;
+    overflow: -moz-scrollbars-horizontal;
+}
+
+#mathNotTaken {
+    display: none;
+    width: 810px;
+    height: 75px;
+    margin-left: 17px;
+    position: relative;
+    background-color: white;
+    border-radius: 25px;
+    border: 2px solid coral;
+    margin-top: 10px;
+    overflow: -moz-scrollbars-horizontal;
+}
+
+.result {
+    display: inline-block;
+    margin-left: 30px;
+}
+
 
 #buttonBar {
     display: none;
@@ -414,4 +338,75 @@ button {
 
 #interface {
     min-width: 1000px;
+}
+
+/*           NODES           */
+.draggable {
+    position: absolute;
+    z-index: 999;
+    font-weight: bold;
+    cursor: move;
+}
+
+.draggable:active {
+    outline : none;
+    border-color:#9ecaed;
+    box-shadow:0 0 12px #9ecaed;
+}
+
+.taken {
+    height: 60px;
+    width: 60px;
+    background-color: #AECBCF;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
+}
+
+.available {
+    height: 60px;
+    width: 60px;
+    background-color: rgb(255, 219, 111);
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
+}
+
+.available:hover{
+    outline : none;
+    box-shadow:0 0 12px gray;
+}
+
+.required {
+    height: 60px;
+    width: 60px;
+    background-color: gray;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
+}
+
+.year {
+    width: 109px;
+    height: 100%;
+    vertical-align: top;
+    display: inline-block;
+    background: white;
+    border: 2px solid #AECBC9;
+    text-align: center;
+    padding-top: 5px;
+    object-fit: none;
+}
+
+.draggable.planned {
+    height: 60px;
+    width: 60px;
+    background-color: orange;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
 }
