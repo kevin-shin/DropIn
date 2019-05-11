@@ -8,7 +8,7 @@ let focus;
 let displacementX;
 let displacementY;
 let radius = 30;
-let align = radius+13;
+let align = radius+11;
 
 let jsPlumbInstance = jsPlumb.getInstance({
     Connector: ["Straight"],
@@ -57,13 +57,11 @@ let setUpBehavior = function () {
                 $("#legend").css("display","block")
             }
             focus = null;
-            console.log("I'm clicking on:" + event.clientX + ", " + event.clientY);
+            findFocus();
         });
 
         $("#delete").on('click', function () {
             if (focus !== null) {
-                console.log("DELETE ACTIVATE");
-                console.log(focus);
                 removeCourseFromProfile(Profile, focus.attr('id'));
                 let ViewModel = makeViewModel(Profile);
                 refreshView(ViewModel);
@@ -152,6 +150,7 @@ let refreshView = function (ViewModel) {
                 displacementY = event.clientY - course.y;
             }
         }
+        focus = $(this);
     });
 
     graphCourses.mouseup(function (event) {
@@ -163,12 +162,13 @@ let refreshView = function (ViewModel) {
         }
         let ViewModel = makeViewModel(Profile);
         refreshView(ViewModel);
-        focus = $(this);
     });
 
     outGraph.mousedown(function () {
         instructionsDisplay($(this));
     });
+
+    findFocus();
 
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 };
@@ -269,5 +269,23 @@ function alignProfile(Profile){
         }
     }
 }
+
+let findFocus = function(){
+    let inGraph = $(".inGraph");
+
+    for (let course of inGraph){
+        let tag = "#" + course.id;
+        $(tag).css({"box-shadow": "unset"});
+    }
+
+    for (let course of inGraph){
+        if (typeof focus !== "undefined" && focus !== null) {
+            if (course.id === focus.attr('id')) {
+                let tag = "#" + course.id;
+                $(tag).css({"box-shadow": "0px 0px 23px 2px rgba(153,145,130,1)"});
+            }
+        }
+    }
+};
 
 export {drawConnections, refreshView, jsPlumbInstance, setUpBehavior, Profile}
