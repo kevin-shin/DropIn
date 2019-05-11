@@ -4,6 +4,9 @@ import {ViewModel} from "./VMtoView.js";
 import {setUpBehavior} from "./UIBehavior.js";
 import {courseCatalog} from "./prereq_dictionary.js";
 
+//This solution to creating a Custom Alert Box is modeled off of Adam Khoury's tutorial
+//http://www.developphp.com/video/JavaScript/Custom-Alert-Box-Programming-Tutorial
+
 let width = window.innerWidth;
 let height = window.innerHeight;
 
@@ -12,6 +15,10 @@ let introBox = $("#introBox");
 let exampleBox = $("#example");
 let exampleNext = $("#exampleNext");
 
+/*
+Initial welcome and intro panels to prompt user to enter their major, the courses they've taken,
+and display an example animation.
+ */
 function WelcomePanel() {
     this.render = function () {
         let position = String(width / 2 - 700 / 2) + "px";

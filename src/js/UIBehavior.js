@@ -24,8 +24,6 @@ let setUpBehavior = function () {
     let outGraph = $(".outGraph");
     let graphCourses = $(".inGraph");
 
-    outGraph.draggable({revert: true});
-
     outGraph.mouseenter(function(){
         $(this).css("z-index","1000");
     });
@@ -34,6 +32,7 @@ let setUpBehavior = function () {
         $(this).css("z-index","999");
     });
 
+    outGraph.draggable({revert: true});
     jsPlumbInstance.draggable(graphCourses, {containment: "parent"});
 
     graph.droppable({
@@ -126,7 +125,7 @@ let refreshView = function (ViewModel) {
     draw(ViewModel);
     drawConnections(ViewModel.Connections);
 
-    // Reinstate appropriate UI Behaviors
+    // Reinstate appropriate UI Behaviors with new drawn HTML elements
     let graphCourses = $(".inGraph");
     let outGraph = $(".outGraph");
 
@@ -173,7 +172,11 @@ let refreshView = function (ViewModel) {
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 };
 
-
+/*
+@param
+Connections: An array of objects with source/target properties, representing a connection between a prereq and a course.
+In the context of the drawing process, this will be the Connections property of the ViewModel.
+ */
 let drawConnections = function (Connections) {
     for (let entry of Connections) {
         jsPlumbInstance.connect({
@@ -270,6 +273,9 @@ function alignProfile(Profile){
     }
 }
 
+/*
+Called after each refresh to find the course in focus and assign a distinguishing CSS feature.
+ */
 let findFocus = function(){
     let inGraph = $(".inGraph");
 

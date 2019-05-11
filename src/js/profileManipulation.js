@@ -120,8 +120,8 @@ function randomInt(min, max) {
 }
 
 /*
- *updates y position for auto added prereqisites
- * @param initPos: initial y position of dragged course
+ *updates x position for auto added prereqisites
+ * @param initPos: initial x position of dragged course
  */
 function updatePosx(initPos) {
     if (initPos < 30) {
@@ -154,8 +154,7 @@ function updatePosx(initPos) {
 }
 
 /*
- *updates y position for auto added prereqisites
- * @param initPos: initial x position of dragged course
+ * Updates y position for auto added prereqisites.
  */
 
 function updatePosy() {

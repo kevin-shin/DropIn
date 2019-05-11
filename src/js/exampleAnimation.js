@@ -25,6 +25,7 @@ let animateNode = function () {
         ]
     });
 
+    //Modified version of example code from https://github.com/tweenjs/tween.js/
     function animate(time) {
         requestAnimationFrame(animate);
         TWEEN.update(time);
