@@ -45,7 +45,7 @@ let addCourseToProfile = function (profile, draggedCourse, eventX, eventY) {
                 y: initialPositionY
             });
             initialPositionX = updatePosx(initialPositionX);
-            initialPositionY = updatePosy(initialPositionY);
+            initialPositionY = updatePosy();
         }
     }
 };
@@ -101,7 +101,7 @@ let fillPrereqs = function (Profile) {
                     course: prereq,
                     status: "planned",
                     x: updatePosx(course.x),
-                    y: updatePosy(course.y)
+                    y: updatePosy()
                 });
             }
         }
@@ -169,6 +169,15 @@ function plusOrMinus(x, y) {
  *updates x position for auto added prereqisites
  * @param initPos: initial x position of dragged course
  */
+
+function updatePosy() {
+    let graph = $("#graph");
+    let minY = graph.offset().top + 15;
+    let maxY = graph.offset().top + graph.height()-60;
+    return randomInt(minY,maxY);
+}
+
+/*
 function updatePosy(initPos) {
     if (initPos < 30 || initPos >= 560) { //if the initial class is at an edge
         if (initPos > 560) {
@@ -202,7 +211,7 @@ function updatePosy(initPos) {
         return newPos;
     }
 }
-
+*/
 
 export {makeProfile, addCourseToProfile, removeCourseFromProfile, markasTaken, markasPlanned, fillPrereqs}
 // module.exports = makeProfile;

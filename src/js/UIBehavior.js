@@ -8,7 +8,7 @@ let focus;
 let displacementX;
 let displacementY;
 let radius = 30;
-let align = radius + 7;
+let align = radius+13;
 
 let jsPlumbInstance = jsPlumb.getInstance({
     Connector: ["Straight"],
@@ -69,8 +69,6 @@ let setUpBehavior = function () {
                 refreshView(ViewModel);
                 focus = null;
             }
-            console.log("Having deleted, focus is:");
-            console.log(focus);
         });
 
         $("#switchComp").on('click', function () {
@@ -84,25 +82,15 @@ let setUpBehavior = function () {
         });
 
         $("#markTaken").on('click', function () {
-            console.log("Mark Taken triggered");
-            console.log("Focus should be:");
-            console.log(focus);
             markasTaken(Profile, focus.attr('id'));
             let ViewModel = makeViewModel(Profile);
             refreshView(ViewModel);
-            console.log("Having marked taken, focus is:");
-            console.log(focus);
         });
 
         $("#markPlanned").on('click', function () {
-            console.log("Mark Planned triggered");
-            console.log("Focus should be:");
-            console.log(focus);
             markasPlanned(Profile, focus.attr('id'));
             let ViewModel = makeViewModel(Profile);
             refreshView(ViewModel);
-            console.log("Having marked planned, focus is:");
-            console.log(focus);
         });
 
         $("#align").on('click', function () {
@@ -112,7 +100,6 @@ let setUpBehavior = function () {
         });
 
         $("#missingPrereq").on('click', function () {
-            console.log("HEERRR");
             fillPrereqs(Profile);
             let ViewModel = makeViewModel(Profile);
             refreshView(ViewModel);
@@ -251,30 +238,34 @@ function findCourse(data, course) {
 
 //Centers each course to a Year panel. Can be called by user at any point to reposition courses on graph.
 function alignProfile(Profile){
+    let firstYear = $("#FYFall");
+    let initPosition = firstYear.offset().left;
+    let displacementWidth = firstYear.outerWidth();
+
     for (let course of Profile){
-        if (22 < course.x+radius && course.x+radius < 134){
-            course.x = 78-align;
+        if (initPosition < course.x+radius && course.x+radius < initPosition + 1 * displacementWidth){
+            course.x = (initPosition + initPosition + 1 * displacementWidth)/2 -align;
         }
-        if (134 < course.x+radius && course.x+radius < 247){
-            course.x = 190-align;
+        if (initPosition + 1 * displacementWidth < course.x+radius && course.x+radius < initPosition + 2 * displacementWidth){
+            course.x = ((initPosition + 1 * displacementWidth) + (initPosition + 2 * displacementWidth))/2 - align;
         }
-        if (247 < course.x+radius && course.x+radius < 359){
-            course.x = 303-align;
+        if (initPosition + 2 * displacementWidth < course.x+radius && course.x+radius < initPosition + 3 * displacementWidth){
+            course.x = ((initPosition + 2 * displacementWidth) + (initPosition + 3 * displacementWidth))/2 -align;
         }
-        if (359 < course.x+radius && course.x+radius < 471){
-            course.x = 415 - align;
+        if (initPosition + 3 * displacementWidth < course.x+radius && course.x+radius < initPosition + 4 * displacementWidth){
+            course.x = ((initPosition + 3 * displacementWidth) + (initPosition + 4 * displacementWidth))/2 - align;
         }
-        if (471 < course.x+radius && course.x+radius < 586){
-            course.x = 529-align;
+        if (initPosition + 4 * displacementWidth < course.x+radius && course.x+radius < initPosition + 5 * displacementWidth){
+            course.x = ((initPosition + 4 * displacementWidth) + (initPosition + 5 * displacementWidth))/2 - align;
         }
-        if (586 < course.x+radius && course.x+radius < 699){
-            course.x = 643-align;
+        if (initPosition + 5 * displacementWidth < course.x+radius && course.x+radius < initPosition + 6 * displacementWidth){
+            course.x = ((initPosition + 5 * displacementWidth) + (initPosition + 6 * displacementWidth))/2 - align;
         }
-        if (699 < course.x+radius && course.x+radius < 813){
-            course.x = 756-align;
+        if (initPosition + 6 * displacementWidth < course.x+radius && course.x+radius < initPosition + 7 * displacementWidth){
+            course.x = ((initPosition + 6 * displacementWidth) + (initPosition + 7 * displacementWidth))/2 - align;
         }
-        if (813 < course.x+radius && course.x+radius < 923){
-            course.x = 868-align;
+        if (initPosition + 7 * displacementWidth < course.x+radius && course.x+radius < initPosition + 8 * displacementWidth){
+            course.x = ((initPosition + 7 * displacementWidth) + (initPosition + 8 * displacementWidth))/2 - align;
         }
     }
 }

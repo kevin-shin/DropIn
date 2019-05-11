@@ -46,7 +46,7 @@ let initializeView = function () {
             .data(years)
             .enter().append("div")
             .attr("class", "year")
-            .attr("id",function(d) {return String(d)})
+            .attr("id", function(d) {return String(d).slice(0, 2) + String(d).slice(3);})
             .html(function (d) {
                 return String(d)
             });
@@ -54,12 +54,13 @@ let initializeView = function () {
 
     function initializeButtonBar() {
         let graph = $("#graph");
-        console.log(graph.offset().top+ graph.height());
+        let lastYear = $("#SRSpring");
+        let width = lastYear.offset().left + lastYear.outerWidth() - graph.offset().left;
 
         let buttonBar = d3.select("#GUI")
             .append("div")
             .attr("id", "statusBar")
-            .style("width", graph.width() + "px")
+            .style("width", width + "px")
             .style("left",graph.offset().left + "px")
             .style("top", graph.offset().top + graph.height() + "px");
 

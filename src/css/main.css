@@ -273,7 +273,7 @@ ul {
 
 #graph {
     display: block;
-    height: 74%;
+    height: 75%;
     width: 70%;
     left: 0;
     background-color: #ffffff00;
@@ -297,8 +297,8 @@ ul {
 #svgNotTaken {
     display: block;
     width: 65%;
+    height: 12%;
     margin-left: 17px;
-    height: 75px;
     position: relative;
     background-color: white;
     border-radius: 25px;
@@ -310,7 +310,7 @@ ul {
 #mathNotTaken {
     display: none;
     width: 65%;
-    height: 75px;
+    height: 12%;
     margin-left: 17px;
     position: relative;
     background-color: white;
