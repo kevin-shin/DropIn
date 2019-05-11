@@ -29,7 +29,7 @@ Redirected to screen to begin planning: Panels for available courses, planned/ta
 
 ### Future Work
 1. Expand to incorporate other majors
-2. Scrape major data from web so as to not have to manually log courses
+2. Scrape major data from web so as to not have to manually log courses and when they are offered
 3. Have plans A, B, C to compare different paths 
 4. Export major plan as a pdf.
 5. Dynamically reshape divs based on screen size
