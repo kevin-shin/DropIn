@@ -81,7 +81,8 @@ let markasTaken = function (Profile, markedCourse) {
 /* markedCourse represents the ID of a course. Iterates through Profile and marks the course's property as planned */
 let markasPlanned = function (Profile, markedCourse) {
     for (let course of Profile) {
-        if (course.course === markedCourse) {
+        let prereqs = dfs(course.course);
+        if (course.course === markedCourse || prereqs.some(( prereq ) => prereq === markedCourse)) {
             course.status = "planned"
         }
     }
@@ -153,65 +154,18 @@ function updatePosx(initPos) {
 }
 
 /*
-* randomly decides addition or subtraction
-* to be used when generating position of prerequisites
-*/
-function plusOrMinus(x, y) {
-    let decide = randomInt(0, 1);
-    if (decide === 1) {
-        return x + y;
-    } else {
-        return x - y;
-    }
-}
-
-/*
- *updates x position for auto added prereqisites
+ *updates y position for auto added prereqisites
  * @param initPos: initial x position of dragged course
  */
 
 function updatePosy() {
     let graph = $("#graph");
+    let statusBar = $("#statusBar");
     let minY = graph.offset().top + 15;
-    let maxY = graph.offset().top + graph.height()-60;
-    return randomInt(minY,maxY);
+    let maxY = statusBar.offset().top - 60;
+    return randomInt(minY,maxY)-graph.offset().top;
 }
 
-/*
-function updatePosy(initPos) {
-    if (initPos < 30 || initPos >= 560) { //if the initial class is at an edge
-        if (initPos > 560) {
-            return initPos - randomInt(20, 50);
-        } else {
-            return initPos;
-        }
-    } else if (initPos < 100) {
-        var newPos = plusOrMinus(initPos, randomInt(40, 60));
-        while (newPos < 0 || newPos > 560) {
-            newPos = plusOrMinus(initPos, randomInt(40, 60));
-        }
-        return newPos;
-    } else if (initPos < 200) {
-        newPos = plusOrMinus(initPos, randomInt(0, 90));
-        while (newPos < 0 || newPos > 560) {
-            newPos = plusOrMinus(initPos, randomInt(60, 90));
-        }
-        return newPos;
-    } else if (initPos < 400) {
-        newPos = plusOrMinus(initPos, randomInt(0, 200));
-        while (newPos < 0 || newPos > 560) {
-            newPos = plusOrMinus(initPos, randomInt(60, 2000));
-        }
-        return newPos;
-    } else if (initPos < 1000) {
-        newPos = plusOrMinus(initPos, randomInt(0, 200));
-        while (newPos < 0 || newPos > 560) {
-            newPos = plusOrMinus(initPos, randomInt(0, 200));
-        }
-        return newPos;
-    }
-}
-*/
 
 export {makeProfile, addCourseToProfile, removeCourseFromProfile, markasTaken, markasPlanned, fillPrereqs}
 // module.exports = makeProfile;
