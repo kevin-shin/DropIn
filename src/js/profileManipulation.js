@@ -170,33 +170,33 @@ function plusOrMinus(x, y) {
  * @param initPos: initial x position of dragged course
  */
 function updatePosy(initPos) {
-    if (initPos < 30 || initPos >= 580) { //if the initial class is at an edge
-        if (initPos > 590) {
+    if (initPos < 30 || initPos >= 560) { //if the initial class is at an edge
+        if (initPos > 560) {
             return initPos - randomInt(20, 50);
         } else {
             return initPos;
         }
     } else if (initPos < 100) {
         var newPos = plusOrMinus(initPos, randomInt(40, 60));
-        while (newPos < 0 || newPos > 580) {
+        while (newPos < 0 || newPos > 560) {
             newPos = plusOrMinus(initPos, randomInt(40, 60));
         }
         return newPos;
     } else if (initPos < 200) {
         newPos = plusOrMinus(initPos, randomInt(0, 90));
-        while (newPos < 0 || newPos > 580) {
+        while (newPos < 0 || newPos > 560) {
             newPos = plusOrMinus(initPos, randomInt(60, 90));
         }
         return newPos;
     } else if (initPos < 400) {
         newPos = plusOrMinus(initPos, randomInt(0, 200));
-        while (newPos < 0 || newPos > 580) {
+        while (newPos < 0 || newPos > 560) {
             newPos = plusOrMinus(initPos, randomInt(60, 2000));
         }
         return newPos;
     } else if (initPos < 1000) {
         newPos = plusOrMinus(initPos, randomInt(0, 200));
-        while (newPos < 0 || newPos > 580) {
+        while (newPos < 0 || newPos > 560) {
             newPos = plusOrMinus(initPos, randomInt(0, 200));
         }
         return newPos;
@@ -206,3 +206,4 @@ function updatePosy(initPos) {
 
 export {makeProfile, addCourseToProfile, removeCourseFromProfile, markasTaken, markasPlanned, fillPrereqs}
 // module.exports = makeProfile;
+// module.exports = addCourseToProfile();

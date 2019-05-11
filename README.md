@@ -1,20 +1,41 @@
-# judasake
-Software Dev team project
+# DropIn
 
-How to run tests (short tutorial by Kevin):
+Collaborators: Kevin Shin, Juliet Kelson, Saloni Daga, David Barrette
 
-All the tests for this project will exist in a directory called __tests__. 
-The convention is to name these tests with the file you're trying to test. Let's do this with a concrete example.
+A web-application that provides a visual interface to help students and advisors plan a major, representing the courses and prerequisite logic as a directed graph. 
 
-Notice that inside src/js/ is a function called functions.js. The idea here is that anything inside this file can be exported.
 
-In it is a constant functions, which is an object that holds many functions. This is not the only way to do it–you might have separate functions which you export one by one, you may have some functions you want to export, some you don't, etc. Google "module.exports" and you should find a structure that suits your needs.
+### Set Up
+Welcome panel to choose major
+Select taken courses
+Animation with instructions on how to use software
+Redirected to screen to begin planning: Panels for available courses, planned/taken courses, instruction bar, requirements panel 
 
-In this example, we'll export an object that holds functions as properties. We specify what we want to export as module.exports = ???, where ??? refers to that which you want to export. 
+### Usage
+1. Plan a major and figure out pre-requisites visually
+2. Click on a course to read description
+2. Drag available courses to semester column and have Pre-requisites pop up with arrows 
+3. Delete/ Mark as taken/ un-taken
+4. Align graph to de-clutter
+5. Gratification of planning fully when requirements fully satisfied !!
+ 
+### Functions
 
-Now, go back to __tests__/functions.test.js. Note the top line is another declaration, this time saying const functions = require('../src/js/functions');. This tells this test function to import the things which were exported in the path file. So this object will hold "module.exports". This is great, because we know module.exports is an object which has functions. 
 
-So let's call them! Note the structure inside the test functions. There are many, many more. Google them to find out which one you need.
+### Tests
 
-Then, open terminal and cd to the __tests__ file. From there, type "npm run test". jest should automatically find the test files and run them.  
+
+
+
+### Future Work
+1. Expand to incorporate other majors
+2. Scrape major data from web so as to not have to manually log courses and when they are offered
+3. Have plans A, B, C to compare different paths 
+4. Export major plan as a pdf.
+5. Dynamically reshape divs based on screen size
+6. Have number of semesters change for trimester schools and J terms present for schools that offer them
+
+### Acknowledgements 
+
+
 
