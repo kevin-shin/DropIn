@@ -67,6 +67,6 @@ To run a specific test, run `npm run test fileName.test.js`
 2. Currently, positioning algorithms do not respect whether courses cross.
 
 ### Acknowledgements 
-This project was completed as the main coursework for COMP225 (Software Design and Development), taught by Paul Cantrell in Spring 2019. We offer our greatest thanks for his guidance throughout every step of the process. 
+This project was completed as the main coursework for COMP225 (Software Design and Development), taught by Paul Cantrell in Spring 2019. We offer our greatest appreciation for his guidance throughout every step of the process. 
 
 
