@@ -24,7 +24,7 @@ For example, let's suppose that a user drags COMP221 into the graph. Then, the f
 3. Algorithms recalculate several features from this new profile. These include information like the courses not taken (available for dragging) and which courses will which major requirements. Additionally, the profile is able to generate an array of connections, which represent a directed arrow from a prerequisite to a course. 
 4. These model elements are redrawn on the UI. 
 
-Each user-event triggers some kind of data-manipulation, thus this pipeline enables us to simply match UI behaviors to the appropriate model algorithms. Additional work is done to make sure these data outputs are successfully able to render the view. 
+Each user-event triggers some kind of data-manipulation, thus this pipeline enables us to simply match UI behaviors to the appropriate model algorithms. Additional work is done to make sure these data outputs are successfully able to render the view.
 
 ### Libraries
 - [jQuery/jQueryUI](https://jquery.com/)
@@ -62,9 +62,12 @@ To run a specific test, run `npm run test fileName.test.js`
 4. Allow user to store different plans.
 5. Allow user to export major plan in a concise, tabular format.
 
-### Reported Bugs
-1. CSS features were adapted and tested for limited screens. Sizing and placement of HTML elements may appear different on different screens.
+### Known Bugs/Issues/Missing
+1. CSS features were adapted and tested for a limited number of screens. Sizing and placement of HTML elements may appear different on different screens.
 2. Currently, positioning algorithms do not respect whether courses cross.
+3. Most UI elements are available across browsers, but may appear different.
+4. Currently, positionInitialCourses() is hard-coded in terms of screen location, and based on the specific courses in the comp-major. An immediate next step in achieving Future Work Goal #1 (listed above) would be to remove instances of both hard-coding CSS (to allow for various screen widths to have consistently proportional sizing) and the reliance on course-name identification (so arbitrary courses of any major can still be meaningfully organized). 
+5. Test suite incomplete–unit tests of some data manipulation algorithms should be implemented in the near future. 
 
 ### Acknowledgements 
 This project was completed as the main coursework for COMP225 (Software Design and Development), taught by Paul Cantrell in Spring 2019. We offer our greatest appreciation for his guidance throughout every step of the process. 
