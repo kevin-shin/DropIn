@@ -1,4 +1,4 @@
-const makeProfile = require("../src/js/profileManipulation.js");
+const profManipModule = require("../src/js/profileManipulation.js");
 
 let beginnerArray = [
     { name: "COMP123", value: "on" },
@@ -9,7 +9,7 @@ let beginnerArray = [
 let noCourse = [];
 
 test('simple 3 course', () => {
-    expect(makeProfile(beginnerArray)).toMatchObject(
+    expect(profManipModule.makeProfile(beginnerArray)).toMatchObject(
         [
             { course: "COMP123", status: "taken" },
             { course: "COMP127", status: "taken" },
@@ -28,13 +28,13 @@ let manyCourses = [
 ];
 
 test('no courses selected', () => {
-    expect(makeProfile(noCourse)).toMatchObject(
+    expect(profManipModule.makeProfile(noCourse)).toMatchObject(
         []
     )
 });
 
 test('many courses selected', () => {
-    expect(makeProfile(manyCourses)).toMatchObject(
+    expect(profManipModule.makeProfile(manyCourses)).toMatchObject(
         [
             { course: "COMP123", status: "taken" },
             { course: "COMP127", status: "taken" },
