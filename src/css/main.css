@@ -35,30 +35,6 @@ p.visualizeText {
     margin-top:0px;
 }
 
-/*           INSTRUCTIONS PANEL           */
-.instructions {
-    height: 40%;
-    width: 24%;
-    position: absolute;
-    right: 0;
-    overflow-y: scroll;
-    background-color: #AECBC9;
-    border-radius: 15px;
-    margin-right: 10px;
-    padding: 10px;
-}
-
-.instructions > p {
-    padding-left: 10px;
-}
-
-
-.instructions a {
-    font-size: 25px;
-    color: #818181;
-    display: block;
-}
-
 #dialogOverlay {
     display: none;
     opacity: 0.7;
@@ -197,11 +173,70 @@ p.visualizeText {
     padding: 10px;
 }
 
+/*           INSTRUCTIONS PANEL           */
+.instructions {
+    height: 39%;
+    width: 24%;
+    position: absolute;
+    right: 0;
+    overflow-y: scroll;
+    background-color: #AECBC9;
+    border-radius: 15px;
+    margin-right: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.instructions > p {
+    padding-left: 10px;
+}
+
+.instructions a {
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+#legendPlanned {
+    width: 70px;
+    height: 40px;
+    left: 50px;
+    position: absolute;
+    background-color: orange;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+}
+
+#legendTaken {
+    width: 60px;
+    height: 40px;
+    left: 137px;
+    position: absolute;
+    border: 0.5px solid lightslategray;
+    background-color: #AECBCF;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+}
+
+#legendAvailable {
+    width: 75px;
+    height: 40px;
+    left: 215px;
+    position: absolute;
+    background-color: rgb(255, 219, 111);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+}
+
 /*           REQUIREMENTS PANEL           */
 .requirements {
-    margin: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
     padding: 10px;
-    height: 48%;
+    height: 49%;
     width: 24%;
     position: absolute;
     right: 0;
@@ -224,6 +259,13 @@ ul {
 
 
 /*           GUI           */
+
+#interface {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
 #GUI {
     height: 100%;
     width: 100%;
@@ -231,12 +273,12 @@ ul {
 
 #graph {
     display: block;
-    height: 79%;
-    width: 90%;
+    height: 74%;
+    width: 70%;
     left: 0;
     background-color: #ffffff00;
-    margin-left:11px;
-    padding: 10px;
+    margin-left:15px;
+    margin-top: 15px;
     float: left;
     white-space: nowrap;
     position: absolute;
@@ -254,7 +296,7 @@ ul {
 
 #svgNotTaken {
     display: block;
-    width: 810px;
+    width: 65%;
     margin-left: 17px;
     height: 75px;
     position: relative;
@@ -267,7 +309,7 @@ ul {
 
 #mathNotTaken {
     display: none;
-    width: 810px;
+    width: 65%;
     height: 75px;
     margin-left: 17px;
     position: relative;
@@ -287,6 +329,8 @@ ul {
 #buttonBar {
     display: none;
     margin-left: 10px;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 #requirementsText, #welcomeText {
@@ -298,12 +342,9 @@ ul {
 }
 
 #statusBar {
-    bottom: 25px;
     height: 40px;
     background-color: #AECBCF;
     position: absolute;
-    width: 904px;
-    margin-left: 21px;
 }
 
 button {
@@ -315,14 +356,14 @@ button {
 
 #switchComp{
     position:absolute;
-    left: 62%;
-    top:0;
+    left: 63.5%;
+    top: 15px;
     margin-bottom: 0;
 }
 
 #switchMath{
     position:absolute;
-    left: 62%;
+    left: 63.5%;
     top:40px;
 }
 
@@ -370,8 +411,9 @@ button {
     background-color: rgb(255, 219, 111);
     border-radius: 50%;
     text-align: center;
-    display: inline-block;
     line-height: 60px;
+    display: inline-block;
+
 }
 
 .available:hover{
@@ -390,7 +432,7 @@ button {
 }
 
 .year {
-    width: 109px;
+    width: 12.05%;
     height: 100%;
     vertical-align: top;
     display: inline-block;

@@ -48,12 +48,13 @@ let setUpBehavior = function () {
     });
 
     $(document).ready(function () {
-        $(window).click(function (event) {
+        $("#graph").click(function (event) {
             if (event.target.className === "year") {
                 $("#welcomeText").css("display", "block");
                 $("#name").css("display", "none");
                 $("#courseDescription").css("display", "none");
                 $("#prereq").css("display", "none");
+                $("#legend").css("display","block")
             }
             focus = null;
             console.log("I'm clicking on:" + event.clientX + ", " + event.clientY);
@@ -236,6 +237,7 @@ function instructionsDisplay(selectedCourse) {
     $("#courseDescription").css("display", "block").replaceWith(
         "<p id='courseDescription'>" + description + "</p>"
     );
+    $("#legend").css("display","none");
 }
 
 //Helper method for instructionsDisplay. Returns appropriate course object from catalog.

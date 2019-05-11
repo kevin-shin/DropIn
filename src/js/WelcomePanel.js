@@ -55,6 +55,8 @@ function InputPanel() {
         dialogOverlay.css("display", "none");
         refreshView(ViewModel);
         setUpBehavior();
+        let screenWidth = $(window).width();
+        $('#interface').css('width', screenWidth + 'px');
     }
 }
 

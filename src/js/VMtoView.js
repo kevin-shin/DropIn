@@ -46,16 +46,22 @@ let initializeView = function () {
             .data(years)
             .enter().append("div")
             .attr("class", "year")
+            .attr("id",function(d) {return String(d)})
             .html(function (d) {
                 return String(d)
             });
-
-        d3.select("#GUI").append("div").attr("id", "statusBar");
     }
 
     function initializeButtonBar() {
-        let buttonBar = d3.select("body")
-            .select("#statusBar");
+        let graph = $("#graph");
+        console.log(graph.offset().top+ graph.height());
+
+        let buttonBar = d3.select("#GUI")
+            .append("div")
+            .attr("id", "statusBar")
+            .style("width", graph.width() + "px")
+            .style("left",graph.offset().left + "px")
+            .style("top", graph.offset().top + graph.height() + "px");
 
         buttonBar.append("button")
             .attr("id", "align")
@@ -241,12 +247,17 @@ function updateRequirementsCount(profile) {
         let string = "#" + Object.keys(count)[0] + "Label";
         $(string).text(Object.keys(count)[0].charAt(0).toUpperCase() + Object.keys(count)[0].slice(1) + " Courses: " + Object.values(count)[0] + " Remaining");
     }
+
+    $("li").css("opacity","1.0");
+
+    //Iterates though profile, marking courses as opacity = 0.5 if taken
     for (let course of profile) {
         let reqSelectorString = "#req" + course.course;
         if ($(reqSelectorString) !== null) {
             $(reqSelectorString).css("opacity", "0.5");
         }
     }
+
 
     let mathRules = rules.filter((category) => category.label === "math")[0].courses;
     let electiveRules = rules.filter((category) => category.label === "elective")[0].courses;
