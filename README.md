@@ -27,10 +27,10 @@ For example, let's suppose that a user drags COMP221 into the graph. Then, the f
 Each user-event triggers some kind of data-manipulation, thus this pipeline enables us to simply match UI behaviors to the appropriate model algorithms. Additional work is done to make sure these data outputs are successfully able to render the view. 
 
 ### Libraries
-- JQuery
-- jsPlumb
-- D3.js
-- Tween
+- [jQuery/jQueryUI](https://jquery.com/)
+- [jsPlumb](https://jsplumbtoolkit.com/)
+- [D3.js](https://d3js.org/)
+- [Tween.js](https://github.com/tweenjs/tween.js/)
 
 ### Tests
 To run tests the following steps are necessary:
@@ -59,7 +59,7 @@ To run a specific test, run `npm run test fileName.test.js`
 1. Expand to incorporate other majors.
 2. Scrape major data from web so as to not have to manually log courses and when they are offered.
 3. Incorporate Gen-Ed/Distribution requirements. 
-4. Have plans A, B, C to compare different paths.
+4. Allow user to store different plans.
 5. Allow user to export major plan in a concise, tabular format.
 
 ### Reported Bugs
