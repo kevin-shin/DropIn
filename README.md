@@ -70,6 +70,6 @@ To run a specific test, run `npm run test fileName.test.js`
 6. Full major algorithm does not incorporate a check that some class is a Capstone course, as stated by the Computer Science Major rules. This may vary year by year, but a true "check" of the major should incorporate this feature as well. 
 
 ### Acknowledgements 
-This project was completed as the main coursework for COMP225 (Software Design and Development), taught by Paul Cantrell in Spring 2019. We offer our greatest appreciation for his guidance throughout every step of the process. 
+This project was completed as the main coursework for COMP225 (Software Design and Development), taught by Paul Cantrell in Spring 2019. We are incredibly grateful for his guidance throughout every step of the process!
 
 
