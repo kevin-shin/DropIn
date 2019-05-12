@@ -1,8 +1,12 @@
 # DropIn
 
-Collaborators: Kevin Shin, Juliet Kelson, Saloni Daga, David Barrette
+Authors: Kevin Shin, Juliet Kelson, Saloni Daga, David Barrette
 
 A web-application that provides a visual interface to help students and advisors plan a major, representing the courses and prerequisite logic as a directed graph. 
+
+**Project Statement**: Planning a major is one of the universal, central experiences of every college student, and requires a serious amount of planning and advising. Currently, information sources at Macalester are scattered across course catalogs, websites on the major structure/requirements, distribution requirements, and personal scheduling information.
+
+DropIn provides a user-friendly interface in which these information sources are consolidated into one platform, with the aim of demystifying the process and allowing the user to focus on their personal preferences and considerations. Information about courses is provided alongside a planning grid, and prerequisite classes are automatically populated onto the graph, so the user can visually analyze the commitments of enrolling in a given class. Additionally, a requirements panel is provided to help the user track which requirements they have yet to fulfill.
 
 ### Set Up
 In order to access the web-application directly on your computer, clone this repository using your favorite IDE or by simply typing `git clone [url]` in the terminal. Then, run the `index.html` file using your IDE. This should create a `localhost` that compiles the HTML and runs the application. All necessary libraries are included and linked from inside the repository, or accessed by a CDN.
@@ -60,14 +64,16 @@ To run a specific test, run `npm run test fileName.test.js`
 3. Incorporate Gen-Ed/Distribution requirements. 
 4. Allow user to store different plans.
 5. Allow user to export major plan in a concise, tabular format.
+6. Accomodate exceptions to courses, overrides from professors, etc.
 
-### Known Bugs/Issues/Missing
+### Known Bugs/Issues, Missing Features, and Reflections on Decisions
 1. CSS features were adapted and tested for a limited number of screens. Sizing and placement of HTML elements may appear different on different screens.
 2. Currently, positioning algorithms do not respect whether courses cross.
 3. Most UI elements are available across browsers, but may appear different.
 4. Currently, positionInitialCourses() is hard-coded in terms of screen location, and based on the specific courses in the comp-major. An immediate next step in achieving Future Work Goal #1 (listed above) would be to remove instances of both hard-coding CSS (to allow for various screen widths to have consistently proportional sizing) and the reliance on course-name identification (so arbitrary courses of any major can still be meaningfully organized). 
 5. Test suite incomplete–unit tests of some data manipulation algorithms should be implemented in the near future. 
 6. Full major algorithm does not incorporate a check that some class is a Capstone course, as stated by the Computer Science Major rules. This may vary year by year, but a true "check" of the major should incorporate this feature as well. 
+7. Some visual information has been left semantically ambiguous–for instance, there is no clear way to differentiate between MATH and COMP courses without clicking and viewing the description. 
 
 ### Acknowledgements 
 This project was completed as the main coursework for COMP225 (Software Design and Development), taught by Paul Cantrell in Spring 2019. We are incredibly grateful for his guidance throughout every step of the process!
