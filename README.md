@@ -1,8 +1,7 @@
 # DropIn
+##### A web-application that provides a visual interface to help students and advisors plan a major, representing the courses and prerequisite logic as a directed graph. 
 
 Authors: Kevin Shin, Juliet Kelson, Saloni Daga, David Barrette
-
-A web-application that provides a visual interface to help students and advisors plan a major, representing the courses and prerequisite logic as a directed graph. 
 
 **Project Statement**: Planning a major is one of the universal, central experiences of every college student, and requires a serious amount of planning and advising. Currently, information sources at Macalester are scattered across course catalogs, websites on the major structure/requirements, distribution requirements, and personal scheduling information.
 
