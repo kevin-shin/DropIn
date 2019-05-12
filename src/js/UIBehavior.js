@@ -112,7 +112,7 @@ and mouse behavior after the nodes are redrawn.
 let refreshView = function (ViewModel) {
     jsPlumbInstance.reset();
 
-    //Prevent jsPlumb error of connecting a course before the View has been redrawn.
+    //Prevent jsPlumb error of declaring courses as sources of connections before the View has been redrawn.
     for (let prereq of ViewModel.Classes) {
         if (prereq.status === "planned") {
             let element = document.getElementById(prereq.course);
@@ -168,7 +168,6 @@ let refreshView = function (ViewModel) {
     });
 
     findFocus();
-
     jsPlumb.fire("jsPlumbDemoLoaded", jsPlumbInstance);
 };
 
@@ -198,8 +197,9 @@ let drawConnections = function (Connections) {
 @param
 selectedCourse: JQuery selection of a HTML object representing a course
 
-Each course node is associated with a mouse event bound to this function. On click, the instructions panel populates
-with information specific to that node.
+Each course node is associated with a mouse event bound to this function.
+Specifically, on mousedown, the instructions panel populates with information specific to that node retrieved from
+the catalog.
  */
 function instructionsDisplay(selectedCourse) {
     let course = findCourse(catalogue, selectedCourse.attr('id'));
@@ -245,6 +245,7 @@ function alignProfile(Profile){
     let initPosition = firstYear.offset().left;
     let displacementWidth = firstYear.outerWidth();
 
+    //positioning relative to calculations made on year divs
     for (let course of Profile){
         if (initPosition < course.x+radius && course.x+radius < initPosition + 1 * displacementWidth){
             course.x = (initPosition + initPosition + 1 * displacementWidth)/2 -align;

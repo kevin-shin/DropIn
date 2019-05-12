@@ -36,7 +36,7 @@ let addCourseToProfile = function (profile, draggedCourse, eventX, eventY) {
     let courseWithPrereqs = dfs(draggedCourse);
     let initialPositionX = eventX;
     let initialPositionY = eventY;
-    for (var course of courseWithPrereqs) {
+    for (let course of courseWithPrereqs) {
         if (!(profile.some((nextClass) => nextClass.course === course))) {
             profile.push({
                 course: course,
@@ -153,10 +153,7 @@ function updatePosx(initPos) {
     }
 }
 
-/*
- * Updates y position for auto added prereqisites.
- */
-
+//Updates y position for program added prerequisites. Returns random int in appropriate spacing relative to the graph.
 function updatePosy() {
     let graph = $("#graph");
     let statusBar = $("#statusBar");

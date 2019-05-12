@@ -354,6 +354,8 @@ function filterPlanned(profile) {
 }
 
 //Method to control placement of courses when Profile is first initialize and displayed on the graph.
+//TODO: Replace with relative positioning according to screen size.
+
 function positionInitialCourses(profile) {
     for (let course of profile) {
         if (course.course === "COMP120") {

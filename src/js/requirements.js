@@ -30,12 +30,13 @@ output: true/false; true if the profile represents a full major, false otherwise
  */
 let fullMajorCheck = function(profile){
     let categoryCount = calculateRequirements(profile);
+    //Check that each major count has been satisfied
     for (let category of categoryCount){
         if (Object.values(category)[0] !== 0){
             return false;
         }
     }
-
+    //Also check that for each course, the prereqs are accounted for
     for (let course of profile){
         let prereqs = dfs(course.course);
         for (let prereq of prereqs){
@@ -44,7 +45,7 @@ let fullMajorCheck = function(profile){
             }
         }
     }
-
+    //if both these conditions are satisfied, return true
     return true;
 };
 
