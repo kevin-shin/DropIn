@@ -9,8 +9,9 @@ DropIn provides a user-friendly interface in which these information sources are
 
 ### Set Up
 
-Option 1: Visit https://kevin-shin.github.io/DropIn/
-Option 2: In order to access the web-application directly on your computer, clone this repository using your favorite IDE or by simply typing `git clone [url]` in the terminal. Then, run the `index.html` file using your IDE. This should create a `localhost` that compiles the HTML and runs the application. All necessary libraries are included and linked from inside the repository, or accessed by a CDN.
+**Option 1:** Visit https://kevin-shin.github.io/DropIn/
+
+**Option 2:** In order to access the web-application directly on your computer, clone this repository using your favorite IDE or by simply typing `git clone [url]` in the terminal. Then, run the `index.html` file using your IDE. This should create a `localhost` that compiles the HTML and runs the application. All necessary libraries are included and linked from inside the repository, or accessed by a CDN.
 
 ### Main Usage/Functionality
 
