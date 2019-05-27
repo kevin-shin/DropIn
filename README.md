@@ -8,7 +8,9 @@ Authors: Kevin Shin, Juliet Kelson, Saloni Daga, David Barrette
 DropIn provides a user-friendly interface in which these information sources are consolidated into one platform, with the aim of demystifying the process and allowing the user to focus on their personal preferences and considerations. Information about courses is provided alongside a planning grid, and prerequisite classes are automatically populated onto the graph, so the user can visually analyze the commitments of enrolling in a given class. Additionally, a requirements panel is provided to help the user track which requirements they have yet to fulfill.
 
 ### Set Up
-In order to access the web-application directly on your computer, clone this repository using your favorite IDE or by simply typing `git clone [url]` in the terminal. Then, run the `index.html` file using your IDE. This should create a `localhost` that compiles the HTML and runs the application. All necessary libraries are included and linked from inside the repository, or accessed by a CDN.
+
+Option 1: Visit https://kevin-shin.github.io/DropIn/
+Option 2: In order to access the web-application directly on your computer, clone this repository using your favorite IDE or by simply typing `git clone [url]` in the terminal. Then, run the `index.html` file using your IDE. This should create a `localhost` that compiles the HTML and runs the application. All necessary libraries are included and linked from inside the repository, or accessed by a CDN.
 
 ### Main Usage/Functionality
 
